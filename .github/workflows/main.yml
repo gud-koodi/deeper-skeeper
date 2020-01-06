@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     container: gableroux/unity3d:2019.2.11f1
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v1
       with:
         lfs: true
     - name: Chown
@@ -32,7 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     container: gableroux/unity3d:2019.2.11f1
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v1
       with:
         lfs: true
     - name: Chown
@@ -52,7 +52,7 @@ jobs:
     runs-on: ubuntu-latest
     container: gableroux/unity3d:2019.2.11f1-windows
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v1
       with:
         lfs: true
     - name: Chown
@@ -72,7 +72,7 @@ jobs:
     runs-on: ubuntu-latest
     container: gableroux/unity3d:2019.2.11f1-mac
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v1
       with:
         lfs: true
     - name: Chown
