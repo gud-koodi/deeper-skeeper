@@ -37,8 +37,26 @@ public class Server : MonoBehaviour {
     }
 
     private void OnMessage(object sender, MessageReceivedEventArgs e) {
+        Message response;
+
+        using (Message message = e.GetMessage()) {
+            using (DarkRiftWriter writer = DarkRiftWriter.Create()) {
+                using (DarkRiftReader reader = message.GetReader()) {
+                    int length = reader.Length;
+                    byte[] data = reader.ReadRaw(length);
+                    writer.WriteRaw(data, 0, length);
+                }
+                switch(e.Tag) {
+                    case (ushort) ClickerMessageTag.CREATE_BALL:
+                        // If creating a new ball, generate id
+                        writer.Write(GameObject.FindGameObjectsWithTag("ball").Length + 1);
+                        break;
+                }
+                response = Message.Create(e.Tag, writer);
+            }
+        }
         foreach(var client in server.ClientManager.GetAllClients()) {
-            client.SendMessage(e.GetMessage(), SendMode.Unreliable);
+            client.SendMessage(response, SendMode.Unreliable);
         }
     }
 }
