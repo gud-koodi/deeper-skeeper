@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MasterScene.unity
+    guid: 14eb298b995d15d4c97241ab52bcc911
+  - enabled: 1
+    path: Assets/Scenes/ServerScene.unity
+    guid: c942e3013e3e80a46b8b2e97bceac78f
+  - enabled: 1
+    path: Assets/DarkRift/2 DragDemo/DragDemo.unity
+    guid: 78d3a40c48875094ebcf4b2775f9ed50
   m_configObjects: {}
