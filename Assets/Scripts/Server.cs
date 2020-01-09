@@ -20,7 +20,7 @@ public class Server : MonoBehaviour {
         server.ClientManager.ClientConnected += OnClientConnect;
         server.ClientManager.ClientDisconnected += OnClientDisconnect;
         print("Load scene");
-        SceneManager.LoadScene("DragDemo", LoadSceneMode.Additive);
+        SceneManager.LoadScene("ClickerTest", LoadSceneMode.Additive);
     }
 
     void OnDestroy() {

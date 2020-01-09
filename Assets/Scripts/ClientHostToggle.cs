@@ -15,7 +15,7 @@ public class ClientHostToggle : MonoBehaviour {
             SceneManager.LoadScene("ServerScene", LoadSceneMode.Single);
         } else {
             print("Load Scene");
-            SceneManager.LoadScene("DragDemo", LoadSceneMode.Single);
+            SceneManager.LoadScene("ClickerTest", LoadSceneMode.Single);
         }
     }
 
