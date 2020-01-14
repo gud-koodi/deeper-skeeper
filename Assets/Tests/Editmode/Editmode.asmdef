@@ -13,9 +13,9 @@
     "overrideReferences": true,
     "precompiledReferences": [
         "nunit.framework.dll",
-        "DarkRift.dll",
         "DarkRift.Client.dll",
-        "DarkRift.Server.dll"
+        "DarkRift.Server.dll",
+        "DarkRift.dll"
     ],
     "autoReferenced": false,
     "defineConstraints": [
