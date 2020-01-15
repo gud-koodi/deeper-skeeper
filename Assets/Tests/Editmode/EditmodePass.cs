@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
-
 namespace Tests
 {
     public class NewTestScript
@@ -14,6 +13,7 @@ namespace Tests
         {
             GameObject go = new GameObject();
             go.AddComponent<ClickerSphere>();
+
             // Use the Assert class to test conditions
         }
 
