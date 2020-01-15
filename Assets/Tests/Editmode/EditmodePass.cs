@@ -12,6 +12,8 @@ namespace Tests
         [Test]
         public void NewTestScriptSimplePasses()
         {
+            GameObject go = new GameObject();
+            go.AddComponent<ClickerSphere>();
             // Use the Assert class to test conditions
         }
 
