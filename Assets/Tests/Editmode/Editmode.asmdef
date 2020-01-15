@@ -3,8 +3,7 @@
     "references": [
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
-        "ScriptAssembly",
-        "DarkRiftAssembly"
+        "ScriptAssembly"
     ],
     "includePlatforms": [
         "Editor"

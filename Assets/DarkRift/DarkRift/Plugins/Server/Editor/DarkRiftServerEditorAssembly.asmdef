@@ -1,9 +1,11 @@
 {
-    "name": "ScriptAssembly",
+    "name": "DarkRiftServerEditorAssembly",
     "references": [
-        "DarkRiftAssembly"
+        "GUID:3d2985824760dad448aa3a577f7b2a30"
     ],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
