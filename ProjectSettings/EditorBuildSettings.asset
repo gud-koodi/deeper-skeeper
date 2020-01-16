@@ -12,9 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/ServerScene.unity
     guid: c942e3013e3e80a46b8b2e97bceac78f
   - enabled: 1
-    path: Assets/DarkRift/2 DragDemo/DragDemo.unity
-    guid: 78d3a40c48875094ebcf4b2775f9ed50
-  - enabled: 1
     path: Assets/Scenes/ClickerTest.unity
     guid: ec4dbf31354349246b3d519d4d04173a
   m_configObjects: {}
