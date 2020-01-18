@@ -1,8 +1,8 @@
-
 namespace Network {
 
-    public enum RequestTag : byte {
-        CREATE_SPHERE
+    public enum RequestTag : ushort {
+        CREATE_SPHERE,
+        UDATE_SPHERE
     }
 
 }

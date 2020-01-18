@@ -389,5 +389,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   client: {fileID: 1436625608}
-  ToCreate: {fileID: 1049750113980928564, guid: 79bca3644166b2d44b58c247d8ee2631,
-    type: 3}
+  ToSpawn: {fileID: 1049750113980928564, guid: 79bca3644166b2d44b58c247d8ee2631, type: 3}

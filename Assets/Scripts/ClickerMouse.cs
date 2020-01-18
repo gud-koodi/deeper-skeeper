@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Network;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ClickerMouse : MonoBehaviour {
 
@@ -11,17 +8,15 @@ public class ClickerMouse : MonoBehaviour {
     void Update() {
         if (Input.GetMouseButtonDown(0)) {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
 
-            if (!Physics.Raycast(ray, float.PositiveInfinity)) {
+            if (Physics.Raycast(ray, out hit, float.PositiveInfinity)) {
+                GameObject go = hit.transform.gameObject;
+                go.transform.localScale += 0.1f * Vector3.one;
+                spawner.SendUpdate(go); // Unchecked object type
+            } else {
                 Vector3 position = ray.GetPoint(10);
-                Network.ClickerSphere sphere = new Network.ClickerSphere();
-                sphere.ID = -1;
-                sphere.X = position.x;
-                sphere.Y = position.y;
-                sphere.Z = position.z;
-                sphere.Scale = 1;
-
-                spawner.CreateSphere(sphere);
+                spawner.Spawn(position);
             }
         }
     }

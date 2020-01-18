@@ -12,7 +12,9 @@ public class ServerManager : MonoBehaviour {
     [Tooltip("The server component this script will communicate with")]
     public XmlUnityServer Server;
 
-    public List<IDarkRiftSerializable> networkObjects =
+    // List of synchronized objects indexed by their network IDs.
+    // Do not use methods that cause these indexes to change!
+    private readonly List<IDarkRiftSerializable> networkObjects =
         new List<IDarkRiftSerializable>();
 
     private DarkRiftServer server;
@@ -53,7 +55,10 @@ public class ServerManager : MonoBehaviour {
 
         switch (tag) {
             case RequestTag.CREATE_SPHERE:
-                createSphere(e);
+                CreateSphere(e);
+                break;
+            case RequestTag.UDATE_SPHERE:
+                UpdateSphere(e);
                 break;
             default:
                 Debug.LogException(new Exception("Unknown request " + tag));
@@ -61,13 +66,15 @@ public class ServerManager : MonoBehaviour {
         }
     }
 
-    private void createSphere(MessageReceivedEventArgs e) {
-        Network.ClickerSphere sphere = e.GetMessage().Deserialize<Network.ClickerSphere>();
+    private void CreateSphere(MessageReceivedEventArgs e) {
+        ClickerSphere sphere;
+        using(Message message = e.GetMessage()) sphere = message.Deserialize<ClickerSphere>();
+
         int clientLocalID = sphere.ID;
         int id = networkObjects.Count;
         sphere.ID = id;
 
-        networkObjects.Add(sphere);
+        networkObjects.Insert(id, sphere);
 
         using(DarkRiftWriter writer = DarkRiftWriter.Create()) {
             writer.Write(clientLocalID);
@@ -85,4 +92,19 @@ public class ServerManager : MonoBehaviour {
             }
         }
     }
+
+    private void UpdateSphere(MessageReceivedEventArgs e) {
+        ClickerSphere sphere;
+        using(Message message = e.GetMessage()) sphere = message.Deserialize<ClickerSphere>();
+        networkObjects[sphere.ID] = sphere;
+
+        using(Message broadcast = Message.Create((ushort) ResponseTag.UPDATE_SPHERE, sphere)) {
+            foreach (var client in server.ClientManager.GetAllClients()) {
+                if (client.ID != e.Client.ID) {
+                    client.SendMessage(broadcast, SendMode.Reliable);
+                }
+            }
+        }
+    }
+
 }
