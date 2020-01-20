@@ -1,7 +1,8 @@
 {
     "name": "ScriptAssembly",
     "references": [
-        "DarkRiftAssembly"
+        "DarkRiftAssembly",
+        "NetworkAssembly"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
