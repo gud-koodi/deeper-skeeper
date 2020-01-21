@@ -5,7 +5,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
     // Start is called before the first frame update
     public Rigidbody playerRigidbody;
-    public float speed = 10.0f;
+    public float speed;
+
+    public Weapon weapon;
 
     public GameObject go;
     void Start () {
@@ -16,6 +18,7 @@ public class PlayerController : MonoBehaviour {
     void Update () {
         ApplyMovement ();
         ApplyRotation ();
+        HandleWeaponAttack();
     }
 
     private void ApplyMovement () {
@@ -56,6 +59,10 @@ public class PlayerController : MonoBehaviour {
  
      float AngleBetweenTwoPoints(Vector3 a, Vector3 b) {
          return Mathf.Atan2(a.y - b.y, a.x - b.x) * Mathf.Rad2Deg;
+     }
+
+     private void HandleWeaponAttack() {
+         if (Input.GetButtonDown("Fire1")) weapon.Attack();
      }
     
 }

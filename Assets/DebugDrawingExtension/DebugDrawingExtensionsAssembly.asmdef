@@ -1,10 +1,9 @@
 {
-    "name": "ScriptAssembly",
-    "references": [
-        "DarkRiftAssembly",
-        "DebugDrawingExtensionsAssembly"
+    "name": "DebugDrawingExtensionsAssembly",
+    "references": [],
+    "includePlatforms": [
+        "Editor"
     ],
-    "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
