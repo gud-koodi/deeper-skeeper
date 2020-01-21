@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Sword : Weapon {
     public float damage;
     public float sweepReach;
