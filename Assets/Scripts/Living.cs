@@ -6,7 +6,6 @@ public class Living : MonoBehaviour, IDamageable {
     public float maxHealth;
     private float currentHealth;
 
-    
     public void ApplyDamage(float damage) {
         Debug.Log("DAMAGE");
         currentHealth -= damage;

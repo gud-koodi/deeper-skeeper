@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class Sword : Weapon {
 
     //public float sweepReach;
@@ -22,19 +21,16 @@ public class Sword : Weapon {
         StartCoroutine(SetAttackingFalse());
     }
 
-    private IEnumerator SetAttackingFalse()
-    {
+    private IEnumerator SetAttackingFalse() {
         yield return new WaitForSeconds(AttackDuration);
         isAttacking = false;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (isAttacking)
-        {
+    private void OnTriggerEnter(Collider other) {
+        if (isAttacking) {
             Debug.Log("HIT");
             other.gameObject.SendMessageUpwards("ApplyDamage", damage);
         }
     }
 
-} 
+}
