@@ -2,7 +2,7 @@
     "name": "ScriptAssembly",
     "references": [
         "DarkRiftAssembly",
-        "DebugDrawingExtensionsAssembly"
+        "DebugDrawingExtensionsAssembly",
         "NetworkAssembly"
     ],
     "includePlatforms": [],
