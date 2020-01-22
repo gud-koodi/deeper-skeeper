@@ -19,10 +19,9 @@ public class ServerManager : MonoBehaviour {
 
     private DarkRiftServer server;
 
-    void Start() {
+    public void Initialize() {
         if (Server == null) {
-            Debug.LogError("No server component given.");
-            Application.Quit();
+            Debug.LogError("Server component missing.");
             return;
         }
 
@@ -30,9 +29,6 @@ public class ServerManager : MonoBehaviour {
 
         server.ClientManager.ClientConnected += OnClientConnect;
         server.ClientManager.ClientDisconnected += OnClientDisconnect;
-
-        print("Load scene");
-        SceneManager.LoadScene("ClickerTest", LoadSceneMode.Additive);
     }
 
     void OnDestroy() {
