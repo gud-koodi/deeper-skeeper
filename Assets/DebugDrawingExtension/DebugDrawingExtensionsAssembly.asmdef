@@ -1,14 +1,8 @@
 {
-    "name": "ScriptAssembly",
-    "references": [
-        "DarkRiftAssembly",
-        "DebugDrawingExtensionsAssembly",
-        "NetworkAssembly"
-    ],
+    "name": "DebugDrawingExtensionsAssembly",
+    "references": [],
     "includePlatforms": [],
-    "excludePlatforms": [
-        "WSA"
-    ],
+    "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
     "precompiledReferences": [],
