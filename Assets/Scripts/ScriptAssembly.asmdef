@@ -3,6 +3,7 @@
     "references": [
         "DarkRiftAssembly",
         "DebugDrawingExtensionsAssembly"
+        "NetworkAssembly"
     ],
     "includePlatforms": [],
     "excludePlatforms": [
