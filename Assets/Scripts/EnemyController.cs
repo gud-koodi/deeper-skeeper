@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
-
-{
+public class EnemyController : MonoBehaviour {
     private UnityEngine.AI.NavMeshAgent agent;
     public GameObject player;
     public State state;
