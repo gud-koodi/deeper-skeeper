@@ -27,6 +27,10 @@ public class ClickerSphereSpawner : MonoBehaviour {
         client.MessageReceived += OnResponse;
     }
 
+    /// <summary>
+    /// Spawn new ClickerSphere to given position.
+    /// </summary>
+    /// <param name="position">position of the new ClickerSphere</param>
     public void Spawn(Vector3 position) {
         GameObject go = Instantiate(ToSpawn, position, Quaternion.identity);
         int instanceID = go.GetInstanceID();
@@ -38,6 +42,10 @@ public class ClickerSphereSpawner : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Serialize and send the given gameObject to server if it is handled by this spawner.
+    /// </summary>
+    /// <param name="gameObject"></param>
     public void SendUpdate(GameObject gameObject) {
         int instanceId = gameObject.GetInstanceID();
 
@@ -58,6 +66,7 @@ public class ClickerSphereSpawner : MonoBehaviour {
 
     }
 
+    // Receive message from server and handle
     private void OnResponse(object sender, MessageReceivedEventArgs e) {
         ResponseTag tag = (ResponseTag) e.Tag;
 

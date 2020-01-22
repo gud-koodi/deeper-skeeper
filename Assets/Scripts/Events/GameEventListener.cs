@@ -14,6 +14,7 @@ public class GameEventListener : MonoBehaviour {
     [Tooltip("GameEvent to listen to")]
     public GameEvent Event;
 
+    [Tooltip("A list of event to call when the listened event is triggered")]
     public UnityEvent Response;
 
     void OnEnable() {
