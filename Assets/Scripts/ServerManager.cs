@@ -17,6 +17,8 @@ public class ServerManager : MonoBehaviour {
     private readonly List<IDarkRiftSerializable> networkObjects =
         new List<IDarkRiftSerializable>();
 
+    private readonly List<Player> players = new List<Player>();
+
     private DarkRiftServer server;
 
     public void Initialize() {
@@ -40,6 +42,31 @@ public class ServerManager : MonoBehaviour {
 
     private void OnClientConnect(object sender, ClientConnectedEventArgs e) {
         e.Client.MessageReceived += OnRequest;
+        SendConnectionData(e);
+    }
+
+    private void SendConnectionData(ClientConnectedEventArgs e) {
+        int id = networkObjects.Count;
+        Player player = new Player(id, Vector3.zero);
+        networkObjects.Insert(id, player);
+        players.Add(player);
+
+        using(DarkRiftWriter writer = DarkRiftWriter.Create()) {
+            writer.Write(e.Client.ID);
+            writer.Write(players.ToArray());
+
+            using(Message message = Message.Create((ushort) ResponseTag.CONNECTION_DATA, writer)) {
+                e.Client.SendMessage(message, SendMode.Reliable);
+            }
+
+            using(Message broadcast = Message.Create((ushort) ResponseTag.CREATE_PLAYER, player)) {
+                foreach (var client in server.ClientManager.GetAllClients()) {
+                    if (client.ID != e.Client.ID) {
+                        client.SendMessage(broadcast, SendMode.Reliable);
+                    }
+                }
+            }
+        }
     }
 
     private void OnClientDisconnect(object sender, ClientDisconnectedEventArgs e) {

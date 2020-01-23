@@ -33,7 +33,7 @@ public class MainMenu : MonoBehaviour {
 
     private void LoadScene() {
         Debug.Log("Starting the game as " + ((networkConfig.isHost) ? "host" : "client"));
-        SceneManager.LoadScene("ClickerTest", LoadSceneMode.Single);
+        SceneManager.LoadScene("Game", LoadSceneMode.Single);
     }
 
 }
