@@ -2,7 +2,7 @@ name: CI
 
 on: [push]
 
-env: 
+env:
   BUILD_NAME: ExampleProjectName
   UNITY_LICENSE_CONTENT: ${{ secrets.UNITY_LICENSE_CONTENT }}
   UNITY_ACTIVATION_FILE: ./unity3d.alf
@@ -27,7 +27,7 @@ jobs:
       run: chmod +x ./ci/test.sh && ./ci/test.sh
       env:
         TEST_PLATFORM: playmode
-      
+
   Build_StandaloneLinux64:
     runs-on: ubuntu-latest
     container: gableroux/unity3d:2019.2.11f1
