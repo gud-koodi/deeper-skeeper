@@ -8,7 +8,6 @@ using Network;
 using UnityEngine;
 
 public class PlayerSpawner : MonoBehaviour {
-
     // Objects are tracked by their network IDs decided by the server.
     private readonly Dictionary<int, GameObject> playerObjects = new Dictionary<int, GameObject>();
 
@@ -21,9 +20,6 @@ public class PlayerSpawner : MonoBehaviour {
     [Tooltip("The server component this script will communicate with.")]
     public UnityClient client;
 
-    [Tooltip("The player object to spawn.")]
-    public GameObject PlayerPrefab;
-
     void Awake() {
         if (client != null) {
             client.MessageReceived += OnResponse;
@@ -31,13 +27,14 @@ public class PlayerSpawner : MonoBehaviour {
     }
 
     private void InstantiatePlayer(Player player) {
-        GameObject go = Instantiate(PlayerPrefab, player.Position, Quaternion.identity);
+        GameObject go = player.toGameObject();
 
         if (!playerObjects.ContainsKey(player.ID)) {
             playerObjects[player.ID] = go;
             networkIDLookUp[go.GetInstanceID()] = player.ID;
+            Debug.Log("Assigned network ID " + player.ID + " to new Player instance.");
         } else {
-            Debug.LogError("New network ID " + player.ID + " was already prsent.");
+            Debug.LogError("New network ID " + player.ID + " was already present.");
         }
     }
 
@@ -75,5 +72,4 @@ public class PlayerSpawner : MonoBehaviour {
         using(Message message = e.GetMessage()) player = message.Deserialize<Player>();
         InstantiatePlayer(player);
     }
-
 }

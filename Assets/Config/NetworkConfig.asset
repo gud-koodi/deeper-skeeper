@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f9c970c6b5395a4599a8b4a0c43d896, type: 3}
   m_Name: NetworkConfig
   m_EditorClassIdentifier: 
-  ip: 127.0.0.1
   port: 4296
-  IsHost: 1
+  isHost: 1
+  playerPrefab: {fileID: 8681530797678290700, guid: 6b22ea24066d46c4c92259ba2f7317c7,
+    type: 3}

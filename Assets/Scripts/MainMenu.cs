@@ -1,11 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Network;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour {
-
     public NetworkConfig networkConfig;
 
     /// <summary>
@@ -35,5 +32,4 @@ public class MainMenu : MonoBehaviour {
         Debug.Log("Starting the game as " + ((networkConfig.isHost) ? "host" : "client"));
         SceneManager.LoadScene("Game", LoadSceneMode.Single);
     }
-
 }
