@@ -15,7 +15,7 @@ public class PlayerSpawner : MonoBehaviour {
     private readonly Dictionary<int, int> networkIDLookUp = new Dictionary<int, int>();
 
     // Locally created objects are temporally stored by their instance IDs until server.
-    private readonly Dictionary<int, GameObject> localBalls = new Dictionary<int, GameObject>();
+    private readonly Dictionary<int, GameObject> localPlayers = new Dictionary<int, GameObject>();
 
     [Tooltip("The server component this script will communicate with.")]
     public UnityClient client;
@@ -48,6 +48,9 @@ public class PlayerSpawner : MonoBehaviour {
             case ResponseTag.CREATE_PLAYER:
                 CreatePlayer(e);
                 break;
+            case ResponseTag.DELETE_OBJECT:
+                DeleteObject(e);
+                break;
         }
     }
 
@@ -71,5 +74,21 @@ public class PlayerSpawner : MonoBehaviour {
         Player player;
         using(Message message = e.GetMessage()) player = message.Deserialize<Player>();
         InstantiatePlayer(player);
+    }
+
+    private void DeleteObject(MessageReceivedEventArgs e) {
+        int id;
+        using(Message message = e.GetMessage())
+        using(DarkRiftReader reader = message.GetReader()) {
+            id = reader.ReadInt32();
+        }
+
+        if (playerObjects.ContainsKey(id)) {
+            GameObject go = playerObjects[id];
+            playerObjects.Remove(id);
+            GameObject.Destroy(go);
+        } else {
+            Debug.LogError("ID missing from client");
+        }
     }
 }

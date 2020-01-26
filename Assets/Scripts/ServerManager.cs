@@ -8,14 +8,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ServerManager : MonoBehaviour {
-
     [Tooltip("The server component this script will communicate with")]
     public XmlUnityServer Server;
 
     // List of synchronized objects indexed by their network IDs.
     // Do not use methods that cause these indexes to change!
-    private readonly List<IDarkRiftSerializable> networkObjects =
-        new List<IDarkRiftSerializable>();
+    // private readonly List<IDarkRiftSerializable> networkObjects =
+    //    new List<IDarkRiftSerializable>();
+    private int nextNetworkID = 0;
 
     private readonly List<Player> players = new List<Player>();
 
@@ -41,14 +41,14 @@ public class ServerManager : MonoBehaviour {
     }
 
     private void OnClientConnect(object sender, ClientConnectedEventArgs e) {
-        e.Client.MessageReceived += OnRequest;
+        // e.Client.MessageReceived += OnRequest;
         SendConnectionData(e);
     }
 
     private void SendConnectionData(ClientConnectedEventArgs e) {
-        int id = networkObjects.Count;
-        Player player = new Player(id, Vector3.zero);
-        networkObjects.Insert(id, player);
+        int id = nextNetworkID++;
+        Player player = new Player(id, e.Client.ID, Vector3.zero);
+        // networkObjects.Insert(id, player);
         players.Add(player);
 
         using(DarkRiftWriter writer = DarkRiftWriter.Create()) {
@@ -70,10 +70,31 @@ public class ServerManager : MonoBehaviour {
     }
 
     private void OnClientDisconnect(object sender, ClientDisconnectedEventArgs e) {
-        e.Client.MessageReceived -= OnRequest;
-    }
+        // e.Client.MessageReceived -= OnRequest;
+        Player playerToRemove = players.Find(player => player.clientID == e.Client.ID);
 
-    private void OnRequest(object sender, MessageReceivedEventArgs e) {
+        if (playerToRemove == null) {
+            Debug.LogError("Couldn't find player by client id");
+            return;
+        }
+
+        players.Remove(playerToRemove);
+
+        using(DarkRiftWriter writer = DarkRiftWriter.Create()) {
+            writer.Write(playerToRemove.ID);
+
+            using(Message message = Message.Create((ushort) ResponseTag.DELETE_OBJECT, writer)) {
+                foreach (var client in server.ClientManager.GetAllClients()) {
+                    if (client.ID != e.Client.ID) {
+                        client.SendMessage(message, SendMode.Reliable);
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* private void OnRequest(object sender, MessageReceivedEventArgs e) {
         RequestTag tag = (RequestTag) e.Tag;
 
         switch (tag) {
@@ -128,6 +149,4 @@ public class ServerManager : MonoBehaviour {
                 }
             }
         }
-    }
-
-}
+    } */

@@ -5,7 +5,8 @@ namespace Network {
         UPDATE_SPHERE,
         CREATION_ID,
         CONNECTION_DATA,
-        CREATE_PLAYER
+        CREATE_PLAYER,
+        DELETE_OBJECT
     }
 
 }

@@ -15,12 +15,17 @@ namespace Network {
         internal static GameObject Prefab { get; set; }
 
         public int ID { get; set; }
+        public ushort clientID { get; set; }
         public Vector3 Position { get; set; }
 
-        public Player() : this(-1, Vector3.zero) { }
+        /// <summary>
+        /// Parameterless constructor for DarkRift serialization.
+        /// </summary>
+        public Player() { }
 
-        public Player(int id, Vector3 position) {
+        public Player(int id, ushort clientID, Vector3 position) {
             this.ID = id;
+            this.clientID = clientID;
             this.Position = position;
         }
 
