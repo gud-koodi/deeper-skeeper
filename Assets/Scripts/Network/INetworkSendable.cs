@@ -7,7 +7,7 @@ namespace Network {
         /// Identifier used to match representative instances of this object between the server and its clients.
         /// </summary>
         /// <value>identifier of this instance.</value>
-        int ID { get; set; }
+        ushort ID { get; set; }
 
         /// <summary>
         /// Instantiates a new GameObject from this object.

@@ -9,10 +9,10 @@ using UnityEngine;
 
 public class PlayerSpawner : MonoBehaviour {
     // Objects are tracked by their network IDs decided by the server.
-    private readonly Dictionary<int, GameObject> playerObjects = new Dictionary<int, GameObject>();
+    private readonly Dictionary<ushort, GameObject> playerObjects = new Dictionary<ushort, GameObject>();
 
     // Lookup to find the network id of the object.
-    private readonly Dictionary<int, int> networkIDLookUp = new Dictionary<int, int>();
+    private readonly Dictionary<int, ushort> networkIDLookUp = new Dictionary<int, ushort>();
 
     // Locally created objects are temporally stored by their instance IDs until server.
     private readonly Dictionary<int, GameObject> localPlayers = new Dictionary<int, GameObject>();
@@ -77,10 +77,10 @@ public class PlayerSpawner : MonoBehaviour {
     }
 
     private void DeleteObject(MessageReceivedEventArgs e) {
-        int id;
+        ushort id;
         using(Message message = e.GetMessage())
         using(DarkRiftReader reader = message.GetReader()) {
-            id = reader.ReadInt32();
+            id = reader.ReadUInt16();
         }
 
         if (playerObjects.ContainsKey(id)) {

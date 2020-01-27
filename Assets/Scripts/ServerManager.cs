@@ -5,17 +5,12 @@ using DarkRift.Server;
 using DarkRift.Server.Unity;
 using Network;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class ServerManager : MonoBehaviour {
     [Tooltip("The server component this script will communicate with")]
     public XmlUnityServer Server;
 
-    // List of synchronized objects indexed by their network IDs.
-    // Do not use methods that cause these indexes to change!
-    // private readonly List<IDarkRiftSerializable> networkObjects =
-    //    new List<IDarkRiftSerializable>();
-    private int nextNetworkID = 0;
+    private readonly NetworkIdPool networkIdPool = new NetworkIdPool();
 
     private readonly List<Player> players = new List<Player>();
 
@@ -46,9 +41,8 @@ public class ServerManager : MonoBehaviour {
     }
 
     private void SendConnectionData(ClientConnectedEventArgs e) {
-        int id = nextNetworkID++;
+        ushort id = networkIdPool.Next();
         Player player = new Player(id, e.Client.ID, Vector3.zero);
-        // networkObjects.Insert(id, player);
         players.Add(player);
 
         using(DarkRiftWriter writer = DarkRiftWriter.Create()) {
@@ -79,6 +73,7 @@ public class ServerManager : MonoBehaviour {
         }
 
         players.Remove(playerToRemove);
+        networkIdPool.Release(playerToRemove.ID);
 
         using(DarkRiftWriter writer = DarkRiftWriter.Create()) {
             writer.Write(playerToRemove.ID);
