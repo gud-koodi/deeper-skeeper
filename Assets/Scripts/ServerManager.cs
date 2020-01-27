@@ -45,19 +45,15 @@ public class ServerManager : MonoBehaviour {
         Player player = new Player(id, e.Client.ID, Vector3.zero);
         players.Add(player);
 
-        using(DarkRiftWriter writer = DarkRiftWriter.Create()) {
-            writer.Write(e.Client.ID);
-            writer.Write(players.ToArray());
+        ConnectionData data = new ConnectionData(e.Client.ID, players.ToArray());
+        using(Message message = Message.Create((ushort) ResponseTag.CONNECTION_DATA, data)) {
+            e.Client.SendMessage(message, SendMode.Reliable);
+        }
 
-            using(Message message = Message.Create((ushort) ResponseTag.CONNECTION_DATA, writer)) {
-                e.Client.SendMessage(message, SendMode.Reliable);
-            }
-
-            using(Message broadcast = Message.Create((ushort) ResponseTag.CREATE_PLAYER, player)) {
-                foreach (var client in server.ClientManager.GetAllClients()) {
-                    if (client.ID != e.Client.ID) {
-                        client.SendMessage(broadcast, SendMode.Reliable);
-                    }
+        using(Message broadcast = Message.Create((ushort) ResponseTag.CREATE_PLAYER, player)) {
+            foreach (var client in server.ClientManager.GetAllClients()) {
+                if (client.ID != e.Client.ID) {
+                    client.SendMessage(broadcast, SendMode.Reliable);
                 }
             }
         }

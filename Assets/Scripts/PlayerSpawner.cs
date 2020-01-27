@@ -55,17 +55,12 @@ public class PlayerSpawner : MonoBehaviour {
     }
 
     private void SetupServerData(MessageReceivedEventArgs e) {
-        ushort clientId;
-        Player[] players;
-        using(Message message = e.GetMessage())
-        using(DarkRiftReader reader = message.GetReader()) {
-            clientId = reader.ReadUInt16();
-            players = reader.ReadSerializables<Player>();
-        }
+        ConnectionData data;
+        using(Message message = e.GetMessage()) data = message.Deserialize<ConnectionData>();
 
-        Debug.Log("Client id is " + clientId);
+        Debug.Log("Client id is " + data.ID);
 
-        foreach (Player player in players) {
+        foreach (Player player in data.Players) {
             InstantiatePlayer(player);
         }
     }

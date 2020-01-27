@@ -2,7 +2,7 @@ using DarkRift;
 using UnityEngine;
 
 namespace Network {
-    public interface INetworkSendable {
+    public interface INetworkSendable : IDarkRiftSerializable {
         /// <summary>
         /// Identifier used to match representative instances of this object between the server and its clients.
         /// </summary>
