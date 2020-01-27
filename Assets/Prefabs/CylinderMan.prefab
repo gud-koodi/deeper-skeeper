@@ -1318,7 +1318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4c819b66e40a5f63bcf8bc8197a5f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDuration: 1.5
+  attackAnimationDuration: 1.5
   damage: 5
 --- !u!1 &1809302969389093833
 GameObject:
