@@ -56,7 +56,7 @@ namespace DarkRift.Server.Unity
         {
             if (Server != null)
                 throw new InvalidOperationException("The server has already been created! (Is CreateOnEnable enabled?)");
-            
+
             if (configuration != null)
             {
                 // Create spawn data from config

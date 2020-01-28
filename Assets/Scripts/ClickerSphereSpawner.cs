@@ -6,7 +6,8 @@ using DarkRift.Client.Unity;
 using Network;
 using UnityEngine;
 
-public class ClickerSphereSpawner : MonoBehaviour {
+public class ClickerSphereSpawner : MonoBehaviour
+{
 
     [Tooltip("The server component this script will communicate with.")]
     public UnityClient client;
@@ -23,7 +24,8 @@ public class ClickerSphereSpawner : MonoBehaviour {
     // Locally created objects are temporally stored by their instance IDs until server.
     private readonly Dictionary<int, GameObject> localBalls = new Dictionary<int, GameObject>();
 
-    void Awake() {
+    void Awake()
+    {
         client.MessageReceived += OnResponse;
     }
 
@@ -31,13 +33,15 @@ public class ClickerSphereSpawner : MonoBehaviour {
     /// Spawn new ClickerSphere to given position.
     /// </summary>
     /// <param name="position">position of the new ClickerSphere</param>
-    public void Spawn(Vector3 position) {
+    public void Spawn(Vector3 position)
+    {
         GameObject go = Instantiate(ToSpawn, position, Quaternion.identity);
         int instanceID = go.GetInstanceID();
         localBalls[instanceID] = go;
 
         ClickerSphere sphere = new ClickerSphere(instanceID, position);
-        using(Message message = Message.Create((ushort) RequestTag.CREATE_SPHERE, sphere)) {
+        using (Message message = Message.Create((ushort)RequestTag.CREATE_SPHERE, sphere))
+        {
             client.SendMessage(message, SendMode.Reliable);
         }
     }
@@ -46,10 +50,12 @@ public class ClickerSphereSpawner : MonoBehaviour {
     /// Serialize and send the given gameObject to server if it is handled by this spawner.
     /// </summary>
     /// <param name="gameObject"></param>
-    public void SendUpdate(GameObject gameObject) {
+    public void SendUpdate(GameObject gameObject)
+    {
         int instanceId = gameObject.GetInstanceID();
 
-        if (networkIDLookUp.ContainsKey(instanceId)) {
+        if (networkIDLookUp.ContainsKey(instanceId))
+        {
             int networkID = networkIDLookUp[instanceId];
             ClickerSphere sphere = new ClickerSphere(
                 networkID,
@@ -57,20 +63,25 @@ public class ClickerSphereSpawner : MonoBehaviour {
                 gameObject.transform.localScale.x
             );
 
-            using(Message message = Message.Create((ushort) RequestTag.UDATE_SPHERE, sphere)) {
+            using (Message message = Message.Create((ushort)RequestTag.UDATE_SPHERE, sphere))
+            {
                 client.SendMessage(message, SendMode.Unreliable);
             }
-        } else {
+        }
+        else
+        {
             Debug.LogError("Invalid GameObject " + gameObject + " or sent too soon");
         }
 
     }
 
     // Receive message from server and handle
-    private void OnResponse(object sender, MessageReceivedEventArgs e) {
-        ResponseTag tag = (ResponseTag) e.Tag;
+    private void OnResponse(object sender, MessageReceivedEventArgs e)
+    {
+        ResponseTag tag = (ResponseTag)e.Tag;
 
-        switch (tag) {
+        switch (tag)
+        {
             case ResponseTag.CREATE_SPHERE:
                 CreateSphere(e);
                 break;
@@ -86,13 +97,15 @@ public class ClickerSphereSpawner : MonoBehaviour {
         }
     }
 
-    private void CreateSphere(MessageReceivedEventArgs e) {
+    private void CreateSphere(MessageReceivedEventArgs e)
+    {
         ClickerSphere sphere;
-        using(Message message = e.GetMessage()) sphere = message.Deserialize<ClickerSphere>();
+        using (Message message = e.GetMessage()) sphere = message.Deserialize<ClickerSphere>();
         GameObject go = Instantiate(ToSpawn, sphere.Position, Quaternion.identity);
         go.transform.localScale = sphere.Scale * Vector3.one;
 
-        if (balls.ContainsKey(sphere.ID)) {
+        if (balls.ContainsKey(sphere.ID))
+        {
             Debug.LogError("New network ID " + sphere.ID + " was already prsent.");
         }
 
@@ -100,25 +113,32 @@ public class ClickerSphereSpawner : MonoBehaviour {
         networkIDLookUp[go.GetInstanceID()] = sphere.ID;
     }
 
-    private void UpdateSphere(MessageReceivedEventArgs e) {
+    private void UpdateSphere(MessageReceivedEventArgs e)
+    {
         ClickerSphere sphere;
-        using(Message message = e.GetMessage()) sphere = message.Deserialize<ClickerSphere>();
+        using (Message message = e.GetMessage()) sphere = message.Deserialize<ClickerSphere>();
 
-        if (balls.ContainsKey(sphere.ID)) {
+        if (balls.ContainsKey(sphere.ID))
+        {
             GameObject go = balls[sphere.ID];
             go.transform.localScale = sphere.Scale * Vector3.one;
-        } else {
+        }
+        else
+        {
             Debug.Log("Sphere to update wasn't found.");
         }
     }
 
-    private void SetNetworkID(MessageReceivedEventArgs e) {
-        using(Message message = e.GetMessage())
-        using(DarkRiftReader reader = message.GetReader()) {
+    private void SetNetworkID(MessageReceivedEventArgs e)
+    {
+        using (Message message = e.GetMessage())
+        using (DarkRiftReader reader = message.GetReader())
+        {
             int localID = reader.ReadInt32();
             int networkID = reader.ReadInt32();
 
-            if (localBalls.ContainsKey(localID)) {
+            if (localBalls.ContainsKey(localID))
+            {
                 GameObject go = localBalls[localID];
                 localBalls.Remove(localID);
                 balls[networkID] = go;

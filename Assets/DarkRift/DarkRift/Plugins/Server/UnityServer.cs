@@ -12,8 +12,8 @@ namespace DarkRift.Server.Unity
 {
     [AddComponentMenu("DarkRift/Server (Legacy)")]
     [Obsolete("The UnityServer component is deprecated in favour of the XmlUnityServer due to better configuration options.")]
-	public sealed class UnityServer : MonoBehaviour
-	{
+    public sealed class UnityServer : MonoBehaviour
+    {
         #region Server settings
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace DarkRift.Server.Unity
         byte maxStrikes = 3;
 
         #endregion
-        
+
         #region Data settings
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace DarkRift.Server.Unity
             get { return dataDirectory; }
             set { dataDirectory = value; }
         }
-            
+
         [SerializeField]
         [Tooltip("The location DarkRift will store persistant data.")]
         string dataDirectory = "Data/";
@@ -165,10 +165,10 @@ namespace DarkRift.Server.Unity
         {
             get { return plugins; }
         }
-        
+
         [HideInInspector]
         List<ServerSpawnData.PluginsSettings.PluginSettings> plugins = new List<ServerSpawnData.PluginsSettings.PluginSettings>();
-        
+
         #endregion
 
         #region Database settings

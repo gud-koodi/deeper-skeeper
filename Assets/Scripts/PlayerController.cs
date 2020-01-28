@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
     // Start is called before the first frame update
     public Rigidbody playerRigidbody;
     public float speed;
@@ -10,28 +11,33 @@ public class PlayerController : MonoBehaviour {
     public Weapon weapon;
 
     public GameObject go;
-    void Start() {
+    void Start()
+    {
 
     }
 
     // Update is called once per frame
-    void Update() {
+    void Update()
+    {
         ApplyMovement();
         ApplyRotation();
         HandleWeaponAttack();
     }
 
-    private void ApplyMovement() {
+    private void ApplyMovement()
+    {
         float mH = Input.GetAxis("Horizontal");
         float mV = Input.GetAxis("Vertical");
         playerRigidbody.velocity = new Vector3(mH * speed, playerRigidbody.velocity.y, mV * speed);
     }
 
-    private void ApplyRotation() {
+    private void ApplyRotation()
+    {
         RotationByMouse();
     }
 
-    private void RotationByMouse() {
+    private void RotationByMouse()
+    {
 
         Vector3 mouse = Input.mousePosition;
 
@@ -43,12 +49,13 @@ public class PlayerController : MonoBehaviour {
 
     }
 
-    private void RotationByMouse2() {
+    private void RotationByMouse2()
+    {
         //Get the Screen positions of the object
         Vector2 positionOnScreen = Camera.main.WorldToViewportPoint(playerRigidbody.transform.position);
 
         //Get the Screen position of the mouse
-        Vector2 mouseOnScreen = (Vector2) Camera.main.ScreenToViewportPoint(Input.mousePosition);
+        Vector2 mouseOnScreen = (Vector2)Camera.main.ScreenToViewportPoint(Input.mousePosition);
 
         //Get the angle between the points
         float angle = AngleBetweenTwoPoints(positionOnScreen, mouseOnScreen);
@@ -57,11 +64,13 @@ public class PlayerController : MonoBehaviour {
         playerRigidbody.transform.rotation = Quaternion.Euler(new Vector3(0f, angle, 0f));
     }
 
-    float AngleBetweenTwoPoints(Vector3 a, Vector3 b) {
+    float AngleBetweenTwoPoints(Vector3 a, Vector3 b)
+    {
         return Mathf.Atan2(a.y - b.y, a.x - b.x) * Mathf.Rad2Deg;
     }
 
-    private void HandleWeaponAttack() {
+    private void HandleWeaponAttack()
+    {
         if (Input.GetButtonDown("Fire1")) weapon.Attack();
     }
 
