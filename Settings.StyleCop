@@ -133,7 +133,16 @@
                 </RuleSettings>
             </Rule>
         </Rules>
-    </Analyzer>  
+    </Analyzer>
+  <Analyzer AnalyzerId="StyleCop.CSharp.SpacingRules">
+        <Rules>
+            <Rule Name="ClosingParenthesisMustBeSpacedCorrectly">
+                <RuleSettings>
+                    <BooleanProperty Name="Enabled">False</BooleanProperty>
+                </RuleSettings>
+            </Rule>
+        </Rules>
+    </Analyzer> 
   </Analyzers>
 </StyleCopSettings>
  
