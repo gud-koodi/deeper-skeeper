@@ -106,6 +106,15 @@
             </Rule>
         </Rules>
     </Analyzer>
+    <Analyzer AnalyzerId="StyleCop.CSharp.ReadabilityRules">
+        <Rules>
+            <Rule Name="SA1126PrefixCallsCorrectly">
+                <RuleSettings>
+                    <BooleanProperty Name="Enabled">False</BooleanProperty>
+                </RuleSettings>
+            </Rule>
+        </Rules>
+    </Analyzer>    
   </Analyzers>
 </StyleCopSettings>
  
