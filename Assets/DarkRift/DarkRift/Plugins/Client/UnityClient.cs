@@ -7,8 +7,8 @@ using UnityEngine;
 namespace DarkRift.Client.Unity
 {
     [AddComponentMenu("DarkRift/Client")]
-	public sealed class UnityClient : MonoBehaviour
-	{
+    public sealed class UnityClient : MonoBehaviour
+    {
         /// <summary>
         ///     The IP address this client connects to.
         /// </summary>
@@ -31,9 +31,9 @@ namespace DarkRift.Client.Unity
             set { port = value; }
         }
 
-		[SerializeField]
-		[Tooltip("The port the server is listening on.")]
-		ushort port = 4296;
+        [SerializeField]
+        [Tooltip("The port the server is listening on.")]
+        ushort port = 4296;
 
         /// <summary>
         ///     The IP version to connect with.
@@ -198,7 +198,7 @@ namespace DarkRift.Client.Unity
         ///     The dispatcher for moving work to the main thread.
         /// </summary>
         public Dispatcher Dispatcher { get; private set; }
-        
+
         void Awake()
         {
             ObjectCacheSettings = objectCacheSettings.ToObjectCacheSettings();
@@ -214,11 +214,11 @@ namespace DarkRift.Client.Unity
         }
 
         void Start()
-		{
+        {
             //If auto connect is true then connect to the server
             if (autoConnect)
-			    Connect(Address, port, ipVersion);
-		}
+                Connect(Address, port, ipVersion);
+        }
 
         void Update()
         {
@@ -263,8 +263,8 @@ namespace DarkRift.Client.Unity
         {
             Client.ConnectInBackground(
                 ip,
-                port, 
-                ipVersion, 
+                port,
+                ipVersion,
                 delegate (Exception e)
                 {
                     if (callback != null)
@@ -274,7 +274,7 @@ namespace DarkRift.Client.Unity
                         else
                             callback.Invoke(e);
                     }
-                    
+
                     if (ConnectionState == ConnectionState.Connected)
                         Debug.Log("Connected to " + ip + " on port " + port + " using " + ipVersion + ".");
                     else
@@ -311,7 +311,7 @@ namespace DarkRift.Client.Unity
                 MessageReceivedEventArgs args = new MessageReceivedEventArgs(message, e.SendMode);
 
                 Dispatcher.InvokeAsync(
-                    () => 
+                    () =>
                         {
                             EventHandler<MessageReceivedEventArgs> handler = MessageReceived;
                             if (handler != null)
@@ -359,7 +359,7 @@ namespace DarkRift.Client.Unity
             {
                 if (!e.LocalDisconnect)
                     Debug.Log("Disconnected from server, error: " + e.Error);
-                
+
                 EventHandler<DisconnectedEventArgs> handler = Disconnected;
                 if (handler != null)
                 {
@@ -388,5 +388,5 @@ namespace DarkRift.Client.Unity
             Client.Dispose();
             Dispatcher.Dispose();
         }
-	}
+    }
 }

@@ -7,7 +7,8 @@ using Network;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ServerManager : MonoBehaviour {
+public class ServerManager : MonoBehaviour
+{
 
     [Tooltip("The server component this script will communicate with")]
     public XmlUnityServer Server;
@@ -19,8 +20,10 @@ public class ServerManager : MonoBehaviour {
 
     private DarkRiftServer server;
 
-    public void Initialize() {
-        if (Server == null) {
+    public void Initialize()
+    {
+        if (Server == null)
+        {
             Debug.LogError("Server component missing.");
             return;
         }
@@ -31,25 +34,31 @@ public class ServerManager : MonoBehaviour {
         server.ClientManager.ClientDisconnected += OnClientDisconnect;
     }
 
-    void OnDestroy() {
-        if (server != null) {
+    void OnDestroy()
+    {
+        if (server != null)
+        {
             server.ClientManager.ClientConnected -= OnClientConnect;
             server.ClientManager.ClientDisconnected -= OnClientDisconnect;
         }
     }
 
-    private void OnClientConnect(object sender, ClientConnectedEventArgs e) {
+    private void OnClientConnect(object sender, ClientConnectedEventArgs e)
+    {
         e.Client.MessageReceived += OnRequest;
     }
 
-    private void OnClientDisconnect(object sender, ClientDisconnectedEventArgs e) {
+    private void OnClientDisconnect(object sender, ClientDisconnectedEventArgs e)
+    {
         e.Client.MessageReceived -= OnRequest;
     }
 
-    private void OnRequest(object sender, MessageReceivedEventArgs e) {
-        RequestTag tag = (RequestTag) e.Tag;
+    private void OnRequest(object sender, MessageReceivedEventArgs e)
+    {
+        RequestTag tag = (RequestTag)e.Tag;
 
-        switch (tag) {
+        switch (tag)
+        {
             case RequestTag.CREATE_SPHERE:
                 CreateSphere(e);
                 break;
@@ -62,9 +71,10 @@ public class ServerManager : MonoBehaviour {
         }
     }
 
-    private void CreateSphere(MessageReceivedEventArgs e) {
+    private void CreateSphere(MessageReceivedEventArgs e)
+    {
         ClickerSphere sphere;
-        using(Message message = e.GetMessage()) sphere = message.Deserialize<ClickerSphere>();
+        using (Message message = e.GetMessage()) sphere = message.Deserialize<ClickerSphere>();
 
         int clientLocalID = sphere.ID;
         int id = networkObjects.Count;
@@ -72,31 +82,40 @@ public class ServerManager : MonoBehaviour {
 
         networkObjects.Insert(id, sphere);
 
-        using(DarkRiftWriter writer = DarkRiftWriter.Create()) {
+        using (DarkRiftWriter writer = DarkRiftWriter.Create())
+        {
             writer.Write(clientLocalID);
             writer.Write(id);
-            using(Message message = Message.Create((ushort) ResponseTag.CREATION_ID, writer)) {
+            using (Message message = Message.Create((ushort)ResponseTag.CREATION_ID, writer))
+            {
                 e.Client.SendMessage(message, SendMode.Reliable);
             }
         }
 
-        using(Message broadcast = Message.Create((ushort) ResponseTag.CREATE_SPHERE, sphere)) {
-            foreach (var client in server.ClientManager.GetAllClients()) {
-                if (client.ID != e.Client.ID) {
+        using (Message broadcast = Message.Create((ushort)ResponseTag.CREATE_SPHERE, sphere))
+        {
+            foreach (var client in server.ClientManager.GetAllClients())
+            {
+                if (client.ID != e.Client.ID)
+                {
                     client.SendMessage(broadcast, SendMode.Reliable);
                 }
             }
         }
     }
 
-    private void UpdateSphere(MessageReceivedEventArgs e) {
+    private void UpdateSphere(MessageReceivedEventArgs e)
+    {
         ClickerSphere sphere;
-        using(Message message = e.GetMessage()) sphere = message.Deserialize<ClickerSphere>();
+        using (Message message = e.GetMessage()) sphere = message.Deserialize<ClickerSphere>();
         networkObjects[sphere.ID] = sphere;
 
-        using(Message broadcast = Message.Create((ushort) ResponseTag.UPDATE_SPHERE, sphere)) {
-            foreach (var client in server.ClientManager.GetAllClients()) {
-                if (client.ID != e.Client.ID) {
+        using (Message broadcast = Message.Create((ushort)ResponseTag.UPDATE_SPHERE, sphere))
+        {
+            foreach (var client in server.ClientManager.GetAllClients())
+            {
+                if (client.ID != e.Client.ID)
+                {
                     client.SendMessage(broadcast, SendMode.Reliable);
                 }
             }

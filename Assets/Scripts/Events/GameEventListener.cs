@@ -9,7 +9,8 @@ using UnityEngine.Events;
     More info at: https://github.com/roboryantron/Unite2017
  */
 
-public class GameEventListener : MonoBehaviour {
+public class GameEventListener : MonoBehaviour
+{
 
     [Tooltip("GameEvent to listen to")]
     public GameEvent Event;
@@ -17,15 +18,18 @@ public class GameEventListener : MonoBehaviour {
     [Tooltip("A list of event to call when the listened event is triggered")]
     public UnityEvent Response;
 
-    void OnEnable() {
+    void OnEnable()
+    {
         Event.Subscribe(this);
     }
 
-    void OnDisable() {
+    void OnDisable()
+    {
         Event.UnSubscribe(this);
     }
 
-    public void OnTriggered() {
+    public void OnTriggered()
+    {
         Response.Invoke();
     }
 }

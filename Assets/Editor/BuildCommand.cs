@@ -5,10 +5,10 @@ using System.IO;
 
 static class BuildCommand
 {
-    private const string KEYSTORE_PASS  = "KEYSTORE_PASS";
+    private const string KEYSTORE_PASS = "KEYSTORE_PASS";
     private const string KEY_ALIAS_PASS = "KEY_ALIAS_PASS";
     private const string KEY_ALIAS_NAME = "KEY_ALIAS_NAME";
-    private const string KEYSTORE       = "keystore.keystore";
+    private const string KEYSTORE = "keystore.keystore";
     private const string BUILD_OPTIONS_ENV_VAR = "BuildOptions";
 
     static string GetArgument(string name)
@@ -81,9 +81,12 @@ static class BuildCommand
 
     static string GetFixedBuildPath(BuildTarget buildTarget, string buildPath, string buildName, BuildOptions buildOptions)
     {
-        if (buildTarget.ToString().ToLower().Contains("windows")) {
+        if (buildTarget.ToString().ToLower().Contains("windows"))
+        {
             buildName += ".exe";
-        } else if (buildTarget == BuildTarget.Android && buildOptions == BuildOptions.None) {
+        }
+        else if (buildTarget == BuildTarget.Android && buildOptions == BuildOptions.None)
+        {
             buildName += ".apk";
         }
         return buildPath + buildName;
@@ -91,7 +94,8 @@ static class BuildCommand
 
     static BuildOptions GetBuildOptions()
     {
-        if (TryGetEnv(BUILD_OPTIONS_ENV_VAR, out string envVar)) {
+        if (TryGetEnv(BUILD_OPTIONS_ENV_VAR, out string envVar))
+        {
             string[] allOptionVars = envVar.Split(',');
             BuildOptions allOptions = BuildOptions.None;
             BuildOptions option;
@@ -100,13 +104,16 @@ static class BuildCommand
 
             Console.WriteLine($":: Detecting {BUILD_OPTIONS_ENV_VAR} env var with {length} elements ({envVar})");
 
-            for (int i = 0; i < length; i++) {
+            for (int i = 0; i < length; i++)
+            {
                 optionVar = allOptionVars[i];
 
-                if (optionVar.TryConvertToEnum(out option)) {
+                if (optionVar.TryConvertToEnum(out option))
+                {
                     allOptions |= option;
                 }
-                else {
+                else
+                {
                     Console.WriteLine($":: Cannot convert {optionVar} to {nameof(BuildOptions)} enum, skipping it.");
                 }
             }
@@ -142,13 +149,14 @@ static class BuildCommand
 
         var buildTarget = GetBuildTarget();
 
-        if (buildTarget == BuildTarget.Android) {
+        if (buildTarget == BuildTarget.Android)
+        {
             HandleAndroidKeystore();
         }
 
-        var buildPath      = GetBuildPath();
-        var buildName      = GetBuildName();
-        var buildOptions   = GetBuildOptions();
+        var buildPath = GetBuildPath();
+        var buildName = GetBuildName();
+        var buildOptions = GetBuildOptions();
         var fixedBuildPath = GetFixedBuildPath(buildTarget, buildPath, buildName, buildOptions);
 
         BuildPipeline.BuildPlayer(GetEnabledScenes(), fixedBuildPath, buildTarget, buildOptions);
@@ -161,9 +169,10 @@ static class BuildCommand
         PlayerSettings.Android.useCustomKeystore = false;
 #endif
 
-        if (!File.Exists(KEYSTORE)) {
+        if (!File.Exists(KEYSTORE))
+        {
             Console.WriteLine($":: {KEYSTORE} not found, skipping setup, using Unity's default keystore");
-            return;    
+            return;
         }
 
         PlayerSettings.Android.keystoreName = KEYSTORE;
@@ -171,19 +180,24 @@ static class BuildCommand
         string keystorePass;
         string keystoreAliasPass;
 
-        if (TryGetEnv(KEY_ALIAS_NAME, out string keyaliasName)) {
+        if (TryGetEnv(KEY_ALIAS_NAME, out string keyaliasName))
+        {
             PlayerSettings.Android.keyaliasName = keyaliasName;
             Console.WriteLine($":: using ${KEY_ALIAS_NAME} env var on PlayerSettings");
-        } else {
+        }
+        else
+        {
             Console.WriteLine($":: ${KEY_ALIAS_NAME} env var not set, using Project's PlayerSettings");
         }
 
-        if (!TryGetEnv(KEYSTORE_PASS, out keystorePass)) {
+        if (!TryGetEnv(KEYSTORE_PASS, out keystorePass))
+        {
             Console.WriteLine($":: ${KEYSTORE_PASS} env var not set, skipping setup, using Unity's default keystore");
             return;
         }
 
-        if (!TryGetEnv(KEY_ALIAS_PASS, out keystoreAliasPass)) {
+        if (!TryGetEnv(KEY_ALIAS_PASS, out keystoreAliasPass))
+        {
             Console.WriteLine($":: ${KEY_ALIAS_PASS} env var not set, skipping setup, using Unity's default keystore");
             return;
         }

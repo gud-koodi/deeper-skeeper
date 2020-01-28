@@ -1,12 +1,14 @@
 ﻿using DarkRift;
 using UnityEngine;
 
-namespace Network {
+namespace Network
+{
 
     /// <summary>
     /// Network-serializable class representing ClickerSphere GameObject.
     /// </summary>
-    public class ClickerSphere : IDarkRiftSerializable {
+    public class ClickerSphere : IDarkRiftSerializable
+    {
 
         public int ID { get; set; }
         public Vector3 Position { get; set; }
@@ -32,7 +34,8 @@ namespace Network {
         /// <param name="ID">id of this object</param>
         /// <param name="position">local position in gameworld</param>
         /// <param name="scale">scale of this object</param>
-        public ClickerSphere(int ID, Vector3 position, float scale) {
+        public ClickerSphere(int ID, Vector3 position, float scale)
+        {
             this.ID = ID;
             this.Position = position;
             this.Scale = scale;
@@ -42,7 +45,8 @@ namespace Network {
         /// Deserializes data to this instance. Called by DarkRift.
         /// </summary>
         /// <param name="e">DarkRift deserialization event</param>
-        public void Deserialize(DeserializeEvent e) {
+        public void Deserialize(DeserializeEvent e)
+        {
             DarkRiftReader reader = e.Reader;
             ID = reader.ReadInt32();
             Position = new Vector3(reader.ReadSingle(), reader.ReadSingle(), reader.ReadSingle());
@@ -53,7 +57,8 @@ namespace Network {
         /// Serializes data from this instance.null Called by DarkRift.
         /// </summary>
         /// <param name="e">DarkRift serialization event</param>
-        public void Serialize(SerializeEvent e) {
+        public void Serialize(SerializeEvent e)
+        {
             e.Writer.Write(ID);
             e.Writer.Write(Position.x);
             e.Writer.Write(Position.y);

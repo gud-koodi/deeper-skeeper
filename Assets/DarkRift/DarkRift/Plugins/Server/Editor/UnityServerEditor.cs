@@ -50,28 +50,28 @@ namespace DarkRift.Server.Unity
             server = (UnityServer)serializedObject.targetObject;
 #pragma warning restore 0618
 
-            createOnEnable  = serializedObject.FindProperty("createOnEnable");
+            createOnEnable = serializedObject.FindProperty("createOnEnable");
             eventsFromDispatcher = serializedObject.FindProperty("eventsFromDispatcher");
 
-            address         = server.Address.ToString();
-            port            = serializedObject.FindProperty("port");
-            ipVersion       = serializedObject.FindProperty("ipVersion");
-            maxStrikes      = serializedObject.FindProperty("maxStrikes");
+            address = server.Address.ToString();
+            port = serializedObject.FindProperty("port");
+            ipVersion = serializedObject.FindProperty("ipVersion");
+            maxStrikes = serializedObject.FindProperty("maxStrikes");
 
-            dataDirectory   = serializedObject.FindProperty("dataDirectory");
+            dataDirectory = serializedObject.FindProperty("dataDirectory");
 
-            logToFile       = serializedObject.FindProperty("logToFile");
-            logFileString   = serializedObject.FindProperty("logFileString");
+            logToFile = serializedObject.FindProperty("logToFile");
+            logFileString = serializedObject.FindProperty("logFileString");
             logToUnityConsole = serializedObject.FindProperty("logToUnityConsole");
-            logToDebug      = serializedObject.FindProperty("logToDebug");
+            logToDebug = serializedObject.FindProperty("logToDebug");
 
-            loadByDefault   = serializedObject.FindProperty("loadByDefault");
+            loadByDefault = serializedObject.FindProperty("loadByDefault");
 
-            maxCachedWriters                = serializedObject.FindProperty("maxCachedWriters");
-            maxCachedReaders                = serializedObject.FindProperty("maxCachedReaders");
-            maxCachedMessages               = serializedObject.FindProperty("maxCachedMessages");
-            maxCachedSocketAsyncEventArgs   = serializedObject.FindProperty("maxCachedSocketAsyncEventArgs");
-            maxCachedActionDispatcherTasks  = serializedObject.FindProperty("maxCachedActionDispatcherTasks");
+            maxCachedWriters = serializedObject.FindProperty("maxCachedWriters");
+            maxCachedReaders = serializedObject.FindProperty("maxCachedReaders");
+            maxCachedMessages = serializedObject.FindProperty("maxCachedMessages");
+            maxCachedSocketAsyncEventArgs = serializedObject.FindProperty("maxCachedSocketAsyncEventArgs");
+            maxCachedActionDispatcherTasks = serializedObject.FindProperty("maxCachedActionDispatcherTasks");
         }
 
         public override void OnInspectorGUI()
@@ -109,7 +109,7 @@ namespace DarkRift.Server.Unity
                 {
                     EditorGUILayout.HelpBox("Invalid IP address.", MessageType.Error);
                 }
-                
+
                 EditorGUILayout.PropertyField(port);
 
                 //Draw IP versions manually else it gets formatted as "Ip Version" and "I Pv4" -_-
@@ -153,7 +153,7 @@ namespace DarkRift.Server.Unity
                 EditorGUI.indentLevel++;
 
                 EditorGUILayout.PropertyField(loadByDefault);
-                
+
                 IEnumerable<Type> types = UnityServerHelper.SearchForPlugins();
 
                 foreach (Type type in types)
