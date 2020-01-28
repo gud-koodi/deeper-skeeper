@@ -3,19 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
-{
-    private UnityEngine.AI.NavMeshAgent agent;
-    public GameObject player;
-    public State state;
+{  
     public enum State
     {
         IDLE,
         CHASE,
         ATTACK
     }
-    private Animator animator;
+
+    public GameObject player;
+    public State state;
     public Weapon weapon;
     public float hitSpeed = 1f;
+    private Animator animator;
+    private UnityEngine.AI.NavMeshAgent agent;
+
     // Start is called before the first frame update
     void Start()
     {
