@@ -19,9 +19,10 @@ namespace Network {
         }
 
         private void SetAt(ushort networkID, GameObject gameObject) {
-            if (IsVacant(networkID)) {
-                // networkIDLookUp.Remove(list[networkID].GetInstanceID());
+            if (networkID >= list.Count) {
                 list.Insert(networkID, gameObject);
+            } else if (list[networkID] == null) {
+                list[networkID] = gameObject;
                 networkIDLookUp[gameObject.GetInstanceID()] = networkID;
             } else {
                 Debug.LogError("Attempted to insert a gameobject to existing id");
@@ -29,12 +30,11 @@ namespace Network {
         }
 
         private GameObject GetAt(ushort networkID) {
-            return list[networkID];
-            // return (networkID >= list.Count) ? null : list[networkID];
+            return (networkID >= list.Count) ? null : list[networkID];
         }
 
         public GameObject RemoveAt(ushort networkID) {
-            GameObject go = GetAt(networkID);
+            GameObject go = list[networkID]; // GetAt(networkID);
             if (go != null) {
                 networkIDLookUp.Remove(go.GetInstanceID());
                 list[networkID] = null;

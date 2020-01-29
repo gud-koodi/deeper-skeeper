@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   client: {fileID: 1736585924}
-  PlayerPrefab: {fileID: 8681530797678290700, guid: 6b22ea24066d46c4c92259ba2f7317c7,
+  ObjectToSpawn: {fileID: 8681530797678290700, guid: 6b22ea24066d46c4c92259ba2f7317c7,
     type: 3}
 --- !u!1 &645040844
 GameObject:

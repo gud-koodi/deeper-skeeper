@@ -101,8 +101,7 @@ public class PlayerSpawner : MonoBehaviour
         }
         else
         {
-            Debug.Log(id + " the EVIL!~!!!");
-            // Debug.LogError("ID missing from client");
+            Debug.LogError(id + " the EVIL!~!!!");
         }
     }
 }
