@@ -16,8 +16,7 @@ namespace Network
         /// <value>Reference to the represented prefab</value>
         internal static GameObject Prefab { get; set; }
 
-        public ushort ID { get; set; }
-        public ushort clientID { get; set; }
+        public ushort NetworkID { get; set; }
         public Vector3 Position { get; set; }
 
         /// <summary>
@@ -25,10 +24,9 @@ namespace Network
         /// </summary>
         public Player() { }
 
-        public Player(ushort id, ushort clientID, Vector3 position)
+        public Player(ushort networkID, Vector3 position)
         {
-            this.ID = id;
-            this.clientID = clientID;
+            this.NetworkID = networkID;
             this.Position = position;
         }
 
@@ -39,8 +37,7 @@ namespace Network
         public void Deserialize(DeserializeEvent e)
         {
             DarkRiftReader reader = e.Reader;
-            this.ID = reader.ReadUInt16();
-            this.clientID = reader.ReadUInt16();
+            this.NetworkID = reader.ReadUInt16();
             this.Position = new Vector3(reader.ReadSingle(), reader.ReadSingle(), reader.ReadSingle());
         }
 
@@ -51,8 +48,7 @@ namespace Network
         public virtual void Serialize(SerializeEvent e)
         {
             DarkRiftWriter writer = e.Writer;
-            writer.Write(ID);
-            writer.Write(clientID);
+            writer.Write(NetworkID);
             writer.Write(Position.x);
             writer.Write(Position.y);
             writer.Write(Position.z);

@@ -14,6 +14,7 @@ public class ServerManager : MonoBehaviour
     private readonly NetworkIdPool networkIdPool = new NetworkIdPool();
 
     private readonly List<Player> players = new List<Player>();
+    private readonly Dictionary<uint, uint> clientToPlayerObject = new Dictionary<uint, uint>();
 
     private DarkRiftServer server;
 
@@ -47,10 +48,11 @@ public class ServerManager : MonoBehaviour
 
     private void SendConnectionData(ClientConnectedEventArgs e) {
         ushort id = networkIdPool.Next();
-        Player player = new Player(id, e.Client.ID, Vector3.zero);
+        Player player = new Player(id, Vector3.zero);
         players.Add(player);
 
-        ConnectionData data = new ConnectionData(e.Client.ID, players.ToArray());
+        ConnectionData data = new ConnectionData(e.Client.ID, id, players.ToArray());
+        clientToPlayerObject[data.ClientID] = data.PlayerObjectID;
         using(Message message = Message.Create((ushort) ResponseTag.CONNECTION_DATA, data)) {
             e.Client.SendMessage(message, SendMode.Reliable);
         }
@@ -66,7 +68,7 @@ public class ServerManager : MonoBehaviour
 
     private void OnClientDisconnect(object sender, ClientDisconnectedEventArgs e) {
         // e.Client.MessageReceived -= OnRequest;
-        Player playerToRemove = players.Find(player => player.clientID == e.Client.ID);
+        Player playerToRemove = players[(int) clientToPlayerObject[e.Client.ID]];
 
         if (playerToRemove == null) {
             Debug.LogError("Couldn't find player by client id");
@@ -74,12 +76,12 @@ public class ServerManager : MonoBehaviour
         }
 
         players.Remove(playerToRemove);
-        networkIdPool.Release(playerToRemove.ID);
+        networkIdPool.Release(playerToRemove.NetworkID);
 
-        Debug.Log("Sending destruct message for network object " + playerToRemove.ID);
+        Debug.Log("Sending destruct message for network object " + playerToRemove.NetworkID);
 
         using(DarkRiftWriter writer = DarkRiftWriter.Create()) {
-            writer.Write(playerToRemove.ID);
+            writer.Write(playerToRemove.NetworkID);
 
             using(Message message = Message.Create((ushort) ResponseTag.DELETE_OBJECT, writer)) {
                 foreach (var client in server.ClientManager.GetAllClients()) {

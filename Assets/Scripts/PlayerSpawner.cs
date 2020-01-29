@@ -30,18 +30,20 @@ public class PlayerSpawner : MonoBehaviour
         }
     }
 
-    private void InstantiatePlayer(Player player)
+    private GameObject InstantiatePlayer(Player player)
     {
-        if (networkObjectList.IsVacant(player.ID))
+        GameObject go = null;
+        if (networkObjectList.IsVacant(player.NetworkID))
         {
-            GameObject go = Instantiate(ObjectToSpawn, player.Position, Quaternion.identity);
-            networkObjectList[player.ID] = go;
-            Debug.Log($"Assigned network ID {player.ID}  to new Player instance.");
+            go = Instantiate(ObjectToSpawn, player.Position, Quaternion.identity);
+            networkObjectList[player.NetworkID] = go;
+            Debug.Log($"Assigned network ID {player.NetworkID}  to new Player instance.");
         }
         else
         {
-            Debug.LogError($"Network ID {player.ID} was already present.");
+            Debug.LogError($"Network ID {player.NetworkID} was already present.");
         }
+        return go;
     }
 
     private void OnResponse(object sender, MessageReceivedEventArgs e)
@@ -67,13 +69,20 @@ public class PlayerSpawner : MonoBehaviour
         ConnectionData data;
         using (Message message = e.GetMessage()) { data = message.Deserialize<ConnectionData>(); }
 
-        ushort clientId = data.ID;
-        Player[] players = data.Players;
+        ushort clientId = data.ClientID;
         Debug.Log("Client id is " + clientId);
 
+        Player[] players = data.Players;
         foreach (Player player in players)
         {
-            InstantiatePlayer(player);
+            GameObject go = InstantiatePlayer(player);
+            if (player.NetworkID == data.PlayerObjectID)
+            {
+                go.AddComponent<PlayerController>();
+                PlayerController pc = go.GetComponent<PlayerController>();
+                pc.playerRigidbody = go.GetComponent<Rigidbody>();
+                pc.speed = 10f;
+            }
         }
     }
 
