@@ -7,12 +7,11 @@ using DarkRift.Client.Unity;
 using Network;
 using UnityEngine;
 
-public class PlayerSpawner : MonoBehaviour {
-    // Objects are tracked by their network IDs decided by the server.
-    private readonly Dictionary<ushort, GameObject> playerObjects = new Dictionary<ushort, GameObject>();
+public class PlayerSpawner : MonoBehaviour
+{
 
-    // Lookup to find the network id of the object.
-    private readonly Dictionary<int, ushort> networkIDLookUp = new Dictionary<int, ushort>();
+    // Objects are tracked by their network IDs decided by the server.
+    private readonly NetworkObjectList networkObjectList = new NetworkObjectList();
 
     // Locally created objects are temporally stored by their instance IDs until server.
     private readonly Dictionary<int, GameObject> localPlayers = new Dictionary<int, GameObject>();
@@ -20,28 +19,37 @@ public class PlayerSpawner : MonoBehaviour {
     [Tooltip("The server component this script will communicate with.")]
     public UnityClient client;
 
-    void Awake() {
-        if (client != null) {
+    [Tooltip("Object that should be spawned by this component.")]
+    public GameObject ObjectToSpawn;
+
+    void Awake()
+    {
+        if (client != null)
+        {
             client.MessageReceived += OnResponse;
         }
     }
 
-    private void InstantiatePlayer(Player player) {
-        GameObject go = player.toGameObject();
-
-        if (!playerObjects.ContainsKey(player.ID)) {
-            playerObjects[player.ID] = go;
-            networkIDLookUp[go.GetInstanceID()] = player.ID;
-            Debug.Log("Assigned network ID " + player.ID + " to new Player instance.");
-        } else {
-            Debug.LogError("New network ID " + player.ID + " was already present.");
+    private void InstantiatePlayer(Player player)
+    {
+        if (networkObjectList.IsVacant(player.ID))
+        {
+            GameObject go = Instantiate(ObjectToSpawn, player.Position, Quaternion.identity);
+            networkObjectList[player.ID] = go;
+            Debug.Log($"Assigned network ID {player.ID}  to new Player instance.");
+        }
+        else
+        {
+            Debug.LogError($"Network ID {player.ID} was already present.");
         }
     }
 
-    private void OnResponse(object sender, MessageReceivedEventArgs e) {
-        ResponseTag tag = (ResponseTag) e.Tag;
+    private void OnResponse(object sender, MessageReceivedEventArgs e)
+    {
+        ResponseTag tag = (ResponseTag)e.Tag;
 
-        switch (tag) {
+        switch (tag)
+        {
             case ResponseTag.CONNECTION_DATA:
                 SetupServerData(e);
                 break;
@@ -54,36 +62,47 @@ public class PlayerSpawner : MonoBehaviour {
         }
     }
 
-    private void SetupServerData(MessageReceivedEventArgs e) {
+    private void SetupServerData(MessageReceivedEventArgs e)
+    {
         ConnectionData data;
-        using(Message message = e.GetMessage()) data = message.Deserialize<ConnectionData>();
+        using (Message message = e.GetMessage()) { data = message.Deserialize<ConnectionData>(); }
 
-        Debug.Log("Client id is " + data.ID);
+        ushort clientId = data.ID;
+        Player[] players = data.Players;
+        Debug.Log("Client id is " + clientId);
 
-        foreach (Player player in data.Players) {
+        foreach (Player player in players)
+        {
             InstantiatePlayer(player);
         }
     }
 
-    private void CreatePlayer(MessageReceivedEventArgs e) {
+    private void CreatePlayer(MessageReceivedEventArgs e)
+    {
         Player player;
-        using(Message message = e.GetMessage()) player = message.Deserialize<Player>();
+        using (Message message = e.GetMessage()) player = message.Deserialize<Player>();
         InstantiatePlayer(player);
     }
 
-    private void DeleteObject(MessageReceivedEventArgs e) {
+    private void DeleteObject(MessageReceivedEventArgs e)
+    {
         ushort id;
-        using(Message message = e.GetMessage())
-        using(DarkRiftReader reader = message.GetReader()) {
+        using (Message message = e.GetMessage())
+        using (DarkRiftReader reader = message.GetReader())
+        {
             id = reader.ReadUInt16();
         }
 
-        if (playerObjects.ContainsKey(id)) {
-            GameObject go = playerObjects[id];
-            playerObjects.Remove(id);
-            GameObject.Destroy(go);
-        } else {
-            Debug.LogError("ID missing from client");
+        if (!networkObjectList.IsVacant(id))
+        {
+            GameObject go = networkObjectList.RemoveAt(id);
+            Debug.Log("Removing " + go + " at network id " + id);
+            Destroy(go);
+        }
+        else
+        {
+            Debug.Log(id + " the EVIL!~!!!");
+            // Debug.LogError("ID missing from client");
         }
     }
 }

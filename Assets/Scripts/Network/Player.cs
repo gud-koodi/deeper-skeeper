@@ -1,9 +1,11 @@
 using DarkRift;
 using UnityEngine;
 
-namespace Network {
+namespace Network
+{
 
-    public class Player : INetworkSendable, IDarkRiftSerializable {
+    public class Player : IDarkRiftSerializable
+    {
         /// <summary>
         /// Sets the Unity GameObject prefab that the extended class should represent.
         /// </summary>
@@ -23,24 +25,22 @@ namespace Network {
         /// </summary>
         public Player() { }
 
-        public Player(ushort id, ushort clientID, Vector3 position) {
+        public Player(ushort id, ushort clientID, Vector3 position)
+        {
             this.ID = id;
             this.clientID = clientID;
             this.Position = position;
         }
 
-        public GameObject toGameObject() {
-            GameObject go = GameObject.Instantiate(Prefab, Position, Quaternion.identity);
-            return go;
-        }
-
         /// <summary>
-        /// Deserializes data to this instance. Called by DarkRift.
+        /// /// Deserializes data to this instance. Called by DarkRift.
         /// </summary>
         /// <param name="e">DarkRift deserialization event</param>
-        public void Deserialize(DeserializeEvent e) {
+        public void Deserialize(DeserializeEvent e)
+        {
             DarkRiftReader reader = e.Reader;
             this.ID = reader.ReadUInt16();
+            this.clientID = reader.ReadUInt16();
             this.Position = new Vector3(reader.ReadSingle(), reader.ReadSingle(), reader.ReadSingle());
         }
 
@@ -48,9 +48,11 @@ namespace Network {
         /// Serializes data from this instance. Called by DarkRift.
         /// </summary>
         /// <param name="e">DarkRift serialization event</param>
-        public virtual void Serialize(SerializeEvent e) {
+        public virtual void Serialize(SerializeEvent e)
+        {
             DarkRiftWriter writer = e.Writer;
             writer.Write(ID);
+            writer.Write(clientID);
             writer.Write(Position.x);
             writer.Write(Position.y);
             writer.Write(Position.z);

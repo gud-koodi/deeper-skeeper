@@ -71,6 +71,8 @@ public class ServerManager : MonoBehaviour {
         players.Remove(playerToRemove);
         networkIdPool.Release(playerToRemove.ID);
 
+        Debug.Log("Sending destruct message for network object " + playerToRemove.ID);
+
         using(DarkRiftWriter writer = DarkRiftWriter.Create()) {
             writer.Write(playerToRemove.ID);
 

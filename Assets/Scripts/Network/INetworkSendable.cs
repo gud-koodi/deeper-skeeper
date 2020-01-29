@@ -1,8 +1,13 @@
 using DarkRift;
 using UnityEngine;
 
-namespace Network {
-    public interface INetworkSendable : IDarkRiftSerializable {
+namespace Network
+{
+    /// <summary>
+    /// Unused at the moment
+    /// </summary>
+    public interface INetworkSendable : IDarkRiftSerializable
+    {
         /// <summary>
         /// Identifier used to match representative instances of this object between the server and its clients.
         /// </summary>
@@ -13,6 +18,6 @@ namespace Network {
         /// Instantiates a new GameObject from this object.
         /// </summary>
         /// <returns>instantiated gameObject</returns>
-        GameObject toGameObject();
+        // GameObject toGameObject();
     }
 }
