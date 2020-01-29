@@ -24,14 +24,14 @@ namespace DarkRift.Client.Unity
         {
             client = ((UnityClient)serializedObject.targetObject);
 
-            address                 = client.Address.ToString();
-            port                    = serializedObject.FindProperty("port");
-            ipVersion               = serializedObject.FindProperty("ipVersion");
-            autoConnect             = serializedObject.FindProperty("autoConnect");
-            invokeFromDispatcher    = serializedObject.FindProperty("invokeFromDispatcher");
-            sniffData               = serializedObject.FindProperty("sniffData");
+            address = client.Address.ToString();
+            port = serializedObject.FindProperty("port");
+            ipVersion = serializedObject.FindProperty("ipVersion");
+            autoConnect = serializedObject.FindProperty("autoConnect");
+            invokeFromDispatcher = serializedObject.FindProperty("invokeFromDispatcher");
+            sniffData = serializedObject.FindProperty("sniffData");
 
-            objectCacheSettings     = serializedObject.FindProperty("objectCacheSettings");
+            objectCacheSettings = serializedObject.FindProperty("objectCacheSettings");
         }
 
         public override void OnInspectorGUI()
@@ -40,7 +40,7 @@ namespace DarkRift.Client.Unity
 
             //Display IP address
             address = EditorGUILayout.TextField(new GUIContent("Address", "The address the client will connect to."), address);
-            
+
             try
             {
                 client.Address = IPAddress.Parse(address);
@@ -52,10 +52,10 @@ namespace DarkRift.Client.Unity
             }
 
             EditorGUILayout.PropertyField(port);
-            
+
             //Draw IP versions manually else it gets formatted as "Ip Version" and "I Pv4" -_-
             ipVersion.enumValueIndex = EditorGUILayout.Popup(new GUIContent("IP Version", "The IP protocol version to connect using."), ipVersion.enumValueIndex, Array.ConvertAll(ipVersion.enumNames, i => new GUIContent(i)));
-            
+
             EditorGUILayout.PropertyField(autoConnect);
 
             //Alert to changes when this is unticked!
@@ -73,7 +73,7 @@ namespace DarkRift.Client.Unity
             }
 
             EditorGUILayout.PropertyField(sniffData);
-            
+
             EditorGUILayout.PropertyField(objectCacheSettings, true);
 
             serializedObject.ApplyModifiedProperties();

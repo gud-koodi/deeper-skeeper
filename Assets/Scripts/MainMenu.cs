@@ -2,13 +2,15 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour {
+public class MainMenu : MonoBehaviour
+{
     public NetworkConfig networkConfig;
 
     /// <summary>
     /// Start the game without host configuration.
     /// </summary>
-    public void Connect() {
+    public void Connect()
+    {
         networkConfig.isHost = false;
         LoadScene();
     }
@@ -16,7 +18,8 @@ public class MainMenu : MonoBehaviour {
     /// <summary>
     /// Start the game with host configuration.
     /// </summary>
-    public void Host() {
+    public void Host()
+    {
         networkConfig.isHost = true;
         LoadScene();
     }
@@ -24,11 +27,13 @@ public class MainMenu : MonoBehaviour {
     /// <summary>
     /// Quits the game.
     /// </summary>
-    public void Quit() {
+    public void Quit()
+    {
         Application.Quit();
     }
 
-    private void LoadScene() {
+    private void LoadScene()
+    {
         Debug.Log("Starting the game as " + ((networkConfig.isHost) ? "host" : "client"));
         SceneManager.LoadScene("Game", LoadSceneMode.Single);
     }

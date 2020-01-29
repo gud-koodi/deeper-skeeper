@@ -322,7 +322,7 @@ GameObject:
   - component: {fileID: 3378945452951965080}
   - component: {fileID: 3378945452951965084}
   m_Layer: 5
-  m_Name: Main Menu
+  m_Name: MainMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -554,7 +554,7 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: 6b04f336c5979ec419d162818a96cae7, type: 2}
+      - m_Target: {fileID: 0}
         m_MethodName: set_Ip
         m_Mode: 0
         m_Arguments:
@@ -1039,7 +1039,7 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: 6b04f336c5979ec419d162818a96cae7, type: 2}
+      - m_Target: {fileID: 0}
         m_MethodName: set_Port
         m_Mode: 0
         m_Arguments:
