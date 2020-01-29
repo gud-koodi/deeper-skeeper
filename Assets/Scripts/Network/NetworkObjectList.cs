@@ -2,51 +2,66 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Network {
-    public class NetworkObjectList {
+namespace Network
+{
+    public class NetworkObjectList
+    {
         public List<GameObject> list;
 
         private readonly Dictionary<int, ushort> networkIDLookUp;
 
-        public NetworkObjectList() {
+        public NetworkObjectList()
+        {
             this.list = new List<GameObject>();
             this.networkIDLookUp = new Dictionary<int, ushort>();
         }
 
-        public GameObject this [ushort index] {
+        public GameObject this[ushort index]
+        {
             get => GetAt(index);
             set => SetAt(index, value);
         }
 
-        private void SetAt(ushort networkID, GameObject gameObject) {
-            if (networkID >= list.Count) {
+        private void SetAt(ushort networkID, GameObject gameObject)
+        {
+            if (networkID >= list.Count)
+            {
                 list.Insert(networkID, gameObject);
-            } else if (list[networkID] == null) {
+            }
+            else if (list[networkID] == null)
+            {
                 list[networkID] = gameObject;
                 networkIDLookUp[gameObject.GetInstanceID()] = networkID;
-            } else {
+            }
+            else
+            {
                 Debug.LogError("Attempted to insert a gameobject to existing id");
             }
         }
 
-        private GameObject GetAt(ushort networkID) {
+        private GameObject GetAt(ushort networkID)
+        {
             return (networkID >= list.Count) ? null : list[networkID];
         }
 
-        public GameObject RemoveAt(ushort networkID) {
+        public GameObject RemoveAt(ushort networkID)
+        {
             GameObject go = list[networkID]; // GetAt(networkID);
-            if (go != null) {
+            if (go != null)
+            {
                 networkIDLookUp.Remove(go.GetInstanceID());
                 list[networkID] = null;
             }
             return go;
         }
 
-        public bool IsVacant(ushort networkID) {
+        public bool IsVacant(ushort networkID)
+        {
             return (networkID >= list.Count || list[networkID] == null);
         }
 
-        public uint LookUpNetworkID(GameObject gameObject) {
+        public uint LookUpNetworkID(GameObject gameObject)
+        {
             return networkIDLookUp[gameObject.GetInstanceID()];
         }
     }
