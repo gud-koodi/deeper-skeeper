@@ -13,7 +13,7 @@ public class LevelController : MonoBehaviour
     private GameObject nextLevel;
     private int depth = 10;
     private const int YDISTANCE = 50;
-    private const int TILESIZE = 30;
+    private const int TILESIZE = 30*2;
     private const int NEXT_TILE_OFFSET = TILESIZE;
     // Start is called before the first frame update
     void Start()
