@@ -2,20 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour {
-    private UnityEngine.AI.NavMeshAgent agent;
-    public GameObject player;
-    public State state;
-    public enum State {
+public class EnemyController : MonoBehaviour
+{  
+    public enum State
+    {
         IDLE,
         CHASE,
         ATTACK
     }
-    private Animator animator;
+
+    public GameObject player;
+    public State state;
     public Weapon weapon;
     public float hitSpeed = 1f;
+    private Animator animator;
+    private UnityEngine.AI.NavMeshAgent agent;
+
     // Start is called before the first frame update
-    void Start() {
+    void Start()
+    {
         agent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
         state = State.CHASE;
         animator = gameObject.GetComponent<Animator>();
@@ -24,8 +29,10 @@ public class EnemyController : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update() {
-        switch (state) {
+    void Update()
+    {
+        switch (state)
+        {
             case State.CHASE:
                 Chase();
                 break;
@@ -37,8 +44,10 @@ public class EnemyController : MonoBehaviour {
         }
     }
 
-    private void Chase() {
-        if (Vector3.Distance(player.transform.position, transform.position) < 5) {
+    private void Chase()
+    {
+        if (Vector3.Distance(player.transform.position, transform.position) < 5)
+        {
 
             agent.isStopped = true;
             state = State.ATTACK;
@@ -49,14 +58,16 @@ public class EnemyController : MonoBehaviour {
         animator.SetBool("isWalking", true);
     }
 
-    private void Attack() {
+    private void Attack()
+    {
         weapon.Attack();
         animator.SetBool("isAttacking", true);
         state = State.IDLE;
         StartCoroutine(WaitAttack());
     }
 
-    private IEnumerator WaitAttack() {
+    private IEnumerator WaitAttack()
+    {
         yield return null;
         animator.SetBool("isAttacking", false);
         yield return new WaitForSeconds(weapon.AttackDuration);

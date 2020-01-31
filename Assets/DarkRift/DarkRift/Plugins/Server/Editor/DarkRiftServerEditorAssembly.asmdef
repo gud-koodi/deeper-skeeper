@@ -1,16 +1,16 @@
 {
-    "name": "DarkRiftServerEditorAssembly",
-    "references": [
-        "GUID:3d2985824760dad448aa3a577f7b2a30"
-    ],
-    "includePlatforms": [
-        "Editor"
-    ],
-    "excludePlatforms": [],
-    "allowUnsafeCode": false,
-    "overrideReferences": false,
-    "precompiledReferences": [],
-    "autoReferenced": true,
-    "defineConstraints": [],
-    "versionDefines": []
+  "name": "DarkRiftServerEditorAssembly",
+  "references": [
+    "GUID:3d2985824760dad448aa3a577f7b2a30"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": []
 }

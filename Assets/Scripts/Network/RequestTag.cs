@@ -1,6 +1,8 @@
-namespace Network {
+namespace Network
+{
 
-    public enum RequestTag : ushort {
+    public enum RequestTag : ushort
+    {
         CREATE_SPHERE,
         UDATE_SPHERE
     }

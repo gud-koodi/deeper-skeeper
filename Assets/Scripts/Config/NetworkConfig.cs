@@ -3,7 +3,8 @@ using System.Net;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NetworkConfig", menuName = "Config/NetworkConfig")]
-public class NetworkConfig : ScriptableObject, ISerializationCallbackReceiver {
+public class NetworkConfig : ScriptableObject, ISerializationCallbackReceiver
+{
 
     public IPAddress ip;
 
@@ -13,32 +14,42 @@ public class NetworkConfig : ScriptableObject, ISerializationCallbackReceiver {
 
     // These two below are required for UI elements
 
-    public string Ip {
-        set {
-            try {
+    public string Ip
+    {
+        set
+        {
+            try
+            {
                 IPAddress address = IPAddress.Parse(value);
                 ip = address;
-            } catch (FormatException) { }
+            }
+            catch (FormatException) { }
         }
     }
 
-    public string Port {
-        set {
-            try {
+    public string Port
+    {
+        set
+        {
+            try
+            {
                 port = int.Parse(value);
-            } catch (FormatException) { }
+            }
+            catch (FormatException) { }
         }
     }
 
     // Temporary serialization resets at launch
 
-    public void OnAfterDeserialize() {
+    public void OnAfterDeserialize()
+    {
         Ip = "127.0.0.1";
         port = 4296;
         isHost = true;
     }
 
-    public void OnBeforeSerialize() {
+    public void OnBeforeSerialize()
+    {
 
     }
 }
