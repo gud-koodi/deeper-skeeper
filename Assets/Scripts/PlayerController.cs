@@ -42,7 +42,6 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-
     private void ApplyRotation()
     {
         RotationByMouse();

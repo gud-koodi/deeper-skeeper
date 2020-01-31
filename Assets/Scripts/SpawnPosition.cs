@@ -4,15 +4,5 @@ using UnityEngine;
 
 public class SpawnPosition : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+ // This if for finding the right obj, (bad)
 }
