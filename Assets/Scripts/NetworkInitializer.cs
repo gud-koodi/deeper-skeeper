@@ -30,8 +30,8 @@ public class NetworkInitializer : MonoBehaviour
         {
             Server.Create();
             Event.Trigger();
+        } else {
+            Client.Connect(NetworkConfig.ip, NetworkConfig.port, IPVersion.IPv4);
         }
-
-        Client.Connect(NetworkConfig.ip, NetworkConfig.port, IPVersion.IPv4);
     }
 }

@@ -177,6 +177,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Server: {fileID: 5623767655136142541}
+  NetworkInstantiator: {fileID: 11400000, guid: 23aafc5032efc0a47afa047ac65bcb43,
+    type: 2}
 --- !u!114 &5623767655136142546
 MonoBehaviour:
   m_ObjectHideFlags: 0

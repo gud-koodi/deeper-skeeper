@@ -11,7 +11,13 @@ public class ServerManager : MonoBehaviour
     [Tooltip("The server component this script will communicate with")]
     public XmlUnityServer Server;
 
+    [Tooltip("Instantiator used to create objects")]
+    public NetworkInstantiator NetworkInstantiator;
+
     private readonly NetworkIdPool networkIdPool = new NetworkIdPool();
+
+    // Objects are tracked by their network IDs
+    private readonly NetworkObjectList networkObjectList = new NetworkObjectList();
 
     private readonly List<Player> players = new List<Player>();
     private readonly Dictionary<uint, uint> clientToPlayerObject = new Dictionary<uint, uint>();
@@ -25,6 +31,11 @@ public class ServerManager : MonoBehaviour
             Debug.LogError("Server component missing.");
             return;
         }
+
+        ushort id = networkIdPool.Next();
+        Player player = new Player(id, Vector3.zero);
+        players.Add(player);
+        InstantiatePlayer(player, true);
 
         server = Server.Server;
 
@@ -41,6 +52,22 @@ public class ServerManager : MonoBehaviour
         }
     }
 
+    private GameObject InstantiatePlayer(Player player, bool isMasterObject = false)
+    {
+        GameObject go = null;
+        if (networkObjectList.IsVacant(player.NetworkID))
+        {
+            NetworkInstantiator.InstantiatePlayer(player, isMasterObject);
+            networkObjectList[player.NetworkID] = go;
+            Debug.Log($"Assigned network ID {player.NetworkID}  to new Player instance.");
+        }
+        else
+        {
+            Debug.LogError($"Network ID {player.NetworkID} was already present.");
+        }
+        return go;
+    }
+
     private void OnClientConnect(object sender, ClientConnectedEventArgs e) {
         // e.Client.MessageReceived += OnRequest;
         SendConnectionData(e);
@@ -50,6 +77,7 @@ public class ServerManager : MonoBehaviour
         ushort id = networkIdPool.Next();
         Player player = new Player(id, Vector3.zero);
         players.Add(player);
+        InstantiatePlayer(player, false);
 
         ConnectionData data = new ConnectionData(e.Client.ID, id, players.ToArray());
         clientToPlayerObject[data.ClientID] = data.PlayerObjectID;

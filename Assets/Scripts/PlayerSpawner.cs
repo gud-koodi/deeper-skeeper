@@ -82,7 +82,7 @@ public class PlayerSpawner : MonoBehaviour
     private void CreatePlayer(MessageReceivedEventArgs e)
     {
         Player player;
-        using (Message message = e.GetMessage()) player = message.Deserialize<Player>();
+        using (Message message = e.GetMessage()) { player = message.Deserialize<Player>(); }
         InstantiatePlayer(player);
     }
 
