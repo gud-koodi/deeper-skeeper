@@ -164,8 +164,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   client: {fileID: 1736585924}
-  ObjectToSpawn: {fileID: 8681530797678290700, guid: 6b22ea24066d46c4c92259ba2f7317c7,
-    type: 3}
+  NetworkInstantiator: {fileID: 11400000, guid: 23aafc5032efc0a47afa047ac65bcb43,
+    type: 2}
 --- !u!1 &645040844
 GameObject:
   m_ObjectHideFlags: 0

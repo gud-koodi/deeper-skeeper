@@ -19,8 +19,8 @@ public class PlayerSpawner : MonoBehaviour
     [Tooltip("The server component this script will communicate with.")]
     public UnityClient client;
 
-    [Tooltip("Object that should be spawned by this component.")]
-    public GameObject ObjectToSpawn;
+    [Tooltip("Instantiator used to create objects")]
+    public NetworkInstantiator NetworkInstantiator;
 
     void Awake()
     {
@@ -30,12 +30,12 @@ public class PlayerSpawner : MonoBehaviour
         }
     }
 
-    private GameObject InstantiatePlayer(Player player)
+    private GameObject InstantiatePlayer(Player player, bool isMasterObject = false)
     {
         GameObject go = null;
         if (networkObjectList.IsVacant(player.NetworkID))
         {
-            go = Instantiate(ObjectToSpawn, player.Position, Quaternion.identity);
+            NetworkInstantiator.InstantiatePlayer(player, isMasterObject);
             networkObjectList[player.NetworkID] = go;
             Debug.Log($"Assigned network ID {player.NetworkID}  to new Player instance.");
         }
@@ -75,14 +75,7 @@ public class PlayerSpawner : MonoBehaviour
         Player[] players = data.Players;
         foreach (Player player in players)
         {
-            GameObject go = InstantiatePlayer(player);
-            if (player.NetworkID == data.PlayerObjectID)
-            {
-                go.AddComponent<PlayerController>();
-                PlayerController pc = go.GetComponent<PlayerController>();
-                pc.playerRigidbody = go.GetComponent<Rigidbody>();
-                pc.speed = 10f;
-            }
+            GameObject go = InstantiatePlayer(player, player.NetworkID == data.PlayerObjectID);
         }
     }
 
