@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class FloorInfo : MonoBehaviour
 {
-    // Start is called before the first frame update
     public GameObject DoorNorth;
     public GameObject DoorEast;
     public GameObject DoorSouth;
