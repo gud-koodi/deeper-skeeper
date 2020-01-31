@@ -16,13 +16,14 @@ public class ServerManager : MonoBehaviour
 
     private readonly NetworkIdPool networkIdPool = new NetworkIdPool();
 
-    // Objects are tracked by their network IDs
-    private readonly NetworkObjectList networkObjectList = new NetworkObjectList();
+    private readonly Dictionary<ushort, ushort> clientToPlayerObject = new Dictionary<ushort, ushort>();
 
-    private readonly List<Player> players = new List<Player>();
-    private readonly Dictionary<uint, uint> clientToPlayerObject = new Dictionary<uint, uint>();
+    private PlayerList players;
 
-    private DarkRiftServer server;
+    void Awake()
+    {
+        players = new PlayerList(NetworkInstantiator);
+    }
 
     public void Initialize()
     {
@@ -34,17 +35,16 @@ public class ServerManager : MonoBehaviour
 
         ushort id = networkIdPool.Next();
         Player player = new Player(id, Vector3.zero);
-        players.Add(player);
-        InstantiatePlayer(player, true);
+        players.Create(player, true);
 
-        server = Server.Server;
-
+        DarkRiftServer server = Server.Server;
         server.ClientManager.ClientConnected += OnClientConnect;
         server.ClientManager.ClientDisconnected += OnClientDisconnect;
     }
 
     void OnDestroy()
     {
+        DarkRiftServer server = Server.Server;
         if (server != null)
         {
             server.ClientManager.ClientConnected -= OnClientConnect;
@@ -52,68 +52,47 @@ public class ServerManager : MonoBehaviour
         }
     }
 
-    private GameObject InstantiatePlayer(Player player, bool isMasterObject = false)
+    private void OnClientConnect(object sender, ClientConnectedEventArgs e)
     {
-        GameObject go = null;
-        if (networkObjectList.IsVacant(player.NetworkID))
-        {
-            NetworkInstantiator.InstantiatePlayer(player, isMasterObject);
-            networkObjectList[player.NetworkID] = go;
-            Debug.Log($"Assigned network ID {player.NetworkID}  to new Player instance.");
-        }
-        else
-        {
-            Debug.LogError($"Network ID {player.NetworkID} was already present.");
-        }
-        return go;
-    }
-
-    private void OnClientConnect(object sender, ClientConnectedEventArgs e) {
         // e.Client.MessageReceived += OnRequest;
-        SendConnectionData(e);
-    }
-
-    private void SendConnectionData(ClientConnectedEventArgs e) {
         ushort id = networkIdPool.Next();
         Player player = new Player(id, Vector3.zero);
-        players.Add(player);
-        InstantiatePlayer(player, false);
+        players.Create(player);
 
         ConnectionData data = new ConnectionData(e.Client.ID, id, players.ToArray());
         clientToPlayerObject[data.ClientID] = data.PlayerObjectID;
-        using(Message message = Message.Create((ushort) ResponseTag.CONNECTION_DATA, data)) {
+        using (Message message = Message.Create((ushort)ResponseTag.CONNECTION_DATA, data))
+        {
             e.Client.SendMessage(message, SendMode.Reliable);
         }
 
-        using(Message broadcast = Message.Create((ushort) ResponseTag.CREATE_PLAYER, player)) {
-            foreach (var client in server.ClientManager.GetAllClients()) {
-                if (client.ID != e.Client.ID) {
+        using (Message broadcast = Message.Create((ushort)ResponseTag.CREATE_PLAYER, player))
+        {
+            foreach (var client in Server.Server.ClientManager.GetAllClients())
+            {
+                if (client.ID != e.Client.ID)
+                {
                     client.SendMessage(broadcast, SendMode.Reliable);
                 }
             }
         }
     }
 
-    private void OnClientDisconnect(object sender, ClientDisconnectedEventArgs e) {
-        // e.Client.MessageReceived -= OnRequest;
-        Player playerToRemove = players[(int) clientToPlayerObject[e.Client.ID]];
-
-        if (playerToRemove == null) {
-            Debug.LogError("Couldn't find player by client id");
-            return;
-        }
-
-        players.Remove(playerToRemove);
-        networkIdPool.Release(playerToRemove.NetworkID);
-
-        Debug.Log("Sending destruct message for network object " + playerToRemove.NetworkID);
-
-        using(DarkRiftWriter writer = DarkRiftWriter.Create()) {
-            writer.Write(playerToRemove.NetworkID);
-
-            using(Message message = Message.Create((ushort) ResponseTag.DELETE_OBJECT, writer)) {
-                foreach (var client in server.ClientManager.GetAllClients()) {
-                    if (client.ID != e.Client.ID) {
+    private void OnClientDisconnect(object sender, ClientDisconnectedEventArgs e)
+    {
+        ushort playerId = clientToPlayerObject[e.Client.ID];
+        players.Remove(playerId);
+        networkIdPool.Release(playerId);
+        Debug.Log($"Sending destruct message for player ID {playerId}");
+        using (DarkRiftWriter writer = DarkRiftWriter.Create())
+        {
+            writer.Write(playerId);
+            using (Message message = Message.Create((ushort)ResponseTag.DELETE_OBJECT, writer))
+            {
+                foreach (var client in Server.Server.ClientManager.GetAllClients())
+                {
+                    if (client.ID != e.Client.ID)
+                    {
                         client.SendMessage(message, SendMode.Reliable);
                     }
                 }
@@ -122,70 +101,20 @@ public class ServerManager : MonoBehaviour
     }
 }
 
-/* private void OnRequest(object sender, MessageReceivedEventArgs e) {
-        RequestTag tag = (RequestTag) e.Tag;
+/* private void UpdateSphere(MessageReceivedEventArgs e)
+{
+    ClickerSphere sphere;
+    using (Message message = e.GetMessage()) sphere = message.Deserialize<ClickerSphere>();
+    networkObjects[sphere.ID] = sphere;
 
-        switch (tag)
-        {
-            case RequestTag.CREATE_SPHERE:
-                CreateSphere(e);
-                break;
-            case RequestTag.UDATE_SPHERE:
-                UpdateSphere(e);
-                break;
-            default:
-                Debug.LogException(new Exception("Unknown request " + tag));
-                break;
-        }
-    }
-
-    private void CreateSphere(MessageReceivedEventArgs e)
+    using (Message broadcast = Message.Create((ushort)ResponseTag.UPDATE_SPHERE, sphere))
     {
-        ClickerSphere sphere;
-        using (Message message = e.GetMessage()) sphere = message.Deserialize<ClickerSphere>();
-
-        int clientLocalID = sphere.ID;
-        int id = networkObjects.Count;
-        sphere.ID = id;
-
-        networkObjects.Insert(id, sphere);
-
-        using (DarkRiftWriter writer = DarkRiftWriter.Create())
+        foreach (var client in server.ClientManager.GetAllClients())
         {
-            writer.Write(clientLocalID);
-            writer.Write(id);
-            using (Message message = Message.Create((ushort)ResponseTag.CREATION_ID, writer))
+            if (client.ID != e.Client.ID)
             {
-                e.Client.SendMessage(message, SendMode.Reliable);
-            }
-        }
-
-        using (Message broadcast = Message.Create((ushort)ResponseTag.CREATE_SPHERE, sphere))
-        {
-            foreach (var client in server.ClientManager.GetAllClients())
-            {
-                if (client.ID != e.Client.ID)
-                {
-                    client.SendMessage(broadcast, SendMode.Reliable);
-                }
+                client.SendMessage(broadcast, SendMode.Reliable);
             }
         }
     }
-
-    private void UpdateSphere(MessageReceivedEventArgs e)
-    {
-        ClickerSphere sphere;
-        using (Message message = e.GetMessage()) sphere = message.Deserialize<ClickerSphere>();
-        networkObjects[sphere.ID] = sphere;
-
-        using (Message broadcast = Message.Create((ushort)ResponseTag.UPDATE_SPHERE, sphere))
-        {
-            foreach (var client in server.ClientManager.GetAllClients())
-            {
-                if (client.ID != e.Client.ID)
-                {
-                    client.SendMessage(broadcast, SendMode.Reliable);
-                }
-            }
-        }
-    } */
+} */

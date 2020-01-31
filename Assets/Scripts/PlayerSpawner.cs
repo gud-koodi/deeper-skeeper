@@ -9,41 +9,24 @@ using UnityEngine;
 
 public class PlayerSpawner : MonoBehaviour
 {
-
-    // Objects are tracked by their network IDs decided by the server.
-    private readonly NetworkObjectList networkObjectList = new NetworkObjectList();
-
-    // Locally created objects are temporally stored by their instance IDs until server.
-    private readonly Dictionary<int, GameObject> localPlayers = new Dictionary<int, GameObject>();
-
     [Tooltip("The server component this script will communicate with.")]
     public UnityClient client;
 
     [Tooltip("Instantiator used to create objects")]
     public NetworkInstantiator NetworkInstantiator;
 
+    // Locally created objects are temporally stored by their instance IDs until server.
+    // private readonly Dictionary<int, GameObject> localPlayers = new Dictionary<int, GameObject>();
+
+    private PlayerList players;
+
     void Awake()
     {
+        players = new PlayerList(NetworkInstantiator);
         if (client != null)
         {
             client.MessageReceived += OnResponse;
         }
-    }
-
-    private GameObject InstantiatePlayer(Player player, bool isMasterObject = false)
-    {
-        GameObject go = null;
-        if (networkObjectList.IsVacant(player.NetworkID))
-        {
-            NetworkInstantiator.InstantiatePlayer(player, isMasterObject);
-            networkObjectList[player.NetworkID] = go;
-            Debug.Log($"Assigned network ID {player.NetworkID}  to new Player instance.");
-        }
-        else
-        {
-            Debug.LogError($"Network ID {player.NetworkID} was already present.");
-        }
-        return go;
     }
 
     private void OnResponse(object sender, MessageReceivedEventArgs e)
@@ -72,18 +55,15 @@ public class PlayerSpawner : MonoBehaviour
         ushort clientId = data.ClientID;
         Debug.Log("Client id is " + clientId);
 
-        Player[] players = data.Players;
-        foreach (Player player in players)
+        foreach (Player player in data.Players)
         {
-            GameObject go = InstantiatePlayer(player, player.NetworkID == data.PlayerObjectID);
+            players.Create(player, player.NetworkID == data.PlayerObjectID);
         }
     }
 
     private void CreatePlayer(MessageReceivedEventArgs e)
     {
-        Player player;
-        using (Message message = e.GetMessage()) { player = message.Deserialize<Player>(); }
-        InstantiatePlayer(player);
+        using (Message message = e.GetMessage()) { players.Create(message.Deserialize<Player>()); }
     }
 
     private void DeleteObject(MessageReceivedEventArgs e)
@@ -94,16 +74,6 @@ public class PlayerSpawner : MonoBehaviour
         {
             id = reader.ReadUInt16();
         }
-
-        if (!networkObjectList.IsVacant(id))
-        {
-            GameObject go = networkObjectList.RemoveAt(id);
-            Debug.Log("Removing " + go + " at network id " + id);
-            Destroy(go);
-        }
-        else
-        {
-            Debug.LogError(id + " the EVIL!~!!!");
-        }
+        players.Remove(id);
     }
 }
