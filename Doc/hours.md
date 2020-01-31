@@ -2,9 +2,21 @@
 
 | Day | Hours | Description |
 |-----|--------|-------------|
-| 7.1 | 5 | CI
-| 9.1 | 5 | assembly definition conf
-
+| 6.1 | 5 | CI
+| 9.1 | 8 | studied DarkRift networking
+| 13.1 | 5 | Debugged DarkRift unit testing, configured unity assembly definitions
+| 14.1 | 5 | Made player controller
+| 15.1 | 3 | working on rotation by mouse
+| 16.1 | 5 | got rotation by mouse working
+| 17.1 | 2 | basic hit and damage
+| 18.1 | 3 | better melee weapon
+| 20.1 | 3 | enemy AI pathfinding
+| 21.1 | 3 | enemy AI states
+| 23.1 | 5 | enemy animations
+| 25.1 | 5 | more enemy animations and weapon damage with animation
+| 27.1 | 5 | making level prefabs, lobby room
+| 28.1 | 4 | linting to github
+| 29.1 | 5 | level generation script
 
 ## Jori Lampi
 

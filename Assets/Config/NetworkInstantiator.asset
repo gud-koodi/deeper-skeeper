@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 176c88710299a6942843336d00dc7df4, type: 3}
   m_Name: NetworkInstantiator
   m_EditorClassIdentifier: 
-  PlayerPrefab: {fileID: 8681530797678290700, guid: 6b22ea24066d46c4c92259ba2f7317c7,
+  PlayerPrefab: {fileID: 4102942275680462718, guid: e5b11ca16646824789a38810652af2ba,
     type: 3}
