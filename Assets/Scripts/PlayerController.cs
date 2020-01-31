@@ -40,7 +40,6 @@ public class PlayerController : MonoBehaviour
         {
             playerRigidbody.velocity = new Vector3(mH * speed, playerRigidbody.velocity.y, mV * speed);
         }
-
     }
     private void ApplyRotation()
     {
