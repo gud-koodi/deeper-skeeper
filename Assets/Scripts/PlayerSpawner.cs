@@ -25,7 +25,7 @@ public class PlayerSpawner : MonoBehaviour
     public void SendObject(GameObject gameObject)
     {
         // TODO: Distinguish between different network objects
-        using (Message message = players.SerializeUpdate(gameObject, (ushort) RequestTag.UPDATE_PLAYER))
+        using (Message message = players.SerializeUpdate(gameObject, ClientMessage.UPDATE_PLAYER))
         {
             client.SendMessage(message, SendMode.Unreliable);
         }
@@ -47,20 +47,18 @@ public class PlayerSpawner : MonoBehaviour
 
     private void OnResponse(object sender, MessageReceivedEventArgs e)
     {
-        ResponseTag tag = (ResponseTag)e.Tag;
-
-        switch (tag)
+        switch (e.Tag)
         {
-            case ResponseTag.CONNECTION_DATA:
+            case ServerMessage.CONNECTION_DATA:
                 SetupServerData(e);
                 break;
-            case ResponseTag.CREATE_PLAYER:
+            case ServerMessage.CREATE_PLAYER:
                 CreatePlayer(e);
                 break;
-            case ResponseTag.UPDATE_PLAYER:
+            case ServerMessage.UPDATE_PLAYER:
                 UpdatePlayer(e);
                 break;
-            case ResponseTag.DELETE_OBJECT:
+            case ServerMessage.DELETE_PLAYER:
                 DeleteObject(e);
                 break;
         }
@@ -87,7 +85,8 @@ public class PlayerSpawner : MonoBehaviour
 
     private void UpdatePlayer(MessageReceivedEventArgs e)
     {
-        using (Message message = e.GetMessage()) {
+        using (Message message = e.GetMessage())
+        {
             players.DeserializeUpdate(message);
         }
     }
