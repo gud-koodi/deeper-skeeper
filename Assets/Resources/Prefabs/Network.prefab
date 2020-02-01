@@ -128,6 +128,7 @@ GameObject:
   - component: {fileID: 5623767655136142541}
   - component: {fileID: 5623767655136142540}
   - component: {fileID: 5623767655136142546}
+  - component: {fileID: 5822689784569342098}
   m_Layer: 0
   m_Name: Server
   m_TagString: Untagged
@@ -198,6 +199,33 @@ MonoBehaviour:
       - m_Target: {fileID: 5623767655136142540}
         m_MethodName: Initialize
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5822689784569342098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5623767655136142542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60a15dcbe3e442a42b4605d0b0e4c094, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 94c434479b8bdae4f9259e3a72727d68, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5623767655136142540}
+        m_MethodName: SendObject
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

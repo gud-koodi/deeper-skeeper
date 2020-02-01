@@ -4,7 +4,6 @@ using UnityEngine.Events;
 
 /* 
     GameEvent pattern using ScriptableObject as presented by Ryan Hipple.
-    Brackets are fixed because we are monsters and don't obey poor standards.
     More info at: https://github.com/roboryantron/Unite2017
  */
 
@@ -16,11 +15,11 @@ public class GameEvent : ScriptableObject
     /// <summary>
     /// Triggers the event and notifies all listeners.
     /// </summary>
-    public void Trigger()
+    public void Trigger(GameObject target = null)
     {
         foreach (var listener in listeners)
         {
-            listener.OnTriggered();
+            listener.OnTriggered(target);
         }
     }
 

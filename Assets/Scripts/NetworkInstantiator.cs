@@ -10,6 +10,7 @@ namespace Network
     [CreateAssetMenu(fileName = "NetworkInstantiator", menuName = "Config/NetworkInstantiator")]
     public class NetworkInstantiator : ScriptableObject
     {
+        public GameEvent NetworkUpdate;
         public GameObject PlayerPrefab;
 
         internal GameObject InstantiatePlayer(Player player, bool masterObject = false)
@@ -23,6 +24,9 @@ namespace Network
                 pc.weapon = go.GetComponentInChildren<Weapon>();
                 pc.hitSpeed = 1.5f;
                 pc.speed = 10f;
+
+                NetworkMaster master = go.AddComponent<NetworkMaster>();
+                master.UpdateEvent = NetworkUpdate;
             }
             return go;
         }

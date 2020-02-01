@@ -6,6 +6,9 @@ using DarkRift.Server.Unity;
 using Network;
 using UnityEngine;
 
+/// <summary>
+/// Component that handles all communication between the server and all clients.
+/// </summary>
 public class ServerManager : MonoBehaviour
 {
     [Tooltip("The server component this script will communicate with")]
@@ -19,11 +22,6 @@ public class ServerManager : MonoBehaviour
     private readonly Dictionary<ushort, ushort> clientToPlayerObject = new Dictionary<ushort, ushort>();
 
     private PlayerList players;
-
-    void Awake()
-    {
-        players = new PlayerList(NetworkInstantiator);
-    }
 
     public void Initialize()
     {
@@ -40,6 +38,16 @@ public class ServerManager : MonoBehaviour
         DarkRiftServer server = Server.Server;
         server.ClientManager.ClientConnected += OnClientConnect;
         server.ClientManager.ClientDisconnected += OnClientDisconnect;
+    }
+
+    public void SendObject(GameObject gameObject) {
+        // TODO: Distinguish between different network objects
+        Debug.Log(gameObject);
+    }
+
+    void Awake()
+    {
+        players = new PlayerList(NetworkInstantiator);
     }
 
     void OnDestroy()
