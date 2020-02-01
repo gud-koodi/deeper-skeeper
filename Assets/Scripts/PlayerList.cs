@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using DarkRift;
 
 namespace Network
 {
@@ -8,7 +9,7 @@ namespace Network
     {
         private readonly NetworkInstantiator instantiator;
         private readonly NetworkObjectList playerObjects;
-        private readonly List<Player> players;
+        private List<Player> players;
 
         public PlayerList(NetworkInstantiator instantiator)
         {
@@ -32,6 +33,27 @@ namespace Network
                 Debug.LogError($"Network ID {player.NetworkID} was already present.");
             }
             return go;
+        }
+
+        public Message SerializeUpdate(GameObject playerObject)
+        {
+            ushort id = playerObjects.LookUpNetworkID(playerObject);
+            Player player = players.Find(p => p.NetworkID == id);
+            player.Position = playerObject.transform.localPosition;
+            foreach (var p in players) {
+                Debug.Log(p.Position);
+            }
+            return Message.Create((ushort) ResponseTag.UPDATE_PLAYER, player);
+        }
+
+        public void DeserializeUpdate(Message message)
+        {
+            Player player = message.Deserialize<Player>();
+            GameObject go = playerObjects[player.NetworkID];
+            NetworkSlave slave = go.GetComponent<NetworkSlave>();
+            slave.targetPosition = player.Position;
+            int index = players.FindIndex(p => p.NetworkID == player.NetworkID);
+            players[index] = player;
         }
 
         public void Remove(ushort playerId) {

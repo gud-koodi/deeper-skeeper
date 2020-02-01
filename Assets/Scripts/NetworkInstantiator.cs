@@ -27,6 +27,8 @@ namespace Network
 
                 NetworkMaster master = go.AddComponent<NetworkMaster>();
                 master.UpdateEvent = NetworkUpdate;
+            } else {
+                NetworkSlave slave = go.AddComponent<NetworkSlave>();
             }
             return go;
         }

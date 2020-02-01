@@ -21,6 +21,8 @@ public class ServerManager : MonoBehaviour
 
     private readonly Dictionary<ushort, ushort> clientToPlayerObject = new Dictionary<ushort, ushort>();
 
+    public NetworkConfig NetworkConfig;
+
     private PlayerList players;
 
     public void Initialize()
@@ -40,13 +42,25 @@ public class ServerManager : MonoBehaviour
         server.ClientManager.ClientDisconnected += OnClientDisconnect;
     }
 
-    public void SendObject(GameObject gameObject) {
+    public void SendObject(GameObject gameObject)
+    {
         // TODO: Distinguish between different network objects
-        Debug.Log(gameObject);
+        using (Message message = players.SerializeUpdate(gameObject))
+        {
+            foreach (var client in Server.Server.ClientManager.GetAllClients())
+            {
+                client.SendMessage(message, SendMode.Unreliable);
+            }
+        }
     }
 
     void Awake()
     {
+        if (!NetworkConfig.isHost)
+        {
+            Debug.Log("Server manager shutting up.");
+            gameObject.SetActive(false);
+        }
         players = new PlayerList(NetworkInstantiator);
     }
 

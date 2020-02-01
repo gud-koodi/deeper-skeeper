@@ -41,6 +41,9 @@ public class PlayerSpawner : MonoBehaviour
             case ResponseTag.CREATE_PLAYER:
                 CreatePlayer(e);
                 break;
+            case ResponseTag.UPDATE_PLAYER:
+                UpdatePlayer(e);
+                break;
             case ResponseTag.DELETE_OBJECT:
                 DeleteObject(e);
                 break;
@@ -64,6 +67,13 @@ public class PlayerSpawner : MonoBehaviour
     private void CreatePlayer(MessageReceivedEventArgs e)
     {
         using (Message message = e.GetMessage()) { players.Create(message.Deserialize<Player>()); }
+    }
+
+    private void UpdatePlayer(MessageReceivedEventArgs e)
+    {
+        using (Message message = e.GetMessage()) {
+            players.DeserializeUpdate(message);
+        }
     }
 
     private void DeleteObject(MessageReceivedEventArgs e)

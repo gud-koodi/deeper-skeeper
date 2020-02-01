@@ -20,8 +20,8 @@ namespace Network
             Vector3 currentPosition = transform.localPosition;
             if ((currentPosition - oldPosition).magnitude > MOVEMENT_UPDATE_TRESHOLD)
             {
-                UpdateEvent.Trigger(gameObject);
                 oldPosition = currentPosition;
+                UpdateEvent.Trigger(gameObject);
             }
         }
     }

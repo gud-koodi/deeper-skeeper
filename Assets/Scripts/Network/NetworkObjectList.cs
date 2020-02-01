@@ -27,11 +27,14 @@ namespace Network
             if (networkID >= list.Count)
             {
                 list.Insert(networkID, gameObject);
+                networkIDLookUp[gameObject.GetInstanceID()] = networkID;
+                Debug.Log($"Stored instance id {gameObject.GetInstanceID()}");
             }
             else if (list[networkID] == null)
             {
                 list[networkID] = gameObject;
                 networkIDLookUp[gameObject.GetInstanceID()] = networkID;
+                Debug.Log($"Stored instance id {gameObject.GetInstanceID()}");
             }
             else
             {
@@ -60,7 +63,7 @@ namespace Network
             return (networkID >= list.Count || list[networkID] == null);
         }
 
-        public uint LookUpNetworkID(GameObject gameObject)
+        public ushort LookUpNetworkID(GameObject gameObject)
         {
             return networkIDLookUp[gameObject.GetInstanceID()];
         }
