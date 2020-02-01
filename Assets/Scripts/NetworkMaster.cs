@@ -4,7 +4,7 @@ namespace Network
 
     public class NetworkMaster : MonoBehaviour
     {
-        private const float MOVEMENT_UPDATE_TRESHOLD = 1;
+        private const float MOVEMENT_UPDATE_TRESHOLD = 0.5f;
 
         public GameEvent UpdateEvent;
 

@@ -15,13 +15,29 @@ public class PlayerSpawner : MonoBehaviour
     [Tooltip("Instantiator used to create objects")]
     public NetworkInstantiator NetworkInstantiator;
 
+    public NetworkConfig NetworkConfig;
+
     // Locally created objects are temporally stored by their instance IDs until server.
     // private readonly Dictionary<int, GameObject> localPlayers = new Dictionary<int, GameObject>();
 
     private PlayerList players;
 
+    public void SendObject(GameObject gameObject)
+    {
+        // TODO: Distinguish between different network objects
+        using (Message message = players.SerializeUpdate(gameObject, (ushort) RequestTag.UPDATE_PLAYER))
+        {
+            client.SendMessage(message, SendMode.Unreliable);
+        }
+    }
+
     void Awake()
     {
+        if (NetworkConfig.isHost)
+        {
+            Debug.Log("Client manager shutting up.");
+            gameObject.SetActive(false);
+        }
         players = new PlayerList(NetworkInstantiator);
         if (client != null)
         {

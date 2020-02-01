@@ -35,15 +35,12 @@ namespace Network
             return go;
         }
 
-        public Message SerializeUpdate(GameObject playerObject)
+        public Message SerializeUpdate(GameObject playerObject, ushort tag)
         {
             ushort id = playerObjects.LookUpNetworkID(playerObject);
             Player player = players.Find(p => p.NetworkID == id);
             player.Position = playerObject.transform.localPosition;
-            foreach (var p in players) {
-                Debug.Log(p.Position);
-            }
-            return Message.Create((ushort) ResponseTag.UPDATE_PLAYER, player);
+            return Message.Create(tag, player);
         }
 
         public void DeserializeUpdate(Message message)

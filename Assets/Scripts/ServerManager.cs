@@ -45,7 +45,7 @@ public class ServerManager : MonoBehaviour
     public void SendObject(GameObject gameObject)
     {
         // TODO: Distinguish between different network objects
-        using (Message message = players.SerializeUpdate(gameObject))
+        using (Message message = players.SerializeUpdate(gameObject, (ushort)ResponseTag.UPDATE_PLAYER))
         {
             foreach (var client in Server.Server.ClientManager.GetAllClients())
             {
@@ -76,7 +76,7 @@ public class ServerManager : MonoBehaviour
 
     private void OnClientConnect(object sender, ClientConnectedEventArgs e)
     {
-        // e.Client.MessageReceived += OnRequest;
+        e.Client.MessageReceived += OnMessageReceived;
         ushort id = networkIdPool.Next();
         Player player = new Player(id, Vector3.zero);
         players.Create(player);
@@ -102,6 +102,7 @@ public class ServerManager : MonoBehaviour
 
     private void OnClientDisconnect(object sender, ClientDisconnectedEventArgs e)
     {
+        e.Client.MessageReceived -= OnMessageReceived;
         ushort playerId = clientToPlayerObject[e.Client.ID];
         players.Remove(playerId);
         networkIdPool.Release(playerId);
@@ -121,22 +122,29 @@ public class ServerManager : MonoBehaviour
             }
         }
     }
-}
 
-/* private void UpdateSphere(MessageReceivedEventArgs e)
-{
-    ClickerSphere sphere;
-    using (Message message = e.GetMessage()) sphere = message.Deserialize<ClickerSphere>();
-    networkObjects[sphere.ID] = sphere;
-
-    using (Message broadcast = Message.Create((ushort)ResponseTag.UPDATE_SPHERE, sphere))
+    private void OnMessageReceived(object sender, MessageReceivedEventArgs e)
     {
-        foreach (var client in server.ClientManager.GetAllClients())
+        RequestTag tag = (RequestTag)e.Tag;
+        switch (tag)
         {
-            if (client.ID != e.Client.ID)
-            {
-                client.SendMessage(broadcast, SendMode.Reliable);
-            }
+            case RequestTag.UPDATE_PLAYER:
+            UpdatePlayer(e);
+                break;
         }
     }
-} */
+
+    private void UpdatePlayer(MessageReceivedEventArgs e)
+    {
+        using (Message message = e.GetMessage()) {
+            players.DeserializeUpdate(message);
+            foreach (var client in Server.Server.ClientManager.GetAllClients())
+                {
+                    if (client.ID != e.Client.ID)
+                    {
+                        client.SendMessage(message, SendMode.Reliable);
+                    }
+                }
+        }
+    }
+}
