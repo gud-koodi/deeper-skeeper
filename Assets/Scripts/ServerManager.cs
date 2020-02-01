@@ -104,7 +104,7 @@ public class ServerManager : MonoBehaviour
     {
         e.Client.MessageReceived -= OnMessageReceived;
         ushort playerId = clientToPlayerObject[e.Client.ID];
-        players.Remove(playerId);
+        players.Destroy(playerId);
         networkIdPool.Release(playerId);
         Debug.Log($"Sending destruct message for player ID {playerId}");
         using (DarkRiftWriter writer = DarkRiftWriter.Create())

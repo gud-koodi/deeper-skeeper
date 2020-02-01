@@ -99,6 +99,6 @@ public class PlayerSpawner : MonoBehaviour
         {
             id = reader.ReadUInt16();
         }
-        players.Remove(id);
+        players.Destroy(id);
     }
 }
