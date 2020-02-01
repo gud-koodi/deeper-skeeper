@@ -80,17 +80,22 @@
       </AnalyzerSettings>
     </Analyzer>
     <Analyzer AnalyzerId="StyleCop.CSharp.NamingRules">
-      <AnalyzerSettings>
-        <CollectionProperty Name="Hungarian">
-          <Value>ai</Value>
-          <Value>cs</Value>
-          <Value>fx</Value>
-          <Value>up</Value>
-          <Value>x</Value>
-          <Value>y</Value>
-          <Value>at</Value>
-        </CollectionProperty>
-      </AnalyzerSettings>
+        <AnalyzerSettings>
+            <CollectionProperty Name="Hungarian">
+                <Value>ai</Value>
+                <Value>cs</Value>
+                <Value>fx</Value>
+                <Value>up</Value>
+                <Value>x</Value>
+                <Value>y</Value>
+                <Value>at</Value>
+            </CollectionProperty>
+        </AnalyzerSettings>
+        <Rules>
+            <Rule Name="FieldNamesMustNotContainUnderscore">
+                <BooleanProperty Name="Enabled">False</BooleanProperty>
+            </Rule>
+        </Rules>
     </Analyzer>
     <Analyzer AnalyzerId="StyleCop.CSharp.LayoutRules">
         <Rules>
