@@ -45,7 +45,7 @@ public class ServerManager : MonoBehaviour
     public void SendObject(GameObject gameObject)
     {
         // TODO: Distinguish between different network objects
-        using (Message message = players.SerializeUpdate(gameObject, ServerMessage.UPDATE_PLAYER))
+        using (Message message = players.SerializeUpdate(gameObject, ServerMessage.UpdatePlayer))
         {
             foreach (var client in Server.Server.ClientManager.GetAllClients())
             {
@@ -83,12 +83,12 @@ public class ServerManager : MonoBehaviour
 
         ConnectionData data = new ConnectionData(e.Client.ID, id, players.ToArray());
         clientToPlayerObject[data.ClientID] = data.PlayerObjectID;
-        using (Message message = Message.Create(ServerMessage.CONNECTION_DATA, data))
+        using (Message message = Message.Create(ServerMessage.ConnectionData, data))
         {
             e.Client.SendMessage(message, SendMode.Reliable);
         }
 
-        using (Message broadcast = Message.Create(ServerMessage.CREATE_PLAYER, player))
+        using (Message broadcast = Message.Create(ServerMessage.CreatePlayer, player))
         {
             foreach (var client in Server.Server.ClientManager.GetAllClients())
             {
@@ -110,7 +110,7 @@ public class ServerManager : MonoBehaviour
         using (DarkRiftWriter writer = DarkRiftWriter.Create())
         {
             writer.Write(playerId);
-            using (Message message = Message.Create(ServerMessage.DELETE_PLAYER, writer))
+            using (Message message = Message.Create(ServerMessage.DeletePlayer, writer))
             {
                 foreach (var client in Server.Server.ClientManager.GetAllClients())
                 {
@@ -127,7 +127,7 @@ public class ServerManager : MonoBehaviour
     {
         switch (e.Tag)
         {
-            case ClientMessage.UPDATE_PLAYER:
+            case ClientMessage.UpdatePlayer:
                 UpdatePlayer(e);
                 break;
         }

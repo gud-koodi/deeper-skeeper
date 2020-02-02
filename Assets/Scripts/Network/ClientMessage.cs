@@ -12,6 +12,6 @@ namespace Network
         /// Sent when server should update player controlled by client.
         /// Can be deserialized into <c>Player</c>.
         /// </summary>
-        public const ushort UPDATE_PLAYER = ServerMessage.UPDATE_PLAYER;
+        public const ushort UpdatePlayer = ServerMessage.UpdatePlayer;
     }
 }
