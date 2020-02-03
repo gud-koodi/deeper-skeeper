@@ -5,7 +5,6 @@ using UnityEngine;
 public class LevelController : MonoBehaviour
 {
     public Transform spawnPosition;
-
     private GameObject currentLevel;
     private GameObject nextLevel;
     private int depth = 10;
@@ -15,7 +14,7 @@ public class LevelController : MonoBehaviour
     private const int NEXT_TILE_OFFSET = TILESIZE;
 
     /// <summary>
-    /// Gets and Sets seed for the random generator that generates levels.
+    /// Gets or sets seed for the random generator that generates levels.
     /// </summary>
     /// <value>Any int</value>
     public int RandomSeed { get; set; }
