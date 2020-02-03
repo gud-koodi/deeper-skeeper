@@ -1,25 +1,26 @@
 {
-  "name": "Editmode",
-  "references": [
-    "UnityEngine.TestRunner",
-    "UnityEditor.TestRunner",
-    "ScriptAssembly"
-  ],
-  "includePlatforms": [
-    "Editor"
-  ],
-  "excludePlatforms": [],
-  "allowUnsafeCode": false,
-  "overrideReferences": true,
-  "precompiledReferences": [
-    "nunit.framework.dll",
-    "DarkRift.Client.dll",
-    "DarkRift.Server.dll",
-    "DarkRift.dll"
-  ],
-  "autoReferenced": false,
-  "defineConstraints": [
-    "UNITY_INCLUDE_TESTS"
-  ],
-  "versionDefines": []
+    "name": "Editmode",
+    "references": [
+        "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner",
+        "ScriptAssembly",
+        "NetworkAssembly"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll",
+        "DarkRift.Client.dll",
+        "DarkRift.Server.dll",
+        "DarkRift.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": []
 }

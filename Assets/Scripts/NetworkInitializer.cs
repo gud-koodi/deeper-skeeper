@@ -1,14 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using DarkRift;
+﻿using DarkRift;
 using DarkRift.Client.Unity;
 using DarkRift.Server.Unity;
-using System.Net;
+using Network;
+using UnityEngine;
 
 public class NetworkInitializer : MonoBehaviour
 {
-
     [Tooltip("NetworkConfig to read configurations from")]
     public NetworkConfig NetworkConfig;
 
@@ -20,7 +17,6 @@ public class NetworkInitializer : MonoBehaviour
 
     [Tooltip("Event to trigger after server is initialized")]
     public GameEvent Event;
-
 
     void Start()
     {
@@ -34,9 +30,8 @@ public class NetworkInitializer : MonoBehaviour
         {
             Server.Create();
             Event.Trigger();
+        } else {
+            Client.Connect(NetworkConfig.ip, NetworkConfig.port, IPVersion.IPv4);
         }
-
-        Client.Connect(NetworkConfig.ip, NetworkConfig.port, IPVersion.IPv4);
     }
-
 }

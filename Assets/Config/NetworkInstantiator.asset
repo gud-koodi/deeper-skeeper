@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 057ce66daaf93874fbdc1b64f30b72be, type: 3}
-  m_Name: NetworkConfig
+  m_Script: {fileID: 11500000, guid: 176c88710299a6942843336d00dc7df4, type: 3}
+  m_Name: NetworkInstantiator
   m_EditorClassIdentifier: 
-  port: 4296
-  isHost: 1
+  NetworkUpdate: {fileID: 11400000, guid: 94c434479b8bdae4f9259e3a72727d68, type: 2}
+  PlayerPrefab: {fileID: 4102942275680462718, guid: e5b11ca16646824789a38810652af2ba,
+    type: 3}

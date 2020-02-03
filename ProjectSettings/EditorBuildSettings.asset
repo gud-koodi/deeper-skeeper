@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/MasterScene.unity
     guid: 14eb298b995d15d4c97241ab52bcc911
   - enabled: 1
-    path: Assets/Scenes/ClickerTest.unity
-    guid: ec4dbf31354349246b3d519d4d04173a
+    path: Assets/Scenes/Game.unity
+    guid: cda5d1e3ef8a4b54c8ede6a645d2bdfd
   m_configObjects: {}

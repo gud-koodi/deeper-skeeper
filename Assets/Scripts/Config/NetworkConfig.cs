@@ -5,7 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NetworkConfig", menuName = "Config/NetworkConfig")]
 public class NetworkConfig : ScriptableObject, ISerializationCallbackReceiver
 {
-
     public IPAddress ip;
 
     public int port;
@@ -13,7 +12,6 @@ public class NetworkConfig : ScriptableObject, ISerializationCallbackReceiver
     public bool isHost;
 
     // These two below are required for UI elements
-
     public string Ip
     {
         set
@@ -40,7 +38,6 @@ public class NetworkConfig : ScriptableObject, ISerializationCallbackReceiver
     }
 
     // Temporary serialization resets at launch
-
     public void OnAfterDeserialize()
     {
         Ip = "127.0.0.1";
@@ -48,8 +45,5 @@ public class NetworkConfig : ScriptableObject, ISerializationCallbackReceiver
         isHost = true;
     }
 
-    public void OnBeforeSerialize()
-    {
-
-    }
+    public void OnBeforeSerialize() { }
 }

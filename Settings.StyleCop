@@ -93,56 +93,55 @@
       </AnalyzerSettings>
     </Analyzer>
     <Analyzer AnalyzerId="StyleCop.CSharp.LayoutRules">
-        <Rules>
-            <Rule Name="OpeningBracesMustNotBeFollowedByBlankLine">
-                <RuleSettings>
-                    <BooleanProperty Name="Enabled">False</BooleanProperty>
-                </RuleSettings>
-            </Rule>
-            <Rule Name="ClosingBracesMustNotBePrecededByBlankLine">
-                <RuleSettings>
-                    <BooleanProperty Name="Enabled">False</BooleanProperty>
-                </RuleSettings>
-            </Rule>
-        </Rules>
+      <Rules>
+        <Rule Name="OpeningBracesMustNotBeFollowedByBlankLine">
+          <RuleSettings>
+            <BooleanProperty Name="Enabled">False</BooleanProperty>
+          </RuleSettings>
+        </Rule>
+        <Rule Name="ClosingBracesMustNotBePrecededByBlankLine">
+          <RuleSettings>
+            <BooleanProperty Name="Enabled">False</BooleanProperty>
+          </RuleSettings>
+        </Rule>
+      </Rules>
     </Analyzer>
     <Analyzer AnalyzerId="StyleCop.CSharp.ReadabilityRules">
-        <Rules>
-            <Rule Name="PrefixCallsCorrectly">
-                <RuleSettings>
-                    <BooleanProperty Name="Enabled">False</BooleanProperty>
-                </RuleSettings>
-            </Rule>
-            <Rule Name="ClosingParenthesisMustBeOnLineOfLastParameter">
-                <RuleSettings>
-                    <BooleanProperty Name="Enabled">False</BooleanProperty>
-                </RuleSettings>
-            </Rule>
-        </Rules>
+      <Rules>
+        <Rule Name="PrefixCallsCorrectly">
+          <RuleSettings>
+            <BooleanProperty Name="Enabled">False</BooleanProperty>
+          </RuleSettings>
+        </Rule>
+        <Rule Name="ClosingParenthesisMustBeOnLineOfLastParameter">
+          <RuleSettings>
+            <BooleanProperty Name="Enabled">False</BooleanProperty>
+          </RuleSettings>
+        </Rule>
+      </Rules>
     </Analyzer>
     <Analyzer AnalyzerId="StyleCop.CSharp.MaintainabilityRules">
-        <Rules>
-            <Rule Name="AccessModifierMustBeDeclared">
-                <RuleSettings>
-                    <BooleanProperty Name="Enabled">False</BooleanProperty>
-                </RuleSettings>
-            </Rule>
-            <Rule Name="FieldsMustBePrivate">
-                <RuleSettings>
-                    <BooleanProperty Name="Enabled">False</BooleanProperty>
-                </RuleSettings>
-            </Rule>
-        </Rules>
+      <Rules>
+        <Rule Name="AccessModifierMustBeDeclared">
+          <RuleSettings>
+            <BooleanProperty Name="Enabled">False</BooleanProperty>
+          </RuleSettings>
+        </Rule>
+        <Rule Name="FieldsMustBePrivate">
+          <RuleSettings>
+            <BooleanProperty Name="Enabled">False</BooleanProperty>
+          </RuleSettings>
+        </Rule>
+      </Rules>
     </Analyzer>
-  <Analyzer AnalyzerId="StyleCop.CSharp.SpacingRules">
-        <Rules>
-            <Rule Name="ClosingParenthesisMustBeSpacedCorrectly">
-                <RuleSettings>
-                    <BooleanProperty Name="Enabled">False</BooleanProperty>
-                </RuleSettings>
-            </Rule>
-        </Rules>
+    <Analyzer AnalyzerId="StyleCop.CSharp.SpacingRules">
+      <Rules>
+        <Rule Name="ClosingParenthesisMustBeSpacedCorrectly">
+          <RuleSettings>
+            <BooleanProperty Name="Enabled">False</BooleanProperty>
+          </RuleSettings>
+        </Rule>
+      </Rules>
     </Analyzer> 
   </Analyzers>
 </StyleCopSettings>
- 
