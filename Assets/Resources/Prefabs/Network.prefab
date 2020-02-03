@@ -134,6 +134,7 @@ MonoBehaviour:
   NetworkInstantiator: {fileID: 11400000, guid: 23aafc5032efc0a47afa047ac65bcb43,
     type: 2}
   NetworkConfig: {fileID: 11400000, guid: 6b04f336c5979ec419d162818a96cae7, type: 2}
+  LevelSeed: {fileID: 11400000, guid: 717fa17bdb73f6647a1d37fc841b9dba, type: 2}
 --- !u!114 &3324792965672700166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,6 +226,7 @@ MonoBehaviour:
   Server: {fileID: 5623767655136142541}
   NetworkInstantiator: {fileID: 11400000, guid: 23aafc5032efc0a47afa047ac65bcb43,
     type: 2}
+  LevelSeed: {fileID: 11400000, guid: 717fa17bdb73f6647a1d37fc841b9dba, type: 2}
   NetworkConfig: {fileID: 11400000, guid: 6b04f336c5979ec419d162818a96cae7, type: 2}
 --- !u!114 &5623767655136142546
 MonoBehaviour:

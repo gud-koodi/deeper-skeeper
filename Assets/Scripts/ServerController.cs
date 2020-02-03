@@ -1,10 +1,10 @@
-using System;
 using System.Collections.Generic;
 using DarkRift;
 using DarkRift.Server;
 using DarkRift.Server.Unity;
 using Network;
 using UnityEngine;
+using Value;
 
 /// <summary>
 /// Component that handles all communication between the server and all clients.
@@ -16,6 +16,9 @@ public class ServerController : MonoBehaviour
 
     [Tooltip("Instantiator used to create objects")]
     public NetworkInstantiator NetworkInstantiator;
+
+    [Tooltip("Seed for creating the level.")]
+    public IntValue LevelSeed;
 
     private readonly NetworkIdPool networkIdPool = new NetworkIdPool();
 
@@ -32,6 +35,8 @@ public class ServerController : MonoBehaviour
             Debug.LogError("Server component missing.");
             return;
         }
+
+        this.LevelSeed.Value = new System.Random().Next();
 
         ushort id = networkIdPool.Next();
         Player player = new Player(id, Vector3.zero, 0);
@@ -81,7 +86,7 @@ public class ServerController : MonoBehaviour
         Player player = new Player(id, Vector3.zero, 0);
         players.Create(player);
 
-        ConnectionData data = new ConnectionData(e.Client.ID, id, players.ToArray());
+        ConnectionData data = new ConnectionData(e.Client.ID, id, LevelSeed.Value, players.ToArray());
         clientToPlayerObject[data.ClientID] = data.PlayerObjectID;
         using (Message message = Message.Create(ServerMessage.ConnectionData, data))
         {
