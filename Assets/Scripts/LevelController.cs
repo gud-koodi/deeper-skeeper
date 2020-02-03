@@ -15,13 +15,15 @@ public class LevelController : MonoBehaviour
     private const int TILESIZE = 30 * 2;
     private const int NEXT_TILE_OFFSET = TILESIZE;
 
+    /// <summary>
+    /// Seed for the random generator that generates levels.
+    /// </summary>
+    /// <value>Any int</value>
     public int RandomSeed { get; set; }
-    void Start()
-    {
-        random = new System.Random(RandomSeed);
-        GenerateNext();
-    }
 
+    /// <summary>
+    /// Generates 10 more levels down.
+    /// </summary>
     public void GenerateNext()
     {
         float nextSpawnZ = spawnPosition.position.z;
@@ -54,5 +56,11 @@ public class LevelController : MonoBehaviour
                 floorInfo.DoorWest.SetActive(false);
             }
         }
+    }
+
+    void Start()
+    {
+        random = new System.Random(RandomSeed);
+        GenerateNext();
     }
 }
