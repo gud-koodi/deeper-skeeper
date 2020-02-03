@@ -68,7 +68,7 @@ namespace Network
             Player player = message.Deserialize<Player>();
             GameObject go = this.playerObjects[player.NetworkID];
             NetworkSlave slave = go.GetComponent<NetworkSlave>();
-            slave.targetPosition = player.Position;
+            slave.UpdateState(player);
             int index = this.players.FindIndex(p => p.NetworkID == player.NetworkID);
             this.players[index] = player;
         }
@@ -106,7 +106,9 @@ namespace Network
         {
             ushort id = this.playerObjects.LookUpNetworkID(playerObject);
             Player player = this.players.Find(p => p.NetworkID == id);
-            player.Position = playerObject.transform.localPosition;
+            player.CurrentPosition = playerObject.transform.localPosition;
+            player.Rotation = playerObject.GetComponent<Rigidbody>().rotation.eulerAngles.y;
+            player.TargetPosition = playerObject.transform.localPosition;
             return Message.Create(tag, player);
         }
 

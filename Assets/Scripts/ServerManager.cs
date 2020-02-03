@@ -34,7 +34,7 @@ public class ServerManager : MonoBehaviour
         }
 
         ushort id = networkIdPool.Next();
-        Player player = new Player(id, Vector3.zero);
+        Player player = new Player(id, Vector3.zero, 0);
         players.Create(player, true);
 
         DarkRiftServer server = Server.Server;
@@ -78,7 +78,7 @@ public class ServerManager : MonoBehaviour
     {
         e.Client.MessageReceived += OnMessageReceived;
         ushort id = networkIdPool.Next();
-        Player player = new Player(id, Vector3.zero);
+        Player player = new Player(id, Vector3.zero, 0);
         players.Create(player);
 
         ConnectionData data = new ConnectionData(e.Client.ID, id, players.ToArray());

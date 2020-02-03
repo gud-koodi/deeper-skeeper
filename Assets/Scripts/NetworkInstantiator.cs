@@ -15,7 +15,7 @@ namespace Network
 
         internal GameObject InstantiatePlayer(Player player, bool masterObject = false)
         {
-            GameObject go = Instantiate(PlayerPrefab, player.Position, Quaternion.identity);
+            GameObject go = Instantiate(PlayerPrefab, player.CurrentPosition, Quaternion.identity);
             if (masterObject)
             {
                 go.AddComponent<PlayerController>();
@@ -27,8 +27,12 @@ namespace Network
 
                 NetworkMaster master = go.AddComponent<NetworkMaster>();
                 master.UpdateEvent = NetworkUpdate;
-            } else {
+            }
+            else
+            {
                 NetworkSlave slave = go.AddComponent<NetworkSlave>();
+                slave.Rigidbody = go.GetComponent<Rigidbody>();
+                slave.UpdateState(player);
             }
             return go;
         }
