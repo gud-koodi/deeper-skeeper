@@ -3,7 +3,7 @@ name: CI
 on: [push]
 
 env:
-  BUILD_NAME: ExampleProjectName
+  BUILD_NAME: DeeperSkeeper
   UNITY_LICENSE_CONTENT: ${{ secrets.UNITY_LICENSE_CONTENT }}
   UNITY_ACTIVATION_FILE: ./unity3d.alf
 
