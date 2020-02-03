@@ -1308,7 +1308,7 @@ MonoBehaviour:
   playerRigidbody: {fileID: 1809302968060907719}
   speed: 10
   weapon: {fileID: 1809302969680614725}
-  hitSpeed: 1.5
+  hitSpeed: 3
 --- !u!114 &2145865879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1358,6 +1358,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4102942275680462718, guid: e5b11ca16646824789a38810652af2ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4102942275680462713, guid: e5b11ca16646824789a38810652af2ba,
         type: 3}
