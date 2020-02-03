@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
         {
             playerRigidbody.velocity = new Vector3(mH * speed, playerRigidbody.velocity.y, mV * speed);
         }
+        
         if (System.Math.Abs(mH) > 0 || System.Math.Abs(mV) > 0)
         {
             animator.SetBool("isWalking", true);
