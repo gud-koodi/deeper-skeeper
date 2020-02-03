@@ -237,6 +237,48 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3378945453711721705, guid: 48ce09d3554350a47bbe8b293aa02d9d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3378945453493729153, guid: 48ce09d3554350a47bbe8b293aa02d9d,
+        type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: 6b04f336c5979ec419d162818a96cae7,
+        type: 2}
+    - target: {fileID: 3378945453493729153, guid: 48ce09d3554350a47bbe8b293aa02d9d,
+        type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_Ip
+      objectReference: {fileID: 0}
+    - target: {fileID: 3378945453711721707, guid: 48ce09d3554350a47bbe8b293aa02d9d,
+        type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3378945453711721707, guid: 48ce09d3554350a47bbe8b293aa02d9d,
+        type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: 6b04f336c5979ec419d162818a96cae7,
+        type: 2}
+    - target: {fileID: 3378945453711721707, guid: 48ce09d3554350a47bbe8b293aa02d9d,
+        type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_Port
+      objectReference: {fileID: 0}
+    - target: {fileID: 3378945453711721707, guid: 48ce09d3554350a47bbe8b293aa02d9d,
+        type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3378945453711721707, guid: 48ce09d3554350a47bbe8b293aa02d9d,
+        type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48ce09d3554350a47bbe8b293aa02d9d, type: 3}
 --- !u!1 &994327996
