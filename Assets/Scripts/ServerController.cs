@@ -9,7 +9,7 @@ using UnityEngine;
 /// <summary>
 /// Component that handles all communication between the server and all clients.
 /// </summary>
-public class ServerManager : MonoBehaviour
+public class ServerController : MonoBehaviour
 {
     [Tooltip("The server component this script will communicate with")]
     public XmlUnityServer Server;

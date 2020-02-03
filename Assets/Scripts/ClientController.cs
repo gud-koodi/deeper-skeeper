@@ -7,7 +7,7 @@ using DarkRift.Client.Unity;
 using Network;
 using UnityEngine;
 
-public class PlayerSpawner : MonoBehaviour
+public class ClientController : MonoBehaviour
 {
     [Tooltip("The server component this script will communicate with.")]
     public UnityClient client;
