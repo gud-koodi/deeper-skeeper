@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
         animator = playerRigidbody.gameObject.GetComponent<Animator>();
         animator.SetFloat("hitSpeed", hitSpeed);
         weapon.AttackDuration = weapon.AttackDuration / hitSpeed;
-        animator.SetBool("isWalking", true);
     }
 
     // Update is called once per frame
@@ -40,6 +39,14 @@ public class PlayerController : MonoBehaviour
         {
             playerRigidbody.velocity = new Vector3(mH * speed, playerRigidbody.velocity.y, mV * speed);
         }
+        if (System.Math.Abs(mH) > 0 || System.Math.Abs(mV) > 0)
+        {
+            animator.SetBool("isWalking", true);
+        }
+        else
+        {
+            animator.SetBool("isWalking", false);
+        }
     }
 
     private void ApplyRotation()
@@ -58,11 +65,6 @@ public class PlayerController : MonoBehaviour
         newPos.y = 0f;
         playerRigidbody.rotation = Quaternion.FromToRotation(Vector3.forward, newPos);
 
-    }
-
-    float AngleBetweenTwoPoints(Vector3 a, Vector3 b)
-    {
-        return Mathf.Atan2(a.y - b.y, a.x - b.x) * Mathf.Rad2Deg;
     }
 
     private void HandleWeaponAttack()
