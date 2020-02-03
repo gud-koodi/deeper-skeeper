@@ -72,6 +72,6 @@ crashlytics-build.properties
 Data/
 InitTestScene*
 Stylecop.Cache
-.vscode
-VSCode/
+.vscode/
+Assets/VSCode/
 VSCode*
