@@ -1,10 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using Value;
 
-public class LevelController : MonoBehaviour
+public class LevelController : MonoBehaviour, ICallable<int>
 {
     public Transform spawnPosition;
+
+    [Tooltip("Seed for level generation.")]
+    public IntValue LevelSeed;
+
     private GameObject currentLevel;
     private GameObject nextLevel;
     private int depth = 10;
@@ -18,6 +21,16 @@ public class LevelController : MonoBehaviour
     /// </summary>
     /// <value>Any int</value>
     public int RandomSeed { get; set; }
+
+    /// <summary>
+    /// Sets the seed and calls level generation.
+    /// </summary>
+    /// <param name="seed">Random seed.</param>
+    public void Call(int seed)
+    {
+        this.random = new System.Random(seed);
+        this.GenerateNext();
+    }
 
     /// <summary>
     /// Generates 10 more levels down.
@@ -56,9 +69,14 @@ public class LevelController : MonoBehaviour
         }
     }
 
+    void Awake()
+    {
+        this.LevelSeed.Subscribe(this);
+    }
+
     void Start()
     {
         random = new System.Random(RandomSeed);
-        GenerateNext();
+        //// GenerateNext();
     }
 }

@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: NetworkInstantiator
   m_EditorClassIdentifier: 
   NetworkUpdate: {fileID: 11400000, guid: 94c434479b8bdae4f9259e3a72727d68, type: 2}
+  MasterPlayerCreated: {fileID: 11400000, guid: bbbd17bf8d25b2b4cb7d40684b9e9673,
+    type: 2}
   PlayerPrefab: {fileID: 4102942275680462718, guid: e5b11ca16646824789a38810652af2ba,
     type: 3}

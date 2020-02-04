@@ -6,6 +6,7 @@ using DarkRift.Client;
 using DarkRift.Client.Unity;
 using Network;
 using UnityEngine;
+using Value;
 
 public class ClientController : MonoBehaviour
 {
@@ -15,10 +16,11 @@ public class ClientController : MonoBehaviour
     [Tooltip("Instantiator used to create objects")]
     public NetworkInstantiator NetworkInstantiator;
 
+    [Tooltip("Network configuration to read check host status from.")]
     public NetworkConfig NetworkConfig;
 
-    // Locally created objects are temporally stored by their instance IDs until server.
-    // private readonly Dictionary<int, GameObject> localPlayers = new Dictionary<int, GameObject>();
+    [Tooltip("Seed for generating level.")]
+    public IntValue LevelSeed;
 
     private PlayerList players;
 
@@ -67,8 +69,12 @@ public class ClientController : MonoBehaviour
     private void SetupServerData(MessageReceivedEventArgs e)
     {
         ConnectionData data;
-        using (Message message = e.GetMessage()) { data = message.Deserialize<ConnectionData>(); }
-
+        using (Message message = e.GetMessage())
+        {
+            data = message.Deserialize<ConnectionData>();
+        }
+        
+        this.LevelSeed.Value = data.LevelSeed;
         ushort clientId = data.ClientID;
         Debug.Log("Client id is " + clientId);
 
