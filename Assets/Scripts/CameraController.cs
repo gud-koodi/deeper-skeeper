@@ -7,9 +7,12 @@ public class CameraController : MonoBehaviour
     public GameObject Player;
     private Vector3 offset;
     
+    /// <summary>
+    /// Sets wich player to follow.
+    /// </summary>
+    /// <param name="player">Player GameObject</param>
     public void SetFollowedPlayer(GameObject player)
     {
-        Debug.Log("pls");
         this.Player = player;
         this.offset = transform.position - player.transform.position;
     }

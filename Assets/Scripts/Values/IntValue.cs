@@ -6,16 +6,20 @@ namespace Value
     [CreateAssetMenu(fileName = "IntValue", menuName = "Value/IntValue")]
     public class IntValue : ScriptableObject
     {
+        private readonly HashSet<ICallable<int>> listeners = new HashSet<ICallable<int>>();
         private int internalValue = 0;
 
-        private readonly HashSet<ICallable<int>> listeners = new HashSet<ICallable<int>>();
-
+        /// <summary>
+        /// Gets or sets value.
+        /// </summary>
+        /// <value>integer</value>
         public int Value
         {
             get
             {
                 return internalValue;
             }
+            
             set
             {
                 internalValue = value;

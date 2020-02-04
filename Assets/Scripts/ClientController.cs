@@ -73,6 +73,7 @@ public class ClientController : MonoBehaviour
         {
             data = message.Deserialize<ConnectionData>();
         }
+        
         this.LevelSeed.Value = data.LevelSeed;
         ushort clientId = data.ClientID;
         Debug.Log("Client id is " + clientId);
