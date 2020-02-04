@@ -7,16 +7,17 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     public Rigidbody playerRigidbody;
     public float speed;
-
+    public float hitSpeed;
     public Weapon weapon;
     private Animator animator;
-    public float hitSpeed;
+    private bool isAttacking;
 
     void Start()
     {
         animator = playerRigidbody.gameObject.GetComponent<Animator>();
         animator.SetFloat("hitSpeed", hitSpeed);
         weapon.AttackDuration = weapon.AttackDuration / hitSpeed;
+        isAttacking = false;
     }
 
     // Update is called once per frame
@@ -31,7 +32,7 @@ public class PlayerController : MonoBehaviour
     {
         float mH = Input.GetAxis("Horizontal");
         float mV = Input.GetAxis("Vertical");
-        if (playerRigidbody.velocity.y < -10)
+        if (playerRigidbody.velocity.y < -10 || isAttacking)
         {
             playerRigidbody.velocity = new Vector3(0, playerRigidbody.velocity.y, 0);
         }
@@ -76,7 +77,8 @@ public class PlayerController : MonoBehaviour
         {
             weapon.Attack();
             animator.SetBool("isAttacking", true);
-            StartCoroutine(WaitAttack());
+            isAttacking = true;
+            StartCoroutine(WaitAttack());     
         }
     }
 
@@ -85,6 +87,7 @@ public class PlayerController : MonoBehaviour
         yield return null;
         animator.SetBool("isAttacking", false);
         yield return new WaitForSeconds(weapon.AttackDuration);
+        isAttacking = false;
     }
 
 }
