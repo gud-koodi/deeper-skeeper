@@ -55,17 +55,19 @@ public class PlayerController : MonoBehaviour
         RotationByMouse();
     }
 
+    /// <summary>
+    /// Turns the player towards the point cast from mouse to the point on same y-level as the player.
+    /// </summary>
     private void RotationByMouse()
     {
-
         Vector3 mouse = Input.mousePosition;
+        Ray mouseRay = Camera.main.ScreenPointToRay(new Vector3(mouse.x, mouse.y));
 
-        Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(new Vector3(mouse.x, mouse.y, 1f));
-        //go.transform.position = mouseWorld;
-        Vector3 newPos = mouseWorld - Camera.main.transform.position;
-        newPos.y = 0f;
-        playerRigidbody.rotation = Quaternion.FromToRotation(Vector3.forward, newPos);
-
+        //  origin + distance * direction = target -- target.y is player's y-coordinate
+        float distance = (playerRigidbody.position.y - mouseRay.origin.y) / mouseRay.direction.y;
+        Vector3 target = mouseRay.GetPoint(distance) - playerRigidbody.position;
+        target.y = 0; // Just in case
+        playerRigidbody.rotation = Quaternion.LookRotation(target);
     }
 
     private void HandleWeaponAttack()
