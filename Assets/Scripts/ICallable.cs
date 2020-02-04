@@ -6,6 +6,6 @@ public interface ICallable<T>
     /// <summary>
     /// Calls object.
     /// </summary>
-    /// <param name="t">any</param>
+    /// <typeparam name="t">Generic type.</typeparam>
     void Call(T t);
 }

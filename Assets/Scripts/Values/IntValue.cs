@@ -4,6 +4,10 @@ namespace Value
     using UnityEngine;
 
     [CreateAssetMenu(fileName = "IntValue", menuName = "Value/IntValue")]
+
+    /// <summary>
+    /// IntValue class.
+    /// </summary>
     public class IntValue : ScriptableObject
     {
         private readonly HashSet<ICallable<int>> listeners = new HashSet<ICallable<int>>();
@@ -12,7 +16,7 @@ namespace Value
         /// <summary>
         /// Gets or sets value.
         /// </summary>
-        /// <value>integer</value>
+        /// <value>Integer value.</value>
         public int Value
         {
             get
