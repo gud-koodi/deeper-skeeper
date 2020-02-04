@@ -80,9 +80,8 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator WaitAttack()
     {
-        yield return null;
-        animator.SetBool("isAttacking", false);
         yield return new WaitForSeconds(weapon.AttackDuration);
+        animator.SetBool("isAttacking", false);
     }
 
 }
