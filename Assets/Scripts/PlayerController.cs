@@ -21,10 +21,13 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         ApplyMovement();
-        ApplyRotation();
+        if (!isAttacking)
+        {
+            ApplyRotation();
+        }
         HandleWeaponAttack();
     }
 
@@ -32,13 +35,10 @@ public class PlayerController : MonoBehaviour
     {
         float mH = Input.GetAxis("Horizontal");
         float mV = Input.GetAxis("Vertical");
-        if (playerRigidbody.velocity.y < -10 || isAttacking)
+        if (playerRigidbody.velocity.y >= -10)
         {
-            playerRigidbody.velocity = new Vector3(0, playerRigidbody.velocity.y, 0);
-        }
-        else
-        {
-            playerRigidbody.velocity = new Vector3(mH * speed, playerRigidbody.velocity.y, mV * speed);
+            Vector3 movement = (isAttacking) ? Vector3.zero : speed * new Vector3(mH, 0, mV).normalized;
+            playerRigidbody.velocity = movement + Vector3.up * playerRigidbody.velocity.y;
         }
         
         if (System.Math.Abs(mH) > 0 || System.Math.Abs(mV) > 0)
