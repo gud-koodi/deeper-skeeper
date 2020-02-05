@@ -34,12 +34,7 @@ public class CameraController : MonoBehaviour
             transform.position = player.transform.position - (Distance * direction);
         };
     }
-
-    void Awake()
-    {
-        this.SetFollowedPlayer(gameObject);
-    }
-
+    
     void LateUpdate()
     {
         updateStrategy();

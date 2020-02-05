@@ -40,9 +40,10 @@ public class LevelController : MonoBehaviour, ICallable<int>
         float nextSpawnZ = spawnPosition.position.z;
         float nextSpawnX = spawnPosition.position.x;
         FloorInfo floorInfo;
-        for (int i = 0; i < depth; i++)
+        GameObject prefab = (GameObject)Resources.Load("Prefabs/Floor1", typeof(GameObject));
+        int i = 0;
+        for (; i < depth; i++)
         {
-            GameObject prefab = (GameObject)Resources.Load("Prefabs/Floor1", typeof(GameObject));
             nextLevel = Instantiate(prefab, new Vector3(nextSpawnX, -YDISTANCE * (i + 1), nextSpawnZ), prefab.transform.rotation);
             floorInfo = nextLevel.GetComponent<FloorInfo>();
             int direction = random.Next(1, 4);
@@ -67,6 +68,8 @@ public class LevelController : MonoBehaviour, ICallable<int>
                 floorInfo.DoorWest.SetActive(false);
             }
         }
+        
+        nextLevel = Instantiate(prefab, new Vector3(nextSpawnX, -YDISTANCE * (i + 1), nextSpawnZ), prefab.transform.rotation);
     }
 
     void Awake()
