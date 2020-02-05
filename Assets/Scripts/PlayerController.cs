@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
         {
             ApplyRotation();
         }
+
         HandleWeaponAttack();
     }
 
@@ -37,10 +38,10 @@ public class PlayerController : MonoBehaviour
         float mV = Input.GetAxis("Vertical");
         if (playerRigidbody.velocity.y >= -10)
         {
-            Vector3 movement = (isAttacking) ? Vector3.zero : speed * new Vector3(mH, 0, mV).normalized;
+            Vector3 movement = isAttacking ? Vector3.zero : (speed * new Vector3(mH, 0, mV).normalized);
             playerRigidbody.velocity = movement + Vector3.up * playerRigidbody.velocity.y;
         }
-        
+
         if (System.Math.Abs(mH) > 0 || System.Math.Abs(mV) > 0)
         {
             animator.SetBool("isWalking", true);
@@ -78,7 +79,7 @@ public class PlayerController : MonoBehaviour
             weapon.Attack();
             animator.SetBool("isAttacking", true);
             isAttacking = true;
-            StartCoroutine(WaitAttack());     
+            StartCoroutine(WaitAttack());
         }
     }
 
