@@ -44,8 +44,6 @@ namespace Network
                 PlayerController pc = go.GetComponent<PlayerController>();
                 pc.playerRigidbody = go.GetComponent<Rigidbody>();
                 pc.weapon = go.GetComponentInChildren<Weapon>();
-                pc.hitSpeed = 1.5f;
-                pc.speed = 10f;
 
                 NetworkMaster master = go.AddComponent<NetworkMaster>();
                 master.UpdateEvent = NetworkUpdate;
