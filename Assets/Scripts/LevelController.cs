@@ -68,6 +68,7 @@ public class LevelController : MonoBehaviour, ICallable<int>
                 floorInfo.DoorWest.SetActive(false);
             }
         }
+        
         nextLevel = Instantiate(prefab, new Vector3(nextSpawnX, -YDISTANCE * (i + 1), nextSpawnZ), prefab.transform.rotation);
     }
 
