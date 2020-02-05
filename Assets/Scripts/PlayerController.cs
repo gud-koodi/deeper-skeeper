@@ -38,8 +38,8 @@ public class PlayerController : MonoBehaviour
         float mV = Input.GetAxis("Vertical");
         if (playerRigidbody.velocity.y >= -10)
         {
-            Vector3 movement = isAttacking ? Vector3.zero : (speed * new Vector3(mH, 0, mV).normalized);
-            playerRigidbody.velocity = movement + Vector3.up * playerRigidbody.velocity.y;
+            Vector3 movement = isAttacking ? Vector3.zero : speed * new Vector3(mH, 0, mV).normalized;
+            playerRigidbody.velocity = movement + (Vector3.up * playerRigidbody.velocity.y);
         }
 
         if (System.Math.Abs(mH) > 0 || System.Math.Abs(mV) > 0)
