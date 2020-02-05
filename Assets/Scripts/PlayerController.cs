@@ -6,8 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     // Start is called before the first frame update
     public Rigidbody playerRigidbody;
-    public float speed;
-    public float hitSpeed;
+    public float speed = 15f;
+    public float hitSpeed = 3f;
     public Weapon weapon;
     private Animator animator;
     private bool isAttacking;
