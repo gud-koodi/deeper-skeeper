@@ -8,19 +8,19 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     /// <summary>
-    /// Strategy for updating the camera position.
-    /// </summary>
-    private delegate void UpdateStrategy();
-
-    /// <summary>
     /// Distance from followed object.
     /// </summary>
     public float Distance = 25f;
 
     /// <summary>
-    /// Implementation of <see cref="UpdateStrategy" />
+    /// Strategy for updating the camera position.
     /// </summary>
     private UpdateStrategy updateStrategy = () => { };
+
+    /// <summary>
+    /// Strategy for updating the camera position.
+    /// </summary>
+    private delegate void UpdateStrategy();
 
     /// <summary>
     /// Sets the followed <see cref="GameObject" />
@@ -31,7 +31,7 @@ public class CameraController : MonoBehaviour
         Vector3 direction = transform.rotation * Vector3.forward;
         this.updateStrategy = () =>
         {
-            transform.position = player.transform.position - Distance * direction;
+            transform.position = player.transform.position - (Distance * direction);
         };
     }
 
