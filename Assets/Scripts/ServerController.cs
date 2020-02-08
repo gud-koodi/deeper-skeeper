@@ -26,7 +26,7 @@ public class ServerController : MonoBehaviour
 
     public NetworkConfig NetworkConfig;
 
-    private PlayerList players;
+    private PlayerManager players;
 
     public void Initialize()
     {
@@ -40,7 +40,7 @@ public class ServerController : MonoBehaviour
 
         ushort id = networkIdPool.Next();
         Player player = new Player(id, Vector3.zero, 0);
-        players.Create(player, true);
+        players.Create(this.NetworkInstantiator.PlayerPrefab, player, true);
 
         DarkRiftServer server = Server.Server;
         server.ClientManager.ClientConnected += OnClientConnect;
@@ -50,7 +50,7 @@ public class ServerController : MonoBehaviour
     public void SendObject(GameObject gameObject)
     {
         // TODO: Distinguish between different network objects
-        using (Message message = players.SerializeUpdate(gameObject, ServerMessage.UpdatePlayer))
+        using (Message message = players.UpdateAndSerialize(gameObject, ServerMessage.UpdatePlayer))
         {
             foreach (var client in Server.Server.ClientManager.GetAllClients())
             {
@@ -66,7 +66,7 @@ public class ServerController : MonoBehaviour
             Debug.Log("Server manager shutting up.");
             gameObject.SetActive(false);
         }
-        players = new PlayerList(NetworkInstantiator);
+        players = new PlayerManager(this.NetworkInstantiator.MasterPlayerCreated, this.NetworkInstantiator.NetworkUpdate);
     }
 
     void OnDestroy()
@@ -84,7 +84,7 @@ public class ServerController : MonoBehaviour
         e.Client.MessageReceived += OnMessageReceived;
         ushort id = networkIdPool.Next();
         Player player = new Player(id, Vector3.zero, 0);
-        players.Create(player);
+        players.Create(this.NetworkInstantiator.PlayerPrefab, player);
 
         ConnectionData data = new ConnectionData(e.Client.ID, id, LevelSeed.Value, players.ToArray());
         clientToPlayerObject[data.ClientID] = data.PlayerObjectID;
@@ -142,7 +142,7 @@ public class ServerController : MonoBehaviour
     {
         using (Message message = e.GetMessage())
         {
-            players.DeserializeUpdate(message);
+            players.DeserializeAndUpdate(message);
             foreach (var client in Server.Server.ClientManager.GetAllClients())
             {
                 if (client.ID != e.Client.ID)

@@ -6,7 +6,7 @@ namespace Network
     /// <summary>
     /// Serialization data class for player GameObjects.
     /// </summary>
-    public class Player : IDarkRiftSerializable
+    public class Player : INetworkSerializable
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Player"/> class.

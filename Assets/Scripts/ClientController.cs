@@ -22,12 +22,12 @@ public class ClientController : MonoBehaviour
     [Tooltip("Seed for generating level.")]
     public IntValue LevelSeed;
 
-    private PlayerList players;
+    private PlayerManager players;
 
     public void SendObject(GameObject gameObject)
     {
         // TODO: Distinguish between different network objects
-        using (Message message = players.SerializeUpdate(gameObject, ClientMessage.UpdatePlayer))
+        using (Message message = players.UpdateAndSerialize(gameObject, ClientMessage.UpdatePlayer))
         {
             client.SendMessage(message, SendMode.Unreliable);
         }
@@ -40,7 +40,7 @@ public class ClientController : MonoBehaviour
             Debug.Log("Client manager shutting up.");
             gameObject.SetActive(false);
         }
-        players = new PlayerList(NetworkInstantiator);
+        this.players = new PlayerManager(this.NetworkInstantiator.MasterPlayerCreated, this.NetworkInstantiator.NetworkUpdate);
         if (client != null)
         {
             client.MessageReceived += OnResponse;
@@ -80,20 +80,23 @@ public class ClientController : MonoBehaviour
 
         foreach (Player player in data.Players)
         {
-            players.Create(player, player.NetworkID == data.PlayerObjectID);
+            players.Create(this.NetworkInstantiator.PlayerPrefab, player, player.NetworkID == data.PlayerObjectID);
         }
     }
 
     private void CreatePlayer(MessageReceivedEventArgs e)
     {
-        using (Message message = e.GetMessage()) { players.Create(message.Deserialize<Player>()); }
+        using (Message message = e.GetMessage())
+        {
+            players.Create(this.NetworkInstantiator.PlayerPrefab, message.Deserialize<Player>());
+        }
     }
 
     private void UpdatePlayer(MessageReceivedEventArgs e)
     {
         using (Message message = e.GetMessage())
         {
-            players.DeserializeUpdate(message);
+            players.DeserializeAndUpdate(message);
         }
     }
 
