@@ -1,6 +1,9 @@
-namespace Network
+namespace GudKoodi.DeeperSkeeper.Network
 {
     using UnityEngine;
+    using Event;
+    using DeeperSkeeper.Player;
+    using Weapon;
 
     internal class PlayerManager : ObjectManager<Player>
     {

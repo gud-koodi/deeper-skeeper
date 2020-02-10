@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using Value;
+using GudKoodi.DeeperSkeeper.Value;
 
 public class LevelController : MonoBehaviour, ICallable<int>
 {

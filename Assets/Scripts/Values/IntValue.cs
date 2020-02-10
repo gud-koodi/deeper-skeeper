@@ -1,4 +1,4 @@
-namespace Value
+namespace GudKoodi.DeeperSkeeper.Value
 {
     using System.Collections.Generic;
     using UnityEngine;

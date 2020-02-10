@@ -1,7 +1,6 @@
-using System;
 using System.Collections.Generic;
 
-namespace Network
+namespace GudKoodi.DeeperSkeeper.Network
 {
     /// <summary>
     /// Class for handling out sequential ids for objects and help with cache locality by recycling old ids.
