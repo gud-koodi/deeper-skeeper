@@ -1,4 +1,4 @@
-namespace Network
+namespace GudKoodi.DeeperSkeeper.Network
 {
     using UnityEngine;
 

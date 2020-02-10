@@ -1,6 +1,7 @@
-namespace Network
+namespace GudKoodi.DeeperSkeeper.Network
 {
     using UnityEngine;
+    using DeeperSkeeper.Event;
 
     public class NetworkMaster : MonoBehaviour
     {

@@ -1,18 +1,22 @@
 {
-  "name": "ScriptAssembly",
-  "references": [
-    "DarkRiftAssembly",
-    "DebugDrawingExtensionsAssembly",
-    "NetworkAssembly"
-  ],
-  "includePlatforms": [],
-  "excludePlatforms": [
-    "WSA"
-  ],
-  "allowUnsafeCode": false,
-  "overrideReferences": false,
-  "precompiledReferences": [],
-  "autoReferenced": true,
-  "defineConstraints": [],
-  "versionDefines": []
+    "name": "ScriptAssembly",
+    "references": [
+        "DarkRiftAssembly",
+        "DebugDrawingExtensionsAssembly",
+        "NetworkAssembly",
+        "EventAssembly",
+        "ValueAssembly",
+        "PlayerAssembly",
+        "WeaponAssembly"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [
+        "WSA"
+    ],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
 }

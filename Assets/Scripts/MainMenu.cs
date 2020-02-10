@@ -1,4 +1,4 @@
-﻿using Network;
+﻿using GudKoodi.DeeperSkeeper.Network;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
