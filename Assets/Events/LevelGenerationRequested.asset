@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c460f6666ddf214c9a7cad1ea77f14e, type: 3}
-  m_Name: MasterPlayerCreated
+  m_Script: {fileID: 11500000, guid: c78ef51b2f78fa843b0b0fc1938c5d1a, type: 3}
+  m_Name: LevelGenerationRequested
   m_EditorClassIdentifier: 

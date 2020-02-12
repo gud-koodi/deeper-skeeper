@@ -3,9 +3,12 @@
     using DarkRift;
     using DarkRift.Client;
     using DarkRift.Client.Unity;
+    using Event;
     using UnityEngine;
-    using Value;
 
+    /// <summary>
+    /// Component that handles all communication to server.
+    /// </summary>
     public class ClientController : MonoBehaviour
     {
         [Tooltip("The server component this script will communicate with.")]
@@ -17,8 +20,11 @@
         [Tooltip("Network configuration to read check host status from.")]
         public NetworkConfig NetworkConfig;
 
-        [Tooltip("Seed for generating level.")]
-        public IntValue LevelSeed;
+        /// <summary>
+        /// Level generation request event.
+        /// </summary>
+        [Tooltip("Level generation request event")]
+        public LevelGenerationRequested LevelGenerationRequested;
 
         private PlayerManager players;
 
@@ -38,7 +44,7 @@
                 Debug.Log("Client manager shutting up.");
                 gameObject.SetActive(false);
             }
-            this.players = new PlayerManager(this.NetworkInstantiator.MasterPlayerCreated, this.NetworkInstantiator.NetworkUpdate);
+            this.players = new PlayerManager(this.NetworkInstantiator.MasterPlayerCreated, this.NetworkInstantiator.PlayerUpdateRequested);
             if (client != null)
             {
                 client.MessageReceived += OnResponse;
@@ -72,7 +78,7 @@
                 data = message.Deserialize<ConnectionData>();
             }
             
-            this.LevelSeed.Value = data.LevelSeed;
+            LevelGenerationRequested.Trigger(data.LevelSeed);
             ushort clientId = data.ClientID;
             Debug.Log("Client id is " + clientId);
 

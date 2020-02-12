@@ -4,8 +4,8 @@ namespace GudKoodi.DeeperSkeeper.Network
     using DarkRift;
     using DarkRift.Server;
     using DarkRift.Server.Unity;
+    using Event;
     using UnityEngine;
-    using Value;
 
     /// <summary>
     /// Component that handles all communication between the server and all clients.
@@ -18,8 +18,11 @@ namespace GudKoodi.DeeperSkeeper.Network
         [Tooltip("Instantiator used to create objects")]
         public NetworkInstantiator NetworkInstantiator;
 
-        [Tooltip("Seed for creating the level.")]
-        public IntValue LevelSeed;
+        /// <summary>
+        /// Level generation request event.
+        /// </summary>
+        [Tooltip("Level generation request event")]
+        public LevelGenerationRequested LevelGenerationRequested;
 
         private readonly NetworkIdPool networkIdPool = new NetworkIdPool();
 
@@ -29,6 +32,11 @@ namespace GudKoodi.DeeperSkeeper.Network
 
         private PlayerManager players;
 
+        /// <summary>
+        /// Level seed for the game.
+        /// </summary>
+        private int levelSeed = -1;
+
         public void Initialize()
         {
             if (Server == null)
@@ -37,7 +45,8 @@ namespace GudKoodi.DeeperSkeeper.Network
                 return;
             }
 
-            this.LevelSeed.Value = new System.Random().Next();
+            this.levelSeed = new System.Random().Next();
+            this.LevelGenerationRequested.Trigger(levelSeed);
 
             ushort id = networkIdPool.Next();
             Player player = new Player(id, Vector3.zero, 0);
@@ -67,7 +76,7 @@ namespace GudKoodi.DeeperSkeeper.Network
                 Debug.Log("Server manager shutting up.");
                 gameObject.SetActive(false);
             }
-            players = new PlayerManager(this.NetworkInstantiator.MasterPlayerCreated, this.NetworkInstantiator.NetworkUpdate);
+            players = new PlayerManager(this.NetworkInstantiator.MasterPlayerCreated, this.NetworkInstantiator.PlayerUpdateRequested);
         }
 
         void OnDestroy()
@@ -87,7 +96,7 @@ namespace GudKoodi.DeeperSkeeper.Network
             Player player = new Player(id, Vector3.zero, 0);
             players.Create(this.NetworkInstantiator.PlayerPrefab, player);
 
-            ConnectionData data = new ConnectionData(e.Client.ID, id, LevelSeed.Value, players.ToArray());
+            ConnectionData data = new ConnectionData(e.Client.ID, id, levelSeed, players.ToArray());
             clientToPlayerObject[data.ClientID] = data.PlayerObjectID;
             using (Message message = Message.Create(ServerMessage.ConnectionData, data))
             {

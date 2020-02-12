@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aabd62c0998472c46b561a269e402316, type: 3}
-  m_Name: NetworkUpdate
+  m_Script: {fileID: 11500000, guid: b756ec30e70baef4d8f19b173281b278, type: 3}
+  m_Name: PlayerUpdateRequested
   m_EditorClassIdentifier: 

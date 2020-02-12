@@ -8,7 +8,8 @@ namespace GudKoodi.DeeperSkeeper.Network
         private const float MOVEMENT_UPDATE_TRESHOLD = 0.5f;
         private const float ROTATION_UPDATE_TRESHOD = 30f;
 
-        public GameEvent UpdateEvent;
+        ////public GameEvent UpdateEvent;
+        public ObjectUpdateRequested ObjectUpdateRequested;
 
         private Vector3 oldPosition;
 
@@ -29,7 +30,7 @@ namespace GudKoodi.DeeperSkeeper.Network
             {
                 this.oldPosition = currentPosition;
                 this.oldRotation = currentRotation;
-                UpdateEvent.Trigger(gameObject);
+                this.ObjectUpdateRequested.Trigger(gameObject);
             }
         }
     }
