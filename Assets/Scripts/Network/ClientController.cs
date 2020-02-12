@@ -3,8 +3,8 @@
     using DarkRift;
     using DarkRift.Client;
     using DarkRift.Client.Unity;
+    using Event;
     using UnityEngine;
-    using Value;
 
     /// <summary>
     /// Component that handles all communication to server.
@@ -20,8 +20,11 @@
         [Tooltip("Network configuration to read check host status from.")]
         public NetworkConfig NetworkConfig;
 
-        [Tooltip("Seed for generating level.")]
-        public IntValue LevelSeed;
+        /// <summary>
+        /// Level generation request event.
+        /// </summary>
+        [Tooltip("Level generation request event")]
+        public LevelGenerationRequested LevelGenerationRequested;
 
         private PlayerManager players;
 
@@ -75,7 +78,7 @@
                 data = message.Deserialize<ConnectionData>();
             }
             
-            this.LevelSeed.Value = data.LevelSeed;
+            LevelGenerationRequested.Trigger(data.LevelSeed);
             ushort clientId = data.ClientID;
             Debug.Log("Client id is " + clientId);
 

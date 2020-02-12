@@ -3,7 +3,7 @@ namespace GudKoodi.DeeperSkeeper.Event
     using UnityEngine;
 
     /// <summary>
-    /// Event for reacting to object updates.
+    /// Event for requesting object updates.
     /// </summary>
     [CreateAssetMenu(fileName = "ObjectUpdateRequested", menuName = "Event/ObjectUpdateRequested")]
     public class ObjectUpdateRequested : BaseEvent<GameObject, object, object, object>
