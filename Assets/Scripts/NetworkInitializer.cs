@@ -1,9 +1,9 @@
 ﻿using DarkRift;
 using DarkRift.Client.Unity;
 using DarkRift.Server.Unity;
-using UnityEngine;
-using GudKoodi.DeeperSkeeper.Event;
+using Event = GudKoodi.DeeperSkeeper.Event.Event;
 using GudKoodi.DeeperSkeeper.Network;
+using UnityEngine;
 
 public class NetworkInitializer : MonoBehaviour
 {
@@ -17,7 +17,7 @@ public class NetworkInitializer : MonoBehaviour
     public UnityClient Client;
 
     [Tooltip("Event to trigger after server is initialized")]
-    public GameEvent Event;
+    public Event ServerInitialized;
 
     void Start()
     {
@@ -30,7 +30,7 @@ public class NetworkInitializer : MonoBehaviour
         if (NetworkConfig.isHost)
         {
             Server.Create();
-            Event.Trigger();
+            ServerInitialized.Trigger();
         } else {
             Client.Connect(NetworkConfig.ip, NetworkConfig.port, IPVersion.IPv4);
         }

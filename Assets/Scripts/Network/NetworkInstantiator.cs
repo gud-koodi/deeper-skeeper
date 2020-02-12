@@ -12,16 +12,16 @@ namespace GudKoodi.DeeperSkeeper.Network
         [Tooltip("Network update event called by master objects.")]
 
         /// <summary>
-        /// Network update event called by master objects.
+        /// Network update event called by master player objects.
         /// </summary>
-        public GameEvent NetworkUpdate;
+        public ObjectUpdateRequested PlayerUpdateRequested;
 
         [Tooltip("Game event called when new master player is created.")]
         
         /// <summary>
         /// Game event called when new master player is created.
         /// </summary>
-        public GameEvent MasterPlayerCreated;
+        public ObjectCreated MasterPlayerCreated;
 
         [Tooltip("Prefab used for creating new players.")]
 

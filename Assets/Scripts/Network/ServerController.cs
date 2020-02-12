@@ -67,7 +67,7 @@ namespace GudKoodi.DeeperSkeeper.Network
                 Debug.Log("Server manager shutting up.");
                 gameObject.SetActive(false);
             }
-            players = new PlayerManager(this.NetworkInstantiator.MasterPlayerCreated, this.NetworkInstantiator.NetworkUpdate);
+            players = new PlayerManager(this.NetworkInstantiator.MasterPlayerCreated, this.NetworkInstantiator.PlayerUpdateRequested);
         }
 
         void OnDestroy()

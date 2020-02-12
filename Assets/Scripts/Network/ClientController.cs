@@ -6,6 +6,9 @@
     using UnityEngine;
     using Value;
 
+    /// <summary>
+    /// Component that handles all communication to server.
+    /// </summary>
     public class ClientController : MonoBehaviour
     {
         [Tooltip("The server component this script will communicate with.")]
@@ -38,7 +41,7 @@
                 Debug.Log("Client manager shutting up.");
                 gameObject.SetActive(false);
             }
-            this.players = new PlayerManager(this.NetworkInstantiator.MasterPlayerCreated, this.NetworkInstantiator.NetworkUpdate);
+            this.players = new PlayerManager(this.NetworkInstantiator.MasterPlayerCreated, this.NetworkInstantiator.PlayerUpdateRequested);
             if (client != null)
             {
                 client.MessageReceived += OnResponse;

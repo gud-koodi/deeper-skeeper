@@ -10,22 +10,22 @@ namespace GudKoodi.DeeperSkeeper.Network
         /// <summary>
         /// Event called after a master object has been created.
         /// </summary>
-        private readonly GameEvent masterPlayerCreated;
+        private readonly ObjectCreated masterPlayerCreated;
 
         /// <summary>
         /// Event called when a master object requests an update to network.
         /// </summary>
-        private readonly GameEvent networkUpdate;
+        private readonly ObjectUpdateRequested objectUpdateRequested;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PlayerManager"/> class.
         /// </summary>
         /// <param name="masterPlayerCreated">Event called after a master object has been created.</param>
-        /// <param name="networkUpdate">Event called when a master object requests an update to network.</param>
-        public PlayerManager(GameEvent masterPlayerCreated, GameEvent networkUpdate) : base()
+        /// <param name="objectUpdateRequested">Event called when a master object requests an update to network.</param>
+        public PlayerManager(ObjectCreated masterPlayerCreated, ObjectUpdateRequested objectUpdateRequested) : base()
         {
             this.masterPlayerCreated = masterPlayerCreated;
-            this.networkUpdate = networkUpdate;
+            this.objectUpdateRequested = objectUpdateRequested;
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace GudKoodi.DeeperSkeeper.Network
             pc.weapon = go.GetComponentInChildren<Weapon>();
 
             NetworkMaster master = go.AddComponent<NetworkMaster>();
-            master.UpdateEvent = this.networkUpdate;
+            master.ObjectUpdateRequested = this.objectUpdateRequested;
 
             // TODO: Do this call elsewhere, but for now having a direct access to its reference is sooo niice.
             this.masterPlayerCreated.Trigger(go);

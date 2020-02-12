@@ -22,7 +22,7 @@ namespace GudKoodi.DeeperSkeeper.Event
         /// <summary>
         /// Set of events listening this event.
         /// </summary>
-        private HashSet<BaseListener<T0,T1,T2,T3>> listeners = new HashSet<BaseListener<T0,T1,T2,T3>>();
+        private HashSet<IListener<T0,T1,T2,T3>> listeners = new HashSet<IListener<T0,T1,T2,T3>>();
 
         /// <summary>
         /// Triggers the event and notifies all listeners.
@@ -43,7 +43,7 @@ namespace GudKoodi.DeeperSkeeper.Event
         /// Subscribes the given listener to this event's triggers, if not already subscribed.
         /// </summary>
         /// <param name="listener">Subscribing listener</param>
-        public void Subscribe(BaseListener<T0,T1,T2,T3> listener)
+        public void Subscribe(IListener<T0,T1,T2,T3> listener)
         {
             listeners.Add(listener);
         }
@@ -52,7 +52,7 @@ namespace GudKoodi.DeeperSkeeper.Event
         /// Unsubscribes the given listener from this event's triggers, if subscribed.
         /// </summary>
         /// <param name="listener">Unsubscribing listener</param>
-        public void UnSubscribe(BaseListener<T0,T1,T2,T3> listener)
+        public void UnSubscribe(IListener<T0,T1,T2,T3> listener)
         {
             listeners.Remove(listener);
         }
