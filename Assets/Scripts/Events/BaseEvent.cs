@@ -17,12 +17,30 @@ namespace GudKoodi.DeeperSkeeper.Event
     /// <typeparam name="T1">Type of second argument.</typeparam>
     /// <typeparam name="T2">Type of third argument.</typeparam>
     /// <typeparam name="T3">Type of fourth argument.</typeparam>
-    public abstract class BaseEvent<T0,T1,T2,T3> : ScriptableObject
+    public abstract class BaseEvent<T0, T1, T2, T3> : ScriptableObject
     {
         /// <summary>
         /// Set of events listening this event.
         /// </summary>
-        private HashSet<IListener<T0,T1,T2,T3>> listeners = new HashSet<IListener<T0,T1,T2,T3>>();
+        private HashSet<IListener<T0, T1, T2, T3>> listeners = new HashSet<IListener<T0, T1, T2, T3>>();
+
+        /// <summary>
+        /// Subscribes the given listener to this event's triggers, if not already subscribed.
+        /// </summary>
+        /// <param name="listener">Subscribing listener</param>
+        public void Subscribe(IListener<T0, T1, T2, T3> listener)
+        {
+            listeners.Add(listener);
+        }
+
+        /// <summary>
+        /// Unsubscribes the given listener from this event's triggers, if subscribed.
+        /// </summary>
+        /// <param name="listener">Unsubscribing listener</param>
+        public void UnSubscribe(IListener<T0, T1, T2, T3> listener)
+        {
+            listeners.Remove(listener);
+        }
 
         /// <summary>
         /// Triggers the event and notifies all listeners.
@@ -37,24 +55,6 @@ namespace GudKoodi.DeeperSkeeper.Event
             {
                 listener.OnTriggered(p0, p1, p2, p3);
             }
-        }
-
-        /// <summary>
-        /// Subscribes the given listener to this event's triggers, if not already subscribed.
-        /// </summary>
-        /// <param name="listener">Subscribing listener</param>
-        public void Subscribe(IListener<T0,T1,T2,T3> listener)
-        {
-            listeners.Add(listener);
-        }
-
-        /// <summary>
-        /// Unsubscribes the given listener from this event's triggers, if subscribed.
-        /// </summary>
-        /// <param name="listener">Unsubscribing listener</param>
-        public void UnSubscribe(IListener<T0,T1,T2,T3> listener)
-        {
-            listeners.Remove(listener);
         }
     }
 }

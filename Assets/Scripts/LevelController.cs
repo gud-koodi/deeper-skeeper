@@ -14,10 +14,11 @@ public class LevelController : MonoBehaviour
     private const int NEXT_TILE_OFFSET = TILESIZE;
 
     /// <summary>
-    /// Gets or sets seed for the random generator that generates levels.
+    /// Sets the seed for the random generator.
     /// </summary>
     /// <value>Any int</value>
-    public int RandomSeed {
+    public int RandomSeed
+    {
         set => this.random = new System.Random(value);
     }
 

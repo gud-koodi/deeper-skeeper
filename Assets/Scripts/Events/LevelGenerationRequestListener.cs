@@ -1,8 +1,6 @@
 namespace GudKoodi.DeeperSkeeper.Event
 {
-    using System;
     using UnityEngine;
-    using UnityEngine.Events;
 
     /// <summary>
     /// Listener for <see cref="LevelGenerationRequested" />.
@@ -25,6 +23,9 @@ namespace GudKoodi.DeeperSkeeper.Event
         /// Invokes response on trigger.
         /// </summary>
         /// <param name="seed">Random seed for generation.</param>
+        /// <param name="p1">The parameter is not used.</param>
+        /// <param name="p2">The parameter is not used.</param>
+        /// <param name="p3">The parameter is not used.</param>
         public void OnTriggered(int seed, object p1, object p2, object p3)
         {
             this.Response.Invoke(seed);
@@ -39,13 +40,5 @@ namespace GudKoodi.DeeperSkeeper.Event
         {
             this.LevelGenerationRequested.Subscribe(this);
         }
-    }
-
-    /// <summary>
-    /// Mandatory Unity overhead.
-    /// </summary>
-    [Serializable]
-    public class LevelGenerationRequestResponse : UnityEvent<int>
-    {
     }
 }

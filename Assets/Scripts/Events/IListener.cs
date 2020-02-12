@@ -14,7 +14,7 @@ namespace GudKoodi.DeeperSkeeper.Event
     /// <typeparam name="T1">Type of second argument.</typeparam>
     /// <typeparam name="T2">Type of third argument.</typeparam>
     /// <typeparam name="T3">Type of fourth argument.</typeparam>
-    public interface IListener<T0,T1,T2,T3>
+    public interface IListener<T0, T1, T2, T3>
     {
         /// <summary>
         /// Invokes response on trigger.

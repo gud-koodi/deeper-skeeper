@@ -1,10 +1,10 @@
 namespace GudKoodi.DeeperSkeeper.Network
 {
     using System.Collections.Generic;
-    using Event;
     using DarkRift;
     using DarkRift.Server;
     using DarkRift.Server.Unity;
+    using Event;
     using UnityEngine;
 
     /// <summary>

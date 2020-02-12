@@ -1,8 +1,6 @@
 namespace GudKoodi.DeeperSkeeper.Event
 {
-    using System;
     using UnityEngine;
-    using UnityEngine.Events;
 
     /// <summary>
     /// Listener for <see cref="Event" />.
@@ -24,6 +22,10 @@ namespace GudKoodi.DeeperSkeeper.Event
         /// <summary>
         /// Invokes response on trigger.
         /// </summary>
+        /// <param name="p0">The parameter is not used.</param>
+        /// <param name="p1">The parameter is not used.</param>
+        /// <param name="p2">The parameter is not used.</param>
+        /// <param name="p3">The parameter is not used.</param>
         public void OnTriggered(object p0, object p1, object p2, object p3)
         {
             this.Response.Invoke(this.gameObject);
@@ -38,13 +40,5 @@ namespace GudKoodi.DeeperSkeeper.Event
         {
             this.Event.Subscribe(this);
         }
-    }
-
-    /// <summary>
-    /// Mandatory Unity overhead.
-    /// </summary>
-    [Serializable]
-    public class EventResponse : UnityEvent<GameObject>
-    {
     }
 }

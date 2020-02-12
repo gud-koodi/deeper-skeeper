@@ -1,9 +1,10 @@
 ﻿using DarkRift;
 using DarkRift.Client.Unity;
 using DarkRift.Server.Unity;
-using Event = GudKoodi.DeeperSkeeper.Event.Event;
 using GudKoodi.DeeperSkeeper.Network;
 using UnityEngine;
+
+using Event = GudKoodi.DeeperSkeeper.Event.Event;
 
 public class NetworkInitializer : MonoBehaviour
 {
