@@ -22,9 +22,10 @@ namespace GudKoodi.DeeperSkeeper.Network
         /// <param name="playerObjectID">ID oif the player object connected by the client.</param>
         /// <param name="levelSeed">Random seed used when generating the level.</param>
         /// <param name="players">Array of all present player GameObjects.</param>
-        public ConnectionData(ushort clientID, ushort playerObjectID, int levelSeed, Player[] players)
+        public ConnectionData(ushort clientID, Enemy[] enemies, ushort playerObjectID, int levelSeed, Player[] players)
         {
             this.ClientID = clientID;
+            this.Enemies = enemies;
             this.PlayerObjectID = playerObjectID;
             this.LevelSeed = levelSeed;
             this.Players = players;
@@ -35,6 +36,12 @@ namespace GudKoodi.DeeperSkeeper.Network
         /// </summary>
         /// <value>Client identifier.</value>
         public ushort ClientID { get; set; }
+
+        /// <summary>
+        /// Gets or sets an array containing all player GameObjects on the server.
+        /// </summary>
+        /// <value></value>
+        public Enemy[] Enemies { get; set; }
 
         /// <summary>
         /// Gets or sets the network identifier for player GameObject controlled by this client.
@@ -61,6 +68,7 @@ namespace GudKoodi.DeeperSkeeper.Network
         public void Deserialize(DeserializeEvent e)
         {
             this.ClientID = e.Reader.ReadUInt16();
+            this.Enemies = e.Reader.ReadSerializables<Enemy>();
             this.PlayerObjectID = e.Reader.ReadUInt16();
             this.LevelSeed = e.Reader.ReadInt32();
             this.Players = e.Reader.ReadSerializables<Player>();
@@ -73,6 +81,7 @@ namespace GudKoodi.DeeperSkeeper.Network
         public void Serialize(SerializeEvent e)
         {
             e.Writer.Write(this.ClientID);
+            e.Writer.Write(this.Enemies);
             e.Writer.Write(this.PlayerObjectID);
             e.Writer.Write(this.LevelSeed);
             e.Writer.Write(this.Players);

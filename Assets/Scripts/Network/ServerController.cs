@@ -24,10 +24,6 @@ namespace GudKoodi.DeeperSkeeper.Network
         [Tooltip("Level generation request event")]
         public LevelGenerationRequested LevelGenerationRequested;
 
-        private readonly NetworkIdPool networkIdPool = new NetworkIdPool();
-
-        private readonly Dictionary<ushort, ushort> clientToPlayerObject = new Dictionary<ushort, ushort>();
-
         public NetworkConfig NetworkConfig;
 
         /// <summary>
@@ -37,6 +33,14 @@ namespace GudKoodi.DeeperSkeeper.Network
         public NetworkEvents NetworkEvents;
 
         private PlayerManager players;
+
+        private EnemyManager enemies;
+
+        private readonly NetworkIdPool playerIDPool = new NetworkIdPool();
+
+        private readonly NetworkIdPool enemyIDPool = new NetworkIdPool();
+
+        private readonly Dictionary<ushort, ushort> clientToPlayerObject = new Dictionary<ushort, ushort>();
 
         /// <summary>
         /// Level seed for the game.
@@ -54,7 +58,7 @@ namespace GudKoodi.DeeperSkeeper.Network
             this.levelSeed = new System.Random().Next();
             this.LevelGenerationRequested.Trigger(levelSeed);
 
-            ushort id = networkIdPool.Next();
+            ushort id = playerIDPool.Next();
             Player player = new Player(id, Vector3.zero, 0);
             players.Create(this.NetworkInstantiator.PlayerPrefab, player, true);
 
@@ -83,6 +87,7 @@ namespace GudKoodi.DeeperSkeeper.Network
                 gameObject.SetActive(false);
             }
             this.players = new PlayerManager(this.NetworkInstantiator.MasterPlayerCreated, this.NetworkInstantiator.PlayerUpdateRequested);
+            this.enemies = new EnemyManager();
             this.NetworkEvents.EnemyCreationRequested.Subscribe(EnemyCreationRequested);
         }
 
@@ -99,11 +104,11 @@ namespace GudKoodi.DeeperSkeeper.Network
         private void OnClientConnect(object sender, ClientConnectedEventArgs e)
         {
             e.Client.MessageReceived += OnMessageReceived;
-            ushort id = networkIdPool.Next();
+            ushort id = playerIDPool.Next();
             Player player = new Player(id, Vector3.zero, 0);
             players.Create(this.NetworkInstantiator.PlayerPrefab, player);
 
-            ConnectionData data = new ConnectionData(e.Client.ID, id, levelSeed, players.ToArray());
+            ConnectionData data = new ConnectionData(e.Client.ID, enemies.ToArray(), id, levelSeed, players.ToArray());
             clientToPlayerObject[data.ClientID] = data.PlayerObjectID;
             using (Message message = Message.Create(ServerMessage.ConnectionData, data))
             {
@@ -127,7 +132,7 @@ namespace GudKoodi.DeeperSkeeper.Network
             e.Client.MessageReceived -= OnMessageReceived;
             ushort playerId = clientToPlayerObject[e.Client.ID];
             players.Destroy(playerId);
-            networkIdPool.Release(playerId);
+            playerIDPool.Release(playerId);
             Debug.Log($"Sending destruct message for player ID {playerId}");
             using (DarkRiftWriter writer = DarkRiftWriter.Create())
             {
@@ -170,10 +175,11 @@ namespace GudKoodi.DeeperSkeeper.Network
             }
         }
 
-        private void EnemyCreationRequested(GameObject enemy, Vector3 position, object p2, object p3)
+        private void EnemyCreationRequested(GameObject prefab, Vector3 position, object p2, object p3)
         {
-            Debug.Log($"Requested creation of {enemy} in {position}");
-            Instantiate(enemy, position, Quaternion.identity);
+            Debug.Log($"Requested creation of {prefab} in {position}");
+            Enemy enemy = new Enemy(enemyIDPool.Next(), position, position);
+            enemies.Create(prefab, enemy, true);
         }
     }
 }

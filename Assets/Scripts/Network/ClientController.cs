@@ -6,6 +6,8 @@
     using Event;
     using UnityEngine;
 
+    using EnemyList = GudKoodi.DeeperSkeeper.Enemy.EnemyList;
+
     /// <summary>
     /// Component that handles all communication to server.
     /// </summary>
@@ -32,7 +34,11 @@
         [Tooltip("Network Events container.")]
         public NetworkEvents NetworkEvents;
 
+        public EnemyList EnemyList;
+
         private PlayerManager players;
+
+        private EnemyManager enemies;
 
         public void SendObject(GameObject gameObject)
         {
@@ -51,6 +57,7 @@
                 gameObject.SetActive(false);
             }
             this.players = new PlayerManager(this.NetworkInstantiator.MasterPlayerCreated, this.NetworkInstantiator.PlayerUpdateRequested);
+            this.enemies = new EnemyManager();
             if (client != null)
             {
                 client.MessageReceived += OnResponse;
@@ -91,6 +98,11 @@
             foreach (Player player in data.Players)
             {
                 players.Create(this.NetworkInstantiator.PlayerPrefab, player, player.NetworkID == data.PlayerObjectID);
+            }
+
+            foreach (var enemy in data.Enemies)
+            {
+                enemies.Create(this.EnemyList.Enemies[0], enemy, false);
             }
         }
 
