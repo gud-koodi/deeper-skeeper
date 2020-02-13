@@ -7,6 +7,7 @@
 
 namespace GudKoodi.DeeperSkeeper.Event
 {
+    using System;
     using System.Collections.Generic;
     using UnityEngine;
 
@@ -22,13 +23,14 @@ namespace GudKoodi.DeeperSkeeper.Event
         /// <summary>
         /// Set of events listening this event.
         /// </summary>
-        private HashSet<IListener<T0, T1, T2, T3>> listeners = new HashSet<IListener<T0, T1, T2, T3>>();
+        private HashSet<Action<T0, T1, T2, T3>> listeners = new HashSet<Action<T0, T1, T2, T3>>();
+        // IListener<T0, T1, T2, T3>>();
 
         /// <summary>
         /// Subscribes the given listener to this event's triggers, if not already subscribed.
         /// </summary>
         /// <param name="listener">Subscribing listener</param>
-        public void Subscribe(IListener<T0, T1, T2, T3> listener)
+        public void Subscribe(Action<T0, T1, T2, T3> listener)
         {
             listeners.Add(listener);
         }
@@ -37,7 +39,7 @@ namespace GudKoodi.DeeperSkeeper.Event
         /// Unsubscribes the given listener from this event's triggers, if subscribed.
         /// </summary>
         /// <param name="listener">Unsubscribing listener</param>
-        public void UnSubscribe(IListener<T0, T1, T2, T3> listener)
+        public void UnSubscribe(Action<T0, T1, T2, T3> listener)
         {
             listeners.Remove(listener);
         }
@@ -53,7 +55,7 @@ namespace GudKoodi.DeeperSkeeper.Event
         {
             foreach (var listener in listeners)
             {
-                listener.OnTriggered(p0, p1, p2, p3);
+                listener(p0, p1, p2, p3);
             }
         }
     }

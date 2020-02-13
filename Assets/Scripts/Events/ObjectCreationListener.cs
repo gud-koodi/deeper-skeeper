@@ -33,12 +33,12 @@ namespace GudKoodi.DeeperSkeeper.Event
 
         void OnDisable()
         {
-            this.ObjectCreated.UnSubscribe(this);
+            this.ObjectCreated.UnSubscribe(OnTriggered);
         }
 
         void OnEnable()
         {
-            this.ObjectCreated.Subscribe(this);
+            this.ObjectCreated.Subscribe(OnTriggered);
         }
     }
 }
