@@ -30,6 +30,12 @@ namespace GudKoodi.DeeperSkeeper.Network
 
         public NetworkConfig NetworkConfig;
 
+        /// <summary>
+        /// Network Events container.
+        /// </summary>
+        [Tooltip("Network Events container.")]
+        public NetworkEvents NetworkEvents;
+
         private PlayerManager players;
 
         /// <summary>
@@ -71,12 +77,13 @@ namespace GudKoodi.DeeperSkeeper.Network
 
         void Awake()
         {
-            if (!NetworkConfig.isHost)
+            if (!this.NetworkConfig.isHost)
             {
                 Debug.Log("Server manager shutting up.");
                 gameObject.SetActive(false);
             }
-            players = new PlayerManager(this.NetworkInstantiator.MasterPlayerCreated, this.NetworkInstantiator.PlayerUpdateRequested);
+            this.players = new PlayerManager(this.NetworkInstantiator.MasterPlayerCreated, this.NetworkInstantiator.PlayerUpdateRequested);
+            this.NetworkEvents.EnemyCreationRequested.Subscribe(EnemyCreationRequested);
         }
 
         void OnDestroy()
@@ -162,6 +169,11 @@ namespace GudKoodi.DeeperSkeeper.Network
                 }
             }
         }
+
+        private void EnemyCreationRequested(GameObject enemy, Vector3 position, object p2, object p3)
+        {
+            Debug.Log($"Requested creation of {enemy} in {position}");
+            Instantiate(enemy, position, Quaternion.identity);
+        }
     }
 }
-

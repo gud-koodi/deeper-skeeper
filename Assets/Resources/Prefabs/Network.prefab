@@ -136,6 +136,7 @@ MonoBehaviour:
   NetworkConfig: {fileID: 11400000, guid: 6b04f336c5979ec419d162818a96cae7, type: 2}
   LevelGenerationRequested: {fileID: 11400000, guid: 0b4ce79764f56af4ba6b71c3cf10b16c,
     type: 2}
+  NetworkEvents: {fileID: 11400000, guid: 27ee142cfaf91fa4f89f6fbc72ae9d99, type: 2}
 --- !u!114 &2249543064699409350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,6 +232,7 @@ MonoBehaviour:
   LevelGenerationRequested: {fileID: 11400000, guid: 0b4ce79764f56af4ba6b71c3cf10b16c,
     type: 2}
   NetworkConfig: {fileID: 11400000, guid: 6b04f336c5979ec419d162818a96cae7, type: 2}
+  NetworkEvents: {fileID: 11400000, guid: 27ee142cfaf91fa4f89f6fbc72ae9d99, type: 2}
 --- !u!114 &2173543914146330472
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -26,6 +26,12 @@
         [Tooltip("Level generation request event")]
         public LevelGenerationRequested LevelGenerationRequested;
 
+        /// <summary>
+        /// Network Events container.
+        /// </summary>
+        [Tooltip("Network Events container.")]
+        public NetworkEvents NetworkEvents;
+
         private PlayerManager players;
 
         public void SendObject(GameObject gameObject)
