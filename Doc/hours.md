@@ -29,3 +29,15 @@
 | 2020-01-16 | 7      | Started refactoring POC network code to be more usable.
 | 2020-01-17 | 6      | Continued refactoring POC code and studied best practices to do so.
 | 2020-01-18 | 3      | Finally refactored POC code and made few improvements to the documentation.
+| 2020-01-20 | 3      | Failed refactor attempts and added main menu.
+| 2020-01-22 | 4      | Initial event system and improved code documentation.
+| 2020-01-23 | 4      | Player object created for client when they connect.
+| 2020-01-24 | 4      | Refactoring.
+| 2020-01-26 | 2      | Destroy client's player object when they disconnect.
+| 2020-01-27 | 3      | Network IDs generated/recycled from pool.
+| 2020-01-28 | 4      | Bug hunting.
+| 2020-01-29 | 6      | Fixed the bug (`List.Insert` is a bad metod). Other stuff.
+| 2020-01-31 | 5      | Proper separation of client vs server logic.
+| 2020-02-01 | 6      | Have players see each other moving around.
+| 2020-02-03 | 6      | Players see each other rotating, sync level generation seed.
+| 2020-02-04 | 2      | Tweaked player aiming code.
