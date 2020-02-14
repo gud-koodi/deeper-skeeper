@@ -48,7 +48,9 @@ public class LevelController : MonoBehaviour
                 NavMeshLink link = nextLevel.gameObject.AddComponent<NavMeshLink>();
                 link.startPoint = floorInfo.PointNorth.transform.localPosition;
                 link.endPoint = new Vector3(floorInfo.PointNorth.transform.localPosition.x, -50, floorInfo.PointNorth.transform.localPosition.z + (NEXT_TILE_OFFSET / 2));
-                link.width = 30;
+                link.width = 20;
+                link.bidirectional = false;
+                link.area = 2;
                 link.UpdateLink();
 
             }
@@ -60,7 +62,9 @@ public class LevelController : MonoBehaviour
                 NavMeshLink link = nextLevel.gameObject.AddComponent<NavMeshLink>();
                 link.startPoint = floorInfo.PointEast.transform.localPosition;
                 link.endPoint = new Vector3(floorInfo.PointEast.transform.localPosition.x + (NEXT_TILE_OFFSET / 2), -50, floorInfo.PointEast.transform.localPosition.z);
-                link.width = 30;
+                link.width = 20;
+                link.bidirectional = false;
+                link.area = 2;
                 link.UpdateLink();
 
             }
@@ -72,7 +76,9 @@ public class LevelController : MonoBehaviour
                 NavMeshLink link = nextLevel.gameObject.AddComponent<NavMeshLink>();
                 link.startPoint = floorInfo.PointSouth.transform.localPosition;
                 link.endPoint = new Vector3(floorInfo.PointSouth.transform.localPosition.x, -50, floorInfo.PointSouth.transform.localPosition.z - (NEXT_TILE_OFFSET / 2));
-                link.width = 30;
+                link.width = 20;
+                link.bidirectional = false;
+                link.area = 2;
                 link.UpdateLink();
 
             }
@@ -84,7 +90,9 @@ public class LevelController : MonoBehaviour
                 NavMeshLink link = nextLevel.gameObject.AddComponent<NavMeshLink>();
                 link.startPoint = floorInfo.PointWest.transform.localPosition;
                 link.endPoint = new Vector3(floorInfo.PointWest.transform.localPosition.x - (NEXT_TILE_OFFSET / 2), -50, floorInfo.PointWest.transform.localPosition.z);
-                link.width = 30;
+                link.width = 20;
+                link.bidirectional = false;
+                link.area = 2;
                 link.UpdateLink();
 
             }
