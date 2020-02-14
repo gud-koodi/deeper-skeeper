@@ -5,6 +5,9 @@ namespace GudKoodi.DeeperSkeeper.Network
     using DeeperSkeeper.Player;
     using Weapon;
 
+    /// <summary>
+    /// Class for managing objects serialized as <see cref="Player" />.
+    /// </summary>
     internal class PlayerManager : ObjectManager<Player>
     {
         /// <summary>
