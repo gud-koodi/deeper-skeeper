@@ -13,7 +13,7 @@ public class Living : MonoBehaviour, IDamageable
         currentHealth -= damage;
         if (currentHealth <= 0f)
         {
-            Destroy(gameObject);
+            Die();
         }
     }
 
@@ -32,5 +32,26 @@ public class Living : MonoBehaviour, IDamageable
     private void Init()
     {
         currentHealth = maxHealth;
+        SetKinematic(true);
+        gameObject.GetComponent<Rigidbody>().isKinematic = false;
+        gameObject.GetComponent<Collider>().enabled = true;
+    }
+
+    private void SetKinematic(bool newValue)
+    {
+        Rigidbody[] bodies = GetComponentsInChildren<Rigidbody>();
+        foreach (Rigidbody rb in bodies)
+        {
+            rb.isKinematic = newValue;
+            rb.GetComponent<Collider>().enabled = !newValue;
+        }
+    }
+
+    private void Die()
+    {
+        SetKinematic(false);
+        GetComponent<Animator>().enabled = false;
+        GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
+        Destroy(gameObject, 5);
     }
 }
