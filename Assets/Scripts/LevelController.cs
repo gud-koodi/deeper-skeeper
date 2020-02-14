@@ -6,9 +6,6 @@ public class LevelController : MonoBehaviour
 {
     public Transform spawnPosition;
 
-    [Tooltip("Seed for level generation.")]
-    public IntValue LevelSeed;
-
     private GameObject nextLevel;
     private int depth = 10;
     private System.Random random;

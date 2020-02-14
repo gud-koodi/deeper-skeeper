@@ -169,51 +169,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8bafb67b1e75aad09d105993814287a, type: 3}
---- !u!1 &104302173 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4883017841499720642, guid: f8bafb67b1e75aad09d105993814287a,
-    type: 3}
-  m_PrefabInstance: {fileID: 104302172}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &104302174 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4883017841499720670, guid: f8bafb67b1e75aad09d105993814287a,
-    type: 3}
-  m_PrefabInstance: {fileID: 104302172}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 104302173}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1483e360f44d8a38987f1c53336809c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &104302175
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 104302173}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60a15dcbe3e442a42b4605d0b0e4c094, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: bbbd17bf8d25b2b4cb7d40684b9e9673, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 104302174}
-        m_MethodName: SetFollowedPlayer
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &172394734 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3259146301761253670, guid: b4bdefa216d1c4a4bbfedef85e9ef4d3,
@@ -264,7 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10b0e64e00987dd9babbca0ebcfc7d5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPosition: {fileID: 1321855507}
+  spawnPosition: {fileID: 2041244030}
 --- !u!114 &459700086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -651,3 +606,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4bdefa216d1c4a4bbfedef85e9ef4d3, type: 3}
+--- !u!4 &2041244030 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3259146302677227313, guid: b4bdefa216d1c4a4bbfedef85e9ef4d3,
+    type: 3}
+  m_PrefabInstance: {fileID: 2041244029}
+  m_PrefabAsset: {fileID: 0}
