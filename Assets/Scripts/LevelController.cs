@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
-using Value;
 using UnityEngine.AI;
+using GudKoodi.DeeperSkeeper.Value;
 
-public class LevelController : MonoBehaviour, ICallable<int>
+public class LevelController : MonoBehaviour
 {
     public Transform spawnPosition;
 
@@ -19,19 +19,12 @@ public class LevelController : MonoBehaviour, ICallable<int>
 
 
     /// <summary>
-    /// Gets or sets seed for the random generator that generates levels.
+    /// Sets the seed for the random generator.
     /// </summary>
     /// <value>Any int</value>
-    public int RandomSeed { get; set; }
-
-    /// <summary>
-    /// Sets the seed and calls level generation.
-    /// </summary>
-    /// <param name="seed">Random seed.</param>
-    public void Call(int seed)
+    public int RandomSeed
     {
-        this.random = new System.Random(seed);
-        this.GenerateNext();
+        set => this.random = new System.Random(value);
     }
 
     /// <summary>
@@ -105,12 +98,9 @@ public class LevelController : MonoBehaviour, ICallable<int>
 
     void Awake()
     {
-        this.LevelSeed.Subscribe(this);
-    }
-
-    void Start()
-    {
-        random = new System.Random(RandomSeed);
-        //// GenerateNext();
+        if (this.random == null)
+        {
+            this.random = new System.Random();
+        }
     }
 }

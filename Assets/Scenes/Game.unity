@@ -157,6 +157,16 @@ PrefabInstance:
       propertyPath: m_Shadows.m_Type
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2723274870005401027, guid: f8bafb67b1e75aad09d105993814287a,
+        type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetFollowedPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 2723274870005401027, guid: f8bafb67b1e75aad09d105993814287a,
+        type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8bafb67b1e75aad09d105993814287a, type: 3}
 --- !u!1 &104302173 stripped
@@ -220,6 +230,7 @@ GameObject:
   m_Component:
   - component: {fileID: 459700084}
   - component: {fileID: 459700085}
+  - component: {fileID: 459700086}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -254,14 +265,46 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPosition: {fileID: 1321855507}
-  LevelSeed: {fileID: 11400000, guid: 717fa17bdb73f6647a1d37fc841b9dba, type: 2}
---- !u!4 &1321855507 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3259146302677227313, guid: b4bdefa216d1c4a4bbfedef85e9ef4d3,
-    type: 3}
-  m_PrefabInstance: {fileID: 2041244029}
+--- !u!114 &459700086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1736585923
+  m_GameObject: {fileID: 459700083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb227efd746a36e4e8c3030883184807, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LevelGenerationRequested: {fileID: 11400000, guid: 0b4ce79764f56af4ba6b71c3cf10b16c,
+    type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 459700085}
+        m_MethodName: set_RandomSeed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 459700085}
+        m_MethodName: GenerateNext
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!1001 &706670172
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2

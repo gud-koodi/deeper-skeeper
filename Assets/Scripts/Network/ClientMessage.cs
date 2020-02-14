@@ -1,4 +1,4 @@
-namespace Network
+namespace GudKoodi.DeeperSkeeper.Network
 {
     /// <summary>
     /// Tag container for messages sent by a client.

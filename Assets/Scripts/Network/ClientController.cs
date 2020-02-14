@@ -1,0 +1,137 @@
+﻿namespace GudKoodi.DeeperSkeeper.Network
+{
+    using DarkRift;
+    using DarkRift.Client;
+    using DarkRift.Client.Unity;
+    using Event;
+    using UnityEngine;
+
+    using EnemyList = GudKoodi.DeeperSkeeper.Enemy.EnemyList;
+
+    /// <summary>
+    /// Component that handles all communication to server.
+    /// </summary>
+    public class ClientController : MonoBehaviour
+    {
+        [Tooltip("The server component this script will communicate with.")]
+        public UnityClient client;
+
+        [Tooltip("Instantiator used to create objects")]
+        public NetworkInstantiator NetworkInstantiator;
+
+        [Tooltip("Network configuration to read check host status from.")]
+        public NetworkConfig NetworkConfig;
+
+        /// <summary>
+        /// Level generation request event.
+        /// </summary>
+        [Tooltip("Level generation request event")]
+        public LevelGenerationRequested LevelGenerationRequested;
+
+        /// <summary>
+        /// Network Events container.
+        /// </summary>
+        [Tooltip("Network Events container.")]
+        public NetworkEvents NetworkEvents;
+
+        public EnemyList EnemyList;
+
+        private PlayerManager players;
+
+        private EnemyManager enemies;
+
+        public void SendObject(GameObject gameObject)
+        {
+            // TODO: Distinguish between different network objects
+            using (Message message = players.UpdateAndSerialize(gameObject, ClientMessage.UpdatePlayer))
+            {
+                client.SendMessage(message, SendMode.Unreliable);
+            }
+        }
+
+        void Awake()
+        {
+            if (NetworkConfig.isHost)
+            {
+                Debug.Log("Client manager shutting up.");
+                gameObject.SetActive(false);
+            }
+            this.players = new PlayerManager(this.NetworkInstantiator.MasterPlayerCreated, this.NetworkInstantiator.PlayerUpdateRequested);
+            this.enemies = new EnemyManager();
+            if (client != null)
+            {
+                client.MessageReceived += OnResponse;
+            }
+        }
+
+        private void OnResponse(object sender, MessageReceivedEventArgs e)
+        {
+            switch (e.Tag)
+            {
+                case ServerMessage.ConnectionData:
+                    SetupServerData(e);
+                    break;
+                case ServerMessage.CreatePlayer:
+                    CreatePlayer(e);
+                    break;
+                case ServerMessage.UpdatePlayer:
+                    UpdatePlayer(e);
+                    break;
+                case ServerMessage.DeletePlayer:
+                    DeleteObject(e);
+                    break;
+            }
+        }
+
+        private void SetupServerData(MessageReceivedEventArgs e)
+        {
+            ConnectionData data;
+            using (Message message = e.GetMessage())
+            {
+                data = message.Deserialize<ConnectionData>();
+            }
+            
+            LevelGenerationRequested.Trigger(data.LevelSeed);
+            ushort clientId = data.ClientID;
+            Debug.Log("Client id is " + clientId);
+
+            foreach (Player player in data.Players)
+            {
+                players.Create(this.NetworkInstantiator.PlayerPrefab, player, player.NetworkID == data.PlayerObjectID);
+            }
+
+            foreach (var enemy in data.Enemies)
+            {
+                enemies.Create(this.EnemyList.Enemies[0], enemy, false);
+            }
+        }
+
+        private void CreatePlayer(MessageReceivedEventArgs e)
+        {
+            using (Message message = e.GetMessage())
+            {
+                players.Create(this.NetworkInstantiator.PlayerPrefab, message.Deserialize<Player>());
+            }
+        }
+
+        private void UpdatePlayer(MessageReceivedEventArgs e)
+        {
+            using (Message message = e.GetMessage())
+            {
+                players.DeserializeAndUpdate(message);
+            }
+        }
+
+        private void DeleteObject(MessageReceivedEventArgs e)
+        {
+            ushort id;
+            using (Message message = e.GetMessage())
+            using (DarkRiftReader reader = message.GetReader())
+            {
+                id = reader.ReadUInt16();
+            }
+            players.Destroy(id);
+        }
+    }
+}
+

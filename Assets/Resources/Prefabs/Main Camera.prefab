@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4883017841499720668}
   - component: {fileID: 4883017841499720669}
   - component: {fileID: 4883017841499720670}
+  - component: {fileID: 2723274870005401027}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -97,7 +98,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1483e360f44d8a38987f1c53336809c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
+  Distance: 25
+--- !u!114 &2723274870005401027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4883017841499720642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d04891d22ef5f0f4f9273d0ed72e6194, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectCreated: {fileID: 11400000, guid: bbbd17bf8d25b2b4cb7d40684b9e9673, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4883017841499720670}
+        m_MethodName: SetFollowedPlayer
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4883017842260013395
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,12 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Network;
-using NUnit.Framework;
-using UnityEngine;
-using UnityEngine.TestTools;
-
-namespace Tests
+﻿namespace GudKoodi.DeeperSkeeper.Tests
 {
+    using NUnit.Framework;
+    using Network;
+
     public class NetworkIdPoolTest
     {
         // A Test behaves as an ordinary method
