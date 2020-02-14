@@ -12,10 +12,16 @@ namespace GudKoodi.DeeperSkeeper.Network
     /// </summary>
     public class ServerController : MonoBehaviour
     {
-        [Tooltip("The server component this script will communicate with")]
+        /// <summary>
+        /// The server component that this script will control.
+        /// </summary>
+        [Tooltip("The server component that this script will control.")]
         public XmlUnityServer Server;
 
-        [Tooltip("Instantiator used to create objects")]
+        /// <summary>
+        /// Provider of network object prefabs.
+        /// </summary>
+        [Tooltip("Provider of network object prefabs.")]
         public NetworkInstantiator NetworkInstantiator;
 
         /// <summary>
@@ -24,6 +30,10 @@ namespace GudKoodi.DeeperSkeeper.Network
         [Tooltip("Level generation request event")]
         public LevelGenerationRequested LevelGenerationRequested;
 
+        /// <summary>
+        /// Network configuration to check hosting status from.
+        /// </summary>
+        [Tooltip("Network configuration to check hosting status from.")]
         public NetworkConfig NetworkConfig;
 
         /// <summary>
@@ -32,21 +42,42 @@ namespace GudKoodi.DeeperSkeeper.Network
         [Tooltip("Network Events container.")]
         public NetworkEvents NetworkEvents;
 
-        private PlayerManager players;
+        /// <summary>
+        /// Client IDs mapped to their respective player ids.
+        /// </summary>
+        /// <typeparam name="ushort">Client ID.</typeparam>
+        /// <typeparam name="ushort">Player network ID.</typeparam>
+        /// <returns>Map of clients IDs to player network IDs.</returns>
+        private readonly Dictionary<ushort, ushort> clientToPlayerObject = new Dictionary<ushort, ushort>();
 
-        private EnemyManager enemies;
-
+        /// <summary>
+        /// ID provider for enemy manager.
+        /// </summary>
         private readonly NetworkIdPool playerIDPool = new NetworkIdPool();
 
+        /// <summary>
+        /// ID provider for player manager.
+        /// </summary>
         private readonly NetworkIdPool enemyIDPool = new NetworkIdPool();
 
-        private readonly Dictionary<ushort, ushort> clientToPlayerObject = new Dictionary<ushort, ushort>();
+        /// <summary>
+        /// Enemy manager.
+        /// </summary>
+        private EnemyManager enemies;
+
+        /// <summary>
+        /// Player manager.
+        /// </summary>
+        private PlayerManager players;
 
         /// <summary>
         /// Level seed for the game.
         /// </summary>
         private int levelSeed = -1;
 
+        /// <summary>
+        /// Initializes the server and starts accepting connections.
+        /// </summary>
         public void Initialize()
         {
             if (Server == null)
@@ -67,6 +98,10 @@ namespace GudKoodi.DeeperSkeeper.Network
             server.ClientManager.ClientDisconnected += OnClientDisconnect;
         }
 
+        /// <summary>
+        /// Updates the serialization data of given object and sends it to all clients.
+        /// </summary>
+        /// <param name="gameObject">Object to update the data for.</param>
         public void SendObject(GameObject gameObject)
         {
             // TODO: Distinguish between different network objects

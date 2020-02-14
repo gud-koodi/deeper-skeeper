@@ -1,7 +1,7 @@
 namespace GudKoodi.DeeperSkeeper.Network
 {
-    using UnityEngine;
     using Event;
+    using UnityEngine;
 
     /// <summary>
     /// Common network event container for client and server controllers.

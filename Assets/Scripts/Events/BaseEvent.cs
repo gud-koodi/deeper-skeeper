@@ -24,7 +24,6 @@ namespace GudKoodi.DeeperSkeeper.Event
         /// Set of events listening this event.
         /// </summary>
         private HashSet<Action<T0, T1, T2, T3>> listeners = new HashSet<Action<T0, T1, T2, T3>>();
-        // IListener<T0, T1, T2, T3>>();
 
         /// <summary>
         /// Subscribes the given listener to this event's triggers, if not already subscribed.

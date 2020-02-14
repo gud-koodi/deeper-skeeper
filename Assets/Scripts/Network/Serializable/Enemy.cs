@@ -3,6 +3,9 @@ namespace GudKoodi.DeeperSkeeper.Network
     using DarkRift;
     using UnityEngine;
 
+    /// <summary>
+    /// Serialization data class for enemy objects.
+    /// </summary>
     public class Enemy : INetworkSerializable
     {
         /// <summary>
@@ -16,6 +19,9 @@ namespace GudKoodi.DeeperSkeeper.Network
         /// <summary>
         /// Initializes a new instance of the <see cref="Enemy"/> class.
         /// </summary>
+        /// <param name="networkID">Network identifier.</param>
+        /// <param name="currentPosition">This object's current position.</param>
+        /// <param name="targetPosition">Position this object is aiming towards.</param>
         public Enemy(ushort networkID, Vector3 currentPosition, Vector3 targetPosition)
         {
             this.NetworkID = networkID;

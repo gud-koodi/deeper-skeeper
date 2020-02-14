@@ -19,9 +19,10 @@ namespace GudKoodi.DeeperSkeeper.Network
         /// Initializes a new instance of the <see cref="ConnectionData"/> class.
         /// </summary>
         /// <param name="clientID">ID of the client.</param>
-        /// <param name="playerObjectID">ID oif the player object connected by the client.</param>
+        /// <param name="enemies">Array of all present enemy objects.</param>
+        /// <param name="playerObjectID">ID of the player object connecting by the client.</param>
         /// <param name="levelSeed">Random seed used when generating the level.</param>
-        /// <param name="players">Array of all present player GameObjects.</param>
+        /// <param name="players">Array of all present player objects.</param>
         public ConnectionData(ushort clientID, Enemy[] enemies, ushort playerObjectID, int levelSeed, Player[] players)
         {
             this.ClientID = clientID;
