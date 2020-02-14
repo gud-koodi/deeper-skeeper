@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Value;
+using UnityEngine.AI;
 
 public class LevelController : MonoBehaviour, ICallable<int>
 {
@@ -8,13 +9,14 @@ public class LevelController : MonoBehaviour, ICallable<int>
     [Tooltip("Seed for level generation.")]
     public IntValue LevelSeed;
 
-    private GameObject currentLevel;
     private GameObject nextLevel;
     private int depth = 10;
     private System.Random random;
     private const int YDISTANCE = 50;
     private const int TILESIZE = 30 * 2;
     private const int NEXT_TILE_OFFSET = TILESIZE;
+    private FloorInfo floorInfo;
+
 
     /// <summary>
     /// Gets or sets seed for the random generator that generates levels.
@@ -39,11 +41,12 @@ public class LevelController : MonoBehaviour, ICallable<int>
     {
         float nextSpawnZ = spawnPosition.position.z;
         float nextSpawnX = spawnPosition.position.x;
-        FloorInfo floorInfo;
+
         GameObject prefab = (GameObject)Resources.Load("Prefabs/Floor1", typeof(GameObject));
         int i = 0;
         for (; i < depth; i++)
         {
+
             nextLevel = Instantiate(prefab, new Vector3(nextSpawnX, -YDISTANCE * (i + 1), nextSpawnZ), prefab.transform.rotation);
             floorInfo = nextLevel.GetComponent<FloorInfo>();
             int direction = random.Next(1, 4);
@@ -51,24 +54,52 @@ public class LevelController : MonoBehaviour, ICallable<int>
             {
                 nextSpawnZ = nextSpawnZ + NEXT_TILE_OFFSET;
                 floorInfo.DoorNorth.SetActive(false);
+
+                NavMeshLink link = nextLevel.gameObject.AddComponent<NavMeshLink>();
+                link.startPoint = floorInfo.PointNorth.transform.localPosition;
+                link.endPoint = new Vector3(floorInfo.PointNorth.transform.localPosition.x, -50, floorInfo.PointNorth.transform.localPosition.z + (NEXT_TILE_OFFSET / 2));
+                link.width = 30;
+                link.UpdateLink();
+
             }
             else if (direction == 2)
             {
                 nextSpawnX = nextSpawnX + NEXT_TILE_OFFSET;
                 floorInfo.DoorEast.SetActive(false);
+
+                NavMeshLink link = nextLevel.gameObject.AddComponent<NavMeshLink>();
+                link.startPoint = floorInfo.PointEast.transform.localPosition;
+                link.endPoint = new Vector3(floorInfo.PointEast.transform.localPosition.x + (NEXT_TILE_OFFSET / 2), -50, floorInfo.PointEast.transform.localPosition.z);
+                link.width = 30;
+                link.UpdateLink();
+
             }
             else if (direction == 3)
             {
                 nextSpawnZ = nextSpawnZ - NEXT_TILE_OFFSET;
                 floorInfo.DoorSouth.SetActive(false);
+
+                NavMeshLink link = nextLevel.gameObject.AddComponent<NavMeshLink>();
+                link.startPoint = floorInfo.PointSouth.transform.localPosition;
+                link.endPoint = new Vector3(floorInfo.PointSouth.transform.localPosition.x, -50, floorInfo.PointSouth.transform.localPosition.z - (NEXT_TILE_OFFSET / 2));
+                link.width = 30;
+                link.UpdateLink();
+
             }
             else if (direction == 4)
             {
                 nextSpawnX = nextSpawnX - NEXT_TILE_OFFSET;
                 floorInfo.DoorWest.SetActive(false);
+
+                NavMeshLink link = nextLevel.gameObject.AddComponent<NavMeshLink>();
+                link.startPoint = floorInfo.PointWest.transform.localPosition;
+                link.endPoint = new Vector3(floorInfo.PointWest.transform.localPosition.x - (NEXT_TILE_OFFSET / 2), -50, floorInfo.PointWest.transform.localPosition.z);
+                link.width = 30;
+                link.UpdateLink();
+
             }
         }
-        
+
         nextLevel = Instantiate(prefab, new Vector3(nextSpawnX, -YDISTANCE * (i + 1), nextSpawnZ), prefab.transform.rotation);
     }
 

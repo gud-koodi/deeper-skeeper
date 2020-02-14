@@ -1,18 +1,19 @@
 {
-  "name": "ScriptAssembly",
-  "references": [
-    "DarkRiftAssembly",
-    "DebugDrawingExtensionsAssembly",
-    "NetworkAssembly"
-  ],
-  "includePlatforms": [],
-  "excludePlatforms": [
-    "WSA"
-  ],
-  "allowUnsafeCode": false,
-  "overrideReferences": false,
-  "precompiledReferences": [],
-  "autoReferenced": true,
-  "defineConstraints": [],
-  "versionDefines": []
+    "name": "ScriptAssembly",
+    "references": [
+        "GUID:3d2985824760dad448aa3a577f7b2a30",
+        "GUID:fffdc56dcbd36cf92bd40e7a6b06ee7b",
+        "GUID:396409b4b8930a14286c33d716f1d8ab",
+        "GUID:8c4dd21966739024fbd72155091d199e"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [
+        "WSA"
+    ],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
 }

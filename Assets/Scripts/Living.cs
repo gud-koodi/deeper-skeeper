@@ -54,4 +54,5 @@ public class Living : MonoBehaviour, IDamageable
         GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
         Destroy(gameObject, 5);
     }
+
 }

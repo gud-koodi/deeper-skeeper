@@ -26,6 +26,8 @@ public class EnemyController : MonoBehaviour
         animator = gameObject.GetComponent<Animator>();
         animator.SetFloat("hitSpeed", hitSpeed);
         weapon.AttackDuration = weapon.AttackDuration / hitSpeed;
+        //next line is for debugging, TODO: DELETE
+        player = GameObject.FindObjectOfType<Camera>().gameObject;
     }
 
     // Update is called once per frame
