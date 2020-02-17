@@ -9,8 +9,12 @@ namespace GudKoodi.DeeperSkeeper.Network
         // This allows us to simply forward the same message also to other clients.
 
         /// <summary>
-        /// Sent when server should update player controlled by client.
-        /// Can be deserialized into <c>Player</c>.
+        /// Sent when the level should start.
+        /// </summary>
+        public const ushort LevelStartRequest = ServerMessage.LevelStartRequest;
+
+        /// <summary>
+        /// Sent when server should update player controlled by client. Can be deserialized into <see cref="Player" />.
         /// </summary>
         public const ushort UpdatePlayer = ServerMessage.UpdatePlayer;
     }

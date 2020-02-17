@@ -12,5 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a174fe762e605b842b7ef86bef501779, type: 3}
   m_Name: NetworkEvents
   m_EditorClassIdentifier: 
+  LevelStarted: {fileID: 11400000, guid: 9883a98a6c45ac849888edc22cfbd21a, type: 2}
+  LevelStartRequested: {fileID: 11400000, guid: 48f3c5d7eee5cf147b14242f7c0a04bb,
+    type: 2}
   EnemyCreationRequested: {fileID: 11400000, guid: 3f3ea34710d21414290a4b573b3d00c6,
     type: 2}

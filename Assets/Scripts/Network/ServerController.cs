@@ -120,10 +120,12 @@ namespace GudKoodi.DeeperSkeeper.Network
             {
                 Debug.Log("Server manager shutting up.");
                 gameObject.SetActive(false);
+                return;
             }
             this.players = new PlayerManager(this.NetworkInstantiator.MasterPlayerCreated, this.NetworkInstantiator.PlayerUpdateRequested);
             this.enemies = new EnemyManager();
-            this.NetworkEvents.EnemyCreationRequested.Subscribe(EnemyCreationRequested);
+            this.NetworkEvents.EnemyCreationRequested.Subscribe(this.EnemyCreationRequested);
+            this.NetworkEvents.LevelStartRequested.Subscribe(this.LevelStartRequested);
         }
 
         void OnDestroy()
@@ -189,9 +191,31 @@ namespace GudKoodi.DeeperSkeeper.Network
         {
             switch (e.Tag)
             {
+                case ClientMessage.LevelStartRequest:
+                    this.LevelStartRequested(null, null, null, null);
+                    break;
                 case ClientMessage.UpdatePlayer:
                     UpdatePlayer(e);
                     break;
+            }
+        }
+
+        /// <summary>
+        /// Handles start request and sends message to all clients.
+        /// </summary>
+        /// <param name="p0">The parameter is not used.</param>
+        /// <param name="p1">The parameter is not used.</param>
+        /// <param name="p2">The parameter is not used.</param>
+        /// <param name="p3">The parameter is not used.</param>
+        private void LevelStartRequested(object p0, object p1, object p2, object p3)
+        {
+            this.NetworkEvents.LevelStarted.Trigger();
+            using (Message message = Message.CreateEmpty(ServerMessage.LevelStart))
+            {
+                foreach (var client in Server.Server.ClientManager.GetAllClients())
+                {
+                    client.SendMessage(message, SendMode.Reliable);
+                }
             }
         }
 
