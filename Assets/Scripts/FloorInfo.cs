@@ -13,5 +13,4 @@ public class FloorInfo : MonoBehaviour
     public GameObject DoorWest;
     public GameObject PointWest;
     public GameObject Floor;
-
 }

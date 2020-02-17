@@ -1,8 +1,8 @@
 namespace GudKoodi.DeeperSkeeper.Enemy
 {
+    using System.Collections;
     using Event;
     using UnityEngine;
-    using System.Collections;
 
     /// <summary>
     /// Creates the designed enemy and destroys spawner.
@@ -26,12 +26,13 @@ namespace GudKoodi.DeeperSkeeper.Enemy
         void Start()
         {
             // TODO: Choose random enemy from the list.
-            StartCoroutine("wait");
+            StartCoroutine(Wait());
         }
 
-        public IEnumerator wait() {
+        private IEnumerator Wait()
+        {
             yield return new WaitForSeconds(3);
-            
+
             EnemyCreationRequested.Trigger(Enemies.Enemies[0], transform.position);
             Destroy(gameObject);
         }

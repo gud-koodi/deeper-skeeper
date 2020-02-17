@@ -1,7 +1,6 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using GudKoodi.DeeperSkeeper.Weapon;
+using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {  
@@ -27,7 +26,8 @@ public class EnemyController : MonoBehaviour
         animator = gameObject.GetComponent<Animator>();
         animator.SetFloat("hitSpeed", hitSpeed);
         weapon.AttackDuration = weapon.AttackDuration / hitSpeed;
-        //next line is for debugging, TODO: DELETE
+        
+        // next line is for debugging, TODO: DELETE
         player = GameObject.FindObjectOfType<Camera>().gameObject;
     }
 

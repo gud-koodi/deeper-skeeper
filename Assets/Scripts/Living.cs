@@ -23,12 +23,6 @@ public class Living : MonoBehaviour, IDamageable
         Init();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     private void Init()
     {
         currentHealth = maxHealth;
@@ -54,5 +48,4 @@ public class Living : MonoBehaviour, IDamageable
         GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
         Destroy(gameObject, 5);
     }
-
 }

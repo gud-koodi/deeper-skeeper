@@ -1,19 +1,18 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
-using GudKoodi.DeeperSkeeper.Value;
 
 public class LevelController : MonoBehaviour
 {
     public Transform spawnPosition;
 
-    private GameObject nextLevel;
-    private int depth = 10;
-    private System.Random random;
     private const int YDISTANCE = 50;
     private const int TILESIZE = 30 * 2;
     private const int NEXT_TILE_OFFSET = TILESIZE;
     private FloorInfo floorInfo;
 
+    private GameObject nextLevel;
+    private int depth = 10;
+    private System.Random random;
 
     /// <summary>
     /// Sets the seed for the random generator.
@@ -36,7 +35,6 @@ public class LevelController : MonoBehaviour
         int i = 0;
         for (; i < depth; i++)
         {
-
             nextLevel = Instantiate(prefab, new Vector3(nextSpawnX, -YDISTANCE * (i + 1), nextSpawnZ), prefab.transform.rotation);
             floorInfo = nextLevel.GetComponent<FloorInfo>();
             int direction = random.Next(1, 4);
@@ -44,7 +42,7 @@ public class LevelController : MonoBehaviour
             {
                 nextSpawnZ = nextSpawnZ + NEXT_TILE_OFFSET;
                 floorInfo.DoorNorth.SetActive(false);
-
+                
                 NavMeshLink link = nextLevel.gameObject.AddComponent<NavMeshLink>();
                 link.startPoint = floorInfo.PointNorth.transform.localPosition;
                 link.endPoint = new Vector3(floorInfo.PointNorth.transform.localPosition.x, -50, floorInfo.PointNorth.transform.localPosition.z + (NEXT_TILE_OFFSET / 2));
@@ -52,7 +50,6 @@ public class LevelController : MonoBehaviour
                 link.bidirectional = false;
                 link.area = 2;
                 link.UpdateLink();
-
             }
             else if (direction == 2)
             {
@@ -66,7 +63,6 @@ public class LevelController : MonoBehaviour
                 link.bidirectional = false;
                 link.area = 2;
                 link.UpdateLink();
-
             }
             else if (direction == 3)
             {
@@ -80,7 +76,6 @@ public class LevelController : MonoBehaviour
                 link.bidirectional = false;
                 link.area = 2;
                 link.UpdateLink();
-
             }
             else if (direction == 4)
             {
@@ -94,7 +89,6 @@ public class LevelController : MonoBehaviour
                 link.bidirectional = false;
                 link.area = 2;
                 link.UpdateLink();
-
             }
         }
 
