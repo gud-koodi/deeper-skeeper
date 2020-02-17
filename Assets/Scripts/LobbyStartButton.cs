@@ -4,6 +4,9 @@
 
     using Event = Event.Event;
 
+    /// <summary>
+    /// Component for start button in lobby.
+    /// </summary>
     public class LobbyStartButton : MonoBehaviour
     {
         /// <summary>
