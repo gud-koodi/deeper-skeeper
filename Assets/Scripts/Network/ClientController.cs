@@ -14,7 +14,7 @@
     public class ClientController : MonoBehaviour
     {
         [Tooltip("The server component this script will communicate with.")]
-        public UnityClient client;
+        public UnityClient Client;
 
         [Tooltip("Instantiator used to create objects")]
         public NetworkInstantiator NetworkInstantiator;
@@ -43,24 +43,26 @@
         public void SendObject(GameObject gameObject)
         {
             // TODO: Distinguish between different network objects
-            using (Message message = players.UpdateAndSerialize(gameObject, ClientMessage.UpdatePlayer))
+            using (Message message = this.players.UpdateAndSerialize(gameObject, ClientMessage.UpdatePlayer))
             {
-                client.SendMessage(message, SendMode.Unreliable);
+                this.Client.SendMessage(message, SendMode.Unreliable);
             }
         }
 
         void Awake()
         {
-            if (NetworkConfig.isHost)
+            if (this.NetworkConfig.isHost)
             {
                 Debug.Log("Client manager shutting up.");
                 gameObject.SetActive(false);
+                return;
             }
             this.players = new PlayerManager(this.NetworkInstantiator.MasterPlayerCreated, this.NetworkInstantiator.PlayerUpdateRequested);
             this.enemies = new EnemyManager();
-            if (client != null)
+            if (this.Client != null)
             {
-                client.MessageReceived += OnResponse;
+                this.Client.MessageReceived += OnResponse;
+                this.NetworkEvents.LevelStartRequested.Subscribe(this.LevelStartRequested);
             }
         }
 
@@ -69,16 +71,19 @@
             switch (e.Tag)
             {
                 case ServerMessage.ConnectionData:
-                    SetupServerData(e);
+                    this.SetupServerData(e);
+                    break;
+                case ServerMessage.LevelStart:
+                    this.NetworkEvents.LevelStarted.Trigger();
                     break;
                 case ServerMessage.CreatePlayer:
-                    CreatePlayer(e);
+                    this.CreatePlayer(e);
                     break;
                 case ServerMessage.UpdatePlayer:
-                    UpdatePlayer(e);
+                    this.UpdatePlayer(e);
                     break;
                 case ServerMessage.DeletePlayer:
-                    DeleteObject(e);
+                    this.DeleteObject(e);
                     break;
             }
         }
@@ -103,6 +108,21 @@
             foreach (var enemy in data.Enemies)
             {
                 enemies.Create(this.EnemyList.Enemies[0], enemy, false);
+            }
+        }
+
+        /// <summary>
+        /// Sends level start request to server.
+        /// </summary>
+        /// <param name="p0">The parameter is not used.</param>
+        /// <param name="p1">The parameter is not used.</param>
+        /// <param name="p2">The parameter is not used.</param>
+        /// <param name="p3">The parameter is not used.</param>
+        private void LevelStartRequested(object p0, object p1, object p2, object p3)
+        {
+            using (Message message = Message.CreateEmpty(ClientMessage.LevelStartRequest))
+            {
+                this.Client.SendMessage(message, SendMode.Unreliable);
             }
         }
 

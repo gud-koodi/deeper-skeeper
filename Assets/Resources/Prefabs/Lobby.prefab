@@ -515,7 +515,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61f2f45b4b498315b4fc642cb2c039a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floor: {fileID: 3259146301573649112}
+  LevelStarted: {fileID: 11400000, guid: 9883a98a6c45ac849888edc22cfbd21a, type: 2}
+  LevelStartRequested: {fileID: 11400000, guid: 48f3c5d7eee5cf147b14242f7c0a04bb,
+    type: 2}
+  Floor: {fileID: 3259146301573649112}
 --- !u!1 &3259146301773972593
 GameObject:
   m_ObjectHideFlags: 0
