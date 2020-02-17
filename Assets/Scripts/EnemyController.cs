@@ -16,8 +16,36 @@ public class EnemyController : MonoBehaviour
     public State state;
     public Weapon weapon;
     public float hitSpeed = 1f;
+    public OffMeshLinkMoveMethod Method = OffMeshLinkMoveMethod.Parabola;
+    public AnimationCurve AnimCurve = new AnimationCurve();
     private Animator animator;
     private UnityEngine.AI.NavMeshAgent agent;
+
+    /// <summary>
+    /// How to move between the link.
+    /// </summary>
+    public enum OffMeshLinkMoveMethod
+    {
+        /// <summary>
+        /// Teleport between start pos and end pos. 
+        /// </summary>
+        Teleport,
+
+        // <summary>
+        /// NormalSpeed movement.
+        /// </summary>
+        NormalSpeed,
+
+        /// <summary>
+        /// Move by Prabola.
+        /// </summary>
+        Parabola,
+
+        /// <summary>
+        /// Move by curve. 
+        /// </summary>
+        Curve
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -48,6 +76,7 @@ public class EnemyController : MonoBehaviour
                 Attack();
                 break;
         }
+
         StartCoroutine(CheckOffMeshLinkMove());
     }
 
@@ -55,7 +84,6 @@ public class EnemyController : MonoBehaviour
     {
         if (Vector3.Distance(player.transform.position, transform.position) < 3)
         {
-
             agent.isStopped = true;
             state = State.ATTACK;
             return;
@@ -81,28 +109,27 @@ public class EnemyController : MonoBehaviour
         state = State.CHASE;
     }
 
-    public OffMeshLinkMoveMethod method = OffMeshLinkMoveMethod.Parabola;
-    public AnimationCurve curve = new AnimationCurve();
     private IEnumerator CheckOffMeshLinkMove()
     {
         Debug.Log("CHECK OFFMESH");
         if (agent.isOnOffMeshLink)
         {
             Debug.Log("ON OFFMESH LINK");
-            if (method == OffMeshLinkMoveMethod.NormalSpeed)
+            if (Method == OffMeshLinkMoveMethod.NormalSpeed)
                 yield return StartCoroutine(NormalSpeed(agent));
-            else if (method == OffMeshLinkMoveMethod.Parabola)
+            else if (Method == OffMeshLinkMoveMethod.Parabola)
                 yield return StartCoroutine(Parabola(agent, 2.0f, 0.5f));
-            else if (method == OffMeshLinkMoveMethod.Curve)
+            else if (Method == OffMeshLinkMoveMethod.Curve)
                 yield return StartCoroutine(Curve(agent, 0.5f));
             agent.CompleteOffMeshLink();
         }
+
         yield return null;
     }
     private IEnumerator NormalSpeed(NavMeshAgent agent)
     {
         OffMeshLinkData data = agent.currentOffMeshLinkData;
-        Vector3 endPos = data.endPos + Vector3.up * agent.baseOffset;
+        Vector3 endPos = data.endPos + (Vector3.up * agent.baseOffset);
         while (agent.transform.position != endPos)
         {
             agent.transform.position = Vector3.MoveTowards(agent.transform.position, endPos, agent.speed * Time.deltaTime);
@@ -113,12 +140,12 @@ public class EnemyController : MonoBehaviour
     {
         OffMeshLinkData data = agent.currentOffMeshLinkData;
         Vector3 startPos = agent.transform.position;
-        Vector3 endPos = data.endPos + Vector3.up * agent.baseOffset;
+        Vector3 endPos = data.endPos + (Vector3.up * agent.baseOffset);
         float normalizedTime = 0.0f;
         while (normalizedTime < 1.0f)
         {
-            float yOffset = height * 4.0f * (normalizedTime - normalizedTime * normalizedTime);
-            agent.transform.position = Vector3.Lerp(startPos, endPos, normalizedTime) + yOffset * Vector3.up;
+            float yOffset = height * 4.0f * (normalizedTime - (normalizedTime * normalizedTime));
+            agent.transform.position = Vector3.Lerp(startPos, endPos, normalizedTime) + (yOffset * Vector3.up);
             normalizedTime += Time.deltaTime / duration;
             yield return null;
         }
@@ -127,22 +154,14 @@ public class EnemyController : MonoBehaviour
     {
         OffMeshLinkData data = agent.currentOffMeshLinkData;
         Vector3 startPos = agent.transform.position;
-        Vector3 endPos = data.endPos + Vector3.up * agent.baseOffset;
+        Vector3 endPos = data.endPos + (Vector3.up * agent.baseOffset);
         float normalizedTime = 0.0f;
         while (normalizedTime < 1.0f)
         {
-            float yOffset = curve.Evaluate(normalizedTime);
-            agent.transform.position = Vector3.Lerp(startPos, endPos, normalizedTime) + yOffset * Vector3.up;
+            float yOffset = AnimCurve.Evaluate(normalizedTime);
+            agent.transform.position = Vector3.Lerp(startPos, endPos, normalizedTime) + (yOffset * Vector3.up);
             normalizedTime += Time.deltaTime / duration;
             yield return null;
         }
     }
-}
-
-public enum OffMeshLinkMoveMethod
-{
-    Teleport,
-    NormalSpeed,
-    Parabola,
-    Curve
 }
