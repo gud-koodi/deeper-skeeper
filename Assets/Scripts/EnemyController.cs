@@ -5,10 +5,24 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
+    /// <summary>
+    /// AI State.
+    /// </summary>
     public enum State
     {
+        /// <summary>
+        /// Do nothing.
+        /// </summary>
         IDLE,
+
+        /// <summary>
+        /// Chase player.
+        /// </summary>
         CHASE,
+
+        /// <summary>
+        /// Attack player.
+        /// </summary>
         ATTACK
     }
 
@@ -31,7 +45,7 @@ public class EnemyController : MonoBehaviour
         /// </summary>
         Teleport,
 
-        // <summary>
+        /// <summary>
         /// NormalSpeed movement.
         /// </summary>
         NormalSpeed,
@@ -86,11 +100,13 @@ public class EnemyController : MonoBehaviour
         {
             agent.isStopped = true;
             state = State.ATTACK;
-            return;
         }
-        agent.isStopped = false;
-        agent.destination = player.transform.position;
-        animator.SetBool("isWalking", true);
+        else
+        {
+            agent.isStopped = false;
+            agent.destination = player.transform.position;
+            animator.SetBool("isWalking", true);
+        }
     }
 
     private void Attack()
@@ -111,37 +127,46 @@ public class EnemyController : MonoBehaviour
 
     private IEnumerator CheckOffMeshLinkMove()
     {
-        Debug.Log("CHECK OFFMESH");
         if (agent.isOnOffMeshLink)
         {
-            Debug.Log("ON OFFMESH LINK");
             if (Method == OffMeshLinkMoveMethod.NormalSpeed)
+            {
                 yield return StartCoroutine(NormalSpeed(agent));
+            }
             else if (Method == OffMeshLinkMoveMethod.Parabola)
+            {
                 yield return StartCoroutine(Parabola(agent, 2.0f, 0.5f));
+            }
             else if (Method == OffMeshLinkMoveMethod.Curve)
+            {
                 yield return StartCoroutine(Curve(agent, 0.5f));
+            }
+
             agent.CompleteOffMeshLink();
         }
 
         yield return null;
     }
+
     private IEnumerator NormalSpeed(NavMeshAgent agent)
     {
         OffMeshLinkData data = agent.currentOffMeshLinkData;
         Vector3 endPos = data.endPos + (Vector3.up * agent.baseOffset);
+
         while (agent.transform.position != endPos)
         {
             agent.transform.position = Vector3.MoveTowards(agent.transform.position, endPos, agent.speed * Time.deltaTime);
             yield return null;
         }
     }
+
     private IEnumerator Parabola(NavMeshAgent agent, float height, float duration)
     {
         OffMeshLinkData data = agent.currentOffMeshLinkData;
         Vector3 startPos = agent.transform.position;
         Vector3 endPos = data.endPos + (Vector3.up * agent.baseOffset);
         float normalizedTime = 0.0f;
+
         while (normalizedTime < 1.0f)
         {
             float yOffset = height * 4.0f * (normalizedTime - (normalizedTime * normalizedTime));
@@ -150,12 +175,14 @@ public class EnemyController : MonoBehaviour
             yield return null;
         }
     }
+    
     private IEnumerator Curve(NavMeshAgent agent, float duration)
     {
         OffMeshLinkData data = agent.currentOffMeshLinkData;
         Vector3 startPos = agent.transform.position;
         Vector3 endPos = data.endPos + (Vector3.up * agent.baseOffset);
         float normalizedTime = 0.0f;
+
         while (normalizedTime < 1.0f)
         {
             float yOffset = AnimCurve.Evaluate(normalizedTime);
