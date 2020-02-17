@@ -32,9 +32,8 @@ namespace GudKoodi.DeeperSkeeper.Weapon
 
         private void OnTriggerEnter(Collider other)
         {
-            if (isAttacking)
+            if (isAttacking && this.transform.root.tag != other.transform.root.tag)
             {
-                Debug.Log("HIT");
                 other.gameObject.SendMessageUpwards("ApplyDamage", damage);
             }
         }

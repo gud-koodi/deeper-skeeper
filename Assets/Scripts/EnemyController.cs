@@ -50,7 +50,7 @@ public class EnemyController : MonoBehaviour
 
     private void Chase()
     {
-        if (Vector3.Distance(player.transform.position, transform.position) < 5)
+        if (Vector3.Distance(player.transform.position, transform.position) < 3)
         {
 
             agent.isStopped = true;
