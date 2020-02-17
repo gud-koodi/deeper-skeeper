@@ -45,7 +45,10 @@ public class Living : MonoBehaviour, IDamageable
     {
         SetKinematic(false);
         GetComponent<Animator>().enabled = false;
-        GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
+        if (GetComponent<UnityEngine.AI.NavMeshAgent>() != null)
+        {
+            GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
+        }
         Destroy(gameObject, 5);
     }
 }
