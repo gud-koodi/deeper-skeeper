@@ -56,6 +56,8 @@ public class CameraController : MonoBehaviour
                     MeshRenderer meshRenderer = hit.collider.gameObject.GetComponent<MeshRenderer>();
                     meshRenderer.enabled = false;
                     disabledRenderers.Add(meshRenderer);
+                    MeshRenderer edgeMeshRenderer = GetMeshRenderFromChild(meshRenderer.gameObject);
+                    edgeMeshRenderer.enabled = true;
                 }
             }
         };
@@ -76,8 +78,22 @@ public class CameraController : MonoBehaviour
     {
         disabledRenderers.ForEach(p =>
         {
+            GetMeshRenderFromChild(p.gameObject).enabled = false;
             p.enabled = true;
         });
         disabledRenderers.Clear();
+    }
+
+    private MeshRenderer GetMeshRenderFromChild(GameObject gameObject)
+    {
+        MeshRenderer[] childMeshRenderers = gameObject.GetComponentsInChildren<MeshRenderer>();
+        foreach (MeshRenderer renderer in childMeshRenderers)
+        {
+            if (!renderer.gameObject.Equals(gameObject))
+            {
+                return renderer;
+            }
+        }
+        return null;
     }
 }
