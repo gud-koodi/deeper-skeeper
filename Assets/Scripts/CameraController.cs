@@ -72,8 +72,10 @@ public class CameraController : MonoBehaviour
         castStrategy();
     }
 
-    private void ReEnableDisabledMeshRenderers() { 
-        disabledRenderers.ForEach(p => {
+    private void ReEnableDisabledMeshRenderers()
+    {
+        disabledRenderers.ForEach(p =>
+        {
             p.enabled = true;
         });
         disabledRenderers.Clear();
