@@ -6,7 +6,6 @@ env:
   BUILD_NAME: DeeperSkeeper
   UNITY_LICENSE_CONTENT: ${{ secrets.UNITY_LICENSE_CONTENT }}
   UNITY_ACTIVATION_FILE: ./unity3d.alf
-  GIT_LFS_SKIP_SMUDGE: 1
 
 jobs:
   Run_Tests:
