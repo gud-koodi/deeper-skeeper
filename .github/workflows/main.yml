@@ -25,15 +25,13 @@ jobs:
         lfs: true
     - name: Chown
       run: chown -R root:root $HOME/
-    - name: make-cache-dir
-      run: mkdir -p cache-lfs
     - name: CalculateCacheKey
       run: git lfs ls-files -l | cut -d' ' -f1 | sort > .asset-id
     - name: restore-cache
       id: restore-cache
       uses: actions/cache@v1
       with:
-        path: cache-lfs
+        path: .git/lfs
         key: v1-cache-lfs-key-{{ hashFiles('.asset-id') }}
     - name: lfs-pull
       if: steps.restore-cache.outputs.cache-hit != 'true'
@@ -65,15 +63,13 @@ jobs:
         lfs: true
     - name: Chown
       run: chown -R root:root $HOME/
-    - name: make-cache-dir
-      run: mkdir -p cache-lfs
     - name: CalculateCacheKey
       run: git lfs ls-files -l | cut -d' ' -f1 | sort > .asset-id
     - name: restore-cache
       id: restore-cache
       uses: actions/cache@v1
       with:
-        path: cache-lfs
+        path: .git/lfs
         key: v1-cache-lfs-key-{{ hashFiles('.asset-id') }}
     - name: lfs-pull
       if: steps.restore-cache.outputs.cache-hit != 'true'
@@ -105,15 +101,13 @@ jobs:
         lfs: true
     - name: Chown
       run: chown -R root:root $HOME/
-    - name: make-cache-dir
-      run: mkdir -p cache-lfs
     - name: CalculateCacheKey
       run: git lfs ls-files -l | cut -d' ' -f1 | sort > .asset-id
     - name: restore-cache
       id: restore-cache
       uses: actions/cache@v1
       with:
-        path: cache-lfs
+        path: .git/lfs
         key: v1-cache-lfs-key-{{ hashFiles('.asset-id') }}
     - name: lfs-pull
       if: steps.restore-cache.outputs.cache-hit != 'true'
@@ -145,15 +139,13 @@ jobs:
         lfs: true
     - name: Chown
       run: chown -R root:root $HOME/
-    - name: make-cache-dir
-      run: mkdir -p cache-lfs
     - name: CalculateCacheKey
       run: git lfs ls-files -l | cut -d' ' -f1 | sort > .asset-id
     - name: restore-cache
       id: restore-cache
       uses: actions/cache@v1
       with:
-        path: cache-lfs
+        path: .git/lfs
         key: v1-cache-lfs-key-{{ hashFiles('.asset-id') }}
     - name: lfs-pull
       if: steps.restore-cache.outputs.cache-hit != 'true'
