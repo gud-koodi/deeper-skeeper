@@ -13,6 +13,9 @@ jobs:
     runs-on: ubuntu-latest
     container: gableroux/unity3d:2019.2.11f1
     steps:
+    - name: install-curl
+      run: |
+        apt-get update && apt-get install curl
     - name: install-lfs
       run: |
         curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
@@ -48,6 +51,9 @@ jobs:
     runs-on: ubuntu-latest
     container: gableroux/unity3d:2019.2.11f1
     steps:
+    - name: install-curl
+      run: |
+        apt-get update && apt-get install curl
     - name: install-lfs
       run: |
         curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
@@ -83,6 +89,9 @@ jobs:
     runs-on: ubuntu-latest
     container: gableroux/unity3d:2019.2.11f1-windows
     steps:
+    - name: install-curl
+      run: |
+        apt-get update && apt-get install curl
     - name: install-lfs
       run: |
         curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
@@ -118,6 +127,9 @@ jobs:
     runs-on: ubuntu-latest
     container: gableroux/unity3d:2019.2.11f1-mac
     steps:
+    - name: install-curl
+      run: |
+        apt-get update && apt-get install curl
     - name: install-lfs
       run: |
         curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
