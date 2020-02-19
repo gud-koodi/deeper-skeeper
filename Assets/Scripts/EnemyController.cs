@@ -27,13 +27,14 @@ public class EnemyController : MonoBehaviour
     }
 
     public GameObject player;
-    public State state;
+    public State state = State.IDLE;
     public Weapon weapon;
     public float hitSpeed = 1f;
     public OffMeshLinkMoveMethod Method = OffMeshLinkMoveMethod.Parabola;
     public AnimationCurve AnimCurve = new AnimationCurve();
     private Animator animator;
     private UnityEngine.AI.NavMeshAgent agent;
+    private int playerLayer;
 
     /// <summary>
     /// How to move between the link.
@@ -61,30 +62,31 @@ public class EnemyController : MonoBehaviour
         Curve
     }
 
+    void Awake()
+    {
+        this.playerLayer = LayerMask.GetMask("Player");
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         agent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
-        state = State.CHASE;
         animator = gameObject.GetComponent<Animator>();
         animator.SetFloat("hitSpeed", hitSpeed);
         weapon.AttackDuration = weapon.AttackDuration / hitSpeed;
         agent.autoTraverseOffMeshLink = false;
-
-        // next line is for debugging, TODO: DELETE
-        player = GameObject.FindObjectOfType<Camera>().gameObject;
     }
 
     // Update is called once per frame
     void Update()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
         switch (state)
         {
             case State.CHASE:
                 Chase();
                 break;
             case State.IDLE:
+                Idle();
                 break;
             case State.ATTACK:
                 Attack();
@@ -106,6 +108,16 @@ public class EnemyController : MonoBehaviour
             agent.isStopped = false;
             agent.destination = player.transform.position;
             animator.SetBool("isWalking", true);
+        }
+    }
+
+    private void Idle()
+    {
+        Collider[] players = Physics.OverlapSphere(transform.position, 27.14f, playerLayer);
+        if (players.Length > 0)
+        {
+            this.player = players[0].gameObject;
+            this.state = State.CHASE;
         }
     }
 
