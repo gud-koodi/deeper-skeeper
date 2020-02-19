@@ -25,6 +25,8 @@ jobs:
         lfs: true
     - name: Chown
       run: chown -R root:root $HOME/
+    - name: make-cache-dir
+      run: mkdir -p cache-lfs
     - name: CalculateCacheKey
       run: git lfs ls-files -l | cut -d' ' -f1 | sort > .asset-id
     - name: restore-cache
@@ -63,6 +65,8 @@ jobs:
         lfs: true
     - name: Chown
       run: chown -R root:root $HOME/
+    - name: make-cache-dir
+      run: mkdir -p cache-lfs
     - name: CalculateCacheKey
       run: git lfs ls-files -l | cut -d' ' -f1 | sort > .asset-id
     - name: restore-cache
@@ -101,6 +105,8 @@ jobs:
         lfs: true
     - name: Chown
       run: chown -R root:root $HOME/
+    - name: make-cache-dir
+      run: mkdir -p cache-lfs
     - name: CalculateCacheKey
       run: git lfs ls-files -l | cut -d' ' -f1 | sort > .asset-id
     - name: restore-cache
@@ -139,6 +145,8 @@ jobs:
         lfs: true
     - name: Chown
       run: chown -R root:root $HOME/
+    - name: make-cache-dir
+      run: mkdir -p cache-lfs
     - name: CalculateCacheKey
       run: git lfs ls-files -l | cut -d' ' -f1 | sort > .asset-id
     - name: restore-cache
