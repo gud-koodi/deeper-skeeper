@@ -34,7 +34,7 @@ jobs:
       uses: actions/cache@v1
       with:
         path: cache-lfs
-        key: v1-cache-lfs-key-{{ checksum ".asset-id" }}
+        key: v1-cache-lfs-key-{{ hashFiles('.asset-id') }}
     - name: lfs-pull
       if: steps.cache-lfs.outputs.cache-git != 'true'
       run: git lfs pull
@@ -74,7 +74,7 @@ jobs:
       uses: actions/cache@v1
       with:
         path: cache-lfs
-        key: v1-cache-lfs-key-{{ checksum ".asset-id" }}
+        key: v1-cache-lfs-key-{{ hashFiles('.asset-id') }}
     - name: lfs-pull
       if: steps.cache-lfs.outputs.cache-git != 'true'
       run: git lfs pull
@@ -114,7 +114,7 @@ jobs:
       uses: actions/cache@v1
       with:
         path: cache-lfs
-        key: v1-cache-lfs-key-{{ checksum ".asset-id" }}
+        key: v1-cache-lfs-key-{{ hashFiles('.asset-id') }}
     - name: lfs-pull
       if: steps.cache-lfs.outputs.cache-git != 'true'
       run: git lfs pull
@@ -154,7 +154,7 @@ jobs:
       uses: actions/cache@v1
       with:
         path: cache-lfs
-        key: v1-cache-lfs-key-{{ checksum ".asset-id" }}
+        key: v1-cache-lfs-key-{{ hashFiles('.asset-id') }}
     - name: lfs-pull
       if: steps.cache-lfs.outputs.cache-git != 'true'
       run: git lfs pull
