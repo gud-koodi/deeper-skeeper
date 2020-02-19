@@ -36,7 +36,7 @@ jobs:
         path: cache-lfs
         key: v1-cache-lfs-key-{{ hashFiles('.asset-id') }}
     - name: lfs-pull
-      if: steps.cache-lfs.outputs.cache-git != 'true'
+      if: steps.restore-cache.outputs.cache-git != 'true'
       run: git lfs pull
     - name: Before
       run: chmod +x ./ci/before_script.sh && ./ci/before_script.sh
@@ -76,7 +76,7 @@ jobs:
         path: cache-lfs
         key: v1-cache-lfs-key-{{ hashFiles('.asset-id') }}
     - name: lfs-pull
-      if: steps.cache-lfs.outputs.cache-git != 'true'
+      if: steps.restore-cache.outputs.cache-git != 'true'
       run: git lfs pull
     - name: Before
       run: chmod +x ./ci/before_script.sh && ./ci/before_script.sh
@@ -116,7 +116,7 @@ jobs:
         path: cache-lfs
         key: v1-cache-lfs-key-{{ hashFiles('.asset-id') }}
     - name: lfs-pull
-      if: steps.cache-lfs.outputs.cache-git != 'true'
+      if: steps.restore-cache.outputs.cache-git != 'true'
       run: git lfs pull
     - name: Before
       run: chmod +x ./ci/before_script.sh && ./ci/before_script.sh
@@ -156,7 +156,7 @@ jobs:
         path: cache-lfs
         key: v1-cache-lfs-key-{{ hashFiles('.asset-id') }}
     - name: lfs-pull
-      if: steps.cache-lfs.outputs.cache-git != 'true'
+      if: steps.restore-cache.outputs.cache-git != 'true'
       run: git lfs pull
     - name: Before
       run: chmod +x ./ci/before_script.sh && ./ci/before_script.sh
