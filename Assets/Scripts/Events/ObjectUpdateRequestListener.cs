@@ -23,7 +23,7 @@ namespace GudKoodi.DeeperSkeeper.Event
         /// Invokes response on trigger.
         /// </summary>
         /// <param name="gameObject">GameObject to invoke the response for.</param>
-        /// <param name="p1">The parameter is not used.</param>
+        /// <param name="objectType">Type of Object.</param>
         /// <param name="p2">The parameter is not used.</param>
         /// <param name="p3">The parameter is not used.</param>
         public void OnTriggered(GameObject gameObject, ObjectType objectType, object p2, object p3)

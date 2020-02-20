@@ -35,7 +35,7 @@ namespace GudKoodi.DeeperSkeeper.Network
         /// <returns></returns>
         public bool Release(ushort id)
         {
-            if (0 < id && id < counter && !recyclables.Contains(id)) // TODO: implement a structure with faster search
+            if (id > 0 && id < counter && !recyclables.Contains(id)) // TODO: implement a structure with faster search
             {
                 recyclables.Enqueue(id);
                 return true;

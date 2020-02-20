@@ -83,6 +83,7 @@ namespace GudKoodi.DeeperSkeeper.Network
                 {
                     this.list.Insert(i, null);
                 }
+
                 this.list.Insert(networkID, gameObject);
                 this.networkIDLookUp[gameObject.GetInstanceID()] = networkID;
                 Debug.Log($"Stored instance id {gameObject.GetInstanceID()}");

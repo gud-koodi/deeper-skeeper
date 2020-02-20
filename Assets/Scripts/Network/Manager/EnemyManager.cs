@@ -10,6 +10,11 @@ namespace GudKoodi.DeeperSkeeper.Network
     {
         private readonly PlayerManager playerManager;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EnemyManager"/> class.
+        /// </summary>
+        /// <param name="playerManager">Player manager to resolve chase IDs with.</param>
+        /// <returns></returns>
         public EnemyManager(PlayerManager playerManager) : base()
         {
             this.playerManager = playerManager;
@@ -62,7 +67,7 @@ namespace GudKoodi.DeeperSkeeper.Network
         protected override void SerializeState(Enemy enemy, GameObject gameObject)
         {
             enemy.CurrentPosition = gameObject.transform.position;
-            GameObject target = gameObject.GetComponent<EnemyController>().player;
+            GameObject target = gameObject.GetComponent<EnemyController>().Player;
             enemy.Target = (target == null) ? (ushort)0 : playerManager.GetNetworkID(target);
         }
     }

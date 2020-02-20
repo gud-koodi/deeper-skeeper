@@ -102,6 +102,7 @@ namespace GudKoodi.DeeperSkeeper.Network
         /// Updates the serialization data of given object and sends it to all clients.
         /// </summary>
         /// <param name="gameObject">Object to update the data for.</param>
+        /// <param name="objectType">Type of object.</param>
         public void SendObject(GameObject gameObject, ObjectType objectType)
         {
             //// Debug.Log($"Sending {gameObject} of {objectType}");

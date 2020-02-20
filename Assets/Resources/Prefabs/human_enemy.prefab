@@ -2422,12 +2422,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92fd6344e3e06094c8f7fef282d5b547, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  state: 0
-  weapon: {fileID: 6632015640660083447}
+  Player: {fileID: 0}
+  State: 0
+  Weapon: {fileID: 6632015640660083447}
   ObjectUpdateRequested: {fileID: 11400000, guid: 122d7c8ca8e49104b94ea383fbe53a98,
     type: 2}
-  hitSpeed: 1
+  HitSpeed: 1
   Method: 2
   AnimCurve:
     serializedVersion: 2

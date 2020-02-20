@@ -12,38 +12,17 @@
     /// </summary>
     public class EnemyController : MonoBehaviour
     {
-        /// <summary>
-        /// AI State.
-        /// </summary>
-        public enum State
-        {
-            /// <summary>
-            /// Do nothing.
-            /// </summary>
-            IDLE,
-
-            /// <summary>
-            /// Chase player.
-            /// </summary>
-            CHASE,
-
-            /// <summary>
-            /// Attack player.
-            /// </summary>
-            ATTACK
-        }
-
-        public GameObject player;
-        public State state = State.IDLE;
-        public Weapon weapon;
+        public GameObject Player;
+        public BotState State = BotState.IDLE;
+        public Weapon Weapon;
         public ObjectUpdateRequested ObjectUpdateRequested;
-        public float hitSpeed = 1f;
+        public float HitSpeed = 1f;
         public OffMeshLinkMoveMethod Method = OffMeshLinkMoveMethod.Parabola;
         public AnimationCurve AnimCurve = new AnimationCurve();
         private Animator animator;
         private UnityEngine.AI.NavMeshAgent agent;
         private int playerLayer;
-        private Action IdleStrategy;
+        private Action idleStrategy;
 
         /// <summary>
         /// How to move between the link.
@@ -71,16 +50,41 @@
             Curve
         }
 
+        /// <summary>
+        /// AI State.
+        /// </summary>
+        public enum BotState
+        {
+            /// <summary>
+            /// Do nothing.
+            /// </summary>
+            IDLE,
+
+            /// <summary>
+            /// Chase player.
+            /// </summary>
+            CHASE,
+
+            /// <summary>
+            /// Attack player.
+            /// </summary>
+            ATTACK
+        }
+
+        /// <summary>
+        /// Starts chasing the given player object.
+        /// </summary>
+        /// <param name="target">Player to chase.</param>
         public void StartChase(GameObject target)
         {
-            this.player = target;
-            this.state = State.CHASE;
+            this.Player = target;
+            this.State = BotState.CHASE;
             this.ObjectUpdateRequested.Trigger(this.gameObject, ObjectType.Enemy);
         }
 
         void Awake()
         {
-            this.IdleStrategy = () => IdleMaster();
+            this.idleStrategy = () => IdleMaster();
             this.playerLayer = LayerMask.GetMask("Player");
         }
 
@@ -89,23 +93,23 @@
         {
             agent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
             animator = gameObject.GetComponent<Animator>();
-            animator.SetFloat("hitSpeed", hitSpeed);
-            weapon.AttackDuration = weapon.AttackDuration / hitSpeed;
+            animator.SetFloat("hitSpeed", HitSpeed);
+            Weapon.AttackDuration = Weapon.AttackDuration / HitSpeed;
             agent.autoTraverseOffMeshLink = false;
         }
 
         // Update is called once per frame
         void Update()
         {
-            switch (state)
+            switch (State)
             {
-                case State.CHASE:
+                case BotState.CHASE:
                     Chase();
                     break;
-                case State.IDLE:
-                    IdleStrategy();
+                case BotState.IDLE:
+                    idleStrategy();
                     break;
-                case State.ATTACK:
+                case BotState.ATTACK:
                     Attack();
                     break;
             }
@@ -115,15 +119,15 @@
 
         private void Chase()
         {
-            if (Vector3.Distance(player.transform.position, transform.position) < 3)
+            if (Vector3.Distance(Player.transform.position, transform.position) < 3)
             {
                 agent.isStopped = true;
-                state = State.ATTACK;
+                State = BotState.ATTACK;
             }
             else
             {
                 agent.isStopped = false;
-                agent.destination = player.transform.position;
+                agent.destination = Player.transform.position;
                 animator.SetBool("isWalking", true);
             }
         }
@@ -139,9 +143,9 @@
 
         private void Attack()
         {
-            weapon.Attack();
+            Weapon.Attack();
             animator.SetBool("isAttacking", true);
-            state = State.IDLE;
+            State = BotState.IDLE;
             StartCoroutine(WaitAttack());
         }
 
@@ -149,8 +153,8 @@
         {
             yield return null;
             animator.SetBool("isAttacking", false);
-            yield return new WaitForSeconds(weapon.AttackDuration);
-            state = State.CHASE;
+            yield return new WaitForSeconds(Weapon.AttackDuration);
+            State = BotState.CHASE;
         }
 
         private IEnumerator CheckOffMeshLinkMove()

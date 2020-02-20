@@ -30,9 +30,14 @@ namespace GudKoodi.DeeperSkeeper.Network
             this.serializables = new List<T>();
         }
 
+        /// <summary>
+        /// Gets object at the specified network ID.
+        /// </summary>
+        /// <param name="index">network ID of object.</param>
+        /// <returns>Object at the specified network ID.</returns>
         public GameObject this[ushort index]
         {
-            get => gameObjects[index];
+            get => this.gameObjects[index];
         }
 
         /// <summary>
@@ -69,7 +74,7 @@ namespace GudKoodi.DeeperSkeeper.Network
         public ushort GetNetworkID(GameObject gameObject)
         {
             Debug.Log($"{typeof(T)} also {gameObject}");
-            return gameObjects.LookUpNetworkID(gameObject);
+            return this.gameObjects.LookUpNetworkID(gameObject);
         }
 
         /// <summary>
