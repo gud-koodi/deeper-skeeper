@@ -34,5 +34,14 @@ namespace GudKoodi.DeeperSkeeper.Network
         /// Sent when client should remove a player object. Contains <c>ushort</c> of the player id to remove.
         /// </summary>
         public const ushort DeletePlayer = 0x011_F;
+
+        /// <summary>Sent when new enemy should be created.</summary>
+        public const ushort CreateEnemy = 0x012_0;
+
+        /// <summary>Sent when existing enemy should be updated.</summary>
+        public const ushort UpdateEnemy = 0x012_1;
+
+        /// <summary>Sent when existing enemy should be deleted.</summary>
+        public const ushort DeleteEnemy = 0x012_F;
     }
 }

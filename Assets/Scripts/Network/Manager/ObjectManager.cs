@@ -31,6 +31,16 @@ namespace GudKoodi.DeeperSkeeper.Network
         }
 
         /// <summary>
+        /// Gets object at the specified network ID.
+        /// </summary>
+        /// <param name="index">network ID of object.</param>
+        /// <returns>Object at the specified network ID.</returns>
+        public GameObject this[ushort index]
+        {
+            get => this.gameObjects[index];
+        }
+
+        /// <summary>
         /// Creates and starts managing a new <see cref="GameObject" /> using given serialization data. 
         /// </summary>
         /// <param name="prefab">Prefab used as a base for the new GameObject.</param>
@@ -54,6 +64,17 @@ namespace GudKoodi.DeeperSkeeper.Network
             }
 
             return go;
+        }
+
+        /// <summary>
+        /// Gets the network ID of given object if managed.
+        /// </summary>
+        /// <param name="gameObject">GameObject to look network ID of.</param>
+        /// <returns>network ID of object.</returns>
+        public ushort GetNetworkID(GameObject gameObject)
+        {
+            Debug.Log($"{typeof(T)} also {gameObject}");
+            return this.gameObjects.LookUpNetworkID(gameObject);
         }
 
         /// <summary>

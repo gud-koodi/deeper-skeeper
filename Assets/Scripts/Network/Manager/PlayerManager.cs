@@ -8,7 +8,7 @@ namespace GudKoodi.DeeperSkeeper.Network
     /// <summary>
     /// Class for managing objects serialized as <see cref="Player" />.
     /// </summary>
-    internal class PlayerManager : ObjectManager<Player>
+    public class PlayerManager : ObjectManager<Player>
     {
         /// <summary>
         /// Event called after a master object has been created.

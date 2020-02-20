@@ -5,7 +5,7 @@ namespace GudKoodi.DeeperSkeeper.Event
     /// <summary>
     /// Listener for <see cref="ObjectUpdateRequested" />.
     /// </summary>
-    public class ObjectUpdateRequestListener : MonoBehaviour, IListener<GameObject, object, object, object>
+    public class ObjectUpdateRequestListener : MonoBehaviour, IListener<GameObject, ObjectType, object, object>
     {
         /// <summary>
         /// Event to listen to.
@@ -23,12 +23,12 @@ namespace GudKoodi.DeeperSkeeper.Event
         /// Invokes response on trigger.
         /// </summary>
         /// <param name="gameObject">GameObject to invoke the response for.</param>
-        /// <param name="p1">The parameter is not used.</param>
+        /// <param name="objectType">Type of Object.</param>
         /// <param name="p2">The parameter is not used.</param>
         /// <param name="p3">The parameter is not used.</param>
-        public void OnTriggered(GameObject gameObject, object p1, object p2, object p3)
+        public void OnTriggered(GameObject gameObject, ObjectType objectType, object p2, object p3)
         {
-            this.Response.Invoke(gameObject);
+            this.Response.Invoke(gameObject, objectType);
         }
 
         void OnDisable()
