@@ -1,7 +1,8 @@
 {
     "name": "EnemyAssembly",
     "references": [
-        "GUID:17c2122706cf39f4e9b56fd43b0df168"
+        "GUID:17c2122706cf39f4e9b56fd43b0df168",
+        "GUID:b8ce6f02f82475e4abba69729840089a"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

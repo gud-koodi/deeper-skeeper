@@ -30,7 +30,7 @@ namespace GudKoodi.DeeperSkeeper.Network
             {
                 this.oldPosition = currentPosition;
                 this.oldRotation = currentRotation;
-                this.ObjectUpdateRequested.Trigger(gameObject);
+                this.ObjectUpdateRequested.Trigger(gameObject, ObjectType.Player);
             }
         }
     }
