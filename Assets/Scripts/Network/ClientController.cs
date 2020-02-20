@@ -58,7 +58,7 @@
                 return;
             }
             this.players = new PlayerManager(this.NetworkInstantiator.MasterPlayerCreated, this.NetworkInstantiator.PlayerUpdateRequested);
-            this.enemies = new EnemyManager();
+            this.enemies = new EnemyManager(players);
             if (this.Client != null)
             {
                 this.Client.MessageReceived += OnResponse;
@@ -84,6 +84,9 @@
                     break;
                 case ServerMessage.DeletePlayer:
                     this.DeleteObject(e);
+                    break;
+                case ServerMessage.UpdateEnemy:
+                    UpdateEnemy(e);
                     break;
             }
         }
@@ -139,6 +142,14 @@
             using (Message message = e.GetMessage())
             {
                 players.DeserializeAndUpdate(message);
+            }
+        }
+
+        private void UpdateEnemy(MessageReceivedEventArgs e)
+        {
+            using (Message message = e.GetMessage())
+            {
+                enemies.DeserializeAndUpdate(message);
             }
         }
 

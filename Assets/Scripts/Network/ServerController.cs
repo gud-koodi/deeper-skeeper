@@ -102,16 +102,30 @@ namespace GudKoodi.DeeperSkeeper.Network
         /// Updates the serialization data of given object and sends it to all clients.
         /// </summary>
         /// <param name="gameObject">Object to update the data for.</param>
-        public void SendObject(GameObject gameObject)
+        public void SendObject(GameObject gameObject, ObjectType objectType)
         {
-            // TODO: Distinguish between different network objects
-            using (Message message = players.UpdateAndSerialize(gameObject, ServerMessage.UpdatePlayer))
+            //// Debug.Log($"Sending {gameObject} of {objectType}");
+
+            Message message = null;
+            switch (objectType)
             {
-                foreach (var client in Server.Server.ClientManager.GetAllClients())
-                {
-                    client.SendMessage(message, SendMode.Unreliable);
-                }
+                case ObjectType.Enemy:
+                    message = enemies.UpdateAndSerialize(gameObject, ServerMessage.UpdateEnemy);
+                    break;
+                case ObjectType.Player:
+                    message = players.UpdateAndSerialize(gameObject, ServerMessage.UpdatePlayer);
+                    break;
+                default:
+                    Debug.LogError("TODO: Writer error message");
+                    break;
             }
+
+            foreach (var client in Server.Server.ClientManager.GetAllClients())
+            {
+                client.SendMessage(message, SendMode.Unreliable);
+            }
+
+            message.Dispose();
         }
 
         void Awake()
@@ -123,7 +137,7 @@ namespace GudKoodi.DeeperSkeeper.Network
                 return;
             }
             this.players = new PlayerManager(this.NetworkInstantiator.MasterPlayerCreated, this.NetworkInstantiator.PlayerUpdateRequested);
-            this.enemies = new EnemyManager();
+            this.enemies = new EnemyManager(players);
             this.NetworkEvents.EnemyCreationRequested.Subscribe(this.EnemyCreationRequested);
             this.NetworkEvents.LevelStartRequested.Subscribe(this.LevelStartRequested);
         }
@@ -237,7 +251,7 @@ namespace GudKoodi.DeeperSkeeper.Network
         private void EnemyCreationRequested(GameObject prefab, Vector3 position, object p2, object p3)
         {
             Debug.Log($"Requested creation of {prefab} in {position}");
-            Enemy enemy = new Enemy(enemyIDPool.Next(), position, position);
+            Enemy enemy = new Enemy(enemyIDPool.Next(), position, 0);
             enemies.Create(prefab, enemy, true);
         }
     }

@@ -22,11 +22,11 @@ namespace GudKoodi.DeeperSkeeper.Network
         /// <param name="networkID">Network identifier.</param>
         /// <param name="currentPosition">This object's current position.</param>
         /// <param name="targetPosition">Position this object is aiming towards.</param>
-        public Enemy(ushort networkID, Vector3 currentPosition, Vector3 targetPosition)
+        public Enemy(ushort networkID, Vector3 currentPosition, ushort targetPosition)
         {
             this.NetworkID = networkID;
             this.CurrentPosition = currentPosition;
-            this.TargetPosition = targetPosition;
+            this.Target = targetPosition;
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace GudKoodi.DeeperSkeeper.Network
         /// Gets or sets the target position for this object.
         /// </summary>
         /// <value>Target position.</value>
-        public Vector3 TargetPosition { get; set; }
+        public ushort Target { get; set; }
 
         /// <summary>
         /// /// Deserializes data to this instance. Called by DarkRift.
@@ -55,7 +55,7 @@ namespace GudKoodi.DeeperSkeeper.Network
         {
             this.NetworkID = e.Reader.ReadUInt16();
             this.CurrentPosition = SerializationHelper.DeserializeVector3(e.Reader);
-            this.TargetPosition = SerializationHelper.DeserializeVector3(e.Reader);
+            this.Target = e.Reader.ReadUInt16();
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace GudKoodi.DeeperSkeeper.Network
         {
             e.Writer.Write(this.NetworkID);
             SerializationHelper.SerializeVector3(e.Writer, this.CurrentPosition);
-            SerializationHelper.SerializeVector3(e.Writer, this.TargetPosition);
+            e.Writer.Write(this.Target);
         }
     }
 }

@@ -2425,6 +2425,8 @@ MonoBehaviour:
   player: {fileID: 0}
   state: 0
   weapon: {fileID: 6632015640660083447}
+  ObjectUpdateRequested: {fileID: 11400000, guid: 122d7c8ca8e49104b94ea383fbe53a98,
+    type: 2}
   hitSpeed: 1
   Method: 2
   AnimCurve:

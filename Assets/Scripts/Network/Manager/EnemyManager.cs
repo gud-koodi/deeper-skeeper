@@ -1,5 +1,6 @@
 namespace GudKoodi.DeeperSkeeper.Network
 {
+    using GudKoodi.DeeperSkeeper.Enemy;
     using UnityEngine;
 
     /// <summary>
@@ -7,6 +8,13 @@ namespace GudKoodi.DeeperSkeeper.Network
     /// </summary>
     public class EnemyManager : ObjectManager<Enemy>
     {
+        private readonly PlayerManager playerManager;
+
+        public EnemyManager(PlayerManager playerManager) : base()
+        {
+            this.playerManager = playerManager;
+        }
+
         /// <summary>
         /// Deserializes the state to the GameObject from <see cref="Enemy" /> object.
         /// </summary>
@@ -15,6 +23,10 @@ namespace GudKoodi.DeeperSkeeper.Network
         protected override void DeserializeState(Enemy enemy, GameObject gameObject)
         {
             gameObject.transform.position = enemy.CurrentPosition;
+            if (enemy.Target > 0)
+            {
+                gameObject.GetComponent<EnemyController>().StartChase(this.playerManager[enemy.Target]);
+            }
         }
 
         /// <summary>
@@ -38,6 +50,7 @@ namespace GudKoodi.DeeperSkeeper.Network
         protected override GameObject InstantiateSlave(GameObject prefab, Enemy enemy)
         {
             GameObject go = GameObject.Instantiate(prefab, enemy.CurrentPosition, Quaternion.identity);
+            DeserializeState(enemy, go);
             return go;
         }
 
@@ -49,6 +62,8 @@ namespace GudKoodi.DeeperSkeeper.Network
         protected override void SerializeState(Enemy enemy, GameObject gameObject)
         {
             enemy.CurrentPosition = gameObject.transform.position;
+            GameObject target = gameObject.GetComponent<EnemyController>().player;
+            enemy.Target = (target == null) ? (ushort)0 : playerManager.GetNetworkID(target);
         }
     }
 }

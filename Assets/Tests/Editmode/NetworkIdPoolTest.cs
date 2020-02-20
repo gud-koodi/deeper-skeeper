@@ -11,13 +11,13 @@
         {
             NetworkIdPool pool = new NetworkIdPool();
 
-            Assert.AreEqual(0, pool.Next());
             Assert.AreEqual(1, pool.Next());
             Assert.AreEqual(2, pool.Next());
-
-            pool.Release(1);
-            Assert.AreEqual(1, pool.Next());
             Assert.AreEqual(3, pool.Next());
+
+            pool.Release(2);
+            Assert.AreEqual(2, pool.Next());
+            Assert.AreEqual(4, pool.Next());
         }
 
         [Test]
@@ -26,17 +26,18 @@
             NetworkIdPool pool = new NetworkIdPool();
 
             Assert.False(pool.Release(0));
+            Assert.False(pool.Release(1));
             Assert.False(pool.Release(99));
-            Assert.AreEqual(0, pool.Next());
             Assert.AreEqual(1, pool.Next());
+            Assert.AreEqual(2, pool.Next());
 
             pool = new NetworkIdPool();
 
-            Assert.AreEqual(0, pool.Next());
-            Assert.True(pool.Release(0));
-            Assert.False(pool.Release(0));
-            Assert.AreEqual(0, pool.Next());
-            Assert.AreNotEqual(0, pool.Next());
+            Assert.AreEqual(1, pool.Next());
+            Assert.True(pool.Release(1));
+            Assert.False(pool.Release(1));
+            Assert.AreEqual(1, pool.Next());
+            Assert.AreNotEqual(1, pool.Next());
         }
 
         [Test]
@@ -60,7 +61,7 @@
             {
                 pool.Next();
             }
-            Assert.AreEqual(34000, pool.Next()); // Next should be 34000
+            Assert.AreEqual(34001, pool.Next()); // Next should be 34001
         }
     }
 }

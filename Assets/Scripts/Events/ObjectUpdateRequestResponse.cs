@@ -8,7 +8,7 @@ namespace GudKoodi.DeeperSkeeper.Event
     /// Mandatory Unity overhead.
     /// </summary>
     [Serializable]
-    public class ObjectUpdateRequestResponse : UnityEvent<GameObject>
+    public class ObjectUpdateRequestResponse : UnityEvent<GameObject, ObjectType>
     {
     }
 }
