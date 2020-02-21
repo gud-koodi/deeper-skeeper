@@ -1,18 +1,25 @@
 ﻿namespace GudKoodi.DeeperSkeeper.Player
 {
     using System.Collections;
+    using Entity;
     using UnityEngine;
     using Weapon;
 
+    /// <summary>
+    /// Player controller controls the player.
+    /// </summary>
     public class PlayerController : MonoBehaviour
     {
         // Start is called before the first frame update
         public Rigidbody playerRigidbody;
         public float speed = 15f;
-        public float hitSpeed = 3f;
+        public float hitSpeed = 1f;
         public Weapon weapon;
         private Animator animator;
         private bool isAttacking;
+        private GameObject hud;
+        private UnityEngine.UI.Slider healthBar;
+        private Living livingInfo;
 
         void Start()
         {
@@ -20,6 +27,10 @@
             animator.SetFloat("hitSpeed", hitSpeed);
             weapon.AttackDuration = weapon.AttackDuration / hitSpeed;
             isAttacking = false;
+            GameObject uiPrefab = (GameObject)Resources.Load("Prefabs/UI", typeof(GameObject));
+            hud = Instantiate(uiPrefab, Vector3.zero, Quaternion.identity);
+            livingInfo = gameObject.GetComponent<Living>();
+            healthBar = hud.gameObject.GetComponentInChildren<UnityEngine.UI.Slider>();
         }
 
         // Update is called once per frame
@@ -32,6 +43,7 @@
             }
 
             HandleWeaponAttack();
+            UpdateHUD();
         }
 
         private void ApplyMovement()
@@ -91,6 +103,11 @@
             animator.SetBool("isAttacking", false);
             yield return new WaitForSeconds(weapon.AttackDuration);
             isAttacking = false;
+        }
+
+        private void UpdateHUD()
+        {
+            healthBar.value = livingInfo.GetHpPercent();
         }
     }
 }

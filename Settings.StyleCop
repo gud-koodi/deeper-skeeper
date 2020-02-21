@@ -89,6 +89,7 @@
           <Value>x</Value>
           <Value>y</Value>
           <Value>at</Value>
+          <Value>ui</Value>
         </CollectionProperty>
       </AnalyzerSettings>
     </Analyzer>

@@ -121,7 +121,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 4102942273882464063}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5000001
   m_Height: 2
   m_Direction: 1
@@ -214,7 +214,7 @@ BoxCollider:
   m_GameObject: {fileID: 4102942273930737857}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -417,7 +417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4c819b66e40a5f63bcf8bc8197a5f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackAnimationDuration: 1.5
+  attackAnimationDuration: 0.5
   damage: 5
 --- !u!1 &4102942274102543766
 GameObject:
@@ -507,7 +507,7 @@ BoxCollider:
   m_GameObject: {fileID: 4102942274102543766}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -599,7 +599,7 @@ BoxCollider:
   m_GameObject: {fileID: 4102942274136301013}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -849,7 +849,7 @@ BoxCollider:
   m_GameObject: {fileID: 4102942274645162426}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -941,7 +941,7 @@ SphereCollider:
   m_GameObject: {fileID: 4102942274807999215}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -1254,7 +1254,7 @@ BoxCollider:
   m_GameObject: {fileID: 4102942275537600694}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -1369,7 +1369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a50b401879d25e68bc799ed25106092, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 100
 --- !u!95 &4102942275680462708
 Animator:
   serializedVersion: 3
