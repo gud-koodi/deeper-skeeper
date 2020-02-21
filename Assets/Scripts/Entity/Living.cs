@@ -3,12 +3,21 @@
     using System.Collections;
     using System.Collections.Generic;
     using UnityEngine;
+    using UnityEngine.Serialization;
 
+    /// <summary>
+    /// Anything that has HP.
+    /// </summary>
     public class Living : MonoBehaviour, IDamageable
-    {
-        public float maxHealth;
+    {   
+        [FormerlySerializedAs("maxHealth")]
+        public float MaxHealth;
         private float currentHealth;
 
+        /// <summary>
+        /// Applies damage. Called outside the class on hit events.
+        /// </summary>
+        /// <param name="damage"></param>
         public void ApplyDamage(float damage)
         {
             Debug.Log("DAMAGE");
@@ -25,7 +34,7 @@
         /// <returns>float in range 0...1</returns>
         public float GetHpPercent()
         {
-            return currentHealth/maxHealth;
+            return currentHealth / MaxHealth;
         }
 
         // Start is called before the first frame update
@@ -36,7 +45,7 @@
 
         private void Init()
         {
-            currentHealth = maxHealth;
+            currentHealth = MaxHealth;
             SetKinematic(true);
             gameObject.GetComponent<Rigidbody>().isKinematic = false;
             gameObject.GetComponent<Collider>().enabled = true;

@@ -5,6 +5,9 @@
     using UnityEngine;
     using Weapon;
 
+    /// <summary>
+    /// Player controller controls the player.
+    /// </summary>
     public class PlayerController : MonoBehaviour
     {
         // Start is called before the first frame update
@@ -14,7 +17,7 @@
         public Weapon weapon;
         private Animator animator;
         private bool isAttacking;
-        private GameObject HUD;
+        private GameObject hud;
         private UnityEngine.UI.Slider healthBar;
         private Living livingInfo;
 
@@ -24,11 +27,10 @@
             animator.SetFloat("hitSpeed", hitSpeed);
             weapon.AttackDuration = weapon.AttackDuration / hitSpeed;
             isAttacking = false;
-            GameObject UIPrefab = (GameObject)Resources.Load("Prefabs/UI", typeof(GameObject));
-            HUD = Instantiate(UIPrefab, Vector3.zero, Quaternion.identity);
+            GameObject uiPrefab = (GameObject)Resources.Load("Prefabs/UI", typeof(GameObject));
+            hud = Instantiate(uiPrefab, Vector3.zero, Quaternion.identity);
             livingInfo = gameObject.GetComponent<Living>();
-            healthBar = HUD.gameObject.GetComponentInChildren<UnityEngine.UI.Slider>();
-
+            healthBar = hud.gameObject.GetComponentInChildren<UnityEngine.UI.Slider>();
         }
 
         // Update is called once per frame
@@ -103,7 +105,7 @@
             isAttacking = false;
         }
 
-        private void UpdateHUD() 
+        private void UpdateHUD()
         {
             healthBar.value = livingInfo.GetHpPercent();
         }
