@@ -75,8 +75,6 @@
             {
                 Destroy(gameObject, 0.5f);
             }
-
-
         }
     }
 }
