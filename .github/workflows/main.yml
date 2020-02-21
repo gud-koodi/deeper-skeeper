@@ -22,7 +22,7 @@ jobs:
         apt-get install git-lfs
     - uses: actions/checkout@v1
       with:
-        lfs: true
+        lfs: false
     - name: Chown
       run: chown -R root:root $HOME/
     - name: CalculateCacheKey
@@ -62,7 +62,7 @@ jobs:
         apt-get install git-lfs
     - uses: actions/checkout@v1
       with:
-        lfs: true
+        lfs: false
     - name: Chown
       run: chown -R root:root $HOME/
     - name: CalculateCacheKey
@@ -102,7 +102,7 @@ jobs:
         apt-get install git-lfs
     - uses: actions/checkout@v1
       with:
-        lfs: true
+        lfs: false
     - name: Chown
       run: chown -R root:root $HOME/
     - name: CalculateCacheKey
@@ -142,7 +142,7 @@ jobs:
         apt-get install git-lfs
     - uses: actions/checkout@v1
       with:
-        lfs: true
+        lfs: false
     - name: Chown
       run: chown -R root:root $HOME/
     - name: CalculateCacheKey
