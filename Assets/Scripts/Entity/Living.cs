@@ -9,7 +9,7 @@
     /// Anything that has HP.
     /// </summary>
     public class Living : MonoBehaviour, IDamageable
-    {   
+    {
         [FormerlySerializedAs("maxHealth")]
         public float MaxHealth;
         private float currentHealth;
@@ -69,9 +69,14 @@
             if (agent)
             {
                 GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
+                Destroy(gameObject, 5);
+            }
+            else
+            {
+                Destroy(gameObject, 0.5f);
             }
 
-            Destroy(gameObject, 5);
+
         }
     }
 }

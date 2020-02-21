@@ -12,7 +12,7 @@
     {
         // Start is called before the first frame update
         public Rigidbody playerRigidbody;
-        public float speed = 15f;
+        public float speed = 20f;
         public float hitSpeed = 1f;
         public Weapon weapon;
         private Animator animator;
