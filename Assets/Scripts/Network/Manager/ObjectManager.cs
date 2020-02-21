@@ -73,7 +73,7 @@ namespace GudKoodi.DeeperSkeeper.Network
         /// <returns>network ID of object.</returns>
         public ushort GetNetworkID(GameObject gameObject)
         {
-            Debug.Log($"{typeof(T)} also {gameObject}");
+            //// Debug.Log($"{typeof(T)} also {gameObject}");
             return this.gameObjects.LookUpNetworkID(gameObject);
         }
 

@@ -40,7 +40,7 @@
 
         private EnemyManager enemies;
 
-        public void SendObject(GameObject gameObject)
+        public void SendObject(GameObject gameObject, ObjectType objectType)
         {
             // TODO: Distinguish between different network objects
             using (Message message = this.players.UpdateAndSerialize(gameObject, ClientMessage.UpdatePlayer))

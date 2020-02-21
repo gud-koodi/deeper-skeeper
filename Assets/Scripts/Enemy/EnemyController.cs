@@ -12,6 +12,9 @@
     /// </summary>
     public class EnemyController : MonoBehaviour
     {
+        private const float MOVEMENT_UPDATE_TRESHOLD = 0.5f;
+        private const float ROTATION_UPDATE_TRESHOD = 30f;
+
         public GameObject Player;
         public BotState State = BotState.IDLE;
         public Weapon Weapon;
@@ -23,6 +26,10 @@
         private UnityEngine.AI.NavMeshAgent agent;
         private int playerLayer;
         private Action idleStrategy;
+        private Action updateStrategy;
+
+        private Vector3 oldPosition;
+        private Quaternion oldRotation;
 
         /// <summary>
         /// How to move between the link.
@@ -82,10 +89,18 @@
             this.ObjectUpdateRequested.Trigger(this.gameObject, ObjectType.Enemy);
         }
 
+        public void SetAsMaster() {
+            this.idleStrategy = () => IdleMaster();
+            this.updateStrategy = () => UpdateMaster();
+        }
+
         void Awake()
         {
-            this.idleStrategy = () => IdleMaster();
+            this.idleStrategy = () => { };
+            this.updateStrategy = () => { };
             this.playerLayer = LayerMask.GetMask("Player");
+            this.oldPosition = transform.localPosition;
+            this.oldRotation = transform.localRotation;
         }
 
         // Start is called before the first frame update
@@ -114,6 +129,7 @@
                     break;
             }
 
+            updateStrategy();
             StartCoroutine(CheckOffMeshLinkMove());
         }
 
@@ -147,6 +163,33 @@
             animator.SetBool("isAttacking", true);
             State = BotState.IDLE;
             StartCoroutine(WaitAttack());
+        }
+
+        private void UpdateMaster()
+        {
+            Vector3 currentPosition = transform.localPosition;
+            Quaternion currentRotation = transform.localRotation;
+            if ((currentPosition - this.oldPosition).magnitude > MOVEMENT_UPDATE_TRESHOLD)
+                //// || Quaternion.Angle(currentRotation, this.oldRotation) > ROTATION_UPDATE_TRESHOD)
+            {
+                this.oldPosition = currentPosition;
+                //// this.oldRotation = currentRotation;
+                this.ObjectUpdateRequested.Trigger(gameObject, ObjectType.Enemy);
+            }
+        }
+
+        public void UpdateState(GameObject target, Vector3 networkPosition)
+        {
+            // Rubberband if necessary
+            if ((networkPosition - transform.position).magnitude > 10f)
+            {
+                transform.position = networkPosition;
+            }
+
+            if (target != Player)
+            {
+                StartChase(target);
+            }
         }
 
         private IEnumerator WaitAttack()

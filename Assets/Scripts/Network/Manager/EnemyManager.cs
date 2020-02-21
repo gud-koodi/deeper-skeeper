@@ -27,11 +27,9 @@ namespace GudKoodi.DeeperSkeeper.Network
         /// <param name="gameObject">GameObject to update.</param>
         protected override void DeserializeState(Enemy enemy, GameObject gameObject)
         {
-            gameObject.transform.position = enemy.CurrentPosition;
-            if (enemy.Target > 0)
-            {
-                gameObject.GetComponent<EnemyController>().StartChase(this.playerManager[enemy.Target]);
-            }
+            var controller = gameObject.GetComponent<EnemyController>();
+            GameObject target = (enemy.Target > 0) ? this.playerManager[enemy.Target] : null;
+            controller.UpdateState(target, enemy.CurrentPosition);
         }
 
         /// <summary>
@@ -43,6 +41,7 @@ namespace GudKoodi.DeeperSkeeper.Network
         protected override GameObject InstantiateMaster(GameObject prefab, Enemy enemy)
         {
             GameObject go = GameObject.Instantiate(prefab, enemy.CurrentPosition, Quaternion.identity);
+            go.GetComponent<EnemyController>().SetAsMaster();
             return go;
         }
 
