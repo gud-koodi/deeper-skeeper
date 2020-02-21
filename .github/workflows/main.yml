@@ -33,8 +33,11 @@ jobs:
       with:
         path: .git/lfs
         key: v3-cache-lfs-key-{{ hashFiles('.asset-id') }}
-    - name: lfs-pull
-      run: git lfs pull
+    - name: lfs-fetch
+      if: steps.restore-cache.outputs.cache-hit != 'true'
+      run: git lfs fetch
+    - name: lfs-checkout
+      run: git lfs checkout
     - name: Before
       run: chmod +x ./ci/before_script.sh && ./ci/before_script.sh
     - name: Edit mode tests
@@ -70,8 +73,11 @@ jobs:
       with:
         path: .git/lfs
         key: v3-cache-lfs-key-{{ hashFiles('.asset-id') }}
-    - name: lfs-pull
-      run: git lfs pull
+    - name: lfs-fetch
+      if: steps.restore-cache.outputs.cache-hit != 'true'
+      run: git lfs fetch
+    - name: lfs-checkout
+      run: git lfs checkout
     - name: Before
       run: chmod +x ./ci/before_script.sh && ./ci/before_script.sh
     - name: Build StandaloneLinux64
@@ -107,8 +113,11 @@ jobs:
       with:
         path: .git/lfs
         key: v3-cache-lfs-key-{{ hashFiles('.asset-id') }}
-    - name: lfs-pull
-      run: git lfs pull
+    - name: lfs-fetch
+      if: steps.restore-cache.outputs.cache-hit != 'true'
+      run: git lfs fetch
+    - name: lfs-checkout
+      run: git lfs checkout
     - name: Before
       run: chmod +x ./ci/before_script.sh && ./ci/before_script.sh
     - name: Build StandaloneWindows64
@@ -144,8 +153,11 @@ jobs:
       with:
         path: .git/lfs
         key: v3-cache-lfs-key-{{ hashFiles('.asset-id') }}
-    - name: lfs-pull
-      run: git lfs pull
+    - name: lfs-fetch
+      if: steps.restore-cache.outputs.cache-hit != 'true'
+      run: git lfs fetch
+    - name: lfs-checkout
+      run: git lfs checkout
     - name: Before
       run: chmod +x ./ci/before_script.sh && ./ci/before_script.sh
     - name: Build StandaloneOSX
