@@ -17,7 +17,7 @@
         /// <summary>
         /// Applies damage. Called outside the class on hit events.
         /// </summary>
-        /// <param name="damage"></param>
+        /// <param name="damage">float damage amount</param>
         public void ApplyDamage(float damage)
         {
             Debug.Log("DAMAGE");
