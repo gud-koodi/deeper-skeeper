@@ -19,10 +19,17 @@
         public float HitSpeed = 1f;
         public OffMeshLinkMoveMethod Method = OffMeshLinkMoveMethod.Parabola;
         public AnimationCurve AnimCurve = new AnimationCurve();
+
+        private const float MovementUpdateTreshold = 0.5f;
+
         private Animator animator;
         private UnityEngine.AI.NavMeshAgent agent;
         private int playerLayer;
         private Action idleStrategy;
+        private Action updateStrategy;
+
+        private Vector3 oldPosition;
+        private Quaternion oldRotation;
 
         /// <summary>
         /// How to move between the link.
@@ -82,10 +89,41 @@
             this.ObjectUpdateRequested.Trigger(this.gameObject, ObjectType.Enemy);
         }
 
-        void Awake()
+        /// <summary>
+        /// Sets the component as master, sending local changes to network.
+        /// </summary>
+        public void SetAsMaster()
         {
             this.idleStrategy = () => IdleMaster();
+            this.updateStrategy = () => UpdateMaster();
+        }
+
+        /// <summary>
+        /// Updates the state of slave component with data from server.
+        /// </summary>
+        /// <param name="target">Target this component should chase if any.</param>
+        /// <param name="networkPosition">Position on network.</param>
+        public void UpdateState(GameObject target, Vector3 networkPosition)
+        {
+            // Rubberband if necessary
+            if ((networkPosition - transform.position).magnitude > 10f)
+            {
+                transform.position = networkPosition;
+            }
+
+            if (target != Player)
+            {
+                StartChase(target);
+            }
+        }
+
+        void Awake()
+        {
+            this.idleStrategy = () => { };
+            this.updateStrategy = () => { };
             this.playerLayer = LayerMask.GetMask("Player");
+            this.oldPosition = transform.localPosition;
+            this.oldRotation = transform.localRotation;
         }
 
         // Start is called before the first frame update
@@ -114,11 +152,19 @@
                     break;
             }
 
+            updateStrategy();
             StartCoroutine(CheckOffMeshLinkMove());
         }
 
         private void Chase()
         {
+            if (!Player)
+            {
+                State = BotState.IDLE;
+                idleStrategy();
+                return;
+            }
+
             if (Vector3.Distance(Player.transform.position, transform.position) < 3)
             {
                 agent.isStopped = true;
@@ -147,6 +193,17 @@
             animator.SetBool("isAttacking", true);
             State = BotState.IDLE;
             StartCoroutine(WaitAttack());
+        }
+
+        private void UpdateMaster()
+        {
+            Vector3 currentPosition = transform.localPosition;
+            Quaternion currentRotation = transform.localRotation;
+            if ((currentPosition - this.oldPosition).magnitude > MovementUpdateTreshold)
+            {
+                this.oldPosition = currentPosition;
+                this.ObjectUpdateRequested.Trigger(gameObject, ObjectType.Enemy);
+            }
         }
 
         private IEnumerator WaitAttack()

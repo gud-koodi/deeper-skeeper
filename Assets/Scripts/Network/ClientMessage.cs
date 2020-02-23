@@ -17,5 +17,11 @@ namespace GudKoodi.DeeperSkeeper.Network
         /// Sent when server should update player controlled by client. Can be deserialized into <see cref="Player" />.
         /// </summary>
         public const ushort UpdatePlayer = ServerMessage.UpdatePlayer;
+
+        /// <summary>Sent when client should remove a player object. Contains <c>ushort</c> of the player id to remove.</summary>
+        public const ushort DeletePlayer = ServerMessage.DeletePlayer;
+
+        /// <summary>Sent when existing enemy should be deleted.</summary>
+        public const ushort DeleteEnemy = ServerMessage.DeleteEnemy;
     }
 }

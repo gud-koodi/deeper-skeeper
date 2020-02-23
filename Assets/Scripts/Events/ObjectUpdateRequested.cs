@@ -3,18 +3,6 @@ namespace GudKoodi.DeeperSkeeper.Event
     using UnityEngine;
 
     /// <summary>
-    /// Temporary solution to distinguish between objects.
-    /// </summary>
-    public enum ObjectType
-    {
-        /// <summary>Player type object.</summary>
-        Player,
-
-        /// <summary>Enemy type object.</summary>
-        Enemy
-    }
-
-    /// <summary>
     /// Event for requesting object updates.
     /// </summary>
     [CreateAssetMenu(fileName = "ObjectUpdateRequested", menuName = "Event/ObjectUpdateRequested")]

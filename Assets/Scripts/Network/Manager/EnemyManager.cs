@@ -1,5 +1,6 @@
 namespace GudKoodi.DeeperSkeeper.Network
 {
+    using System.Collections.Generic;
     using GudKoodi.DeeperSkeeper.Enemy;
     using UnityEngine;
 
@@ -27,11 +28,9 @@ namespace GudKoodi.DeeperSkeeper.Network
         /// <param name="gameObject">GameObject to update.</param>
         protected override void DeserializeState(Enemy enemy, GameObject gameObject)
         {
-            gameObject.transform.position = enemy.CurrentPosition;
-            if (enemy.Target > 0)
-            {
-                gameObject.GetComponent<EnemyController>().StartChase(this.playerManager[enemy.Target]);
-            }
+            var controller = gameObject.GetComponent<EnemyController>();
+            GameObject target = (enemy.Target > 0) ? this.playerManager[enemy.Target] : null;
+            controller.UpdateState(target, enemy.CurrentPosition);
         }
 
         /// <summary>
@@ -43,6 +42,7 @@ namespace GudKoodi.DeeperSkeeper.Network
         protected override GameObject InstantiateMaster(GameObject prefab, Enemy enemy)
         {
             GameObject go = GameObject.Instantiate(prefab, enemy.CurrentPosition, Quaternion.identity);
+            go.GetComponent<EnemyController>().SetAsMaster();
             return go;
         }
 
@@ -67,8 +67,22 @@ namespace GudKoodi.DeeperSkeeper.Network
         protected override void SerializeState(Enemy enemy, GameObject gameObject)
         {
             enemy.CurrentPosition = gameObject.transform.position;
-            GameObject target = gameObject.GetComponent<EnemyController>().Player;
-            enemy.Target = (target == null) ? (ushort)0 : playerManager.GetNetworkID(target);
+            var controller = gameObject.GetComponent<EnemyController>();
+            GameObject target = controller.Player;
+            if (target != null)
+            {
+                // Shouldn't have to do this here but we have to take some technical loan to save time
+                try
+                {
+                    enemy.Target = playerManager.GetNetworkID(target);
+                    return;
+                }
+                catch (KeyNotFoundException)
+                {
+                }
+            }
+
+            enemy.Target = 0;
         }
     }
 }

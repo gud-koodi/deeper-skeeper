@@ -1,7 +1,6 @@
 ﻿namespace GudKoodi.DeeperSkeeper.Entity
 {
-    using System.Collections;
-    using System.Collections.Generic;
+    using Event;
     using UnityEngine;
     using UnityEngine.Serialization;
 
@@ -12,6 +11,19 @@
     {
         [FormerlySerializedAs("maxHealth")]
         public float MaxHealth;
+
+        /// <summary>
+        /// Temporary solution; type of the object for server communication.
+        /// </summary>
+        [Tooltip("Temporary solution; type of the object for server communication.")]
+        public ObjectType ObjectType;
+
+        /// <summary>
+        /// Event called when this object's health goes below 0.
+        /// </summary>
+        [Tooltip("Event called when this object's health goes below 0.")]
+        public ObjectUpdateRequested ObjectDestructRequested;
+
         private float currentHealth;
 
         /// <summary>
@@ -24,7 +36,7 @@
             currentHealth -= damage;
             if (currentHealth <= 0f)
             {
-                Die();
+                this.ObjectDestructRequested.Trigger(this.gameObject, this.ObjectType);
             }
         }
 
@@ -35,6 +47,25 @@
         public float GetHpPercent()
         {
             return currentHealth / MaxHealth;
+        }
+
+        /// <summary>
+        /// Kills the object.
+        /// </summary>
+        public void Kill()
+        {
+            SetKinematic(false);
+            GetComponent<Animator>().enabled = false;
+            UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+            if (agent)
+            {
+                GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
+                Destroy(gameObject, 5);
+            }
+            else
+            {
+                Destroy(gameObject, 0.5f);
+            }
         }
 
         // Start is called before the first frame update
@@ -58,22 +89,6 @@
             {
                 rb.isKinematic = newValue;
                 rb.GetComponent<Collider>().enabled = !newValue;
-            }
-        }
-
-        private void Die()
-        {
-            SetKinematic(false);
-            GetComponent<Animator>().enabled = false;
-            UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-            if (agent)
-            {
-                GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
-                Destroy(gameObject, 5);
-            }
-            else
-            {
-                Destroy(gameObject, 0.5f);
             }
         }
     }

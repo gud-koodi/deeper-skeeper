@@ -17,3 +17,5 @@ MonoBehaviour:
     type: 2}
   EnemyCreationRequested: {fileID: 11400000, guid: 3f3ea34710d21414290a4b573b3d00c6,
     type: 2}
+  ObjectDestructionRequested: {fileID: 11400000, guid: 5b40f8b883078fe459445a03642c4062,
+    type: 2}

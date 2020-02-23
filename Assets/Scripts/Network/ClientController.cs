@@ -40,7 +40,12 @@
 
         private EnemyManager enemies;
 
-        public void SendObject(GameObject gameObject)
+        /// <summary>
+        /// Sends changed local data to server.
+        /// </summary>
+        /// <param name="gameObject">Object to send.</param>
+        /// <param name="objectType">Type of object.</param>
+        public void SendObject(GameObject gameObject, ObjectType objectType)
         {
             // TODO: Distinguish between different network objects
             using (Message message = this.players.UpdateAndSerialize(gameObject, ClientMessage.UpdatePlayer))
@@ -63,30 +68,35 @@
             {
                 this.Client.MessageReceived += OnResponse;
                 this.NetworkEvents.LevelStartRequested.Subscribe(this.LevelStartRequested);
+                this.NetworkEvents.ObjectDestructionRequested.Subscribe(DestroyObject);
             }
         }
 
         private void OnResponse(object sender, MessageReceivedEventArgs e)
         {
+            // TODO: use command pattern
             switch (e.Tag)
             {
                 case ServerMessage.ConnectionData:
-                    this.SetupServerData(e);
+                    SetupServerData(e);
                     break;
                 case ServerMessage.LevelStart:
-                    this.NetworkEvents.LevelStarted.Trigger();
+                    NetworkEvents.LevelStarted.Trigger();
                     break;
                 case ServerMessage.CreatePlayer:
-                    this.CreatePlayer(e);
+                    CreatePlayer(e);
                     break;
                 case ServerMessage.UpdatePlayer:
-                    this.UpdatePlayer(e);
+                    UpdatePlayer(e);
                     break;
                 case ServerMessage.DeletePlayer:
-                    this.DeleteObject(e);
+                    DeleteObject(e, ObjectType.Player);
                     break;
                 case ServerMessage.UpdateEnemy:
                     UpdateEnemy(e);
+                    break;
+                case ServerMessage.DeleteEnemy:
+                    DeleteObject(e, ObjectType.Enemy);
                     break;
             }
         }
@@ -153,7 +163,7 @@
             }
         }
 
-        private void DeleteObject(MessageReceivedEventArgs e)
+        private void DeleteObject(MessageReceivedEventArgs e, ObjectType objectType)
         {
             ushort id;
             using (Message message = e.GetMessage())
@@ -161,7 +171,51 @@
             {
                 id = reader.ReadUInt16();
             }
-            players.Destroy(id);
+
+            switch (objectType)
+            {
+                case ObjectType.Enemy:
+                    enemies.Destroy(id);
+                    break;
+                case ObjectType.Player:
+                    players.Destroy(id);
+                    break;
+                default:
+                    Debug.LogError("TODO: Write error message");
+                    break;
+            }
+        }
+
+        private void DestroyObject(GameObject gameObject, ObjectType objectType, object p2, object p3)
+        {
+            // TODO: Clean up copypaste
+            ushort networkID = 0;
+            ushort messageTag = 0;
+            switch (objectType)
+            {
+                case ObjectType.Enemy:
+                    networkID = enemies.GetNetworkID(gameObject);
+                    enemies.Destroy(networkID);
+                    messageTag = ClientMessage.DeleteEnemy;
+                    break;
+                case ObjectType.Player:
+                    networkID = players.GetNetworkID(gameObject);
+                    players.Destroy(networkID);
+                    messageTag = ClientMessage.DeletePlayer;
+                    break;
+                default:
+                    Debug.LogError("TODO: Writer error message");
+                    break;
+            }
+
+            using (var writer = DarkRiftWriter.Create())
+            {
+                writer.Write(networkID);
+                using (var message = Message.Create(messageTag, writer))
+                {
+                    Client.SendMessage(message, SendMode.Reliable);
+                }
+            }
         }
     }
 }
