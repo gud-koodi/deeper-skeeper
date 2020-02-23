@@ -12,9 +12,6 @@
     /// </summary>
     public class EnemyController : MonoBehaviour
     {
-        private const float MOVEMENT_UPDATE_TRESHOLD = 0.5f;
-        private const float ROTATION_UPDATE_TRESHOD = 30f;
-
         public GameObject Player;
         public BotState State = BotState.IDLE;
         public Weapon Weapon;
@@ -22,6 +19,9 @@
         public float HitSpeed = 1f;
         public OffMeshLinkMoveMethod Method = OffMeshLinkMoveMethod.Parabola;
         public AnimationCurve AnimCurve = new AnimationCurve();
+
+        private const float MovementUpdateTreshold = 0.5f;
+
         private Animator animator;
         private UnityEngine.AI.NavMeshAgent agent;
         private int playerLayer;
@@ -89,9 +89,32 @@
             this.ObjectUpdateRequested.Trigger(this.gameObject, ObjectType.Enemy);
         }
 
-        public void SetAsMaster() {
+        /// <summary>
+        /// Sets the component as master, sending local changes to network.
+        /// </summary>
+        public void SetAsMaster()
+        {
             this.idleStrategy = () => IdleMaster();
             this.updateStrategy = () => UpdateMaster();
+        }
+
+        /// <summary>
+        /// Updates the state of slave component with data from server.
+        /// </summary>
+        /// <param name="target">Target this component should chase if any.</param>
+        /// <param name="networkPosition">Position on network.</param>
+        public void UpdateState(GameObject target, Vector3 networkPosition)
+        {
+            // Rubberband if necessary
+            if ((networkPosition - transform.position).magnitude > 10f)
+            {
+                transform.position = networkPosition;
+            }
+
+            if (target != Player)
+            {
+                StartChase(target);
+            }
         }
 
         void Awake()
@@ -176,26 +199,10 @@
         {
             Vector3 currentPosition = transform.localPosition;
             Quaternion currentRotation = transform.localRotation;
-            if ((currentPosition - this.oldPosition).magnitude > MOVEMENT_UPDATE_TRESHOLD)
-                //// || Quaternion.Angle(currentRotation, this.oldRotation) > ROTATION_UPDATE_TRESHOD)
+            if ((currentPosition - this.oldPosition).magnitude > MovementUpdateTreshold)
             {
                 this.oldPosition = currentPosition;
-                //// this.oldRotation = currentRotation;
                 this.ObjectUpdateRequested.Trigger(gameObject, ObjectType.Enemy);
-            }
-        }
-
-        public void UpdateState(GameObject target, Vector3 networkPosition)
-        {
-            // Rubberband if necessary
-            if ((networkPosition - transform.position).magnitude > 10f)
-            {
-                transform.position = networkPosition;
-            }
-
-            if (target != Player)
-            {
-                StartChase(target);
             }
         }
 

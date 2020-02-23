@@ -76,7 +76,8 @@ namespace GudKoodi.DeeperSkeeper.Network
                 {
                     enemy.Target = playerManager.GetNetworkID(target);
                     return;
-                } catch (KeyNotFoundException)
+                }
+                catch (KeyNotFoundException)
                 {
                 }
             }

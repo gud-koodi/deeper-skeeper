@@ -1,10 +1,8 @@
 ﻿namespace GudKoodi.DeeperSkeeper.Entity
 {
-    using System.Collections;
-    using System.Collections.Generic;
+    using Event;
     using UnityEngine;
     using UnityEngine.Serialization;
-    using Event;
 
     /// <summary>
     /// Anything that has HP.
@@ -39,7 +37,6 @@
             if (currentHealth <= 0f)
             {
                 this.ObjectDestructRequested.Trigger(this.gameObject, this.ObjectType);
-                //// Die();
             }
         }
 
@@ -50,6 +47,25 @@
         public float GetHpPercent()
         {
             return currentHealth / MaxHealth;
+        }
+
+        /// <summary>
+        /// Kills the object.
+        /// </summary>
+        public void Kill()
+        {
+            SetKinematic(false);
+            GetComponent<Animator>().enabled = false;
+            UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+            if (agent)
+            {
+                GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
+                Destroy(gameObject, 5);
+            }
+            else
+            {
+                Destroy(gameObject, 0.5f);
+            }
         }
 
         // Start is called before the first frame update
@@ -73,25 +89,6 @@
             {
                 rb.isKinematic = newValue;
                 rb.GetComponent<Collider>().enabled = !newValue;
-            }
-        }
-
-        /// <summary>
-        /// Kills the object.
-        /// </summary>
-        public void Kill()
-        {
-            SetKinematic(false);
-            GetComponent<Animator>().enabled = false;
-            UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-            if (agent)
-            {
-                GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
-                Destroy(gameObject, 5);
-            }
-            else
-            {
-                Destroy(gameObject, 0.5f);
             }
         }
     }

@@ -3,8 +3,8 @@ namespace GudKoodi.DeeperSkeeper.Network
     using System;
     using System.Collections.Generic;
     using DarkRift;
-    using UnityEngine;
     using Entity;
+    using UnityEngine;
 
     /// <summary>
     /// Class for managing collections of multiple similar network objects.

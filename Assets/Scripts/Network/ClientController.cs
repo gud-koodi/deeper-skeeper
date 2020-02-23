@@ -40,6 +40,11 @@
 
         private EnemyManager enemies;
 
+        /// <summary>
+        /// Sends changed local data to server.
+        /// </summary>
+        /// <param name="gameObject">Object to send.</param>
+        /// <param name="objectType">Type of object.</param>
         public void SendObject(GameObject gameObject, ObjectType objectType)
         {
             // TODO: Distinguish between different network objects

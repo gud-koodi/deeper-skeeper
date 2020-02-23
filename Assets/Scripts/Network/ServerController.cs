@@ -313,7 +313,7 @@ namespace GudKoodi.DeeperSkeeper.Network
                 writer.Write(networkID);
                 using (var message = Message.Create(messageTag, writer))
                 {
-                    foreach(var client in Server.Server.ClientManager.GetAllClients())
+                    foreach (var client in Server.Server.ClientManager.GetAllClients())
                     {
                         client.SendMessage(message, SendMode.Reliable);
                     }
