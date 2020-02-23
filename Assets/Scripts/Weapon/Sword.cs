@@ -10,6 +10,8 @@ namespace GudKoodi.DeeperSkeeper.Weapon
         //public float sweepLength;
         private bool isAttacking;
 
+        private AudioSource swingSound;
+
         public override void Attack()
         {
             Debug.Log("VIUH!");
@@ -24,8 +26,14 @@ namespace GudKoodi.DeeperSkeeper.Weapon
             StartCoroutine(SetAttackingFalse());
         }
 
+        void Start()
+        {
+            swingSound = GetComponent<AudioSource>();
+        }
+
         private IEnumerator SetAttackingFalse()
         {
+            swingSound.Play();
             yield return new WaitForSeconds(AttackDuration);
             isAttacking = false;
         }
