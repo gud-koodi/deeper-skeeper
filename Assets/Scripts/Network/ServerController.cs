@@ -1,5 +1,6 @@
 namespace GudKoodi.DeeperSkeeper.Network
 {
+    using System;
     using System.Collections.Generic;
     using DarkRift;
     using DarkRift.Server;
@@ -137,11 +138,12 @@ namespace GudKoodi.DeeperSkeeper.Network
                 gameObject.SetActive(false);
                 return;
             }
-            this.players = new PlayerManager(this.NetworkInstantiator.MasterPlayerCreated, this.NetworkInstantiator.PlayerUpdateRequested);
+            this.players = new PlayerManager(this.NetworkEvents.AttackStarted, this.NetworkInstantiator.MasterPlayerCreated, this.NetworkInstantiator.PlayerUpdateRequested);
             this.enemies = new EnemyManager(players);
             this.NetworkEvents.EnemyCreationRequested.Subscribe(this.EnemyCreationRequested);
             this.NetworkEvents.LevelStartRequested.Subscribe(this.LevelStartRequested);
             this.NetworkEvents.ObjectDestructionRequested.Subscribe(DestroyObject);
+            this.NetworkEvents.AttackStarted.Subscribe(AttackStarted);
         }
 
         void OnDestroy()
@@ -203,6 +205,24 @@ namespace GudKoodi.DeeperSkeeper.Network
             }
         }
 
+        private void SendNetworkID(ushort networkID, ushort messageTag, SendMode sendMode, ushort exclude = 0xFFFF)
+        {
+            using (var writer = DarkRiftWriter.Create())
+            {
+                writer.Write(networkID);
+                using (var message = Message.Create(messageTag, writer))
+                {
+                    foreach (var client in Server.Server.ClientManager.GetAllClients())
+                    {
+                        if (client.ID != exclude)
+                        {
+                            client.SendMessage(message, sendMode);
+                        }
+                    }
+                }
+            }
+        }
+
         private void OnMessageReceived(object sender, MessageReceivedEventArgs e)
         {
             switch (e.Tag)
@@ -213,6 +233,9 @@ namespace GudKoodi.DeeperSkeeper.Network
                 case ClientMessage.UpdatePlayer:
                     UpdatePlayer(e);
                     break;
+                case ClientMessage.PlayAttackPlayer:
+                    PlayAttackPlayer(e);
+                    break;
                 case ServerMessage.DeletePlayer:
                     DeleteObject(e, ObjectType.Player);
                     break;
@@ -220,6 +243,31 @@ namespace GudKoodi.DeeperSkeeper.Network
                     DeleteObject(e, ObjectType.Enemy);
                     break;
             }
+        }
+
+        private ushort unwrapID(MessageReceivedEventArgs e)
+        {
+            ushort id = 0;
+            using (Message message = e.GetMessage())
+            using (DarkRiftReader reader = message.GetReader())
+            {
+                id = reader.ReadUInt16();
+            }
+
+            return id;
+        }
+
+        private void PlayAttackPlayer(MessageReceivedEventArgs e)
+        {
+            ushort networkID = unwrapID(e);
+            SendNetworkID(networkID, ServerMessage.PlayAttackPlayer, SendMode.Unreliable, e.Client.ID);
+            players.SpaghettiAttack(networkID);
+        }
+
+        private void AttackStarted(GameObject gameObject, ObjectType objectType, object p2, object p3)
+        {
+            ushort networkID = players.GetNetworkID(gameObject);
+            SendNetworkID(networkID, ServerMessage.PlayAttackPlayer, SendMode.Unreliable);
         }
 
         /// <summary>
@@ -308,17 +356,7 @@ namespace GudKoodi.DeeperSkeeper.Network
                     break;
             }
 
-            using (var writer = DarkRiftWriter.Create())
-            {
-                writer.Write(networkID);
-                using (var message = Message.Create(messageTag, writer))
-                {
-                    foreach (var client in Server.Server.ClientManager.GetAllClients())
-                    {
-                        client.SendMessage(message, SendMode.Reliable);
-                    }
-                }
-            }
+            SendNetworkID(networkID, messageTag, SendMode.Reliable);
         }
     }
 }

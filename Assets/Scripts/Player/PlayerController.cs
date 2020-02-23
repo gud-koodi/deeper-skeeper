@@ -2,6 +2,7 @@
 {
     using System.Collections;
     using Entity;
+    using Event;
     using UnityEngine;
     using Weapon;
 
@@ -15,11 +16,26 @@
         public float speed = 20f;
         public float hitSpeed = 1f;
         public Weapon weapon;
+
+        [Tooltip("Event called when attack is started.")]
+        public ObjectUpdateRequested AttackStarted;
+
         private Animator animator;
         private bool isAttacking;
         private GameObject hud;
         private UnityEngine.UI.Slider healthBar;
         private Living livingInfo;
+
+        /// <summary>
+        /// Starts attack animation with current weapon.
+        /// </summary>
+        public void StartAttack()
+        {
+            weapon.Attack();
+            animator.SetBool("isAttacking", true);
+            isAttacking = true;
+            StartCoroutine(WaitAttack());
+        }
 
         void Start()
         {
@@ -42,7 +58,11 @@
                 ApplyRotation();
             }
 
-            HandleWeaponAttack();
+            if (Input.GetButtonDown("Fire1"))
+            {
+                this.AttackStarted.Trigger(this.gameObject, ObjectType.Player);
+                StartAttack();
+            }
             UpdateHUD();
         }
 
@@ -84,17 +104,6 @@
             Vector3 target = mouseRay.GetPoint(distance) - playerRigidbody.position;
             target.y = 0; // Just in case
             playerRigidbody.rotation = Quaternion.LookRotation(target);
-        }
-
-        private void HandleWeaponAttack()
-        {
-            if (Input.GetButtonDown("Fire1"))
-            {
-                weapon.Attack();
-                animator.SetBool("isAttacking", true);
-                isAttacking = true;
-                StartCoroutine(WaitAttack());
-            }
         }
 
         private IEnumerator WaitAttack()

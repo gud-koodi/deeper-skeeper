@@ -16,6 +16,11 @@ namespace GudKoodi.DeeperSkeeper.Network
         private readonly ObjectCreated masterPlayerCreated;
 
         /// <summary>
+        /// Event called when remote controlled player should attack.
+        /// </summary>
+        private readonly ObjectUpdateRequested attackStarted;
+
+        /// <summary>
         /// Event called when a master object requests an update to network.
         /// </summary>
         private readonly ObjectUpdateRequested objectUpdateRequested;
@@ -25,10 +30,20 @@ namespace GudKoodi.DeeperSkeeper.Network
         /// </summary>
         /// <param name="masterPlayerCreated">Event called after a master object has been created.</param>
         /// <param name="objectUpdateRequested">Event called when a master object requests an update to network.</param>
-        public PlayerManager(ObjectCreated masterPlayerCreated, ObjectUpdateRequested objectUpdateRequested) : base()
+        public PlayerManager(ObjectUpdateRequested attackStarted, ObjectCreated masterPlayerCreated, ObjectUpdateRequested objectUpdateRequested) : base()
         {
+            this.attackStarted = attackStarted;
             this.masterPlayerCreated = masterPlayerCreated;
             this.objectUpdateRequested = objectUpdateRequested;
+        }
+
+        /// <summary>
+        /// Starts attack animation for givent object. Quick temporary solution.
+        /// </summary>
+        public void SpaghettiAttack(ushort networkID)
+        {
+            GameObject go = base[networkID];
+            go.GetComponent<NetworkSlave>().StartAttack();
         }
 
         /// <summary>
@@ -45,6 +60,7 @@ namespace GudKoodi.DeeperSkeeper.Network
             PlayerController pc = go.GetComponent<PlayerController>();
             pc.playerRigidbody = go.GetComponent<Rigidbody>();
             pc.weapon = go.GetComponentInChildren<Weapon>();
+            pc.AttackStarted = this.attackStarted;
 
             NetworkMaster master = go.AddComponent<NetworkMaster>();
             master.ObjectUpdateRequested = this.objectUpdateRequested;

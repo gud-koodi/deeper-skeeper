@@ -30,6 +30,9 @@ namespace GudKoodi.DeeperSkeeper.Network
         /// </summary>
         public const ushort UpdatePlayer = 0x011_1;
 
+        /// <summary>Sent when client should replicate player attack.</summary>
+        public const ushort PlayAttackPlayer = 0x011_2;
+
         /// <summary>
         /// Sent when client should remove a player object. Contains <c>ushort</c> of the player id to remove.
         /// </summary>

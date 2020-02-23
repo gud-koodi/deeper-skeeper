@@ -18,6 +18,9 @@ namespace GudKoodi.DeeperSkeeper.Network
         /// </summary>
         public const ushort UpdatePlayer = ServerMessage.UpdatePlayer;
 
+        /// <summary>Sent when other clients should replicate player attack.</summary>
+        public const ushort PlayAttackPlayer = ServerMessage.PlayAttackPlayer;
+
         /// <summary>Sent when client should remove a player object. Contains <c>ushort</c> of the player id to remove.</summary>
         public const ushort DeletePlayer = ServerMessage.DeletePlayer;
 

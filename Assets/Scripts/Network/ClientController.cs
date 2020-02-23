@@ -1,9 +1,10 @@
 ﻿namespace GudKoodi.DeeperSkeeper.Network
 {
+    using System;
     using DarkRift;
     using DarkRift.Client;
     using DarkRift.Client.Unity;
-    using Event;
+    using GudKoodi.DeeperSkeeper.Event;
     using UnityEngine;
 
     using EnemyList = GudKoodi.DeeperSkeeper.Enemy.EnemyList;
@@ -62,13 +63,14 @@
                 gameObject.SetActive(false);
                 return;
             }
-            this.players = new PlayerManager(this.NetworkInstantiator.MasterPlayerCreated, this.NetworkInstantiator.PlayerUpdateRequested);
+            this.players = new PlayerManager(this.NetworkEvents.AttackStarted, this.NetworkInstantiator.MasterPlayerCreated, this.NetworkInstantiator.PlayerUpdateRequested);
             this.enemies = new EnemyManager(players);
             if (this.Client != null)
             {
                 this.Client.MessageReceived += OnResponse;
                 this.NetworkEvents.LevelStartRequested.Subscribe(this.LevelStartRequested);
                 this.NetworkEvents.ObjectDestructionRequested.Subscribe(DestroyObject);
+                this.NetworkEvents.AttackStarted.Subscribe(AttackStarted);
             }
         }
 
@@ -89,6 +91,9 @@
                 case ServerMessage.UpdatePlayer:
                     UpdatePlayer(e);
                     break;
+                case ServerMessage.PlayAttackPlayer:
+                    PlayAttackPlayer(e);
+                    break;
                 case ServerMessage.DeletePlayer:
                     DeleteObject(e, ObjectType.Player);
                     break;
@@ -101,6 +106,41 @@
             }
         }
 
+        private ushort unwrapID(MessageReceivedEventArgs e)
+        {
+            ushort id = 0;
+            using (Message message = e.GetMessage())
+            using (DarkRiftReader reader = message.GetReader())
+            {
+                id = reader.ReadUInt16();
+            }
+
+            return id;
+        }
+
+        private void AttackStarted(GameObject gameObject, ObjectType arg2, object arg3, object arg4)
+        {
+            ushort networkID = players.GetNetworkID(gameObject);
+            SendNetworkID(networkID, ServerMessage.PlayAttackPlayer, SendMode.Unreliable);
+        }
+
+        private void PlayAttackPlayer(MessageReceivedEventArgs e)
+        {
+            players.SpaghettiAttack(unwrapID(e));
+        }
+
+        private void SendNetworkID(ushort networkID, ushort messageTag, SendMode sendMode)
+        {
+            using (var writer = DarkRiftWriter.Create())
+            {
+                writer.Write(networkID);
+                using (var message = Message.Create(messageTag, writer))
+                {
+                    Client.SendMessage(message, sendMode);
+                }
+            }
+        }
+
         private void SetupServerData(MessageReceivedEventArgs e)
         {
             ConnectionData data;
@@ -108,7 +148,7 @@
             {
                 data = message.Deserialize<ConnectionData>();
             }
-            
+
             LevelGenerationRequested.Trigger(data.LevelSeed);
             ushort clientId = data.ClientID;
             Debug.Log("Client id is " + clientId);
@@ -165,12 +205,7 @@
 
         private void DeleteObject(MessageReceivedEventArgs e, ObjectType objectType)
         {
-            ushort id;
-            using (Message message = e.GetMessage())
-            using (DarkRiftReader reader = message.GetReader())
-            {
-                id = reader.ReadUInt16();
-            }
+            ushort id = unwrapID(e);
 
             switch (objectType)
             {
@@ -208,14 +243,7 @@
                     break;
             }
 
-            using (var writer = DarkRiftWriter.Create())
-            {
-                writer.Write(networkID);
-                using (var message = Message.Create(messageTag, writer))
-                {
-                    Client.SendMessage(message, SendMode.Reliable);
-                }
-            }
+            SendNetworkID(networkID, messageTag, SendMode.Reliable);
         }
     }
 }
