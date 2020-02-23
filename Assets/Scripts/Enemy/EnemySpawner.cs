@@ -31,7 +31,7 @@ namespace GudKoodi.DeeperSkeeper.Enemy
 
         private IEnumerator Wait()
         {
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(0.3f);
 
             EnemyCreationRequested.Trigger(Enemies.Enemies[0], transform.position);
             Destroy(gameObject);

@@ -27,5 +27,10 @@ namespace GudKoodi.DeeperSkeeper.Network
         /// </summary>
         [Tooltip("Event for when server should create a new enemy.")]
         public ObjectCreationRequested EnemyCreationRequested;
+
+        /// <summary>
+        /// Event for when object should be destroyed.
+        /// </summary>
+        public ObjectUpdateRequested ObjectDestructionRequested;
     }
 }

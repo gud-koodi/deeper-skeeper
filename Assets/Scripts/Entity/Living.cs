@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using UnityEngine;
     using UnityEngine.Serialization;
+    using Event;
 
     /// <summary>
     /// Anything that has HP.
@@ -12,6 +13,19 @@
     {
         [FormerlySerializedAs("maxHealth")]
         public float MaxHealth;
+
+        /// <summary>
+        /// Temporary solution; type of the object for server communication.
+        /// </summary>
+        [Tooltip("Temporary solution; type of the object for server communication.")]
+        public ObjectType ObjectType;
+
+        /// <summary>
+        /// Event called when this object's health goes below 0.
+        /// </summary>
+        [Tooltip("Event called when this object's health goes below 0.")]
+        public ObjectUpdateRequested ObjectDestructRequested;
+
         private float currentHealth;
 
         /// <summary>
@@ -24,7 +38,8 @@
             currentHealth -= damage;
             if (currentHealth <= 0f)
             {
-                Die();
+                this.ObjectDestructRequested.Trigger(this.gameObject, this.ObjectType);
+                //// Die();
             }
         }
 
@@ -61,7 +76,10 @@
             }
         }
 
-        private void Die()
+        /// <summary>
+        /// Kills the object.
+        /// </summary>
+        public void Kill()
         {
             SetKinematic(false);
             GetComponent<Animator>().enabled = false;

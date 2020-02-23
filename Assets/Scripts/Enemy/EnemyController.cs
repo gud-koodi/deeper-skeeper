@@ -135,6 +135,13 @@
 
         private void Chase()
         {
+            if (!Player)
+            {
+                State = BotState.IDLE;
+                idleStrategy();
+                return;
+            }
+
             if (Vector3.Distance(Player.transform.position, transform.position) < 3)
             {
                 agent.isStopped = true;

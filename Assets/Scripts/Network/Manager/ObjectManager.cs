@@ -4,6 +4,7 @@ namespace GudKoodi.DeeperSkeeper.Network
     using System.Collections.Generic;
     using DarkRift;
     using UnityEngine;
+    using Entity;
 
     /// <summary>
     /// Class for managing collections of multiple similar network objects.
@@ -116,11 +117,11 @@ namespace GudKoodi.DeeperSkeeper.Network
             {
                 GameObject go = this.gameObjects.RemoveAt(networkID);
                 Debug.Log($"Removing {go} at network id {networkID}");
-                GameObject.Destroy(go);
+                go.GetComponent<Living>().Kill();
             }
             else
             {
-                Debug.LogError($"Trying to remove player ID {networkID} but was not found");
+                Debug.LogError($"Trying to remove object ID {networkID} but was not found");
             }
 
             int count = this.serializables.RemoveAll(p => p.NetworkID == networkID);

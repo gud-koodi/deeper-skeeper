@@ -43,11 +43,19 @@ public class CameraController : MonoBehaviour
         Vector3 direction = transform.rotation * Vector3.forward;
         this.updateStrategy = () =>
         {
-            transform.position = player.transform.position - (Distance * direction);
+            if (player)
+            {
+                transform.position = player.transform.position - (Distance * direction);
+            }
         };
 
         this.castStrategy = () =>
         {
+            if (!player)
+            {
+                return;
+            }
+
             RaycastHit hit;
             if (Physics.Linecast(transform.position, player.transform.position, out hit))
             {
@@ -94,7 +102,7 @@ public class CameraController : MonoBehaviour
                 return renderer;
             }
         }
-        
+
         return null;
     }
 }

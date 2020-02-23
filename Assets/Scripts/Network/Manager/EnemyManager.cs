@@ -1,5 +1,6 @@
 namespace GudKoodi.DeeperSkeeper.Network
 {
+    using System.Collections.Generic;
     using GudKoodi.DeeperSkeeper.Enemy;
     using UnityEngine;
 
@@ -66,8 +67,21 @@ namespace GudKoodi.DeeperSkeeper.Network
         protected override void SerializeState(Enemy enemy, GameObject gameObject)
         {
             enemy.CurrentPosition = gameObject.transform.position;
-            GameObject target = gameObject.GetComponent<EnemyController>().Player;
-            enemy.Target = (target == null) ? (ushort)0 : playerManager.GetNetworkID(target);
+            var controller = gameObject.GetComponent<EnemyController>();
+            GameObject target = controller.Player;
+            if (target != null)
+            {
+                // Shouldn't have to do this here but we have to take some technical loan to save time
+                try
+                {
+                    enemy.Target = playerManager.GetNetworkID(target);
+                    return;
+                } catch (KeyNotFoundException)
+                {
+                }
+            }
+
+            enemy.Target = 0;
         }
     }
 }

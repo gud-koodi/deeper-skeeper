@@ -141,6 +141,7 @@ namespace GudKoodi.DeeperSkeeper.Network
             this.enemies = new EnemyManager(players);
             this.NetworkEvents.EnemyCreationRequested.Subscribe(this.EnemyCreationRequested);
             this.NetworkEvents.LevelStartRequested.Subscribe(this.LevelStartRequested);
+            this.NetworkEvents.ObjectDestructionRequested.Subscribe(DestroyObject);
         }
 
         void OnDestroy()
@@ -212,6 +213,12 @@ namespace GudKoodi.DeeperSkeeper.Network
                 case ClientMessage.UpdatePlayer:
                     UpdatePlayer(e);
                     break;
+                case ServerMessage.DeletePlayer:
+                    DeleteObject(e, ObjectType.Player);
+                    break;
+                case ServerMessage.DeleteEnemy:
+                    DeleteObject(e, ObjectType.Enemy);
+                    break;
             }
         }
 
@@ -254,6 +261,64 @@ namespace GudKoodi.DeeperSkeeper.Network
             Debug.Log($"Requested creation of {prefab} in {position}");
             Enemy enemy = new Enemy(enemyIDPool.Next(), position, 0);
             enemies.Create(prefab, enemy, true);
+        }
+
+        private void DeleteObject(MessageReceivedEventArgs e, ObjectType objectType)
+        {
+            ushort id;
+            using (Message message = e.GetMessage())
+            using (DarkRiftReader reader = message.GetReader())
+            {
+                id = reader.ReadUInt16();
+            }
+
+            switch (objectType)
+            {
+                case ObjectType.Enemy:
+                    enemies.Destroy(id);
+                    break;
+                case ObjectType.Player:
+                    players.Destroy(id);
+                    break;
+                default:
+                    Debug.LogError("TODO: Write error message");
+                    break;
+            }
+        }
+
+        private void DestroyObject(GameObject gameObject, ObjectType objectType, object p2, object p3)
+        {
+            // TODO: Clean up copypaste
+            ushort networkID = 0;
+            ushort messageTag = 0;
+            switch (objectType)
+            {
+                case ObjectType.Enemy:
+                    networkID = enemies.GetNetworkID(gameObject);
+                    enemies.Destroy(networkID);
+                    messageTag = ServerMessage.DeleteEnemy;
+                    break;
+                case ObjectType.Player:
+                    networkID = players.GetNetworkID(gameObject);
+                    players.Destroy(networkID);
+                    messageTag = ServerMessage.DeletePlayer;
+                    break;
+                default:
+                    Debug.LogError("TODO: Writer error message");
+                    break;
+            }
+
+            using (var writer = DarkRiftWriter.Create())
+            {
+                writer.Write(networkID);
+                using (var message = Message.Create(messageTag, writer))
+                {
+                    foreach(var client in Server.Server.ClientManager.GetAllClients())
+                    {
+                        client.SendMessage(message, SendMode.Reliable);
+                    }
+                }
+            }
         }
     }
 }

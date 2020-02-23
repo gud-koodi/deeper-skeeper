@@ -2448,6 +2448,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 10
+  ObjectType: 1
+  ObjectDestructRequested: {fileID: 11400000, guid: 5b40f8b883078fe459445a03642c4062,
+    type: 2}
 --- !u!95 &2131905091965870932
 Animator:
   serializedVersion: 3
