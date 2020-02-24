@@ -245,7 +245,7 @@ namespace GudKoodi.DeeperSkeeper.Network
             }
         }
 
-        private ushort unwrapID(MessageReceivedEventArgs e)
+        private ushort UnwrapID(MessageReceivedEventArgs e)
         {
             ushort id = 0;
             using (Message message = e.GetMessage())
@@ -259,7 +259,7 @@ namespace GudKoodi.DeeperSkeeper.Network
 
         private void PlayAttackPlayer(MessageReceivedEventArgs e)
         {
-            ushort networkID = unwrapID(e);
+            ushort networkID = UnwrapID(e);
             SendNetworkID(networkID, ServerMessage.PlayAttackPlayer, SendMode.Unreliable, e.Client.ID);
             players.SpaghettiAttack(networkID);
         }

@@ -63,6 +63,7 @@
                 this.AttackStarted.Trigger(this.gameObject, ObjectType.Player);
                 StartAttack();
             }
+
             UpdateHUD();
         }
 

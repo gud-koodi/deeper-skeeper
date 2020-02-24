@@ -106,7 +106,7 @@
             }
         }
 
-        private ushort unwrapID(MessageReceivedEventArgs e)
+        private ushort UnwrapID(MessageReceivedEventArgs e)
         {
             ushort id = 0;
             using (Message message = e.GetMessage())
@@ -126,7 +126,7 @@
 
         private void PlayAttackPlayer(MessageReceivedEventArgs e)
         {
-            players.SpaghettiAttack(unwrapID(e));
+            players.SpaghettiAttack(UnwrapID(e));
         }
 
         private void SendNetworkID(ushort networkID, ushort messageTag, SendMode sendMode)
@@ -205,7 +205,7 @@
 
         private void DeleteObject(MessageReceivedEventArgs e, ObjectType objectType)
         {
-            ushort id = unwrapID(e);
+            ushort id = UnwrapID(e);
 
             switch (objectType)
             {

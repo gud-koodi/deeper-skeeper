@@ -18,7 +18,7 @@ namespace GudKoodi.DeeperSkeeper.Network
         private Animator animator;
         private Weapon weapon;
 
-        public bool isAttacking = false;
+        private bool attacking = false;
 
         /// <summary>
         /// Starts attack animation with current weapon.
@@ -27,7 +27,7 @@ namespace GudKoodi.DeeperSkeeper.Network
         {
             weapon.Attack();
             animator.SetBool("isAttacking", true);
-            isAttacking = true;
+            attacking = true;
             StartCoroutine(WaitAttack());
         }
 
@@ -77,7 +77,7 @@ namespace GudKoodi.DeeperSkeeper.Network
             yield return null;
             animator.SetBool("isAttacking", false);
             yield return new WaitForSeconds(weapon.AttackDuration);
-            isAttacking = false;
+            attacking = false;
         }
     }
 }
