@@ -32,5 +32,10 @@ namespace GudKoodi.DeeperSkeeper.Network
         /// Event for when object should be destroyed.
         /// </summary>
         public ObjectUpdateRequested ObjectDestructionRequested;
+
+        /// <summary>
+        /// Event called when player attack should be synced with network.
+        /// </summary>
+        public ObjectUpdateRequested AttackStarted;
     }
 }

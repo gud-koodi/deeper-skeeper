@@ -1,6 +1,8 @@
 namespace GudKoodi.DeeperSkeeper.Network
 {
+    using System.Collections;
     using UnityEngine;
+    using Weapon;
 
     public class NetworkSlave : MonoBehaviour
     {
@@ -12,6 +14,22 @@ namespace GudKoodi.DeeperSkeeper.Network
         public Vector3 TargetPosition;
 
         public Rigidbody Rigidbody;
+
+        private Animator animator;
+        private Weapon weapon;
+
+        private bool attacking = false;
+
+        /// <summary>
+        /// Starts attack animation with current weapon.
+        /// </summary>
+        public void StartAttack()
+        {
+            weapon.Attack();
+            animator.SetBool("isAttacking", true);
+            attacking = true;
+            StartCoroutine(WaitAttack());
+        }
 
         /// <summary>
         /// Update the state of this slave controller with given player data.
@@ -26,6 +44,13 @@ namespace GudKoodi.DeeperSkeeper.Network
             {
                 Rigidbody.position = player.CurrentPosition;
             }
+        }
+
+        void Start()
+        {
+            animator = GetComponent<Animator>();
+            weapon = GetComponentInChildren<Weapon>();
+            weapon.AttackDuration = 20f;
         }
 
         void FixedUpdate()
@@ -45,6 +70,14 @@ namespace GudKoodi.DeeperSkeeper.Network
                     : Vector3.zero;
                 Rigidbody.velocity = new Vector3(planeVelocity.x, Rigidbody.velocity.y, planeVelocity.z);
             }
+        }
+
+        private IEnumerator WaitAttack()
+        {
+            yield return null;
+            animator.SetBool("isAttacking", false);
+            yield return new WaitForSeconds(weapon.AttackDuration);
+            attacking = false;
         }
     }
 }

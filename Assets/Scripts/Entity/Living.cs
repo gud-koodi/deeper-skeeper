@@ -26,13 +26,15 @@
 
         private float currentHealth;
 
+        private AudioSource hitAudio;
+
         /// <summary>
         /// Applies damage. Called outside the class on hit events.
         /// </summary>
         /// <param name="damage">float damage amount</param>
         public void ApplyDamage(float damage)
         {
-            Debug.Log("DAMAGE");
+            hitAudio.Play();
             currentHealth -= damage;
             if (currentHealth <= 0f)
             {
@@ -80,6 +82,7 @@
             SetKinematic(true);
             gameObject.GetComponent<Rigidbody>().isKinematic = false;
             gameObject.GetComponent<Collider>().enabled = true;
+            hitAudio = GetComponent<AudioSource>();
         }
 
         private void SetKinematic(bool newValue)
