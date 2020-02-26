@@ -32,7 +32,7 @@ jobs:
       uses: actions/cache@v1
       with:
         path: .git/lfs
-        key: v3-cache-lfs-key-{{ hashFiles('.asset-id') }}
+        key: v3-cache-lfs-key-${{ hashFiles('.asset-id') }}
     - name: lfs-fetch
       if: steps.restore-cache.outputs.cache-hit != 'true'
       run: git lfs fetch
@@ -72,7 +72,7 @@ jobs:
       uses: actions/cache@v1
       with:
         path: .git/lfs
-        key: v3-cache-lfs-key-{{ hashFiles('.asset-id') }}
+        key: v3-cache-lfs-key-${{ hashFiles('.asset-id') }}
     - name: lfs-fetch
       if: steps.restore-cache.outputs.cache-hit != 'true'
       run: git lfs fetch
@@ -112,7 +112,7 @@ jobs:
       uses: actions/cache@v1
       with:
         path: .git/lfs
-        key: v3-cache-lfs-key-{{ hashFiles('.asset-id') }}
+        key: v3-cache-lfs-key-${{ hashFiles('.asset-id') }}
     - name: lfs-fetch
       if: steps.restore-cache.outputs.cache-hit != 'true'
       run: git lfs fetch
@@ -152,7 +152,7 @@ jobs:
       uses: actions/cache@v1
       with:
         path: .git/lfs
-        key: v3-cache-lfs-key-{{ hashFiles('.asset-id') }}
+        key: v3-cache-lfs-key-${{ hashFiles('.asset-id') }}
     - name: lfs-fetch
       if: steps.restore-cache.outputs.cache-hit != 'true'
       run: git lfs fetch
