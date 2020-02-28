@@ -27,7 +27,7 @@ namespace GudKoodi.DeeperSkeeper.Enemy
         /// <summary>
         /// Spawns a single enemy if given percent is high enough.
         /// </summary>
-        /// <param name="random">Random to use for rolling a chance.</param>
+        /// <param name="percent">Chance percent given for the call.</param>
         public void Spawn(float percent)
         {
             if (this.SpawnChange > percent)

@@ -4,14 +4,19 @@
     using Entity;
     using UnityEngine;
     using UnityEngine.AI;
+    using UnityEngine.Serialization;
 
+    /// <summary>
+    /// Controller for handling the level generation.
+    /// </summary>
     public class LevelController : MonoBehaviour
     {
-        public Transform spawnPosition;
+        [FormerlySerializedAs("spawnPosition")]
+        public Transform SpawnPosition;
 
         private const int YDISTANCE = 50;
         private const int TILESIZE = 30 * 2;
-        private const int NEXT_TILE_OFFSET = TILESIZE;
+        private const int NextTileOffset = TILESIZE;
         private FloorInfo floorInfo;
 
         private GameObject nextLevel;
@@ -32,8 +37,8 @@
         /// </summary>
         public void GenerateNext()
         {
-            float nextSpawnZ = spawnPosition.position.z;
-            float nextSpawnX = spawnPosition.position.x;
+            float nextSpawnZ = SpawnPosition.position.z;
+            float nextSpawnX = SpawnPosition.position.x;
 
             GameObject prefab = (GameObject)Resources.Load("Prefabs/Floor1", typeof(GameObject));
             int i = 0;
@@ -44,12 +49,12 @@
                 int direction = random.Next(1, 4);
                 if (direction == 1)
                 {
-                    nextSpawnZ = nextSpawnZ + NEXT_TILE_OFFSET;
+                    nextSpawnZ = nextSpawnZ + NextTileOffset;
                     floorInfo.DoorNorth.SetActive(false);
                     
                     NavMeshLink link = nextLevel.gameObject.AddComponent<NavMeshLink>();
                     link.startPoint = floorInfo.PointNorth.transform.localPosition;
-                    link.endPoint = new Vector3(floorInfo.PointNorth.transform.localPosition.x, -50, floorInfo.PointNorth.transform.localPosition.z + (NEXT_TILE_OFFSET / 2));
+                    link.endPoint = new Vector3(floorInfo.PointNorth.transform.localPosition.x, -50, floorInfo.PointNorth.transform.localPosition.z + (NextTileOffset / 2));
                     link.width = 20;
                     link.bidirectional = false;
                     link.area = 2;
@@ -57,12 +62,12 @@
                 }
                 else if (direction == 2)
                 {
-                    nextSpawnX = nextSpawnX + NEXT_TILE_OFFSET;
+                    nextSpawnX = nextSpawnX + NextTileOffset;
                     floorInfo.DoorEast.SetActive(false);
 
                     NavMeshLink link = nextLevel.gameObject.AddComponent<NavMeshLink>();
                     link.startPoint = floorInfo.PointEast.transform.localPosition;
-                    link.endPoint = new Vector3(floorInfo.PointEast.transform.localPosition.x + (NEXT_TILE_OFFSET / 2), -50, floorInfo.PointEast.transform.localPosition.z);
+                    link.endPoint = new Vector3(floorInfo.PointEast.transform.localPosition.x + (NextTileOffset / 2), -50, floorInfo.PointEast.transform.localPosition.z);
                     link.width = 20;
                     link.bidirectional = false;
                     link.area = 2;
@@ -70,12 +75,12 @@
                 }
                 else if (direction == 3)
                 {
-                    nextSpawnZ = nextSpawnZ - NEXT_TILE_OFFSET;
+                    nextSpawnZ = nextSpawnZ - NextTileOffset;
                     floorInfo.DoorSouth.SetActive(false);
 
                     NavMeshLink link = nextLevel.gameObject.AddComponent<NavMeshLink>();
                     link.startPoint = floorInfo.PointSouth.transform.localPosition;
-                    link.endPoint = new Vector3(floorInfo.PointSouth.transform.localPosition.x, -50, floorInfo.PointSouth.transform.localPosition.z - (NEXT_TILE_OFFSET / 2));
+                    link.endPoint = new Vector3(floorInfo.PointSouth.transform.localPosition.x, -50, floorInfo.PointSouth.transform.localPosition.z - (NextTileOffset / 2));
                     link.width = 20;
                     link.bidirectional = false;
                     link.area = 2;
@@ -83,17 +88,18 @@
                 }
                 else if (direction == 4)
                 {
-                    nextSpawnX = nextSpawnX - NEXT_TILE_OFFSET;
+                    nextSpawnX = nextSpawnX - NextTileOffset;
                     floorInfo.DoorWest.SetActive(false);
 
                     NavMeshLink link = nextLevel.gameObject.AddComponent<NavMeshLink>();
                     link.startPoint = floorInfo.PointWest.transform.localPosition;
-                    link.endPoint = new Vector3(floorInfo.PointWest.transform.localPosition.x - (NEXT_TILE_OFFSET / 2), -50, floorInfo.PointWest.transform.localPosition.z);
+                    link.endPoint = new Vector3(floorInfo.PointWest.transform.localPosition.x - (NextTileOffset / 2), -50, floorInfo.PointWest.transform.localPosition.z);
                     link.width = 20;
                     link.bidirectional = false;
                     link.area = 2;
                     link.UpdateLink();
                 }
+
                 InstantiateEnemies(nextLevel);
             }
 
