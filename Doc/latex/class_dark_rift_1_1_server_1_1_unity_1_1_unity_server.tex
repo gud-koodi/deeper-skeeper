@@ -1,0 +1,267 @@
+\hypertarget{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server}{}\doxysection{Dark\+Rift.\+Server.\+Unity.\+Unity\+Server Class Reference}
+\label{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server}\index{DarkRift.Server.Unity.UnityServer@{DarkRift.Server.Unity.UnityServer}}
+
+
+Inheritance diagram for Dark\+Rift.\+Server.\+Unity.\+Unity\+Server\+:
+% FIG 0
+
+
+Collaboration diagram for Dark\+Rift.\+Server.\+Unity.\+Unity\+Server\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a85c3e21f839a99bb16a2dec009031ffd}{Create}} ()
+\begin{DoxyCompactList}\small\item\em Creates the server. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a46cff55424636cc1fdd921df2f77f974}{Close}} ()
+\begin{DoxyCompactList}\small\item\em Closes the server. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+I\+P\+Address \mbox{\hyperlink{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a231ae4190b13733e895490d94dc17090}{Address}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The address the server listens on. \end{DoxyCompactList}\item 
+ushort \mbox{\hyperlink{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_ae6fdd19d464cd5657343562c81d22378}{Port}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The port the server listens on. \end{DoxyCompactList}\item 
+I\+P\+Version \mbox{\hyperlink{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a6300a3a496727397aa9b20c144d209f5}{I\+P\+Version}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The IP protocol version the server listens on. \end{DoxyCompactList}\item 
+byte \mbox{\hyperlink{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_ad96fe427a88ac4ae9fea630ac235dedf}{Max\+Strikes}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The number of strikes that can be received before the client is automatically kicked. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a7402325ef76827de8e58af9ca2c38f4e}{Data\+Directory}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The location \mbox{\hyperlink{namespace_dark_rift}{Dark\+Rift}} will store persistant data. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a2e01095403e40ad25f654c89af066335}{Log\+To\+File}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Whether logs should be written to file. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a7407ee6a3aa7dc74e225fc2fcc1b60a4}{Log\+File\+String}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The location that log files will be placed when using recommended logging settings. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a05a63dc60e2fa75c03b53202e2f387ab}{Log\+To\+Unity\+Console}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Whether logs should be written to the unity console. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a808e6ce6b90d1ad8bb0784b3a5d77461}{Log\+To\+Debug}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Whether logs should be written to debug. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a6e668698862f3349732469242421374a}{Load\+By\+Default}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Whether plugins should be loaded by default. \end{DoxyCompactList}\item 
+List$<$ Server\+Spawn\+Data.\+Plugins\+Settings.\+Plugin\+Settings $>$ \mbox{\hyperlink{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_af7d406e29d57b005af2ca85287872b4a}{Plugins}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The plugins that should be loaded. \end{DoxyCompactList}\item 
+List$<$ Server\+Spawn\+Data.\+Database\+Settings.\+Database\+Connection\+Data $>$ \mbox{\hyperlink{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a3e607c311f9835dfe681a0cdc7d5a6e2}{Databases}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The databases that the server will connect to. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a14861635aeed2ec2145e0e1274c00323}{Max\+Cached\+Writers}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The maximum number of Dark\+Rift\+Writer instances stored per thread. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a34f37487ca362e6921bdaa810fd327fb}{Max\+Cached\+Readers}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The maximum number of Dark\+Rift\+Reader instances stored per thread. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a8e9e07671cf87d15e410110abf550ef2}{Max\+Cached\+Messages}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The maximum number of Message instances stored per thread. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a681b1a000d1e46bf9e461f4ac317c4f5}{Max\+Cached\+Socket\+Async\+Event\+Args}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The maximum number of System.\+Net.\+Sockets.\+Socket\+Async\+Event\+Args instances stored per thread. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a7132ec77a32310a5d01975ac7fff6566}{Max\+Cached\+Action\+Dispatcher\+Tasks}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The maximum number of Dark\+Rift.\+Dispatching.\+Action\+Dispatcher\+Task instances stored per thread. \end{DoxyCompactList}\item 
+Dark\+Rift\+Server \mbox{\hyperlink{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_aa03786ec0cf5d97df86e240e5ee7e801}{Server}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The actual server. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a46cff55424636cc1fdd921df2f77f974}\label{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a46cff55424636cc1fdd921df2f77f974}} 
+\index{DarkRift.Server.Unity.UnityServer@{DarkRift.Server.Unity.UnityServer}!Close@{Close}}
+\index{Close@{Close}!DarkRift.Server.Unity.UnityServer@{DarkRift.Server.Unity.UnityServer}}
+\doxysubsubsection{\texorpdfstring{Close()}{Close()}}
+{\footnotesize\ttfamily void Dark\+Rift.\+Server.\+Unity.\+Unity\+Server.\+Close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Closes the server. 
+
+\mbox{\Hypertarget{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a85c3e21f839a99bb16a2dec009031ffd}\label{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a85c3e21f839a99bb16a2dec009031ffd}} 
+\index{DarkRift.Server.Unity.UnityServer@{DarkRift.Server.Unity.UnityServer}!Create@{Create}}
+\index{Create@{Create}!DarkRift.Server.Unity.UnityServer@{DarkRift.Server.Unity.UnityServer}}
+\doxysubsubsection{\texorpdfstring{Create()}{Create()}}
+{\footnotesize\ttfamily void Dark\+Rift.\+Server.\+Unity.\+Unity\+Server.\+Create (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creates the server. 
+
+
+
+\doxysubsection{Property Documentation}
+\mbox{\Hypertarget{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a231ae4190b13733e895490d94dc17090}\label{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a231ae4190b13733e895490d94dc17090}} 
+\index{DarkRift.Server.Unity.UnityServer@{DarkRift.Server.Unity.UnityServer}!Address@{Address}}
+\index{Address@{Address}!DarkRift.Server.Unity.UnityServer@{DarkRift.Server.Unity.UnityServer}}
+\doxysubsubsection{\texorpdfstring{Address}{Address}}
+{\footnotesize\ttfamily I\+P\+Address Dark\+Rift.\+Server.\+Unity.\+Unity\+Server.\+Address\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+The address the server listens on. 
+
+\mbox{\Hypertarget{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a3e607c311f9835dfe681a0cdc7d5a6e2}\label{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a3e607c311f9835dfe681a0cdc7d5a6e2}} 
+\index{DarkRift.Server.Unity.UnityServer@{DarkRift.Server.Unity.UnityServer}!Databases@{Databases}}
+\index{Databases@{Databases}!DarkRift.Server.Unity.UnityServer@{DarkRift.Server.Unity.UnityServer}}
+\doxysubsubsection{\texorpdfstring{Databases}{Databases}}
+{\footnotesize\ttfamily List$<$Server\+Spawn\+Data.\+Database\+Settings.\+Database\+Connection\+Data$>$ Dark\+Rift.\+Server.\+Unity.\+Unity\+Server.\+Databases\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The databases that the server will connect to. 
+
+\mbox{\Hypertarget{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a7402325ef76827de8e58af9ca2c38f4e}\label{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a7402325ef76827de8e58af9ca2c38f4e}} 
+\index{DarkRift.Server.Unity.UnityServer@{DarkRift.Server.Unity.UnityServer}!DataDirectory@{DataDirectory}}
+\index{DataDirectory@{DataDirectory}!DarkRift.Server.Unity.UnityServer@{DarkRift.Server.Unity.UnityServer}}
+\doxysubsubsection{\texorpdfstring{DataDirectory}{DataDirectory}}
+{\footnotesize\ttfamily string Dark\+Rift.\+Server.\+Unity.\+Unity\+Server.\+Data\+Directory\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+The location \mbox{\hyperlink{namespace_dark_rift}{Dark\+Rift}} will store persistant data. 
+
+\mbox{\Hypertarget{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a6300a3a496727397aa9b20c144d209f5}\label{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a6300a3a496727397aa9b20c144d209f5}} 
+\index{DarkRift.Server.Unity.UnityServer@{DarkRift.Server.Unity.UnityServer}!IPVersion@{IPVersion}}
+\index{IPVersion@{IPVersion}!DarkRift.Server.Unity.UnityServer@{DarkRift.Server.Unity.UnityServer}}
+\doxysubsubsection{\texorpdfstring{IPVersion}{IPVersion}}
+{\footnotesize\ttfamily I\+P\+Version Dark\+Rift.\+Server.\+Unity.\+Unity\+Server.\+I\+P\+Version\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+The IP protocol version the server listens on. 
+
+\mbox{\Hypertarget{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a6e668698862f3349732469242421374a}\label{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a6e668698862f3349732469242421374a}} 
+\index{DarkRift.Server.Unity.UnityServer@{DarkRift.Server.Unity.UnityServer}!LoadByDefault@{LoadByDefault}}
+\index{LoadByDefault@{LoadByDefault}!DarkRift.Server.Unity.UnityServer@{DarkRift.Server.Unity.UnityServer}}
+\doxysubsubsection{\texorpdfstring{LoadByDefault}{LoadByDefault}}
+{\footnotesize\ttfamily bool Dark\+Rift.\+Server.\+Unity.\+Unity\+Server.\+Load\+By\+Default\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Whether plugins should be loaded by default. 
+
+\mbox{\Hypertarget{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a7407ee6a3aa7dc74e225fc2fcc1b60a4}\label{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a7407ee6a3aa7dc74e225fc2fcc1b60a4}} 
+\index{DarkRift.Server.Unity.UnityServer@{DarkRift.Server.Unity.UnityServer}!LogFileString@{LogFileString}}
+\index{LogFileString@{LogFileString}!DarkRift.Server.Unity.UnityServer@{DarkRift.Server.Unity.UnityServer}}
+\doxysubsubsection{\texorpdfstring{LogFileString}{LogFileString}}
+{\footnotesize\ttfamily string Dark\+Rift.\+Server.\+Unity.\+Unity\+Server.\+Log\+File\+String\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+The location that log files will be placed when using recommended logging settings. 
+
+\mbox{\Hypertarget{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a808e6ce6b90d1ad8bb0784b3a5d77461}\label{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a808e6ce6b90d1ad8bb0784b3a5d77461}} 
+\index{DarkRift.Server.Unity.UnityServer@{DarkRift.Server.Unity.UnityServer}!LogToDebug@{LogToDebug}}
+\index{LogToDebug@{LogToDebug}!DarkRift.Server.Unity.UnityServer@{DarkRift.Server.Unity.UnityServer}}
+\doxysubsubsection{\texorpdfstring{LogToDebug}{LogToDebug}}
+{\footnotesize\ttfamily bool Dark\+Rift.\+Server.\+Unity.\+Unity\+Server.\+Log\+To\+Debug\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Whether logs should be written to debug. 
+
+\mbox{\Hypertarget{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a2e01095403e40ad25f654c89af066335}\label{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a2e01095403e40ad25f654c89af066335}} 
+\index{DarkRift.Server.Unity.UnityServer@{DarkRift.Server.Unity.UnityServer}!LogToFile@{LogToFile}}
+\index{LogToFile@{LogToFile}!DarkRift.Server.Unity.UnityServer@{DarkRift.Server.Unity.UnityServer}}
+\doxysubsubsection{\texorpdfstring{LogToFile}{LogToFile}}
+{\footnotesize\ttfamily bool Dark\+Rift.\+Server.\+Unity.\+Unity\+Server.\+Log\+To\+File\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Whether logs should be written to file. 
+
+\mbox{\Hypertarget{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a05a63dc60e2fa75c03b53202e2f387ab}\label{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a05a63dc60e2fa75c03b53202e2f387ab}} 
+\index{DarkRift.Server.Unity.UnityServer@{DarkRift.Server.Unity.UnityServer}!LogToUnityConsole@{LogToUnityConsole}}
+\index{LogToUnityConsole@{LogToUnityConsole}!DarkRift.Server.Unity.UnityServer@{DarkRift.Server.Unity.UnityServer}}
+\doxysubsubsection{\texorpdfstring{LogToUnityConsole}{LogToUnityConsole}}
+{\footnotesize\ttfamily bool Dark\+Rift.\+Server.\+Unity.\+Unity\+Server.\+Log\+To\+Unity\+Console\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Whether logs should be written to the unity console. 
+
+\mbox{\Hypertarget{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a7132ec77a32310a5d01975ac7fff6566}\label{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a7132ec77a32310a5d01975ac7fff6566}} 
+\index{DarkRift.Server.Unity.UnityServer@{DarkRift.Server.Unity.UnityServer}!MaxCachedActionDispatcherTasks@{MaxCachedActionDispatcherTasks}}
+\index{MaxCachedActionDispatcherTasks@{MaxCachedActionDispatcherTasks}!DarkRift.Server.Unity.UnityServer@{DarkRift.Server.Unity.UnityServer}}
+\doxysubsubsection{\texorpdfstring{MaxCachedActionDispatcherTasks}{MaxCachedActionDispatcherTasks}}
+{\footnotesize\ttfamily int Dark\+Rift.\+Server.\+Unity.\+Unity\+Server.\+Max\+Cached\+Action\+Dispatcher\+Tasks\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+The maximum number of Dark\+Rift.\+Dispatching.\+Action\+Dispatcher\+Task instances stored per thread. 
+
+\mbox{\Hypertarget{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a8e9e07671cf87d15e410110abf550ef2}\label{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a8e9e07671cf87d15e410110abf550ef2}} 
+\index{DarkRift.Server.Unity.UnityServer@{DarkRift.Server.Unity.UnityServer}!MaxCachedMessages@{MaxCachedMessages}}
+\index{MaxCachedMessages@{MaxCachedMessages}!DarkRift.Server.Unity.UnityServer@{DarkRift.Server.Unity.UnityServer}}
+\doxysubsubsection{\texorpdfstring{MaxCachedMessages}{MaxCachedMessages}}
+{\footnotesize\ttfamily int Dark\+Rift.\+Server.\+Unity.\+Unity\+Server.\+Max\+Cached\+Messages\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+The maximum number of Message instances stored per thread. 
+
+\mbox{\Hypertarget{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a34f37487ca362e6921bdaa810fd327fb}\label{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a34f37487ca362e6921bdaa810fd327fb}} 
+\index{DarkRift.Server.Unity.UnityServer@{DarkRift.Server.Unity.UnityServer}!MaxCachedReaders@{MaxCachedReaders}}
+\index{MaxCachedReaders@{MaxCachedReaders}!DarkRift.Server.Unity.UnityServer@{DarkRift.Server.Unity.UnityServer}}
+\doxysubsubsection{\texorpdfstring{MaxCachedReaders}{MaxCachedReaders}}
+{\footnotesize\ttfamily int Dark\+Rift.\+Server.\+Unity.\+Unity\+Server.\+Max\+Cached\+Readers\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+The maximum number of Dark\+Rift\+Reader instances stored per thread. 
+
+\mbox{\Hypertarget{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a681b1a000d1e46bf9e461f4ac317c4f5}\label{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a681b1a000d1e46bf9e461f4ac317c4f5}} 
+\index{DarkRift.Server.Unity.UnityServer@{DarkRift.Server.Unity.UnityServer}!MaxCachedSocketAsyncEventArgs@{MaxCachedSocketAsyncEventArgs}}
+\index{MaxCachedSocketAsyncEventArgs@{MaxCachedSocketAsyncEventArgs}!DarkRift.Server.Unity.UnityServer@{DarkRift.Server.Unity.UnityServer}}
+\doxysubsubsection{\texorpdfstring{MaxCachedSocketAsyncEventArgs}{MaxCachedSocketAsyncEventArgs}}
+{\footnotesize\ttfamily int Dark\+Rift.\+Server.\+Unity.\+Unity\+Server.\+Max\+Cached\+Socket\+Async\+Event\+Args\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+The maximum number of System.\+Net.\+Sockets.\+Socket\+Async\+Event\+Args instances stored per thread. 
+
+\mbox{\Hypertarget{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a14861635aeed2ec2145e0e1274c00323}\label{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_a14861635aeed2ec2145e0e1274c00323}} 
+\index{DarkRift.Server.Unity.UnityServer@{DarkRift.Server.Unity.UnityServer}!MaxCachedWriters@{MaxCachedWriters}}
+\index{MaxCachedWriters@{MaxCachedWriters}!DarkRift.Server.Unity.UnityServer@{DarkRift.Server.Unity.UnityServer}}
+\doxysubsubsection{\texorpdfstring{MaxCachedWriters}{MaxCachedWriters}}
+{\footnotesize\ttfamily int Dark\+Rift.\+Server.\+Unity.\+Unity\+Server.\+Max\+Cached\+Writers\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+The maximum number of Dark\+Rift\+Writer instances stored per thread. 
+
+\mbox{\Hypertarget{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_ad96fe427a88ac4ae9fea630ac235dedf}\label{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_ad96fe427a88ac4ae9fea630ac235dedf}} 
+\index{DarkRift.Server.Unity.UnityServer@{DarkRift.Server.Unity.UnityServer}!MaxStrikes@{MaxStrikes}}
+\index{MaxStrikes@{MaxStrikes}!DarkRift.Server.Unity.UnityServer@{DarkRift.Server.Unity.UnityServer}}
+\doxysubsubsection{\texorpdfstring{MaxStrikes}{MaxStrikes}}
+{\footnotesize\ttfamily byte Dark\+Rift.\+Server.\+Unity.\+Unity\+Server.\+Max\+Strikes\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+The number of strikes that can be received before the client is automatically kicked. 
+
+\mbox{\Hypertarget{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_af7d406e29d57b005af2ca85287872b4a}\label{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_af7d406e29d57b005af2ca85287872b4a}} 
+\index{DarkRift.Server.Unity.UnityServer@{DarkRift.Server.Unity.UnityServer}!Plugins@{Plugins}}
+\index{Plugins@{Plugins}!DarkRift.Server.Unity.UnityServer@{DarkRift.Server.Unity.UnityServer}}
+\doxysubsubsection{\texorpdfstring{Plugins}{Plugins}}
+{\footnotesize\ttfamily List$<$Server\+Spawn\+Data.\+Plugins\+Settings.\+Plugin\+Settings$>$ Dark\+Rift.\+Server.\+Unity.\+Unity\+Server.\+Plugins\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The plugins that should be loaded. 
+
+\mbox{\Hypertarget{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_ae6fdd19d464cd5657343562c81d22378}\label{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_ae6fdd19d464cd5657343562c81d22378}} 
+\index{DarkRift.Server.Unity.UnityServer@{DarkRift.Server.Unity.UnityServer}!Port@{Port}}
+\index{Port@{Port}!DarkRift.Server.Unity.UnityServer@{DarkRift.Server.Unity.UnityServer}}
+\doxysubsubsection{\texorpdfstring{Port}{Port}}
+{\footnotesize\ttfamily ushort Dark\+Rift.\+Server.\+Unity.\+Unity\+Server.\+Port\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+The port the server listens on. 
+
+\mbox{\Hypertarget{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_aa03786ec0cf5d97df86e240e5ee7e801}\label{class_dark_rift_1_1_server_1_1_unity_1_1_unity_server_aa03786ec0cf5d97df86e240e5ee7e801}} 
+\index{DarkRift.Server.Unity.UnityServer@{DarkRift.Server.Unity.UnityServer}!Server@{Server}}
+\index{Server@{Server}!DarkRift.Server.Unity.UnityServer@{DarkRift.Server.Unity.UnityServer}}
+\doxysubsubsection{\texorpdfstring{Server}{Server}}
+{\footnotesize\ttfamily Dark\+Rift\+Server Dark\+Rift.\+Server.\+Unity.\+Unity\+Server.\+Server\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The actual server. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Dark\+Rift/\+Dark\+Rift/\+Plugins/\+Server/\mbox{\hyperlink{_unity_server_8cs}{Unity\+Server.\+cs}}\end{DoxyCompactItemize}

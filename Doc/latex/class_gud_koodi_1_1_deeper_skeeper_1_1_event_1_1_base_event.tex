@@ -1,0 +1,102 @@
+\hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_base_event}{}\doxysection{Gud\+Koodi.\+Deeper\+Skeeper.\+Event.\+Base\+Event$<$ T0, T1, T2, T3 $>$ Class Template Reference}
+\label{class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_base_event}\index{GudKoodi.DeeperSkeeper.Event.BaseEvent$<$ T0, T1, T2, T3 $>$@{GudKoodi.DeeperSkeeper.Event.BaseEvent$<$ T0, T1, T2, T3 $>$}}
+
+
+Base class for all events.  
+
+
+
+
+Inheritance diagram for Gud\+Koodi.\+Deeper\+Skeeper.\+Event.\+Base\+Event$<$ T0, T1, T2, T3 $>$\+:
+% FIG 0
+
+
+Collaboration diagram for Gud\+Koodi.\+Deeper\+Skeeper.\+Event.\+Base\+Event$<$ T0, T1, T2, T3 $>$\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_base_event_a8c61b2218a8852a84b5cb304d222b22f}{Subscribe}} (Action$<$ T0, T1, T2, T3 $>$ listener)
+\begin{DoxyCompactList}\small\item\em Subscribes the given listener to this event\textquotesingle{}s triggers, if not already subscribed. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_base_event_add2b086b3327f1cda8ec917d489f9924}{Un\+Subscribe}} (Action$<$ T0, T1, T2, T3 $>$ listener)
+\begin{DoxyCompactList}\small\item\em Unsubscribes the given listener from this event\textquotesingle{}s triggers, if subscribed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_base_event_a66e8d3743be0a8d7e0143055504b1bd5}{Trigger}} (T0 p0, T1 p1, T2 p2, T3 p3)
+\begin{DoxyCompactList}\small\item\em Triggers the event and notifies all listeners. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Base class for all events. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T0} & Type of first argument.\\
+\hline
+{\em T1} & Type of second argument.\\
+\hline
+{\em T2} & Type of third argument.\\
+\hline
+{\em T3} & Type of fourth argument.\\
+\hline
+\end{DoxyTemplParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_base_event_a8c61b2218a8852a84b5cb304d222b22f}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_base_event_a8c61b2218a8852a84b5cb304d222b22f}} 
+\index{GudKoodi.DeeperSkeeper.Event.BaseEvent$<$ T0, T1, T2, T3 $>$@{GudKoodi.DeeperSkeeper.Event.BaseEvent$<$ T0, T1, T2, T3 $>$}!Subscribe@{Subscribe}}
+\index{Subscribe@{Subscribe}!GudKoodi.DeeperSkeeper.Event.BaseEvent$<$ T0, T1, T2, T3 $>$@{GudKoodi.DeeperSkeeper.Event.BaseEvent$<$ T0, T1, T2, T3 $>$}}
+\doxysubsubsection{\texorpdfstring{Subscribe()}{Subscribe()}}
+{\footnotesize\ttfamily void \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_base_event}{Gud\+Koodi.\+Deeper\+Skeeper.\+Event.\+Base\+Event}}$<$ T0, T1, T2, T3 $>$.Subscribe (\begin{DoxyParamCaption}\item[{Action$<$ T0, T1, T2, T3 $>$}]{listener }\end{DoxyParamCaption})}
+
+
+
+Subscribes the given listener to this event\textquotesingle{}s triggers, if not already subscribed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em listener} & Subscribing listener\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_base_event_a66e8d3743be0a8d7e0143055504b1bd5}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_base_event_a66e8d3743be0a8d7e0143055504b1bd5}} 
+\index{GudKoodi.DeeperSkeeper.Event.BaseEvent$<$ T0, T1, T2, T3 $>$@{GudKoodi.DeeperSkeeper.Event.BaseEvent$<$ T0, T1, T2, T3 $>$}!Trigger@{Trigger}}
+\index{Trigger@{Trigger}!GudKoodi.DeeperSkeeper.Event.BaseEvent$<$ T0, T1, T2, T3 $>$@{GudKoodi.DeeperSkeeper.Event.BaseEvent$<$ T0, T1, T2, T3 $>$}}
+\doxysubsubsection{\texorpdfstring{Trigger()}{Trigger()}}
+{\footnotesize\ttfamily void \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_base_event}{Gud\+Koodi.\+Deeper\+Skeeper.\+Event.\+Base\+Event}}$<$ T0, T1, T2, T3 $>$.Trigger (\begin{DoxyParamCaption}\item[{T0}]{p0,  }\item[{T1}]{p1,  }\item[{T2}]{p2,  }\item[{T3}]{p3 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Triggers the event and notifies all listeners. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p0} & First parameter.\\
+\hline
+{\em p1} & Second parameter.\\
+\hline
+{\em p2} & Third parameter.\\
+\hline
+{\em p3} & Fourth parameter.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_base_event_add2b086b3327f1cda8ec917d489f9924}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_base_event_add2b086b3327f1cda8ec917d489f9924}} 
+\index{GudKoodi.DeeperSkeeper.Event.BaseEvent$<$ T0, T1, T2, T3 $>$@{GudKoodi.DeeperSkeeper.Event.BaseEvent$<$ T0, T1, T2, T3 $>$}!UnSubscribe@{UnSubscribe}}
+\index{UnSubscribe@{UnSubscribe}!GudKoodi.DeeperSkeeper.Event.BaseEvent$<$ T0, T1, T2, T3 $>$@{GudKoodi.DeeperSkeeper.Event.BaseEvent$<$ T0, T1, T2, T3 $>$}}
+\doxysubsubsection{\texorpdfstring{UnSubscribe()}{UnSubscribe()}}
+{\footnotesize\ttfamily void \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_base_event}{Gud\+Koodi.\+Deeper\+Skeeper.\+Event.\+Base\+Event}}$<$ T0, T1, T2, T3 $>$.Un\+Subscribe (\begin{DoxyParamCaption}\item[{Action$<$ T0, T1, T2, T3 $>$}]{listener }\end{DoxyParamCaption})}
+
+
+
+Unsubscribes the given listener from this event\textquotesingle{}s triggers, if subscribed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em listener} & Unsubscribing listener\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\+Events/\mbox{\hyperlink{_base_event_8cs}{Base\+Event.\+cs}}\end{DoxyCompactItemize}

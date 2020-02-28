@@ -1,0 +1,210 @@
+\hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller}{}\doxysection{Gud\+Koodi.\+Deeper\+Skeeper.\+Enemy.\+Enemy\+Controller Class Reference}
+\label{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller}\index{GudKoodi.DeeperSkeeper.Enemy.EnemyController@{GudKoodi.DeeperSkeeper.Enemy.EnemyController}}
+
+
+Component for controlling enemy object.  
+
+
+
+
+Inheritance diagram for Gud\+Koodi.\+Deeper\+Skeeper.\+Enemy.\+Enemy\+Controller\+:
+% FIG 0
+
+
+Collaboration diagram for Gud\+Koodi.\+Deeper\+Skeeper.\+Enemy.\+Enemy\+Controller\+:
+% FIG 1
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_a390db1b9304bbc0ba2c37e76cf693669}{Off\+Mesh\+Link\+Move\+Method}} \{ \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_a390db1b9304bbc0ba2c37e76cf693669a054fc7866c93a2496fd9048c493e6aed}{Off\+Mesh\+Link\+Move\+Method.\+Teleport}}, 
+\mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_a390db1b9304bbc0ba2c37e76cf693669ae5937dc2bedfff60a20058a926d4d1da}{Off\+Mesh\+Link\+Move\+Method.\+Normal\+Speed}}, 
+\mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_a390db1b9304bbc0ba2c37e76cf693669adf5a05bb403aa376bd71f1341f8acfa6}{Off\+Mesh\+Link\+Move\+Method.\+Parabola}}, 
+\mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_a390db1b9304bbc0ba2c37e76cf693669a2cb4d4a3f8dacd623fa045a44febd476}{Off\+Mesh\+Link\+Move\+Method.\+Curve}}
+ \}
+\begin{DoxyCompactList}\small\item\em How to move between the link. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_ada15d3c8bbdf1b4ad5512a01034723cb}{Bot\+State}} \{ \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_ada15d3c8bbdf1b4ad5512a01034723cbaa5daf7f2ebbba4975d61dab1c40188c7}{Bot\+State.\+I\+D\+LE}}, 
+\mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_ada15d3c8bbdf1b4ad5512a01034723cba2f0492938095f67d986cf0fb13f02385}{Bot\+State.\+C\+H\+A\+SE}}, 
+\mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_ada15d3c8bbdf1b4ad5512a01034723cbac6ddd0f72ff2fd344693b9ca8d483871}{Bot\+State.\+A\+T\+T\+A\+CK}}
+ \}
+\begin{DoxyCompactList}\small\item\em AI State. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_af1e9e4d366f6a8472ca20b2de58ac859}{Start\+Chase}} (Game\+Object target)
+\begin{DoxyCompactList}\small\item\em Starts chasing the given player object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_af0b08b00614889f959b4d0538743e32a}{Set\+As\+Master}} ()
+\begin{DoxyCompactList}\small\item\em Sets the component as master, sending local changes to network. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_aa8137dcdbedfc5a5b6c344f783faf7a2}{Update\+State}} (Game\+Object target, Vector3 network\+Position)
+\begin{DoxyCompactList}\small\item\em Updates the state of slave component with data from server. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Game\+Object \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_a6a33c45543d23eb5d3298dc23e81a750}{Player}}
+\item 
+\mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_ada15d3c8bbdf1b4ad5512a01034723cb}{Bot\+State}} \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_ad744faf4728fa17b09852b3b84841331}{State}} = \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_ada15d3c8bbdf1b4ad5512a01034723cbaa5daf7f2ebbba4975d61dab1c40188c7}{Bot\+State.\+I\+D\+LE}}
+\item 
+\mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_weapon_1_1_weapon}{Weapon}} \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_a977fb99228b25ff9c96da8cfcebda00a}{Weapon}}
+\item 
+\mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_object_update_requested}{Object\+Update\+Requested}} \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_a050bdac30ae7a4f4a50dbc8c9c3f2177}{Object\+Update\+Requested}}
+\item 
+float \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_a2a1083eb3bc474f5d27f7deae7117fe8}{Hit\+Speed}} = 1f
+\item 
+\mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_a390db1b9304bbc0ba2c37e76cf693669}{Off\+Mesh\+Link\+Move\+Method}} \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_afff80acc4b480f26319fdf6318cf8643}{Method}} = \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_a390db1b9304bbc0ba2c37e76cf693669adf5a05bb403aa376bd71f1341f8acfa6}{Off\+Mesh\+Link\+Move\+Method.\+Parabola}}
+\item 
+Animation\+Curve \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_a678f50da21edbb2f9c5426c2e1914b67}{Anim\+Curve}} = new Animation\+Curve()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Component for controlling enemy object. 
+
+
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_ada15d3c8bbdf1b4ad5512a01034723cb}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_ada15d3c8bbdf1b4ad5512a01034723cb}} 
+\index{GudKoodi.DeeperSkeeper.Enemy.EnemyController@{GudKoodi.DeeperSkeeper.Enemy.EnemyController}!BotState@{BotState}}
+\index{BotState@{BotState}!GudKoodi.DeeperSkeeper.Enemy.EnemyController@{GudKoodi.DeeperSkeeper.Enemy.EnemyController}}
+\doxysubsubsection{\texorpdfstring{BotState}{BotState}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_ada15d3c8bbdf1b4ad5512a01034723cb}{Gud\+Koodi.\+Deeper\+Skeeper.\+Enemy.\+Enemy\+Controller.\+Bot\+State}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+AI State. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{IDLE@{IDLE}!GudKoodi.DeeperSkeeper.Enemy.EnemyController@{GudKoodi.DeeperSkeeper.Enemy.EnemyController}}\index{GudKoodi.DeeperSkeeper.Enemy.EnemyController@{GudKoodi.DeeperSkeeper.Enemy.EnemyController}!IDLE@{IDLE}}}\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_ada15d3c8bbdf1b4ad5512a01034723cbaa5daf7f2ebbba4975d61dab1c40188c7}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_ada15d3c8bbdf1b4ad5512a01034723cbaa5daf7f2ebbba4975d61dab1c40188c7}} 
+I\+D\+LE&Do nothing. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CHASE@{CHASE}!GudKoodi.DeeperSkeeper.Enemy.EnemyController@{GudKoodi.DeeperSkeeper.Enemy.EnemyController}}\index{GudKoodi.DeeperSkeeper.Enemy.EnemyController@{GudKoodi.DeeperSkeeper.Enemy.EnemyController}!CHASE@{CHASE}}}\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_ada15d3c8bbdf1b4ad5512a01034723cba2f0492938095f67d986cf0fb13f02385}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_ada15d3c8bbdf1b4ad5512a01034723cba2f0492938095f67d986cf0fb13f02385}} 
+C\+H\+A\+SE&Chase player. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ATTACK@{ATTACK}!GudKoodi.DeeperSkeeper.Enemy.EnemyController@{GudKoodi.DeeperSkeeper.Enemy.EnemyController}}\index{GudKoodi.DeeperSkeeper.Enemy.EnemyController@{GudKoodi.DeeperSkeeper.Enemy.EnemyController}!ATTACK@{ATTACK}}}\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_ada15d3c8bbdf1b4ad5512a01034723cbac6ddd0f72ff2fd344693b9ca8d483871}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_ada15d3c8bbdf1b4ad5512a01034723cbac6ddd0f72ff2fd344693b9ca8d483871}} 
+A\+T\+T\+A\+CK&Attack player. \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_a390db1b9304bbc0ba2c37e76cf693669}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_a390db1b9304bbc0ba2c37e76cf693669}} 
+\index{GudKoodi.DeeperSkeeper.Enemy.EnemyController@{GudKoodi.DeeperSkeeper.Enemy.EnemyController}!OffMeshLinkMoveMethod@{OffMeshLinkMoveMethod}}
+\index{OffMeshLinkMoveMethod@{OffMeshLinkMoveMethod}!GudKoodi.DeeperSkeeper.Enemy.EnemyController@{GudKoodi.DeeperSkeeper.Enemy.EnemyController}}
+\doxysubsubsection{\texorpdfstring{OffMeshLinkMoveMethod}{OffMeshLinkMoveMethod}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_a390db1b9304bbc0ba2c37e76cf693669}{Gud\+Koodi.\+Deeper\+Skeeper.\+Enemy.\+Enemy\+Controller.\+Off\+Mesh\+Link\+Move\+Method}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+How to move between the link. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Teleport@{Teleport}!GudKoodi.DeeperSkeeper.Enemy.EnemyController@{GudKoodi.DeeperSkeeper.Enemy.EnemyController}}\index{GudKoodi.DeeperSkeeper.Enemy.EnemyController@{GudKoodi.DeeperSkeeper.Enemy.EnemyController}!Teleport@{Teleport}}}\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_a390db1b9304bbc0ba2c37e76cf693669a054fc7866c93a2496fd9048c493e6aed}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_a390db1b9304bbc0ba2c37e76cf693669a054fc7866c93a2496fd9048c493e6aed}} 
+Teleport&Teleport between start pos and end pos. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NormalSpeed@{NormalSpeed}!GudKoodi.DeeperSkeeper.Enemy.EnemyController@{GudKoodi.DeeperSkeeper.Enemy.EnemyController}}\index{GudKoodi.DeeperSkeeper.Enemy.EnemyController@{GudKoodi.DeeperSkeeper.Enemy.EnemyController}!NormalSpeed@{NormalSpeed}}}\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_a390db1b9304bbc0ba2c37e76cf693669ae5937dc2bedfff60a20058a926d4d1da}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_a390db1b9304bbc0ba2c37e76cf693669ae5937dc2bedfff60a20058a926d4d1da}} 
+Normal\+Speed&Normal\+Speed movement. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Parabola@{Parabola}!GudKoodi.DeeperSkeeper.Enemy.EnemyController@{GudKoodi.DeeperSkeeper.Enemy.EnemyController}}\index{GudKoodi.DeeperSkeeper.Enemy.EnemyController@{GudKoodi.DeeperSkeeper.Enemy.EnemyController}!Parabola@{Parabola}}}\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_a390db1b9304bbc0ba2c37e76cf693669adf5a05bb403aa376bd71f1341f8acfa6}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_a390db1b9304bbc0ba2c37e76cf693669adf5a05bb403aa376bd71f1341f8acfa6}} 
+Parabola&Move by Prabola. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Curve@{Curve}!GudKoodi.DeeperSkeeper.Enemy.EnemyController@{GudKoodi.DeeperSkeeper.Enemy.EnemyController}}\index{GudKoodi.DeeperSkeeper.Enemy.EnemyController@{GudKoodi.DeeperSkeeper.Enemy.EnemyController}!Curve@{Curve}}}\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_a390db1b9304bbc0ba2c37e76cf693669a2cb4d4a3f8dacd623fa045a44febd476}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_a390db1b9304bbc0ba2c37e76cf693669a2cb4d4a3f8dacd623fa045a44febd476}} 
+Curve&Move by curve. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_af0b08b00614889f959b4d0538743e32a}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_af0b08b00614889f959b4d0538743e32a}} 
+\index{GudKoodi.DeeperSkeeper.Enemy.EnemyController@{GudKoodi.DeeperSkeeper.Enemy.EnemyController}!SetAsMaster@{SetAsMaster}}
+\index{SetAsMaster@{SetAsMaster}!GudKoodi.DeeperSkeeper.Enemy.EnemyController@{GudKoodi.DeeperSkeeper.Enemy.EnemyController}}
+\doxysubsubsection{\texorpdfstring{SetAsMaster()}{SetAsMaster()}}
+{\footnotesize\ttfamily void Gud\+Koodi.\+Deeper\+Skeeper.\+Enemy.\+Enemy\+Controller.\+Set\+As\+Master (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Sets the component as master, sending local changes to network. 
+
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_af1e9e4d366f6a8472ca20b2de58ac859}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_af1e9e4d366f6a8472ca20b2de58ac859}} 
+\index{GudKoodi.DeeperSkeeper.Enemy.EnemyController@{GudKoodi.DeeperSkeeper.Enemy.EnemyController}!StartChase@{StartChase}}
+\index{StartChase@{StartChase}!GudKoodi.DeeperSkeeper.Enemy.EnemyController@{GudKoodi.DeeperSkeeper.Enemy.EnemyController}}
+\doxysubsubsection{\texorpdfstring{StartChase()}{StartChase()}}
+{\footnotesize\ttfamily void Gud\+Koodi.\+Deeper\+Skeeper.\+Enemy.\+Enemy\+Controller.\+Start\+Chase (\begin{DoxyParamCaption}\item[{Game\+Object}]{target }\end{DoxyParamCaption})}
+
+
+
+Starts chasing the given player object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & \mbox{\hyperlink{namespace_gud_koodi_1_1_deeper_skeeper_1_1_player}{Player}} to chase.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_aa8137dcdbedfc5a5b6c344f783faf7a2}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_aa8137dcdbedfc5a5b6c344f783faf7a2}} 
+\index{GudKoodi.DeeperSkeeper.Enemy.EnemyController@{GudKoodi.DeeperSkeeper.Enemy.EnemyController}!UpdateState@{UpdateState}}
+\index{UpdateState@{UpdateState}!GudKoodi.DeeperSkeeper.Enemy.EnemyController@{GudKoodi.DeeperSkeeper.Enemy.EnemyController}}
+\doxysubsubsection{\texorpdfstring{UpdateState()}{UpdateState()}}
+{\footnotesize\ttfamily void Gud\+Koodi.\+Deeper\+Skeeper.\+Enemy.\+Enemy\+Controller.\+Update\+State (\begin{DoxyParamCaption}\item[{Game\+Object}]{target,  }\item[{Vector3}]{network\+Position }\end{DoxyParamCaption})}
+
+
+
+Updates the state of slave component with data from server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & Target this component should chase if any.\\
+\hline
+{\em network\+Position} & Position on network.\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_a678f50da21edbb2f9c5426c2e1914b67}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_a678f50da21edbb2f9c5426c2e1914b67}} 
+\index{GudKoodi.DeeperSkeeper.Enemy.EnemyController@{GudKoodi.DeeperSkeeper.Enemy.EnemyController}!AnimCurve@{AnimCurve}}
+\index{AnimCurve@{AnimCurve}!GudKoodi.DeeperSkeeper.Enemy.EnemyController@{GudKoodi.DeeperSkeeper.Enemy.EnemyController}}
+\doxysubsubsection{\texorpdfstring{AnimCurve}{AnimCurve}}
+{\footnotesize\ttfamily Animation\+Curve Gud\+Koodi.\+Deeper\+Skeeper.\+Enemy.\+Enemy\+Controller.\+Anim\+Curve = new Animation\+Curve()}
+
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_a2a1083eb3bc474f5d27f7deae7117fe8}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_a2a1083eb3bc474f5d27f7deae7117fe8}} 
+\index{GudKoodi.DeeperSkeeper.Enemy.EnemyController@{GudKoodi.DeeperSkeeper.Enemy.EnemyController}!HitSpeed@{HitSpeed}}
+\index{HitSpeed@{HitSpeed}!GudKoodi.DeeperSkeeper.Enemy.EnemyController@{GudKoodi.DeeperSkeeper.Enemy.EnemyController}}
+\doxysubsubsection{\texorpdfstring{HitSpeed}{HitSpeed}}
+{\footnotesize\ttfamily float Gud\+Koodi.\+Deeper\+Skeeper.\+Enemy.\+Enemy\+Controller.\+Hit\+Speed = 1f}
+
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_afff80acc4b480f26319fdf6318cf8643}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_afff80acc4b480f26319fdf6318cf8643}} 
+\index{GudKoodi.DeeperSkeeper.Enemy.EnemyController@{GudKoodi.DeeperSkeeper.Enemy.EnemyController}!Method@{Method}}
+\index{Method@{Method}!GudKoodi.DeeperSkeeper.Enemy.EnemyController@{GudKoodi.DeeperSkeeper.Enemy.EnemyController}}
+\doxysubsubsection{\texorpdfstring{Method}{Method}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_a390db1b9304bbc0ba2c37e76cf693669}{Off\+Mesh\+Link\+Move\+Method}} Gud\+Koodi.\+Deeper\+Skeeper.\+Enemy.\+Enemy\+Controller.\+Method = \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_a390db1b9304bbc0ba2c37e76cf693669adf5a05bb403aa376bd71f1341f8acfa6}{Off\+Mesh\+Link\+Move\+Method.\+Parabola}}}
+
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_a050bdac30ae7a4f4a50dbc8c9c3f2177}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_a050bdac30ae7a4f4a50dbc8c9c3f2177}} 
+\index{GudKoodi.DeeperSkeeper.Enemy.EnemyController@{GudKoodi.DeeperSkeeper.Enemy.EnemyController}!ObjectUpdateRequested@{ObjectUpdateRequested}}
+\index{ObjectUpdateRequested@{ObjectUpdateRequested}!GudKoodi.DeeperSkeeper.Enemy.EnemyController@{GudKoodi.DeeperSkeeper.Enemy.EnemyController}}
+\doxysubsubsection{\texorpdfstring{ObjectUpdateRequested}{ObjectUpdateRequested}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_object_update_requested}{Object\+Update\+Requested}} Gud\+Koodi.\+Deeper\+Skeeper.\+Enemy.\+Enemy\+Controller.\+Object\+Update\+Requested}
+
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_a6a33c45543d23eb5d3298dc23e81a750}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_a6a33c45543d23eb5d3298dc23e81a750}} 
+\index{GudKoodi.DeeperSkeeper.Enemy.EnemyController@{GudKoodi.DeeperSkeeper.Enemy.EnemyController}!Player@{Player}}
+\index{Player@{Player}!GudKoodi.DeeperSkeeper.Enemy.EnemyController@{GudKoodi.DeeperSkeeper.Enemy.EnemyController}}
+\doxysubsubsection{\texorpdfstring{Player}{Player}}
+{\footnotesize\ttfamily Game\+Object Gud\+Koodi.\+Deeper\+Skeeper.\+Enemy.\+Enemy\+Controller.\+Player}
+
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_ad744faf4728fa17b09852b3b84841331}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_ad744faf4728fa17b09852b3b84841331}} 
+\index{GudKoodi.DeeperSkeeper.Enemy.EnemyController@{GudKoodi.DeeperSkeeper.Enemy.EnemyController}!State@{State}}
+\index{State@{State}!GudKoodi.DeeperSkeeper.Enemy.EnemyController@{GudKoodi.DeeperSkeeper.Enemy.EnemyController}}
+\doxysubsubsection{\texorpdfstring{State}{State}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_ada15d3c8bbdf1b4ad5512a01034723cb}{Bot\+State}} Gud\+Koodi.\+Deeper\+Skeeper.\+Enemy.\+Enemy\+Controller.\+State = \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_ada15d3c8bbdf1b4ad5512a01034723cbaa5daf7f2ebbba4975d61dab1c40188c7}{Bot\+State.\+I\+D\+LE}}}
+
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_a977fb99228b25ff9c96da8cfcebda00a}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_controller_a977fb99228b25ff9c96da8cfcebda00a}} 
+\index{GudKoodi.DeeperSkeeper.Enemy.EnemyController@{GudKoodi.DeeperSkeeper.Enemy.EnemyController}!Weapon@{Weapon}}
+\index{Weapon@{Weapon}!GudKoodi.DeeperSkeeper.Enemy.EnemyController@{GudKoodi.DeeperSkeeper.Enemy.EnemyController}}
+\doxysubsubsection{\texorpdfstring{Weapon}{Weapon}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_weapon_1_1_weapon}{Weapon}} Gud\+Koodi.\+Deeper\+Skeeper.\+Enemy.\+Enemy\+Controller.\+Weapon}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\+Enemy/\mbox{\hyperlink{_enemy_controller_8cs}{Enemy\+Controller.\+cs}}\end{DoxyCompactItemize}

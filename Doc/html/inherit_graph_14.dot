@@ -1,0 +1,16 @@
+digraph "Graphical Class Hierarchy"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node71 [label="IDarkRiftSerializable",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node71 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node0 [label="GudKoodi.DeeperSkeeper.Network.\lConnectionData",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_connection_data.html",tooltip="Serialization data class for sending initial data when a new client connects."];
+  Node71 -> Node73 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node73 [label="GudKoodi.DeeperSkeeper.Network.\lINetworkSerializable",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interface_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_i_network_serializable.html",tooltip=" "];
+  Node73 -> Node74 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node74 [label="GudKoodi.DeeperSkeeper.Network.\lEnemy",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_enemy.html",tooltip="Serialization data class for enemy objects."];
+  Node73 -> Node75 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node75 [label="GudKoodi.DeeperSkeeper.Network.\lPlayer",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player.html",tooltip="Serialization data class for player GameObjects."];
+}

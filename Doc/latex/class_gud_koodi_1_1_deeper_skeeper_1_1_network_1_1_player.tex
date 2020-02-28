@@ -1,0 +1,178 @@
+\hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player}{}\doxysection{Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Player Class Reference}
+\label{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player}\index{GudKoodi.DeeperSkeeper.Network.Player@{GudKoodi.DeeperSkeeper.Network.Player}}
+
+
+Serialization data class for player Game\+Objects.  
+
+
+
+
+Inheritance diagram for Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Player\+:
+% FIG 0
+
+
+Collaboration diagram for Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Player\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_a5555c82fcd750c599ec5f796c515b434}{Player}} ()
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player}{Player}} class. This parameterless constructor is called by \mbox{\hyperlink{namespace_dark_rift}{Dark\+Rift}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_af86f23ae084d7f2d39c22fddd4f9b17c}{Player}} (ushort network\+ID, Vector3 current\+Position, float rotation)
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player}{Player}} class. Target position is set to be the same as current position. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_a5e325ddd9523283af7e332858aaf034d}{Player}} (ushort network\+ID, Vector3 current\+Position, float rotation, Vector3 target\+Position)
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player}{Player}} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_ab79354fc774db9b6a639ae4ec27b0d00}{Deserialize}} (Deserialize\+Event e)
+\begin{DoxyCompactList}\small\item\em /// Deserializes data to this instance. Called by \mbox{\hyperlink{namespace_dark_rift}{Dark\+Rift}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_a7db2c48eada6a3e15bcb6b6963ea78f5}{Serialize}} (Serialize\+Event e)
+\begin{DoxyCompactList}\small\item\em Serializes data from this instance. Called by \mbox{\hyperlink{namespace_dark_rift}{Dark\+Rift}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+ushort \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_ad8037d09e1959759e9f4333621a204ae}{Network\+ID}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the network identifier for this object. \end{DoxyCompactList}\item 
+Vector3 \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_a61f55f022e95de240ffa79845b2c502a}{Current\+Position}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the current position for this object. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_ad31c2426a20a7a417fdfae050b6e1aec}{Rotation}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the rotation for this object. \end{DoxyCompactList}\item 
+Vector3 \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_ad78475a2ec84bee546dacb151958236a}{Target\+Position}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the target position for this object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Serialization data class for player Game\+Objects. 
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_a5555c82fcd750c599ec5f796c515b434}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_a5555c82fcd750c599ec5f796c515b434}} 
+\index{GudKoodi.DeeperSkeeper.Network.Player@{GudKoodi.DeeperSkeeper.Network.Player}!Player@{Player}}
+\index{Player@{Player}!GudKoodi.DeeperSkeeper.Network.Player@{GudKoodi.DeeperSkeeper.Network.Player}}
+\doxysubsubsection{\texorpdfstring{Player()}{Player()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Player.\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initializes a new instance of the \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player}{Player}} class. This parameterless constructor is called by \mbox{\hyperlink{namespace_dark_rift}{Dark\+Rift}}. 
+
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_af86f23ae084d7f2d39c22fddd4f9b17c}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_af86f23ae084d7f2d39c22fddd4f9b17c}} 
+\index{GudKoodi.DeeperSkeeper.Network.Player@{GudKoodi.DeeperSkeeper.Network.Player}!Player@{Player}}
+\index{Player@{Player}!GudKoodi.DeeperSkeeper.Network.Player@{GudKoodi.DeeperSkeeper.Network.Player}}
+\doxysubsubsection{\texorpdfstring{Player()}{Player()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Player.\+Player (\begin{DoxyParamCaption}\item[{ushort}]{network\+ID,  }\item[{Vector3}]{current\+Position,  }\item[{float}]{rotation }\end{DoxyParamCaption})}
+
+
+
+Initializes a new instance of the \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player}{Player}} class. Target position is set to be the same as current position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em network\+ID} & \mbox{\hyperlink{namespace_gud_koodi_1_1_deeper_skeeper_1_1_network}{Network}} identifier.\\
+\hline
+{\em current\+Position} & This object\textquotesingle{}s current position.\\
+\hline
+{\em rotation} & Y-\/plane rotation of this objet in radians.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_a5e325ddd9523283af7e332858aaf034d}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_a5e325ddd9523283af7e332858aaf034d}} 
+\index{GudKoodi.DeeperSkeeper.Network.Player@{GudKoodi.DeeperSkeeper.Network.Player}!Player@{Player}}
+\index{Player@{Player}!GudKoodi.DeeperSkeeper.Network.Player@{GudKoodi.DeeperSkeeper.Network.Player}}
+\doxysubsubsection{\texorpdfstring{Player()}{Player()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Player.\+Player (\begin{DoxyParamCaption}\item[{ushort}]{network\+ID,  }\item[{Vector3}]{current\+Position,  }\item[{float}]{rotation,  }\item[{Vector3}]{target\+Position }\end{DoxyParamCaption})}
+
+
+
+Initializes a new instance of the \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player}{Player}} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em network\+ID} & \mbox{\hyperlink{namespace_gud_koodi_1_1_deeper_skeeper_1_1_network}{Network}} identifier.\\
+\hline
+{\em current\+Position} & This object\textquotesingle{}s current position.\\
+\hline
+{\em rotation} & Direction this object is looking at in radians.\\
+\hline
+{\em target\+Position} & Position this object is aiming towards.\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_ab79354fc774db9b6a639ae4ec27b0d00}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_ab79354fc774db9b6a639ae4ec27b0d00}} 
+\index{GudKoodi.DeeperSkeeper.Network.Player@{GudKoodi.DeeperSkeeper.Network.Player}!Deserialize@{Deserialize}}
+\index{Deserialize@{Deserialize}!GudKoodi.DeeperSkeeper.Network.Player@{GudKoodi.DeeperSkeeper.Network.Player}}
+\doxysubsubsection{\texorpdfstring{Deserialize()}{Deserialize()}}
+{\footnotesize\ttfamily void Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Player.\+Deserialize (\begin{DoxyParamCaption}\item[{Deserialize\+Event}]{e }\end{DoxyParamCaption})}
+
+
+
+/// Deserializes data to this instance. Called by \mbox{\hyperlink{namespace_dark_rift}{Dark\+Rift}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & \mbox{\hyperlink{namespace_dark_rift}{Dark\+Rift}} deserialization event\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_a7db2c48eada6a3e15bcb6b6963ea78f5}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_a7db2c48eada6a3e15bcb6b6963ea78f5}} 
+\index{GudKoodi.DeeperSkeeper.Network.Player@{GudKoodi.DeeperSkeeper.Network.Player}!Serialize@{Serialize}}
+\index{Serialize@{Serialize}!GudKoodi.DeeperSkeeper.Network.Player@{GudKoodi.DeeperSkeeper.Network.Player}}
+\doxysubsubsection{\texorpdfstring{Serialize()}{Serialize()}}
+{\footnotesize\ttfamily virtual void Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Player.\+Serialize (\begin{DoxyParamCaption}\item[{Serialize\+Event}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Serializes data from this instance. Called by \mbox{\hyperlink{namespace_dark_rift}{Dark\+Rift}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & \mbox{\hyperlink{namespace_dark_rift}{Dark\+Rift}} serialization event\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Property Documentation}
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_a61f55f022e95de240ffa79845b2c502a}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_a61f55f022e95de240ffa79845b2c502a}} 
+\index{GudKoodi.DeeperSkeeper.Network.Player@{GudKoodi.DeeperSkeeper.Network.Player}!CurrentPosition@{CurrentPosition}}
+\index{CurrentPosition@{CurrentPosition}!GudKoodi.DeeperSkeeper.Network.Player@{GudKoodi.DeeperSkeeper.Network.Player}}
+\doxysubsubsection{\texorpdfstring{CurrentPosition}{CurrentPosition}}
+{\footnotesize\ttfamily Vector3 Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Player.\+Current\+Position\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets the current position for this object. 
+
+Current position.\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_ad8037d09e1959759e9f4333621a204ae}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_ad8037d09e1959759e9f4333621a204ae}} 
+\index{GudKoodi.DeeperSkeeper.Network.Player@{GudKoodi.DeeperSkeeper.Network.Player}!NetworkID@{NetworkID}}
+\index{NetworkID@{NetworkID}!GudKoodi.DeeperSkeeper.Network.Player@{GudKoodi.DeeperSkeeper.Network.Player}}
+\doxysubsubsection{\texorpdfstring{NetworkID}{NetworkID}}
+{\footnotesize\ttfamily ushort Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Player.\+Network\+ID\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets the network identifier for this object. 
+
+\mbox{\hyperlink{namespace_gud_koodi_1_1_deeper_skeeper_1_1_network}{Network}} identifier.\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_ad31c2426a20a7a417fdfae050b6e1aec}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_ad31c2426a20a7a417fdfae050b6e1aec}} 
+\index{GudKoodi.DeeperSkeeper.Network.Player@{GudKoodi.DeeperSkeeper.Network.Player}!Rotation@{Rotation}}
+\index{Rotation@{Rotation}!GudKoodi.DeeperSkeeper.Network.Player@{GudKoodi.DeeperSkeeper.Network.Player}}
+\doxysubsubsection{\texorpdfstring{Rotation}{Rotation}}
+{\footnotesize\ttfamily float Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Player.\+Rotation\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets the rotation for this object. 
+
+Y-\/plane rotation in radians.\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_ad78475a2ec84bee546dacb151958236a}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_ad78475a2ec84bee546dacb151958236a}} 
+\index{GudKoodi.DeeperSkeeper.Network.Player@{GudKoodi.DeeperSkeeper.Network.Player}!TargetPosition@{TargetPosition}}
+\index{TargetPosition@{TargetPosition}!GudKoodi.DeeperSkeeper.Network.Player@{GudKoodi.DeeperSkeeper.Network.Player}}
+\doxysubsubsection{\texorpdfstring{TargetPosition}{TargetPosition}}
+{\footnotesize\ttfamily Vector3 Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Player.\+Target\+Position\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets the target position for this object. 
+
+Target position.
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\+Network/\+Serializable/\mbox{\hyperlink{_player_8cs}{Player.\+cs}}\end{DoxyCompactItemize}

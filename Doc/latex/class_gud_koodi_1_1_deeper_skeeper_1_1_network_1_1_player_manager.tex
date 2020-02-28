@@ -1,0 +1,158 @@
+\hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_manager}{}\doxysection{Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Player\+Manager Class Reference}
+\label{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_manager}\index{GudKoodi.DeeperSkeeper.Network.PlayerManager@{GudKoodi.DeeperSkeeper.Network.PlayerManager}}
+
+
+Class for managing objects serialized as \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player}{Player}}.  
+
+
+
+
+Inheritance diagram for Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Player\+Manager\+:
+% FIG 0
+
+
+Collaboration diagram for Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Player\+Manager\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_manager_a491a192ee586875dcb6650741666008e}{Player\+Manager}} (\mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_object_update_requested}{Object\+Update\+Requested}} attack\+Started, \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_object_created}{Object\+Created}} master\+Player\+Created, \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_object_update_requested}{Object\+Update\+Requested}} object\+Update\+Requested)
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_manager}{Player\+Manager}} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_manager_ae1b970a6d23a2562c385634a38d9c1b1}{Spaghetti\+Attack}} (ushort network\+ID)
+\begin{DoxyCompactList}\small\item\em Starts attack animation for givent object. Quick temporary solution. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override Game\+Object \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_manager_a427fe68253deb4d123812f70e881eab4}{Instantiate\+Master}} (Game\+Object prefab, \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player}{Player}} player)
+\begin{DoxyCompactList}\small\item\em Instantiates a new Game\+Object and gives it proper components for local controlling. \end{DoxyCompactList}\item 
+override Game\+Object \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_manager_adb5df625dce9c3396160edd2e197674a}{Instantiate\+Slave}} (Game\+Object prefab, \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player}{Player}} player)
+\begin{DoxyCompactList}\small\item\em Instantiates a new Game\+Object and gives it proper components for remote controlling. \end{DoxyCompactList}\item 
+override void \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_manager_a4668e7eb388a3ef7662e6fd9dd1ac581}{Deserialize\+State}} (\mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player}{Player}} player, Game\+Object game\+Object)
+\begin{DoxyCompactList}\small\item\em Deserializes the state to the Game\+Object from \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player}{Player}} object. \end{DoxyCompactList}\item 
+override void \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_manager_aad66fba3bf06e3c04f709c0ee3f2fc6b}{Serialize\+State}} (\mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player}{Player}} player, Game\+Object game\+Object)
+\begin{DoxyCompactList}\small\item\em Serializes the Game\+Object to a \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player}{Player}} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Class for managing objects serialized as \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player}{Player}}. 
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_manager_a491a192ee586875dcb6650741666008e}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_manager_a491a192ee586875dcb6650741666008e}} 
+\index{GudKoodi.DeeperSkeeper.Network.PlayerManager@{GudKoodi.DeeperSkeeper.Network.PlayerManager}!PlayerManager@{PlayerManager}}
+\index{PlayerManager@{PlayerManager}!GudKoodi.DeeperSkeeper.Network.PlayerManager@{GudKoodi.DeeperSkeeper.Network.PlayerManager}}
+\doxysubsubsection{\texorpdfstring{PlayerManager()}{PlayerManager()}}
+{\footnotesize\ttfamily Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Player\+Manager.\+Player\+Manager (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_object_update_requested}{Object\+Update\+Requested}}}]{attack\+Started,  }\item[{\mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_object_created}{Object\+Created}}}]{master\+Player\+Created,  }\item[{\mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_object_update_requested}{Object\+Update\+Requested}}}]{object\+Update\+Requested }\end{DoxyParamCaption})}
+
+
+
+Initializes a new instance of the \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_manager}{Player\+Manager}} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em attack\+Started} & \mbox{\hyperlink{namespace_gud_koodi_1_1_deeper_skeeper_1_1_event}{Event}} that should be called when player performs an attack.\\
+\hline
+{\em master\+Player\+Created} & \mbox{\hyperlink{namespace_gud_koodi_1_1_deeper_skeeper_1_1_event}{Event}} that should be called after a master object has been created.\\
+\hline
+{\em object\+Update\+Requested} & \mbox{\hyperlink{namespace_gud_koodi_1_1_deeper_skeeper_1_1_event}{Event}} that should be called when a master object requests an update to network.\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_manager_a4668e7eb388a3ef7662e6fd9dd1ac581}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_manager_a4668e7eb388a3ef7662e6fd9dd1ac581}} 
+\index{GudKoodi.DeeperSkeeper.Network.PlayerManager@{GudKoodi.DeeperSkeeper.Network.PlayerManager}!DeserializeState@{DeserializeState}}
+\index{DeserializeState@{DeserializeState}!GudKoodi.DeeperSkeeper.Network.PlayerManager@{GudKoodi.DeeperSkeeper.Network.PlayerManager}}
+\doxysubsubsection{\texorpdfstring{DeserializeState()}{DeserializeState()}}
+{\footnotesize\ttfamily override void Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Player\+Manager.\+Deserialize\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player}{Player}}}]{player,  }\item[{Game\+Object}]{game\+Object }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Deserializes the state to the Game\+Object from \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player}{Player}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Data to deserialize from.\\
+\hline
+{\em game\+Object} & Game\+Object to update.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_manager_a427fe68253deb4d123812f70e881eab4}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_manager_a427fe68253deb4d123812f70e881eab4}} 
+\index{GudKoodi.DeeperSkeeper.Network.PlayerManager@{GudKoodi.DeeperSkeeper.Network.PlayerManager}!InstantiateMaster@{InstantiateMaster}}
+\index{InstantiateMaster@{InstantiateMaster}!GudKoodi.DeeperSkeeper.Network.PlayerManager@{GudKoodi.DeeperSkeeper.Network.PlayerManager}}
+\doxysubsubsection{\texorpdfstring{InstantiateMaster()}{InstantiateMaster()}}
+{\footnotesize\ttfamily override Game\+Object Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Player\+Manager.\+Instantiate\+Master (\begin{DoxyParamCaption}\item[{Game\+Object}]{prefab,  }\item[{\mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player}{Player}}}]{player }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Instantiates a new Game\+Object and gives it proper components for local controlling. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prefab} & Prefab used as a base for the new Game\+Object.\\
+\hline
+{\em player} & Serialization data used in creation.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Instantiated Game\+Object.
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_manager_adb5df625dce9c3396160edd2e197674a}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_manager_adb5df625dce9c3396160edd2e197674a}} 
+\index{GudKoodi.DeeperSkeeper.Network.PlayerManager@{GudKoodi.DeeperSkeeper.Network.PlayerManager}!InstantiateSlave@{InstantiateSlave}}
+\index{InstantiateSlave@{InstantiateSlave}!GudKoodi.DeeperSkeeper.Network.PlayerManager@{GudKoodi.DeeperSkeeper.Network.PlayerManager}}
+\doxysubsubsection{\texorpdfstring{InstantiateSlave()}{InstantiateSlave()}}
+{\footnotesize\ttfamily override Game\+Object Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Player\+Manager.\+Instantiate\+Slave (\begin{DoxyParamCaption}\item[{Game\+Object}]{prefab,  }\item[{\mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player}{Player}}}]{player }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Instantiates a new Game\+Object and gives it proper components for remote controlling. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prefab} & Prefab used as a base for the new Game\+Object.\\
+\hline
+{\em player} & Serialization data used in creation.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Instantiated Game\+Object.
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_manager_aad66fba3bf06e3c04f709c0ee3f2fc6b}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_manager_aad66fba3bf06e3c04f709c0ee3f2fc6b}} 
+\index{GudKoodi.DeeperSkeeper.Network.PlayerManager@{GudKoodi.DeeperSkeeper.Network.PlayerManager}!SerializeState@{SerializeState}}
+\index{SerializeState@{SerializeState}!GudKoodi.DeeperSkeeper.Network.PlayerManager@{GudKoodi.DeeperSkeeper.Network.PlayerManager}}
+\doxysubsubsection{\texorpdfstring{SerializeState()}{SerializeState()}}
+{\footnotesize\ttfamily override void Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Player\+Manager.\+Serialize\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player}{Player}}}]{player,  }\item[{Game\+Object}]{game\+Object }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Serializes the Game\+Object to a \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player}{Player}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Data to serialize into.\\
+\hline
+{\em game\+Object} & Game\+Object to serialize from.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_manager_ae1b970a6d23a2562c385634a38d9c1b1}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_manager_ae1b970a6d23a2562c385634a38d9c1b1}} 
+\index{GudKoodi.DeeperSkeeper.Network.PlayerManager@{GudKoodi.DeeperSkeeper.Network.PlayerManager}!SpaghettiAttack@{SpaghettiAttack}}
+\index{SpaghettiAttack@{SpaghettiAttack}!GudKoodi.DeeperSkeeper.Network.PlayerManager@{GudKoodi.DeeperSkeeper.Network.PlayerManager}}
+\doxysubsubsection{\texorpdfstring{SpaghettiAttack()}{SpaghettiAttack()}}
+{\footnotesize\ttfamily void Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Player\+Manager.\+Spaghetti\+Attack (\begin{DoxyParamCaption}\item[{ushort}]{network\+ID }\end{DoxyParamCaption})}
+
+
+
+Starts attack animation for givent object. Quick temporary solution. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em network\+ID} & ID of the object that should play attack animation.\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\+Network/\+Manager/\mbox{\hyperlink{_player_manager_8cs}{Player\+Manager.\+cs}}\end{DoxyCompactItemize}

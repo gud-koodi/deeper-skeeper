@@ -1,0 +1,117 @@
+\hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_entity_1_1_living}{}\doxysection{Gud\+Koodi.\+Deeper\+Skeeper.\+Entity.\+Living Class Reference}
+\label{class_gud_koodi_1_1_deeper_skeeper_1_1_entity_1_1_living}\index{GudKoodi.DeeperSkeeper.Entity.Living@{GudKoodi.DeeperSkeeper.Entity.Living}}
+
+
+Anything that has HP.  
+
+
+
+
+Inheritance diagram for Gud\+Koodi.\+Deeper\+Skeeper.\+Entity.\+Living\+:
+% FIG 0
+
+
+Collaboration diagram for Gud\+Koodi.\+Deeper\+Skeeper.\+Entity.\+Living\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_entity_1_1_living_ae592233c04609bc5b0a438cd9310c736}{Apply\+Damage}} (float damage)
+\begin{DoxyCompactList}\small\item\em Applies damage. Called outside the class on hit events. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_entity_1_1_living_a1a8d05c7410c79868cf12eb2580ca89e}{Get\+Hp\+Percent}} ()
+\begin{DoxyCompactList}\small\item\em Get current hp percentile. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_entity_1_1_living_afec0d438fad74e90e0b6712a4544b7fb}{Kill}} ()
+\begin{DoxyCompactList}\small\item\em Kills the object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_entity_1_1_living_af0c399fa70c0c96fe69b846e95215cd9}{Max\+Health}}
+\item 
+\mbox{\hyperlink{namespace_gud_koodi_1_1_deeper_skeeper_1_1_event_a74b9c20278de02418a854197e8293dda}{Object\+Type}} \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_entity_1_1_living_afeff62765db479a17cf525852d9a767b}{Object\+Type}}
+\begin{DoxyCompactList}\small\item\em Temporary solution; type of the object for server communication. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_object_update_requested}{Object\+Update\+Requested}} \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_entity_1_1_living_a1abf69f62ed7b09fb13c0942586f190c}{Object\+Destruct\+Requested}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{namespace_gud_koodi_1_1_deeper_skeeper_1_1_event}{Event}} called when this object\textquotesingle{}s health goes below 0. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Anything that has HP. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_entity_1_1_living_ae592233c04609bc5b0a438cd9310c736}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_entity_1_1_living_ae592233c04609bc5b0a438cd9310c736}} 
+\index{GudKoodi.DeeperSkeeper.Entity.Living@{GudKoodi.DeeperSkeeper.Entity.Living}!ApplyDamage@{ApplyDamage}}
+\index{ApplyDamage@{ApplyDamage}!GudKoodi.DeeperSkeeper.Entity.Living@{GudKoodi.DeeperSkeeper.Entity.Living}}
+\doxysubsubsection{\texorpdfstring{ApplyDamage()}{ApplyDamage()}}
+{\footnotesize\ttfamily void Gud\+Koodi.\+Deeper\+Skeeper.\+Entity.\+Living.\+Apply\+Damage (\begin{DoxyParamCaption}\item[{float}]{damage }\end{DoxyParamCaption})}
+
+
+
+Applies damage. Called outside the class on hit events. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em damage} & float damage amount\\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{interface_gud_koodi_1_1_deeper_skeeper_1_1_entity_1_1_i_damageable_a104c25e0958e7778612fb7a1d53886c7}{Gud\+Koodi.\+Deeper\+Skeeper.\+Entity.\+I\+Damageable}}.
+
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_entity_1_1_living_a1a8d05c7410c79868cf12eb2580ca89e}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_entity_1_1_living_a1a8d05c7410c79868cf12eb2580ca89e}} 
+\index{GudKoodi.DeeperSkeeper.Entity.Living@{GudKoodi.DeeperSkeeper.Entity.Living}!GetHpPercent@{GetHpPercent}}
+\index{GetHpPercent@{GetHpPercent}!GudKoodi.DeeperSkeeper.Entity.Living@{GudKoodi.DeeperSkeeper.Entity.Living}}
+\doxysubsubsection{\texorpdfstring{GetHpPercent()}{GetHpPercent()}}
+{\footnotesize\ttfamily float Gud\+Koodi.\+Deeper\+Skeeper.\+Entity.\+Living.\+Get\+Hp\+Percent (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get current hp percentile. 
+
+\begin{DoxyReturn}{Returns}
+float in range 0...1
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_entity_1_1_living_afec0d438fad74e90e0b6712a4544b7fb}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_entity_1_1_living_afec0d438fad74e90e0b6712a4544b7fb}} 
+\index{GudKoodi.DeeperSkeeper.Entity.Living@{GudKoodi.DeeperSkeeper.Entity.Living}!Kill@{Kill}}
+\index{Kill@{Kill}!GudKoodi.DeeperSkeeper.Entity.Living@{GudKoodi.DeeperSkeeper.Entity.Living}}
+\doxysubsubsection{\texorpdfstring{Kill()}{Kill()}}
+{\footnotesize\ttfamily void Gud\+Koodi.\+Deeper\+Skeeper.\+Entity.\+Living.\+Kill (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Kills the object. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_entity_1_1_living_af0c399fa70c0c96fe69b846e95215cd9}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_entity_1_1_living_af0c399fa70c0c96fe69b846e95215cd9}} 
+\index{GudKoodi.DeeperSkeeper.Entity.Living@{GudKoodi.DeeperSkeeper.Entity.Living}!MaxHealth@{MaxHealth}}
+\index{MaxHealth@{MaxHealth}!GudKoodi.DeeperSkeeper.Entity.Living@{GudKoodi.DeeperSkeeper.Entity.Living}}
+\doxysubsubsection{\texorpdfstring{MaxHealth}{MaxHealth}}
+{\footnotesize\ttfamily float Gud\+Koodi.\+Deeper\+Skeeper.\+Entity.\+Living.\+Max\+Health}
+
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_entity_1_1_living_a1abf69f62ed7b09fb13c0942586f190c}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_entity_1_1_living_a1abf69f62ed7b09fb13c0942586f190c}} 
+\index{GudKoodi.DeeperSkeeper.Entity.Living@{GudKoodi.DeeperSkeeper.Entity.Living}!ObjectDestructRequested@{ObjectDestructRequested}}
+\index{ObjectDestructRequested@{ObjectDestructRequested}!GudKoodi.DeeperSkeeper.Entity.Living@{GudKoodi.DeeperSkeeper.Entity.Living}}
+\doxysubsubsection{\texorpdfstring{ObjectDestructRequested}{ObjectDestructRequested}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_object_update_requested}{Object\+Update\+Requested}} Gud\+Koodi.\+Deeper\+Skeeper.\+Entity.\+Living.\+Object\+Destruct\+Requested}
+
+
+
+\mbox{\hyperlink{namespace_gud_koodi_1_1_deeper_skeeper_1_1_event}{Event}} called when this object\textquotesingle{}s health goes below 0. 
+
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_entity_1_1_living_afeff62765db479a17cf525852d9a767b}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_entity_1_1_living_afeff62765db479a17cf525852d9a767b}} 
+\index{GudKoodi.DeeperSkeeper.Entity.Living@{GudKoodi.DeeperSkeeper.Entity.Living}!ObjectType@{ObjectType}}
+\index{ObjectType@{ObjectType}!GudKoodi.DeeperSkeeper.Entity.Living@{GudKoodi.DeeperSkeeper.Entity.Living}}
+\doxysubsubsection{\texorpdfstring{ObjectType}{ObjectType}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_gud_koodi_1_1_deeper_skeeper_1_1_event_a74b9c20278de02418a854197e8293dda}{Object\+Type}} Gud\+Koodi.\+Deeper\+Skeeper.\+Entity.\+Living.\+Object\+Type}
+
+
+
+Temporary solution; type of the object for server communication. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\+Entity/\mbox{\hyperlink{_living_8cs}{Living.\+cs}}\end{DoxyCompactItemize}

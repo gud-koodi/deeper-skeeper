@@ -1,0 +1,22 @@
+digraph "GudKoodi.DeeperSkeeper.Event.EventListener"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="GudKoodi.DeeperSkeeper.Event.\lEventListener",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Listener for Event."];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="MonoBehaviour",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node3 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="IListener\< object,\l object, object, object \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interface_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_i_listener.html",tooltip="Interface for all event listeners."];
+  Node4 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Response" ];
+  Node4 [label="GudKoodi.DeeperSkeeper.Event.\lEventResponse",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_event_response.html",tooltip="Mandatory Unity overhead."];
+  Node5 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="UnityEvent\< GameObject \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node6 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Event" ];
+  Node6 [label="GudKoodi.DeeperSkeeper.Event.\lEvent",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_event.html",tooltip="Simple event with no arguments."];
+  Node7 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="BaseEvent\< object,\l object, object, object \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_base_event.html",tooltip="Base class for all events."];
+  Node8 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node8 [label="ScriptableObject",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+}

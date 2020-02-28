@@ -1,0 +1,57 @@
+digraph "GudKoodi.DeeperSkeeper.Network.ClientController"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="GudKoodi.DeeperSkeeper.Network.\lClientController",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Component that handles all communication to server."];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="MonoBehaviour",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node3 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" EnemyList" ];
+  Node3 [label="GudKoodi.DeeperSkeeper.Network.\lEnemy",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_enemy.html",tooltip="Serialization data class for enemy objects."];
+  Node4 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="INetworkSerializable",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interface_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_i_network_serializable.html",tooltip=" "];
+  Node5 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="IDarkRiftSerializable",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node6 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" NetworkConfig" ];
+  Node6 [label="GudKoodi.DeeperSkeeper.Network.\lNetworkConfig",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_config.html",tooltip=" "];
+  Node7 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="ScriptableObject",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node8 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node8 [label="ISerializationCallbackReceiver",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node9 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" NetworkEvents" ];
+  Node9 [label="GudKoodi.DeeperSkeeper.Network.\lNetworkEvents",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_events.html",tooltip="Common network event container for client and server controllers."];
+  Node7 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node10 -> Node9 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" EnemyCreationRequested" ];
+  Node10 [label="GudKoodi.DeeperSkeeper.Event.\lObjectCreationRequested",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_object_creation_requested.html",tooltip="Event for requesting the creation of objects."];
+  Node11 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node11 [label="BaseEvent\< GameObject,\l Vector3, object, object \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_base_event.html",tooltip="Base class for all events."];
+  Node7 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node12 -> Node9 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" ObjectDestructionRequested\nAttackStarted" ];
+  Node12 [label="GudKoodi.DeeperSkeeper.Event.\lObjectUpdateRequested",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_object_update_requested.html",tooltip="Event for requesting object updates."];
+  Node13 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node13 [label="BaseEvent\< GameObject,\l ObjectType, object,\l object \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_base_event.html",tooltip="Base class for all events."];
+  Node7 -> Node13 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node14 -> Node9 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" LevelStarted\nLevelStartRequested" ];
+  Node14 [label="GudKoodi.DeeperSkeeper.Event.\lEvent",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_event.html",tooltip="Simple event with no arguments."];
+  Node15 -> Node14 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node15 [label="BaseEvent\< object,\l object, object, object \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_base_event.html",tooltip="Base class for all events."];
+  Node7 -> Node15 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node16 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" NetworkInstantiator" ];
+  Node16 [label="GudKoodi.DeeperSkeeper.Network.\lNetworkInstantiator",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_instantiator.html",tooltip="Utility object for creating new gameobjects from assigned prefabs"];
+  Node7 -> Node16 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node12 -> Node16 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" PlayerUpdateRequested" ];
+  Node17 -> Node16 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" MasterPlayerCreated" ];
+  Node17 [label="GudKoodi.DeeperSkeeper.Event.\lObjectCreated",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_object_created.html",tooltip="Event for reacting to object creations."];
+  Node18 -> Node17 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node18 [label="BaseEvent\< GameObject,\l object, object, object \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_base_event.html",tooltip="Base class for all events."];
+  Node7 -> Node18 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node19 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Client" ];
+  Node19 [label="DarkRift.Client.Unity.Unity\lClient",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_dark_rift_1_1_client_1_1_unity_1_1_unity_client.html",tooltip=" "];
+  Node2 -> Node19 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node20 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" LevelGenerationRequested" ];
+  Node20 [label="GudKoodi.DeeperSkeeper.Event.\lLevelGenerationRequested",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_level_generation_requested.html",tooltip="Event for requesting level generation."];
+  Node21 -> Node20 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node21 [label="BaseEvent\< int, object,\l object, object \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_base_event.html",tooltip="Base class for all events."];
+  Node7 -> Node21 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+}

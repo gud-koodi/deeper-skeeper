@@ -1,0 +1,312 @@
+\hypertarget{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client}{}\doxysection{Dark\+Rift.\+Client.\+Unity.\+Unity\+Client Class Reference}
+\label{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client}\index{DarkRift.Client.Unity.UnityClient@{DarkRift.Client.Unity.UnityClient}}
+
+
+Inheritance diagram for Dark\+Rift.\+Client.\+Unity.\+Unity\+Client\+:
+% FIG 0
+
+
+Collaboration diagram for Dark\+Rift.\+Client.\+Unity.\+Unity\+Client\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_a80e8fef91a07becf07d82bc3c61300eb}{Connect}} (I\+P\+Address ip, int port, \mbox{\hyperlink{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_ab6383dfe8c2df86a1158af81f2687dd2}{I\+P\+Version}} ip\+Version)
+\begin{DoxyCompactList}\small\item\em Connects to a remote server. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_a86a839a55e999e96ea86c6130b040f02}{Connect\+In\+Background}} (I\+P\+Address ip, int port, \mbox{\hyperlink{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_ab6383dfe8c2df86a1158af81f2687dd2}{I\+P\+Version}} ip\+Version, Dark\+Rift\+Client.\+Connect\+Complete\+Handler callback=null)
+\begin{DoxyCompactList}\small\item\em Connects to a remote asynchronously. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_a1517e7fa54274f783fb8d2252e1900d4}{Send\+Message}} (Message message, Send\+Mode send\+Mode)
+\begin{DoxyCompactList}\small\item\em Sends a message to the server. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_aebe4af1fa8b687bde831edd9c59dfea8}{Disconnect}} ()
+\begin{DoxyCompactList}\small\item\em Disconnects this client from the server. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_aebc5df76920566db8d869dacc74d73c1}{Close}} ()
+\begin{DoxyCompactList}\small\item\em Closes this client. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+I\+P\+Address \mbox{\hyperlink{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_ad7996fa0270f359f4aabc7d1d0ec03c5}{Address}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The IP address this client connects to. \end{DoxyCompactList}\item 
+ushort \mbox{\hyperlink{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_a6acba2612549f4963ca079c4a134bc6f}{Port}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The port this client connects to. \end{DoxyCompactList}\item 
+I\+P\+Version \mbox{\hyperlink{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_ab6383dfe8c2df86a1158af81f2687dd2}{I\+P\+Version}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The IP version to connect with. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_ae31d360549db550a3dcbb0886557d59f}{Max\+Cached\+Writers}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The maximum number of Dark\+Rift\+Writer instances stored per thread. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_a7b5e4a5f4d9a123d276fb734eb797822}{Max\+Cached\+Readers}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The maximum number of Dark\+Rift\+Reader instances stored per thread. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_ab591d6bd2d0a48b2d95b2ff8d6b28bd4}{Max\+Cached\+Messages}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The maximum number of Message instances stored per thread. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_a90952c65ed440cc6dfabf4ab938c07bf}{Max\+Cached\+Socket\+Async\+Event\+Args}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The maximum number of System.\+Net.\+Sockets.\+Socket\+Async\+Event\+Args instances stored per thread. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_aebd15dab1873e97dc185db12a166b155}{Max\+Cached\+Action\+Dispatcher\+Tasks}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The maximum number of Action\+Dispatcher\+Task instances stored per thread. \end{DoxyCompactList}\item 
+Object\+Cache\+Settings \mbox{\hyperlink{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_ae0828a5bfdf012a614408997433f31fa}{Object\+Cache\+Settings}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The object cache settings in use. \end{DoxyCompactList}\item 
+ushort \mbox{\hyperlink{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_ae274d01f49fa9cba3f1098db826ce6aa}{ID}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The ID the client has been assigned. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_a35a35a7c28950590592f28d45f51c514}{Connected}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Returns whether or not this client is connected to the server. \end{DoxyCompactList}\item 
+Connection\+State \mbox{\hyperlink{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_a705d9f77f6431c44f703c64087bdc52b}{Connection\+State}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Returns the state of the connection with the server. \end{DoxyCompactList}\item 
+Dark\+Rift\+Client \mbox{\hyperlink{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_a84a48d844e94fbed985303dd462101b6}{Client}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The actual client connecting to the server. \end{DoxyCompactList}\item 
+Dispatcher \mbox{\hyperlink{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_a73f64ab8bf774812440ce62a3a0482cc}{Dispatcher}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The dispatcher for moving work to the main thread. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Events}
+\begin{DoxyCompactItemize}
+\item 
+Event\+Handler$<$ Message\+Received\+Event\+Args $>$ \mbox{\hyperlink{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_aecd12e0716056173b20aa1983c5c8ccf}{Message\+Received}}
+\begin{DoxyCompactList}\small\item\em Event fired when a message is received. \end{DoxyCompactList}\item 
+Event\+Handler$<$ Disconnected\+Event\+Args $>$ \mbox{\hyperlink{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_a3846072309c028db2eb6225d17c88ce2}{Disconnected}}
+\begin{DoxyCompactList}\small\item\em Event fired when we disconnect form the server. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_aebc5df76920566db8d869dacc74d73c1}\label{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_aebc5df76920566db8d869dacc74d73c1}} 
+\index{DarkRift.Client.Unity.UnityClient@{DarkRift.Client.Unity.UnityClient}!Close@{Close}}
+\index{Close@{Close}!DarkRift.Client.Unity.UnityClient@{DarkRift.Client.Unity.UnityClient}}
+\doxysubsubsection{\texorpdfstring{Close()}{Close()}}
+{\footnotesize\ttfamily void Dark\+Rift.\+Client.\+Unity.\+Unity\+Client.\+Close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Closes this client. 
+
+\mbox{\Hypertarget{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_a80e8fef91a07becf07d82bc3c61300eb}\label{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_a80e8fef91a07becf07d82bc3c61300eb}} 
+\index{DarkRift.Client.Unity.UnityClient@{DarkRift.Client.Unity.UnityClient}!Connect@{Connect}}
+\index{Connect@{Connect}!DarkRift.Client.Unity.UnityClient@{DarkRift.Client.Unity.UnityClient}}
+\doxysubsubsection{\texorpdfstring{Connect()}{Connect()}}
+{\footnotesize\ttfamily void Dark\+Rift.\+Client.\+Unity.\+Unity\+Client.\+Connect (\begin{DoxyParamCaption}\item[{I\+P\+Address}]{ip,  }\item[{int}]{port,  }\item[{\mbox{\hyperlink{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_ab6383dfe8c2df86a1158af81f2687dd2}{I\+P\+Version}}}]{ip\+Version }\end{DoxyParamCaption})}
+
+
+
+Connects to a remote server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ip} & The IP address of the server.\\
+\hline
+{\em port} & The port of the server.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_a86a839a55e999e96ea86c6130b040f02}\label{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_a86a839a55e999e96ea86c6130b040f02}} 
+\index{DarkRift.Client.Unity.UnityClient@{DarkRift.Client.Unity.UnityClient}!ConnectInBackground@{ConnectInBackground}}
+\index{ConnectInBackground@{ConnectInBackground}!DarkRift.Client.Unity.UnityClient@{DarkRift.Client.Unity.UnityClient}}
+\doxysubsubsection{\texorpdfstring{ConnectInBackground()}{ConnectInBackground()}}
+{\footnotesize\ttfamily void Dark\+Rift.\+Client.\+Unity.\+Unity\+Client.\+Connect\+In\+Background (\begin{DoxyParamCaption}\item[{I\+P\+Address}]{ip,  }\item[{int}]{port,  }\item[{\mbox{\hyperlink{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_ab6383dfe8c2df86a1158af81f2687dd2}{I\+P\+Version}}}]{ip\+Version,  }\item[{Dark\+Rift\+Client.\+Connect\+Complete\+Handler}]{callback = {\ttfamily null} }\end{DoxyParamCaption})}
+
+
+
+Connects to a remote asynchronously. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ip} & The IP address of the server.\\
+\hline
+{\em port} & The port of the server.\\
+\hline
+{\em callback} & The callback to make when the connection attempt completes.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_aebe4af1fa8b687bde831edd9c59dfea8}\label{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_aebe4af1fa8b687bde831edd9c59dfea8}} 
+\index{DarkRift.Client.Unity.UnityClient@{DarkRift.Client.Unity.UnityClient}!Disconnect@{Disconnect}}
+\index{Disconnect@{Disconnect}!DarkRift.Client.Unity.UnityClient@{DarkRift.Client.Unity.UnityClient}}
+\doxysubsubsection{\texorpdfstring{Disconnect()}{Disconnect()}}
+{\footnotesize\ttfamily bool Dark\+Rift.\+Client.\+Unity.\+Unity\+Client.\+Disconnect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Disconnects this client from the server. 
+
+\begin{DoxyReturn}{Returns}
+Whether the disconnect was successful.
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_a1517e7fa54274f783fb8d2252e1900d4}\label{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_a1517e7fa54274f783fb8d2252e1900d4}} 
+\index{DarkRift.Client.Unity.UnityClient@{DarkRift.Client.Unity.UnityClient}!SendMessage@{SendMessage}}
+\index{SendMessage@{SendMessage}!DarkRift.Client.Unity.UnityClient@{DarkRift.Client.Unity.UnityClient}}
+\doxysubsubsection{\texorpdfstring{SendMessage()}{SendMessage()}}
+{\footnotesize\ttfamily bool Dark\+Rift.\+Client.\+Unity.\+Unity\+Client.\+Send\+Message (\begin{DoxyParamCaption}\item[{Message}]{message,  }\item[{Send\+Mode}]{send\+Mode }\end{DoxyParamCaption})}
+
+
+
+Sends a message to the server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & The message template to send.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Whether the send was successful.
+\end{DoxyReturn}
+
+
+\doxysubsection{Property Documentation}
+\mbox{\Hypertarget{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_ad7996fa0270f359f4aabc7d1d0ec03c5}\label{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_ad7996fa0270f359f4aabc7d1d0ec03c5}} 
+\index{DarkRift.Client.Unity.UnityClient@{DarkRift.Client.Unity.UnityClient}!Address@{Address}}
+\index{Address@{Address}!DarkRift.Client.Unity.UnityClient@{DarkRift.Client.Unity.UnityClient}}
+\doxysubsubsection{\texorpdfstring{Address}{Address}}
+{\footnotesize\ttfamily I\+P\+Address Dark\+Rift.\+Client.\+Unity.\+Unity\+Client.\+Address\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+The IP address this client connects to. 
+
+\mbox{\Hypertarget{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_a84a48d844e94fbed985303dd462101b6}\label{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_a84a48d844e94fbed985303dd462101b6}} 
+\index{DarkRift.Client.Unity.UnityClient@{DarkRift.Client.Unity.UnityClient}!Client@{Client}}
+\index{Client@{Client}!DarkRift.Client.Unity.UnityClient@{DarkRift.Client.Unity.UnityClient}}
+\doxysubsubsection{\texorpdfstring{Client}{Client}}
+{\footnotesize\ttfamily Dark\+Rift\+Client Dark\+Rift.\+Client.\+Unity.\+Unity\+Client.\+Client\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The actual client connecting to the server. 
+
+The client.\mbox{\Hypertarget{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_a35a35a7c28950590592f28d45f51c514}\label{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_a35a35a7c28950590592f28d45f51c514}} 
+\index{DarkRift.Client.Unity.UnityClient@{DarkRift.Client.Unity.UnityClient}!Connected@{Connected}}
+\index{Connected@{Connected}!DarkRift.Client.Unity.UnityClient@{DarkRift.Client.Unity.UnityClient}}
+\doxysubsubsection{\texorpdfstring{Connected}{Connected}}
+{\footnotesize\ttfamily bool Dark\+Rift.\+Client.\+Unity.\+Unity\+Client.\+Connected\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Returns whether or not this client is connected to the server. 
+
+\mbox{\Hypertarget{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_a705d9f77f6431c44f703c64087bdc52b}\label{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_a705d9f77f6431c44f703c64087bdc52b}} 
+\index{DarkRift.Client.Unity.UnityClient@{DarkRift.Client.Unity.UnityClient}!ConnectionState@{ConnectionState}}
+\index{ConnectionState@{ConnectionState}!DarkRift.Client.Unity.UnityClient@{DarkRift.Client.Unity.UnityClient}}
+\doxysubsubsection{\texorpdfstring{ConnectionState}{ConnectionState}}
+{\footnotesize\ttfamily Connection\+State Dark\+Rift.\+Client.\+Unity.\+Unity\+Client.\+Connection\+State\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Returns the state of the connection with the server. 
+
+\mbox{\Hypertarget{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_a73f64ab8bf774812440ce62a3a0482cc}\label{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_a73f64ab8bf774812440ce62a3a0482cc}} 
+\index{DarkRift.Client.Unity.UnityClient@{DarkRift.Client.Unity.UnityClient}!Dispatcher@{Dispatcher}}
+\index{Dispatcher@{Dispatcher}!DarkRift.Client.Unity.UnityClient@{DarkRift.Client.Unity.UnityClient}}
+\doxysubsubsection{\texorpdfstring{Dispatcher}{Dispatcher}}
+{\footnotesize\ttfamily Dispatcher Dark\+Rift.\+Client.\+Unity.\+Unity\+Client.\+Dispatcher\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The dispatcher for moving work to the main thread. 
+
+\mbox{\Hypertarget{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_ae274d01f49fa9cba3f1098db826ce6aa}\label{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_ae274d01f49fa9cba3f1098db826ce6aa}} 
+\index{DarkRift.Client.Unity.UnityClient@{DarkRift.Client.Unity.UnityClient}!ID@{ID}}
+\index{ID@{ID}!DarkRift.Client.Unity.UnityClient@{DarkRift.Client.Unity.UnityClient}}
+\doxysubsubsection{\texorpdfstring{ID}{ID}}
+{\footnotesize\ttfamily ushort Dark\+Rift.\+Client.\+Unity.\+Unity\+Client.\+ID\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The ID the client has been assigned. 
+
+\mbox{\Hypertarget{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_ab6383dfe8c2df86a1158af81f2687dd2}\label{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_ab6383dfe8c2df86a1158af81f2687dd2}} 
+\index{DarkRift.Client.Unity.UnityClient@{DarkRift.Client.Unity.UnityClient}!IPVersion@{IPVersion}}
+\index{IPVersion@{IPVersion}!DarkRift.Client.Unity.UnityClient@{DarkRift.Client.Unity.UnityClient}}
+\doxysubsubsection{\texorpdfstring{IPVersion}{IPVersion}}
+{\footnotesize\ttfamily I\+P\+Version Dark\+Rift.\+Client.\+Unity.\+Unity\+Client.\+I\+P\+Version\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+The IP version to connect with. 
+
+\mbox{\Hypertarget{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_aebd15dab1873e97dc185db12a166b155}\label{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_aebd15dab1873e97dc185db12a166b155}} 
+\index{DarkRift.Client.Unity.UnityClient@{DarkRift.Client.Unity.UnityClient}!MaxCachedActionDispatcherTasks@{MaxCachedActionDispatcherTasks}}
+\index{MaxCachedActionDispatcherTasks@{MaxCachedActionDispatcherTasks}!DarkRift.Client.Unity.UnityClient@{DarkRift.Client.Unity.UnityClient}}
+\doxysubsubsection{\texorpdfstring{MaxCachedActionDispatcherTasks}{MaxCachedActionDispatcherTasks}}
+{\footnotesize\ttfamily int Dark\+Rift.\+Client.\+Unity.\+Unity\+Client.\+Max\+Cached\+Action\+Dispatcher\+Tasks\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The maximum number of Action\+Dispatcher\+Task instances stored per thread. 
+
+\mbox{\Hypertarget{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_ab591d6bd2d0a48b2d95b2ff8d6b28bd4}\label{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_ab591d6bd2d0a48b2d95b2ff8d6b28bd4}} 
+\index{DarkRift.Client.Unity.UnityClient@{DarkRift.Client.Unity.UnityClient}!MaxCachedMessages@{MaxCachedMessages}}
+\index{MaxCachedMessages@{MaxCachedMessages}!DarkRift.Client.Unity.UnityClient@{DarkRift.Client.Unity.UnityClient}}
+\doxysubsubsection{\texorpdfstring{MaxCachedMessages}{MaxCachedMessages}}
+{\footnotesize\ttfamily int Dark\+Rift.\+Client.\+Unity.\+Unity\+Client.\+Max\+Cached\+Messages\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The maximum number of Message instances stored per thread. 
+
+\mbox{\Hypertarget{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_a7b5e4a5f4d9a123d276fb734eb797822}\label{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_a7b5e4a5f4d9a123d276fb734eb797822}} 
+\index{DarkRift.Client.Unity.UnityClient@{DarkRift.Client.Unity.UnityClient}!MaxCachedReaders@{MaxCachedReaders}}
+\index{MaxCachedReaders@{MaxCachedReaders}!DarkRift.Client.Unity.UnityClient@{DarkRift.Client.Unity.UnityClient}}
+\doxysubsubsection{\texorpdfstring{MaxCachedReaders}{MaxCachedReaders}}
+{\footnotesize\ttfamily int Dark\+Rift.\+Client.\+Unity.\+Unity\+Client.\+Max\+Cached\+Readers\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The maximum number of Dark\+Rift\+Reader instances stored per thread. 
+
+\mbox{\Hypertarget{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_a90952c65ed440cc6dfabf4ab938c07bf}\label{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_a90952c65ed440cc6dfabf4ab938c07bf}} 
+\index{DarkRift.Client.Unity.UnityClient@{DarkRift.Client.Unity.UnityClient}!MaxCachedSocketAsyncEventArgs@{MaxCachedSocketAsyncEventArgs}}
+\index{MaxCachedSocketAsyncEventArgs@{MaxCachedSocketAsyncEventArgs}!DarkRift.Client.Unity.UnityClient@{DarkRift.Client.Unity.UnityClient}}
+\doxysubsubsection{\texorpdfstring{MaxCachedSocketAsyncEventArgs}{MaxCachedSocketAsyncEventArgs}}
+{\footnotesize\ttfamily int Dark\+Rift.\+Client.\+Unity.\+Unity\+Client.\+Max\+Cached\+Socket\+Async\+Event\+Args\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The maximum number of System.\+Net.\+Sockets.\+Socket\+Async\+Event\+Args instances stored per thread. 
+
+\mbox{\Hypertarget{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_ae31d360549db550a3dcbb0886557d59f}\label{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_ae31d360549db550a3dcbb0886557d59f}} 
+\index{DarkRift.Client.Unity.UnityClient@{DarkRift.Client.Unity.UnityClient}!MaxCachedWriters@{MaxCachedWriters}}
+\index{MaxCachedWriters@{MaxCachedWriters}!DarkRift.Client.Unity.UnityClient@{DarkRift.Client.Unity.UnityClient}}
+\doxysubsubsection{\texorpdfstring{MaxCachedWriters}{MaxCachedWriters}}
+{\footnotesize\ttfamily int Dark\+Rift.\+Client.\+Unity.\+Unity\+Client.\+Max\+Cached\+Writers\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The maximum number of Dark\+Rift\+Writer instances stored per thread. 
+
+\mbox{\Hypertarget{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_ae0828a5bfdf012a614408997433f31fa}\label{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_ae0828a5bfdf012a614408997433f31fa}} 
+\index{DarkRift.Client.Unity.UnityClient@{DarkRift.Client.Unity.UnityClient}!ObjectCacheSettings@{ObjectCacheSettings}}
+\index{ObjectCacheSettings@{ObjectCacheSettings}!DarkRift.Client.Unity.UnityClient@{DarkRift.Client.Unity.UnityClient}}
+\doxysubsubsection{\texorpdfstring{ObjectCacheSettings}{ObjectCacheSettings}}
+{\footnotesize\ttfamily Object\+Cache\+Settings Dark\+Rift.\+Client.\+Unity.\+Unity\+Client.\+Object\+Cache\+Settings\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+The object cache settings in use. 
+
+\mbox{\Hypertarget{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_a6acba2612549f4963ca079c4a134bc6f}\label{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_a6acba2612549f4963ca079c4a134bc6f}} 
+\index{DarkRift.Client.Unity.UnityClient@{DarkRift.Client.Unity.UnityClient}!Port@{Port}}
+\index{Port@{Port}!DarkRift.Client.Unity.UnityClient@{DarkRift.Client.Unity.UnityClient}}
+\doxysubsubsection{\texorpdfstring{Port}{Port}}
+{\footnotesize\ttfamily ushort Dark\+Rift.\+Client.\+Unity.\+Unity\+Client.\+Port\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+The port this client connects to. 
+
+
+
+\doxysubsection{Event Documentation}
+\mbox{\Hypertarget{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_a3846072309c028db2eb6225d17c88ce2}\label{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_a3846072309c028db2eb6225d17c88ce2}} 
+\index{DarkRift.Client.Unity.UnityClient@{DarkRift.Client.Unity.UnityClient}!Disconnected@{Disconnected}}
+\index{Disconnected@{Disconnected}!DarkRift.Client.Unity.UnityClient@{DarkRift.Client.Unity.UnityClient}}
+\doxysubsubsection{\texorpdfstring{Disconnected}{Disconnected}}
+{\footnotesize\ttfamily Event\+Handler$<$Disconnected\+Event\+Args$>$ Dark\+Rift.\+Client.\+Unity.\+Unity\+Client.\+Disconnected}
+
+
+
+Event fired when we disconnect form the server. 
+
+\mbox{\Hypertarget{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_aecd12e0716056173b20aa1983c5c8ccf}\label{class_dark_rift_1_1_client_1_1_unity_1_1_unity_client_aecd12e0716056173b20aa1983c5c8ccf}} 
+\index{DarkRift.Client.Unity.UnityClient@{DarkRift.Client.Unity.UnityClient}!MessageReceived@{MessageReceived}}
+\index{MessageReceived@{MessageReceived}!DarkRift.Client.Unity.UnityClient@{DarkRift.Client.Unity.UnityClient}}
+\doxysubsubsection{\texorpdfstring{MessageReceived}{MessageReceived}}
+{\footnotesize\ttfamily Event\+Handler$<$Message\+Received\+Event\+Args$>$ Dark\+Rift.\+Client.\+Unity.\+Unity\+Client.\+Message\+Received}
+
+
+
+Event fired when a message is received. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Dark\+Rift/\+Dark\+Rift/\+Plugins/\+Client/\mbox{\hyperlink{_unity_client_8cs}{Unity\+Client.\+cs}}\end{DoxyCompactItemize}

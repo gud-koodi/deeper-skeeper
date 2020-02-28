@@ -1,0 +1,19 @@
+digraph "GudKoodi.DeeperSkeeper.Enemy.EnemySpawner"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="GudKoodi.DeeperSkeeper.Enemy.\lEnemySpawner",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Creates the designed enemy and destroys spawner."];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="MonoBehaviour",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node3 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" EnemyCreationRequested" ,fontname="Helvetica"];
+  Node3 [label="GudKoodi.DeeperSkeeper.Event.\lObjectCreationRequested",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_object_creation_requested.html",tooltip="Event for requesting the creation of objects."];
+  Node4 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="BaseEvent\< GameObject,\l Vector3, object, object \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_base_event.html",tooltip="Base class for all events."];
+  Node5 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="ScriptableObject",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node6 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Enemies" ,fontname="Helvetica"];
+  Node6 [label="GudKoodi.DeeperSkeeper.Enemy.\lEnemyList",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_list.html",tooltip="Container class for enemy prefabs."];
+  Node5 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

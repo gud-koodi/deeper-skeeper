@@ -1,0 +1,65 @@
+\hypertarget{namespace_gud_koodi_1_1_deeper_skeeper_1_1_network}{}\doxysection{Gud\+Koodi.\+Deeper\+Skeeper.\+Network Namespace Reference}
+\label{namespace_gud_koodi_1_1_deeper_skeeper_1_1_network}\index{GudKoodi.DeeperSkeeper.Network@{GudKoodi.DeeperSkeeper.Network}}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_client_controller}{Client\+Controller}}
+\begin{DoxyCompactList}\small\item\em Component that handles all communication to server. \end{DoxyCompactList}\item 
+class {\bfseries Client\+Message}
+\begin{DoxyCompactList}\small\item\em Tag container for messages sent by a client. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_connection_data}{Connection\+Data}}
+\begin{DoxyCompactList}\small\item\em Serialization data class for sending initial data when a new client connects. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_enemy}{Enemy}}
+\begin{DoxyCompactList}\small\item\em Serialization data class for enemy objects. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_enemy_manager}{Enemy\+Manager}}
+\begin{DoxyCompactList}\small\item\em Class for managing objects serialized as \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_enemy}{Enemy}}. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{interface_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_i_network_serializable}{I\+Network\+Serializable}}
+\item 
+class \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_config}{Network\+Config}}
+\item 
+class \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_events}{Network\+Events}}
+\begin{DoxyCompactList}\small\item\em Common network event container for client and server controllers. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_id_pool}{Network\+Id\+Pool}}
+\begin{DoxyCompactList}\small\item\em Class for handling out sequential ids for objects and help with cache locality by recycling old ids. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_instantiator}{Network\+Instantiator}}
+\begin{DoxyCompactList}\small\item\em Utility object for creating new gameobjects from assigned prefabs \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_master}{Network\+Master}}
+\item 
+class \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_object_list}{Network\+Object\+List}}
+\begin{DoxyCompactList}\small\item\em Collection for storing and accessing objects by their network ids. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_slave}{Network\+Slave}}
+\item 
+class \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_object_manager}{Object\+Manager}}
+\begin{DoxyCompactList}\small\item\em Class for managing collections of multiple similar network objects. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player}{Player}}
+\begin{DoxyCompactList}\small\item\em Serialization data class for player Game\+Objects. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player_manager}{Player\+Manager}}
+\begin{DoxyCompactList}\small\item\em Class for managing objects serialized as \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player}{Player}}. \end{DoxyCompactList}\item 
+class {\bfseries Serialization\+Helper}
+\begin{DoxyCompactList}\small\item\em Container class for helping with serialization of Unity datatypes. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_server_controller}{Server\+Controller}}
+\begin{DoxyCompactList}\small\item\em Component that handles all communication between the server and all clients. \end{DoxyCompactList}\item 
+class {\bfseries Server\+Message}
+\begin{DoxyCompactList}\small\item\em Tag container for messages sent by the server. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{namespace_gud_koodi_1_1_deeper_skeeper_1_1_network_a7fdbd9c206b92403ff1ab8051a6537a8}{Enemy\+List}} = \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_list}{Gud\+Koodi.\+Deeper\+Skeeper.\+Enemy.\+Enemy\+List}}
+\item 
+using \mbox{\hyperlink{namespace_gud_koodi_1_1_deeper_skeeper_1_1_network_ae81e0ccd98e87309b0c4da0bec8a8840}{Event}} = Event.\+Event
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{namespace_gud_koodi_1_1_deeper_skeeper_1_1_network_a7fdbd9c206b92403ff1ab8051a6537a8}\label{namespace_gud_koodi_1_1_deeper_skeeper_1_1_network_a7fdbd9c206b92403ff1ab8051a6537a8}} 
+\index{GudKoodi.DeeperSkeeper.Network@{GudKoodi.DeeperSkeeper.Network}!EnemyList@{EnemyList}}
+\index{EnemyList@{EnemyList}!GudKoodi.DeeperSkeeper.Network@{GudKoodi.DeeperSkeeper.Network}}
+\doxysubsubsection{\texorpdfstring{EnemyList}{EnemyList}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_list}{Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Enemy\+List}} = typedef \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_enemy_1_1_enemy_list}{Gud\+Koodi.\+Deeper\+Skeeper.\+Enemy.\+Enemy\+List}}}
+
+\mbox{\Hypertarget{namespace_gud_koodi_1_1_deeper_skeeper_1_1_network_ae81e0ccd98e87309b0c4da0bec8a8840}\label{namespace_gud_koodi_1_1_deeper_skeeper_1_1_network_ae81e0ccd98e87309b0c4da0bec8a8840}} 
+\index{GudKoodi.DeeperSkeeper.Network@{GudKoodi.DeeperSkeeper.Network}!Event@{Event}}
+\index{Event@{Event}!GudKoodi.DeeperSkeeper.Network@{GudKoodi.DeeperSkeeper.Network}}
+\doxysubsubsection{\texorpdfstring{Event}{Event}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_event}{Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Event}} = typedef Event.\+Event}
+

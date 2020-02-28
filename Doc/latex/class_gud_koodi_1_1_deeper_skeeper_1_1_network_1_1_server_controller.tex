@@ -1,0 +1,128 @@
+\hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_server_controller}{}\doxysection{Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Server\+Controller Class Reference}
+\label{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_server_controller}\index{GudKoodi.DeeperSkeeper.Network.ServerController@{GudKoodi.DeeperSkeeper.Network.ServerController}}
+
+
+Component that handles all communication between the server and all clients.  
+
+
+
+
+Inheritance diagram for Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Server\+Controller\+:
+% FIG 0
+
+
+Collaboration diagram for Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Server\+Controller\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_server_controller_ad52b8ab5fa01c6899f5fc380d44445f0}{Initialize}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the server and starts accepting connections. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_server_controller_a55c9e36a59147996ca71ce6ea340ab95}{Send\+Object}} (Game\+Object game\+Object, \mbox{\hyperlink{namespace_gud_koodi_1_1_deeper_skeeper_1_1_event_a74b9c20278de02418a854197e8293dda}{Object\+Type}} object\+Type)
+\begin{DoxyCompactList}\small\item\em Updates the serialization data of given object and sends it to all clients. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_dark_rift_1_1_server_1_1_unity_1_1_xml_unity_server}{Xml\+Unity\+Server}} \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_server_controller_abd969bce86a8831c5a786249dfe20baa}{Server}}
+\begin{DoxyCompactList}\small\item\em The server component that this script will control. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_instantiator}{Network\+Instantiator}} \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_server_controller_af4cfc5f7a83e666d77b0c79211363b95}{Network\+Instantiator}}
+\begin{DoxyCompactList}\small\item\em Provider of network object prefabs. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_level_generation_requested}{Level\+Generation\+Requested}} \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_server_controller_a75bb9615b2a72c7b99cd3f8d9e2ac74e}{Level\+Generation\+Requested}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{namespace_gud_koodi_1_1_deeper_skeeper_1_1_level}{Level}} generation request event. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_config}{Network\+Config}} \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_server_controller_ade221641823fe6655d194f798d366a2f}{Network\+Config}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{namespace_gud_koodi_1_1_deeper_skeeper_1_1_network}{Network}} configuration to check hosting status from. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_events}{Network\+Events}} \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_server_controller_a95679002330d73673c852f2a087aef68}{Network\+Events}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{namespace_gud_koodi_1_1_deeper_skeeper_1_1_network}{Network}} Events container. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Component that handles all communication between the server and all clients. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_server_controller_ad52b8ab5fa01c6899f5fc380d44445f0}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_server_controller_ad52b8ab5fa01c6899f5fc380d44445f0}} 
+\index{GudKoodi.DeeperSkeeper.Network.ServerController@{GudKoodi.DeeperSkeeper.Network.ServerController}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!GudKoodi.DeeperSkeeper.Network.ServerController@{GudKoodi.DeeperSkeeper.Network.ServerController}}
+\doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily void Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Server\+Controller.\+Initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initializes the server and starts accepting connections. 
+
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_server_controller_a55c9e36a59147996ca71ce6ea340ab95}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_server_controller_a55c9e36a59147996ca71ce6ea340ab95}} 
+\index{GudKoodi.DeeperSkeeper.Network.ServerController@{GudKoodi.DeeperSkeeper.Network.ServerController}!SendObject@{SendObject}}
+\index{SendObject@{SendObject}!GudKoodi.DeeperSkeeper.Network.ServerController@{GudKoodi.DeeperSkeeper.Network.ServerController}}
+\doxysubsubsection{\texorpdfstring{SendObject()}{SendObject()}}
+{\footnotesize\ttfamily void Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Server\+Controller.\+Send\+Object (\begin{DoxyParamCaption}\item[{Game\+Object}]{game\+Object,  }\item[{\mbox{\hyperlink{namespace_gud_koodi_1_1_deeper_skeeper_1_1_event_a74b9c20278de02418a854197e8293dda}{Object\+Type}}}]{object\+Type }\end{DoxyParamCaption})}
+
+
+
+Updates the serialization data of given object and sends it to all clients. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game\+Object} & Object to update the data for.\\
+\hline
+{\em object\+Type} & Type of object.\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_server_controller_a75bb9615b2a72c7b99cd3f8d9e2ac74e}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_server_controller_a75bb9615b2a72c7b99cd3f8d9e2ac74e}} 
+\index{GudKoodi.DeeperSkeeper.Network.ServerController@{GudKoodi.DeeperSkeeper.Network.ServerController}!LevelGenerationRequested@{LevelGenerationRequested}}
+\index{LevelGenerationRequested@{LevelGenerationRequested}!GudKoodi.DeeperSkeeper.Network.ServerController@{GudKoodi.DeeperSkeeper.Network.ServerController}}
+\doxysubsubsection{\texorpdfstring{LevelGenerationRequested}{LevelGenerationRequested}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_level_generation_requested}{Level\+Generation\+Requested}} Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Server\+Controller.\+Level\+Generation\+Requested}
+
+
+
+\mbox{\hyperlink{namespace_gud_koodi_1_1_deeper_skeeper_1_1_level}{Level}} generation request event. 
+
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_server_controller_ade221641823fe6655d194f798d366a2f}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_server_controller_ade221641823fe6655d194f798d366a2f}} 
+\index{GudKoodi.DeeperSkeeper.Network.ServerController@{GudKoodi.DeeperSkeeper.Network.ServerController}!NetworkConfig@{NetworkConfig}}
+\index{NetworkConfig@{NetworkConfig}!GudKoodi.DeeperSkeeper.Network.ServerController@{GudKoodi.DeeperSkeeper.Network.ServerController}}
+\doxysubsubsection{\texorpdfstring{NetworkConfig}{NetworkConfig}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_config}{Network\+Config}} Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Server\+Controller.\+Network\+Config}
+
+
+
+\mbox{\hyperlink{namespace_gud_koodi_1_1_deeper_skeeper_1_1_network}{Network}} configuration to check hosting status from. 
+
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_server_controller_a95679002330d73673c852f2a087aef68}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_server_controller_a95679002330d73673c852f2a087aef68}} 
+\index{GudKoodi.DeeperSkeeper.Network.ServerController@{GudKoodi.DeeperSkeeper.Network.ServerController}!NetworkEvents@{NetworkEvents}}
+\index{NetworkEvents@{NetworkEvents}!GudKoodi.DeeperSkeeper.Network.ServerController@{GudKoodi.DeeperSkeeper.Network.ServerController}}
+\doxysubsubsection{\texorpdfstring{NetworkEvents}{NetworkEvents}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_events}{Network\+Events}} Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Server\+Controller.\+Network\+Events}
+
+
+
+\mbox{\hyperlink{namespace_gud_koodi_1_1_deeper_skeeper_1_1_network}{Network}} Events container. 
+
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_server_controller_af4cfc5f7a83e666d77b0c79211363b95}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_server_controller_af4cfc5f7a83e666d77b0c79211363b95}} 
+\index{GudKoodi.DeeperSkeeper.Network.ServerController@{GudKoodi.DeeperSkeeper.Network.ServerController}!NetworkInstantiator@{NetworkInstantiator}}
+\index{NetworkInstantiator@{NetworkInstantiator}!GudKoodi.DeeperSkeeper.Network.ServerController@{GudKoodi.DeeperSkeeper.Network.ServerController}}
+\doxysubsubsection{\texorpdfstring{NetworkInstantiator}{NetworkInstantiator}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_instantiator}{Network\+Instantiator}} Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Server\+Controller.\+Network\+Instantiator}
+
+
+
+Provider of network object prefabs. 
+
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_server_controller_abd969bce86a8831c5a786249dfe20baa}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_server_controller_abd969bce86a8831c5a786249dfe20baa}} 
+\index{GudKoodi.DeeperSkeeper.Network.ServerController@{GudKoodi.DeeperSkeeper.Network.ServerController}!Server@{Server}}
+\index{Server@{Server}!GudKoodi.DeeperSkeeper.Network.ServerController@{GudKoodi.DeeperSkeeper.Network.ServerController}}
+\doxysubsubsection{\texorpdfstring{Server}{Server}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_dark_rift_1_1_server_1_1_unity_1_1_xml_unity_server}{Xml\+Unity\+Server}} Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Server\+Controller.\+Server}
+
+
+
+The server component that this script will control. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\+Network/\mbox{\hyperlink{_server_controller_8cs}{Server\+Controller.\+cs}}\end{DoxyCompactItemize}

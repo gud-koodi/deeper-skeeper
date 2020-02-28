@@ -1,0 +1,116 @@
+\hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_object_list}{}\doxysection{Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Network\+Object\+List Class Reference}
+\label{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_object_list}\index{GudKoodi.DeeperSkeeper.Network.NetworkObjectList@{GudKoodi.DeeperSkeeper.Network.NetworkObjectList}}
+
+
+Collection for storing and accessing objects by their network ids.  
+
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_object_list_a004777ec6c915b43df27222a2a0302a4}{Network\+Object\+List}} ()
+\begin{DoxyCompactList}\small\item\em Creates new instance of {\ttfamily \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_object_list}{Network\+Object\+List}}}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_object_list_a97e7f4745aa020af1656cd36816dc412}{Is\+Vacant}} (ushort network\+ID)
+\begin{DoxyCompactList}\small\item\em Checks whether or not there are Game\+Object at the specified index. \end{DoxyCompactList}\item 
+ushort \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_object_list_ae98ca03037dff8a23d5952a2654affea}{Look\+Up\+Network\+ID}} (Game\+Object game\+Object)
+\begin{DoxyCompactList}\small\item\em Finds the network id of the specified stored object. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_object_list_a6680f3cca7c8da98c07b63525ffa9ce4}{Remove\+At}} (ushort network\+ID)
+\begin{DoxyCompactList}\small\item\em Removes the Game\+Object with given network id from this list. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+Game\+Object \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_object_list_a4f0478a48717d1db5ff6c2d179e8a017}{this\mbox{[}ushort index\mbox{]}}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the game\+Object at specified network id. Getter returns null if no object is present. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Collection for storing and accessing objects by their network ids. 
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_object_list_a004777ec6c915b43df27222a2a0302a4}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_object_list_a004777ec6c915b43df27222a2a0302a4}} 
+\index{GudKoodi.DeeperSkeeper.Network.NetworkObjectList@{GudKoodi.DeeperSkeeper.Network.NetworkObjectList}!NetworkObjectList@{NetworkObjectList}}
+\index{NetworkObjectList@{NetworkObjectList}!GudKoodi.DeeperSkeeper.Network.NetworkObjectList@{GudKoodi.DeeperSkeeper.Network.NetworkObjectList}}
+\doxysubsubsection{\texorpdfstring{NetworkObjectList()}{NetworkObjectList()}}
+{\footnotesize\ttfamily Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Network\+Object\+List.\+Network\+Object\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creates new instance of {\ttfamily \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_object_list}{Network\+Object\+List}}}. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_object_list_a97e7f4745aa020af1656cd36816dc412}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_object_list_a97e7f4745aa020af1656cd36816dc412}} 
+\index{GudKoodi.DeeperSkeeper.Network.NetworkObjectList@{GudKoodi.DeeperSkeeper.Network.NetworkObjectList}!IsVacant@{IsVacant}}
+\index{IsVacant@{IsVacant}!GudKoodi.DeeperSkeeper.Network.NetworkObjectList@{GudKoodi.DeeperSkeeper.Network.NetworkObjectList}}
+\doxysubsubsection{\texorpdfstring{IsVacant()}{IsVacant()}}
+{\footnotesize\ttfamily bool Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Network\+Object\+List.\+Is\+Vacant (\begin{DoxyParamCaption}\item[{ushort}]{network\+ID }\end{DoxyParamCaption})}
+
+
+
+Checks whether or not there are Game\+Object at the specified index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em network\+ID} & \mbox{\hyperlink{namespace_gud_koodi_1_1_deeper_skeeper_1_1_network}{Network}} id to check vacancy of.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if and only if there is an object at the specified index.
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_object_list_ae98ca03037dff8a23d5952a2654affea}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_object_list_ae98ca03037dff8a23d5952a2654affea}} 
+\index{GudKoodi.DeeperSkeeper.Network.NetworkObjectList@{GudKoodi.DeeperSkeeper.Network.NetworkObjectList}!LookUpNetworkID@{LookUpNetworkID}}
+\index{LookUpNetworkID@{LookUpNetworkID}!GudKoodi.DeeperSkeeper.Network.NetworkObjectList@{GudKoodi.DeeperSkeeper.Network.NetworkObjectList}}
+\doxysubsubsection{\texorpdfstring{LookUpNetworkID()}{LookUpNetworkID()}}
+{\footnotesize\ttfamily ushort Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Network\+Object\+List.\+Look\+Up\+Network\+ID (\begin{DoxyParamCaption}\item[{Game\+Object}]{game\+Object }\end{DoxyParamCaption})}
+
+
+
+Finds the network id of the specified stored object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game\+Object} & Game\+Object to check the network id for.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{namespace_gud_koodi_1_1_deeper_skeeper_1_1_network}{Network}} id of the object.
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_object_list_a6680f3cca7c8da98c07b63525ffa9ce4}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_object_list_a6680f3cca7c8da98c07b63525ffa9ce4}} 
+\index{GudKoodi.DeeperSkeeper.Network.NetworkObjectList@{GudKoodi.DeeperSkeeper.Network.NetworkObjectList}!RemoveAt@{RemoveAt}}
+\index{RemoveAt@{RemoveAt}!GudKoodi.DeeperSkeeper.Network.NetworkObjectList@{GudKoodi.DeeperSkeeper.Network.NetworkObjectList}}
+\doxysubsubsection{\texorpdfstring{RemoveAt()}{RemoveAt()}}
+{\footnotesize\ttfamily Game\+Object Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Network\+Object\+List.\+Remove\+At (\begin{DoxyParamCaption}\item[{ushort}]{network\+ID }\end{DoxyParamCaption})}
+
+
+
+Removes the Game\+Object with given network id from this list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em network\+ID} & \mbox{\hyperlink{namespace_gud_koodi_1_1_deeper_skeeper_1_1_network}{Network}} id of the object to remove.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Game\+Object that was in given position, or null if the position was empty.
+\end{DoxyReturn}
+
+
+\doxysubsection{Property Documentation}
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_object_list_a4f0478a48717d1db5ff6c2d179e8a017}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_object_list_a4f0478a48717d1db5ff6c2d179e8a017}} 
+\index{GudKoodi.DeeperSkeeper.Network.NetworkObjectList@{GudKoodi.DeeperSkeeper.Network.NetworkObjectList}!this\mbox{[}ushort index\mbox{]}@{this[ushort index]}}
+\index{this\mbox{[}ushort index\mbox{]}@{this[ushort index]}!GudKoodi.DeeperSkeeper.Network.NetworkObjectList@{GudKoodi.DeeperSkeeper.Network.NetworkObjectList}}
+\doxysubsubsection{\texorpdfstring{this[ushort index]}{this[ushort index]}}
+{\footnotesize\ttfamily Game\+Object Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Network\+Object\+List.\+this\mbox{[}ushort index\mbox{]}\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets the game\+Object at specified network id. Getter returns null if no object is present. 
+
+Game\+Object the network id should point to.
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\+Network/\mbox{\hyperlink{_network_object_list_8cs}{Network\+Object\+List.\+cs}}\end{DoxyCompactItemize}

@@ -1,0 +1,8 @@
+digraph "Graphical Class Hierarchy"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node0 [label="SerializableObjectCacheSettings",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_serializable_object_cache_settings.html",tooltip="Since ObjectCacheSettings uses properties, Unity can't serialize it to we clone it here and provide c..."];
+}

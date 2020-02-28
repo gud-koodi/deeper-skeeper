@@ -1,0 +1,11 @@
+digraph "GudKoodi.DeeperSkeeper.Event.EventListener"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="GudKoodi.DeeperSkeeper.Event.\lEventListener",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Listener for Event."];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="MonoBehaviour",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node3 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="IListener\< object,\l object, object, object \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interface_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_i_listener.html",tooltip="Interface for all event listeners."];
+}

@@ -1,0 +1,22 @@
+digraph "GudKoodi.DeeperSkeeper.Event.LevelGenerationRequestListener"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="GudKoodi.DeeperSkeeper.Event.\lLevelGenerationRequestListener",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Listener for LevelGenerationRequested."];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="MonoBehaviour",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node3 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="IListener\< int, object,\l object, object \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interface_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_i_listener.html",tooltip="Interface for all event listeners."];
+  Node4 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" LevelGenerationRequested" ,fontname="Helvetica"];
+  Node4 [label="GudKoodi.DeeperSkeeper.Event.\lLevelGenerationRequested",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_level_generation_requested.html",tooltip="Event for requesting level generation."];
+  Node5 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="BaseEvent\< int, object,\l object, object \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_base_event.html",tooltip="Base class for all events."];
+  Node6 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="ScriptableObject",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node7 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Response" ,fontname="Helvetica"];
+  Node7 [label="GudKoodi.DeeperSkeeper.Event.\lLevelGenerationRequestResponse",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_level_generation_request_response.html",tooltip="Mandatory Unity and linting overhead."];
+  Node8 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="UnityEvent\< int \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+}

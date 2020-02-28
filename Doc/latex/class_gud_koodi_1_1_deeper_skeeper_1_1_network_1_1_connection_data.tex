@@ -1,0 +1,171 @@
+\hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_connection_data}{}\doxysection{Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Connection\+Data Class Reference}
+\label{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_connection_data}\index{GudKoodi.DeeperSkeeper.Network.ConnectionData@{GudKoodi.DeeperSkeeper.Network.ConnectionData}}
+
+
+Serialization data class for sending initial data when a new client connects.  
+
+
+
+
+Inheritance diagram for Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Connection\+Data\+:
+% FIG 0
+
+
+Collaboration diagram for Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Connection\+Data\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_connection_data_a66596d6a06b8596a124a321d1ce2b6b8}{Connection\+Data}} ()
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_connection_data}{Connection\+Data}} class. This parameterless constructor is provided for \mbox{\hyperlink{namespace_dark_rift}{Dark\+Rift}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_connection_data_a406bd493b7db7f0ff31cb79a000cf84a}{Connection\+Data}} (ushort client\+ID, \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_enemy}{Enemy}}\mbox{[}$\,$\mbox{]} enemies, ushort player\+Object\+ID, int level\+Seed, \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player}{Player}}\mbox{[}$\,$\mbox{]} players)
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_connection_data}{Connection\+Data}} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_connection_data_a6b4df2d5d2d0e7081e8c6e23962d0b02}{Deserialize}} (Deserialize\+Event e)
+\begin{DoxyCompactList}\small\item\em /// Deserializes data to this instance. Called by \mbox{\hyperlink{namespace_dark_rift}{Dark\+Rift}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_connection_data_a7b32a58f1fd66ad345a14f703e4f9046}{Serialize}} (Serialize\+Event e)
+\begin{DoxyCompactList}\small\item\em Serializes data from this instance. Called by \mbox{\hyperlink{namespace_dark_rift}{Dark\+Rift}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+ushort \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_connection_data_a672d4d9bab911c36f10bda5b265546f7}{Client\+ID}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the client identifier provided by this object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_enemy}{Enemy}}\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_connection_data_aa5686959341230f0e9b989e793852bc7}{Enemies}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets an array containing all player Game\+Objects on the server. \end{DoxyCompactList}\item 
+ushort \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_connection_data_a5e905a587850408a52148d9fe7995829}{Player\+Object\+ID}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the network identifier for player Game\+Object controlled by this client. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player}{Player}}\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_connection_data_a88b29f30bd119578eb92c104c6870017}{Players}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets an array containing all player Game\+Objects on the server. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_connection_data_a840a0548a292aab89614268b7398ade5}{Level\+Seed}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the random seed used for generating levels. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Serialization data class for sending initial data when a new client connects. 
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_connection_data_a66596d6a06b8596a124a321d1ce2b6b8}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_connection_data_a66596d6a06b8596a124a321d1ce2b6b8}} 
+\index{GudKoodi.DeeperSkeeper.Network.ConnectionData@{GudKoodi.DeeperSkeeper.Network.ConnectionData}!ConnectionData@{ConnectionData}}
+\index{ConnectionData@{ConnectionData}!GudKoodi.DeeperSkeeper.Network.ConnectionData@{GudKoodi.DeeperSkeeper.Network.ConnectionData}}
+\doxysubsubsection{\texorpdfstring{ConnectionData()}{ConnectionData()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Connection\+Data.\+Connection\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initializes a new instance of the \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_connection_data}{Connection\+Data}} class. This parameterless constructor is provided for \mbox{\hyperlink{namespace_dark_rift}{Dark\+Rift}}. 
+
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_connection_data_a406bd493b7db7f0ff31cb79a000cf84a}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_connection_data_a406bd493b7db7f0ff31cb79a000cf84a}} 
+\index{GudKoodi.DeeperSkeeper.Network.ConnectionData@{GudKoodi.DeeperSkeeper.Network.ConnectionData}!ConnectionData@{ConnectionData}}
+\index{ConnectionData@{ConnectionData}!GudKoodi.DeeperSkeeper.Network.ConnectionData@{GudKoodi.DeeperSkeeper.Network.ConnectionData}}
+\doxysubsubsection{\texorpdfstring{ConnectionData()}{ConnectionData()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Connection\+Data.\+Connection\+Data (\begin{DoxyParamCaption}\item[{ushort}]{client\+ID,  }\item[{\mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_enemy}{Enemy}}\mbox{[}$\,$\mbox{]}}]{enemies,  }\item[{ushort}]{player\+Object\+ID,  }\item[{int}]{level\+Seed,  }\item[{\mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player}{Player}}\mbox{[}$\,$\mbox{]}}]{players }\end{DoxyParamCaption})}
+
+
+
+Initializes a new instance of the \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_connection_data}{Connection\+Data}} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em client\+ID} & ID of the client.\\
+\hline
+{\em enemies} & Array of all present enemy objects.\\
+\hline
+{\em player\+Object\+ID} & ID of the player object connecting by the client.\\
+\hline
+{\em level\+Seed} & Random seed used when generating the level.\\
+\hline
+{\em players} & Array of all present player objects.\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_connection_data_a6b4df2d5d2d0e7081e8c6e23962d0b02}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_connection_data_a6b4df2d5d2d0e7081e8c6e23962d0b02}} 
+\index{GudKoodi.DeeperSkeeper.Network.ConnectionData@{GudKoodi.DeeperSkeeper.Network.ConnectionData}!Deserialize@{Deserialize}}
+\index{Deserialize@{Deserialize}!GudKoodi.DeeperSkeeper.Network.ConnectionData@{GudKoodi.DeeperSkeeper.Network.ConnectionData}}
+\doxysubsubsection{\texorpdfstring{Deserialize()}{Deserialize()}}
+{\footnotesize\ttfamily void Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Connection\+Data.\+Deserialize (\begin{DoxyParamCaption}\item[{Deserialize\+Event}]{e }\end{DoxyParamCaption})}
+
+
+
+/// Deserializes data to this instance. Called by \mbox{\hyperlink{namespace_dark_rift}{Dark\+Rift}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & \mbox{\hyperlink{namespace_dark_rift}{Dark\+Rift}} deserialization event.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_connection_data_a7b32a58f1fd66ad345a14f703e4f9046}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_connection_data_a7b32a58f1fd66ad345a14f703e4f9046}} 
+\index{GudKoodi.DeeperSkeeper.Network.ConnectionData@{GudKoodi.DeeperSkeeper.Network.ConnectionData}!Serialize@{Serialize}}
+\index{Serialize@{Serialize}!GudKoodi.DeeperSkeeper.Network.ConnectionData@{GudKoodi.DeeperSkeeper.Network.ConnectionData}}
+\doxysubsubsection{\texorpdfstring{Serialize()}{Serialize()}}
+{\footnotesize\ttfamily void Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Connection\+Data.\+Serialize (\begin{DoxyParamCaption}\item[{Serialize\+Event}]{e }\end{DoxyParamCaption})}
+
+
+
+Serializes data from this instance. Called by \mbox{\hyperlink{namespace_dark_rift}{Dark\+Rift}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & \mbox{\hyperlink{namespace_dark_rift}{Dark\+Rift}} serialization event\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Property Documentation}
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_connection_data_a672d4d9bab911c36f10bda5b265546f7}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_connection_data_a672d4d9bab911c36f10bda5b265546f7}} 
+\index{GudKoodi.DeeperSkeeper.Network.ConnectionData@{GudKoodi.DeeperSkeeper.Network.ConnectionData}!ClientID@{ClientID}}
+\index{ClientID@{ClientID}!GudKoodi.DeeperSkeeper.Network.ConnectionData@{GudKoodi.DeeperSkeeper.Network.ConnectionData}}
+\doxysubsubsection{\texorpdfstring{ClientID}{ClientID}}
+{\footnotesize\ttfamily ushort Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Connection\+Data.\+Client\+ID\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets the client identifier provided by this object. 
+
+Client identifier.\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_connection_data_aa5686959341230f0e9b989e793852bc7}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_connection_data_aa5686959341230f0e9b989e793852bc7}} 
+\index{GudKoodi.DeeperSkeeper.Network.ConnectionData@{GudKoodi.DeeperSkeeper.Network.ConnectionData}!Enemies@{Enemies}}
+\index{Enemies@{Enemies}!GudKoodi.DeeperSkeeper.Network.ConnectionData@{GudKoodi.DeeperSkeeper.Network.ConnectionData}}
+\doxysubsubsection{\texorpdfstring{Enemies}{Enemies}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_enemy}{Enemy}} \mbox{[}$\,$\mbox{]} Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Connection\+Data.\+Enemies\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets an array containing all player Game\+Objects on the server. 
+
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_connection_data_a840a0548a292aab89614268b7398ade5}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_connection_data_a840a0548a292aab89614268b7398ade5}} 
+\index{GudKoodi.DeeperSkeeper.Network.ConnectionData@{GudKoodi.DeeperSkeeper.Network.ConnectionData}!LevelSeed@{LevelSeed}}
+\index{LevelSeed@{LevelSeed}!GudKoodi.DeeperSkeeper.Network.ConnectionData@{GudKoodi.DeeperSkeeper.Network.ConnectionData}}
+\doxysubsubsection{\texorpdfstring{LevelSeed}{LevelSeed}}
+{\footnotesize\ttfamily int Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Connection\+Data.\+Level\+Seed\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets the random seed used for generating levels. 
+
+Random seed.\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_connection_data_a5e905a587850408a52148d9fe7995829}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_connection_data_a5e905a587850408a52148d9fe7995829}} 
+\index{GudKoodi.DeeperSkeeper.Network.ConnectionData@{GudKoodi.DeeperSkeeper.Network.ConnectionData}!PlayerObjectID@{PlayerObjectID}}
+\index{PlayerObjectID@{PlayerObjectID}!GudKoodi.DeeperSkeeper.Network.ConnectionData@{GudKoodi.DeeperSkeeper.Network.ConnectionData}}
+\doxysubsubsection{\texorpdfstring{PlayerObjectID}{PlayerObjectID}}
+{\footnotesize\ttfamily ushort Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Connection\+Data.\+Player\+Object\+ID\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets the network identifier for player Game\+Object controlled by this client. 
+
+\mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player}{Player}} Game\+Object network identifier.\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_connection_data_a88b29f30bd119578eb92c104c6870017}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_connection_data_a88b29f30bd119578eb92c104c6870017}} 
+\index{GudKoodi.DeeperSkeeper.Network.ConnectionData@{GudKoodi.DeeperSkeeper.Network.ConnectionData}!Players@{Players}}
+\index{Players@{Players}!GudKoodi.DeeperSkeeper.Network.ConnectionData@{GudKoodi.DeeperSkeeper.Network.ConnectionData}}
+\doxysubsubsection{\texorpdfstring{Players}{Players}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_player}{Player}} \mbox{[}$\,$\mbox{]} Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Connection\+Data.\+Players\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets an array containing all player Game\+Objects on the server. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\+Network/\+Serializable/\mbox{\hyperlink{_connection_data_8cs}{Connection\+Data.\+cs}}\end{DoxyCompactItemize}

@@ -1,0 +1,20 @@
+digraph "GudKoodi.DeeperSkeeper.Network.NetworkInstantiator"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="GudKoodi.DeeperSkeeper.Network.\lNetworkInstantiator",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Utility object for creating new gameobjects from assigned prefabs"];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="ScriptableObject",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node3 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" PlayerUpdateRequested" ];
+  Node3 [label="GudKoodi.DeeperSkeeper.Event.\lObjectUpdateRequested",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_object_update_requested.html",tooltip="Event for requesting object updates."];
+  Node4 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="BaseEvent\< GameObject,\l ObjectType, object,\l object \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_base_event.html",tooltip="Base class for all events."];
+  Node2 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node5 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" MasterPlayerCreated" ];
+  Node5 [label="GudKoodi.DeeperSkeeper.Event.\lObjectCreated",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_object_created.html",tooltip="Event for reacting to object creations."];
+  Node6 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="BaseEvent\< GameObject,\l object, object, object \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_gud_koodi_1_1_deeper_skeeper_1_1_event_1_1_base_event.html",tooltip="Base class for all events."];
+  Node2 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+}

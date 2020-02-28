@@ -1,0 +1,73 @@
+\hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_id_pool}{}\doxysection{Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Network\+Id\+Pool Class Reference}
+\label{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_id_pool}\index{GudKoodi.DeeperSkeeper.Network.NetworkIdPool@{GudKoodi.DeeperSkeeper.Network.NetworkIdPool}}
+
+
+Class for handling out sequential ids for objects and help with cache locality by recycling old ids.  
+
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_id_pool_aec2046e7583bcd7eb287e5b157caf24a}{Network\+Id\+Pool}} ()
+\begin{DoxyCompactList}\small\item\em Creates new instance of \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_id_pool}{Network\+Id\+Pool}}, that will start to hand out ids starting from zero. \end{DoxyCompactList}\item 
+ushort \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_id_pool_a7fe6c1d3b1269879c096104188ec35c8}{Next}} ()
+\begin{DoxyCompactList}\small\item\em Returns next, possibly recycled network id. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_id_pool_af509d8d5cf73b40743d5b9d99f517ada}{Release}} (ushort id)
+\begin{DoxyCompactList}\small\item\em Releases given id back to the pool of usable ids. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class for handling out sequential ids for objects and help with cache locality by recycling old ids. 
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_id_pool_aec2046e7583bcd7eb287e5b157caf24a}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_id_pool_aec2046e7583bcd7eb287e5b157caf24a}} 
+\index{GudKoodi.DeeperSkeeper.Network.NetworkIdPool@{GudKoodi.DeeperSkeeper.Network.NetworkIdPool}!NetworkIdPool@{NetworkIdPool}}
+\index{NetworkIdPool@{NetworkIdPool}!GudKoodi.DeeperSkeeper.Network.NetworkIdPool@{GudKoodi.DeeperSkeeper.Network.NetworkIdPool}}
+\doxysubsubsection{\texorpdfstring{NetworkIdPool()}{NetworkIdPool()}}
+{\footnotesize\ttfamily Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Network\+Id\+Pool.\+Network\+Id\+Pool (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creates new instance of \mbox{\hyperlink{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_id_pool}{Network\+Id\+Pool}}, that will start to hand out ids starting from zero. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_id_pool_a7fe6c1d3b1269879c096104188ec35c8}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_id_pool_a7fe6c1d3b1269879c096104188ec35c8}} 
+\index{GudKoodi.DeeperSkeeper.Network.NetworkIdPool@{GudKoodi.DeeperSkeeper.Network.NetworkIdPool}!Next@{Next}}
+\index{Next@{Next}!GudKoodi.DeeperSkeeper.Network.NetworkIdPool@{GudKoodi.DeeperSkeeper.Network.NetworkIdPool}}
+\doxysubsubsection{\texorpdfstring{Next()}{Next()}}
+{\footnotesize\ttfamily ushort Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Network\+Id\+Pool.\+Next (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns next, possibly recycled network id. 
+
+\begin{DoxyReturn}{Returns}
+The next usable id in this pool
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_id_pool_af509d8d5cf73b40743d5b9d99f517ada}\label{class_gud_koodi_1_1_deeper_skeeper_1_1_network_1_1_network_id_pool_af509d8d5cf73b40743d5b9d99f517ada}} 
+\index{GudKoodi.DeeperSkeeper.Network.NetworkIdPool@{GudKoodi.DeeperSkeeper.Network.NetworkIdPool}!Release@{Release}}
+\index{Release@{Release}!GudKoodi.DeeperSkeeper.Network.NetworkIdPool@{GudKoodi.DeeperSkeeper.Network.NetworkIdPool}}
+\doxysubsubsection{\texorpdfstring{Release()}{Release()}}
+{\footnotesize\ttfamily bool Gud\+Koodi.\+Deeper\+Skeeper.\+Network.\+Network\+Id\+Pool.\+Release (\begin{DoxyParamCaption}\item[{ushort}]{id }\end{DoxyParamCaption})}
+
+
+
+Releases given id back to the pool of usable ids. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\+Network/\mbox{\hyperlink{_network_id_pool_8cs}{Network\+Id\+Pool.\+cs}}\end{DoxyCompactItemize}
