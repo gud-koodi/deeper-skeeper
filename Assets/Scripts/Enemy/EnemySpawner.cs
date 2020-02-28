@@ -1,13 +1,14 @@
 namespace GudKoodi.DeeperSkeeper.Enemy
 {
     using System.Collections;
+    using Entity;
     using Event;
     using UnityEngine;
 
     /// <summary>
     /// Creates the designed enemy and destroys spawner.
     /// </summary>
-    public class EnemySpawner : MonoBehaviour
+    public class EnemySpawner : MonoBehaviour, ISpawner
     {
         /// <summary>
         /// List of enemies to choose from.
@@ -23,18 +24,22 @@ namespace GudKoodi.DeeperSkeeper.Enemy
         [Range(0, 1)]
         public float SpawnChange = 1.0f;
 
-        void Start()
+        /// <summary>
+        /// Spawns a single enemy if given percent is high enough.
+        /// </summary>
+        /// <param name="percent">Chance percent given for the call.</param>
+        public void Spawn(float percent)
         {
-            // TODO: Choose random enemy from the list.
-            StartCoroutine(Wait());
+            if (this.SpawnChange > percent)
+            {
+                EnemyCreationRequested.Trigger(Enemies.Enemies[0], transform.position);
+            }
         }
 
         private IEnumerator Wait()
         {
             yield return new WaitForSeconds(0.3f);
-
             EnemyCreationRequested.Trigger(Enemies.Enemies[0], transform.position);
-            Destroy(gameObject);
         }
     }
 }

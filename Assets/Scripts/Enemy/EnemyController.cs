@@ -180,7 +180,7 @@
 
         private void IdleMaster()
         {
-            Collider[] players = Physics.OverlapSphere(transform.position, 27.14f, playerLayer);
+            Collider[] players = Physics.OverlapSphere(transform.position, 32f, playerLayer);
             if (players.Length > 0)
             {
                 StartChase(players[0].gameObject);

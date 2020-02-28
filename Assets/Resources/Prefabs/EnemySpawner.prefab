@@ -46,4 +46,4 @@ MonoBehaviour:
   Enemies: {fileID: 11400000, guid: f6fd4ed2d37a6384b80afd601988045e, type: 2}
   EnemyCreationRequested: {fileID: 11400000, guid: 3f3ea34710d21414290a4b573b3d00c6,
     type: 2}
-  SpawnChange: 1
+  SpawnChange: 0.668
