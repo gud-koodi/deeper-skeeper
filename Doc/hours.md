@@ -41,3 +41,17 @@
 | 2020-02-01 | 6      | Have players see each other moving around.
 | 2020-02-03 | 6      | Players see each other rotating, sync level generation seed.
 | 2020-02-04 | 2      | Tweaked player aiming code.
+| 2020-02-05 | 4      | Tweaked physics and camera.
+| 2020-02-08 | 3      | Defined namespaces for code, refactoring.
+| 2020-02-10 | 2      | Finished changes from previous date.
+| 2020-02-12 | 7      | New event system.
+| 2020-02-13 | 3      | Hooked some enemy related events to netcode.
+| 2020-02-14 | 3      | Project maintenance, enemies created along with levels.
+| 2020-02-17 | 7      | Sync level start between players, started code for syncing bots.
+| 2020-02-19 | 4      | More bot syncing.
+| 2020-02-20 | 3      | More bot syncing.
+| 2020-02-21 | 5      | More bot syncing.
+| 2020-02-23 | 8      | Finished bot syncing, sync player attacks, return to menu with ESC, hooked up audio with objects.
+| 2020-02-26 | 3      | Multiple enemies per room with a percentual spawn change.
+|------------|--------|-------------|
+| Total      | 133    |
