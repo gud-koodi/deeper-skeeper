@@ -27,8 +27,29 @@ Unity uses components, UML, scalability, solved challenges like dynamic nav mesh
     traverse the links but unfortunately they did not jump from one floor to another but
     slowly walked in the air towards the lower point. We had to disable Nav mesh link autotraverse
     and implement out own method for that.
-### CI
+### CI, git and LFS
+    Even though many indie game developers surely overlook having working Continuous Integration and version
+    control, we wanted to have a working and automated commit-push-build pipeline. We use GitHub Actions as
+    our CI platform
 
+    Getting Unity build and run tests on CI was hard but we were prepared. We actually used many hours before
+    the project for this purpose only so we could have a working CI at the start of the projects. (Those hours
+    naturally are not counted on our project hours.)
+
+    We got Unity build in Docker container with help of GitHub User @GabLeRoux examples. We had to modify them
+    for our purposes and to get it run on GitHub Actions but those examples were very helpful!
+
+    One big problem was licensing Unity in container. We use offline licensing with following workflow:
+    `Load license from env -> store to file -> give file to unity -> restart unity` 
+    For some reason licensing did not work without restart even though that was not needed in the examples.
+
+    Git was never meant to be used with large binary assets and with Unity we have plenty of those. We use
+    Git Large File Storage to handle those. GitHub gives 1GB of free bandwidth for LFS per month. After
+    I pushed some high resolution material components to our repository out bandwidth needs exploded and
+    1GB was full very fast. This is because out CI pulls the LFS assets four times per push (test, build
+    Linux, build Windows and Build OSX). We don't change the binary assets that often so I setup caching
+    for LFS files so we need to pull those only if they have changes.
+    
 ### Getting unity run on Linux
 
 ## Testing
