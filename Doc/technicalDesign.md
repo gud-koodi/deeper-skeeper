@@ -79,28 +79,31 @@ overhead in our project and the reason why we didn't get that far with the gamep
 Yet, we would argue that the experience was very valuable and worth the effort.
 
 ### Dynamic navigation mesh links
-Our game has randomly generated levels. AI pathfinding id dependent on navigational
-meshes and moving between those meshes is done with offmesh links. Our problem was that
+Our game has randomly generated levels. AI pathfinding is dependent on navigational
+meshes and moving between these meshes is done via offmesh links. Our problem was that
 Unity's default navigation meshes are pre-baked and cannot be applied to prefabs.
 
 Luckily we found Unity's own NavMeshComponents scripts from their github (for some reason
 they are not part of the main engine) and were able to use those for our needs. NavMeshComponents
-are components that can be addes to game objects and thus allows us to use them in prefabs.
-Then in runtime when we generate the levels we add NavMeshLink components to each floor and
-calculate start point and end point and update the link. The links were working, enemies did
-traverse the links but unfortunately they did not jump from one floor to another but
-slowly walked in the air towards the lower point. We had to disable Nav mesh link autotraverse
-and implement out own method for that.
-### CI, git and LFS
+are components that can be added to game objects and thus allows us to use them in prefabs.
+Then in runtime when we generate a level, we add NavMeshLink components to each floor and
+calculate start and end point and update the link.
+
+These links were working and enemies traversed them, but rather than jumping to a lower floor,
+they instead were slowly walking through the air towards the ground.
+We had to disable the default behavior and implement our own method to achieve the desired effect.
+
+### CI, Git and LFS
 Even though many indie game developers surely overlook having working Continuous Integration and version
 control, we wanted to have a working and automated commit-push-build pipeline. We use GitHub Actions as
-our CI platform
+our CI platform.
 
-Getting Unity build and run tests on CI was hard but we were prepared. We actually used many hours before
-the project for this purpose only so we could have a working CI at the start of the projects. (Those hours
-naturally are not counted on our project hours.)
+Getting Unity build and run tests on CI was hard, but some preparation had been done beforehand.
+We actually had used many hours before the project solely for this purpose,
+so that we had a working CI at the start of the project
+(Those hours naturally are not counted on our project hours).
 
-We got Unity build in Docker container with help of GitHub User @GabLeRoux examples. We had to modify them
+We got Unity to build in a Docker container with a help of examples by GitHub user @GabLeRoux. We had to modify them
 for our purposes and to get it run on GitHub Actions but those examples were very helpful!
 
 One big problem was licensing Unity in container. We use offline licensing with following workflow:
@@ -111,12 +114,13 @@ Git was never meant to be used with large binary assets and with Unity we have p
 Git Large File Storage to handle those. GitHub gives 1GB of free bandwidth for LFS per month. After
 I pushed some high resolution material components to our repository out bandwidth needs exploded and
 1GB was full very fast. This is because out CI pulls the LFS assets four times per push (test, build
-Linux, build Windows and Build OSX). We don't change the binary assets that often so I setup caching
+Linux, build Windows and Build OSX). We don't change these binary assets that often so I setup caching
 for LFS files so we need to pull those only if they have changes.
 
-### Getting unity run on Linux
+### Getting Unity run on Linux
 Since Unity does not support Linux officially (though they provide unofficial Linux installations), 
-one of our team member had problems to get Unity working on his Linux machine. He switched to Windows.
+one of our team members had problems to get Unity working on their Linux machine.
+After giving up, a switch to Windows was made.
 
 ## Testing
 
