@@ -17,6 +17,23 @@
 | 27.1 | 5 | making level prefabs, lobby room
 | 28.1 | 4 | linting to github
 | 29.1 | 5 | level generation script
+| 31.1 | 5 | Small dixes and DevOps
+| 2020-02-01 | 6      | DevOps and player animation fixes
+| 2020-02-03 | 6      | DevOps and player animation fixes
+| 2020-02-04 | 6      | Enchant combat, prevent hitting and moving at the same time
+| 2020-02-05 | 5      | Make light follow player and fix issues with lighting, better camera
+| 2020-02-10 | 6      | First ragdolled enemy version
+| 2020-02-12 | 6      | Try to get navmesh links working
+| 2020-02-14 | 6      | Ragdolled death, navmesh generating on runtime working at last
+| 2020-02-17 | 7      | Optimize dying, prevent enemy team damage
+| 2020-02-18 | 4      | Add textures
+| 2020-02-19 | 4      | Textures destroy our lfs bandwith, start working on caching
+| 2020-02-20 | 3      | Work on caching
+| 2020-02-21 | 5      | Health bar, "better" animations
+| 2020-02-26 | 3      | Get cache working
+| 2020-02-28 | 2      | Tweak documentation
+|------------|--------|-------------|
+| Total      | 140    |
 
 ## Jori Lampi
 
