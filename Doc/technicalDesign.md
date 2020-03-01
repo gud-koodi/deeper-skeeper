@@ -49,9 +49,11 @@ Unity uses components, UML, scalability, solved challenges like dynamic nav mesh
     1GB was full very fast. This is because out CI pulls the LFS assets four times per push (test, build
     Linux, build Windows and Build OSX). We don't change the binary assets that often so I setup caching
     for LFS files so we need to pull those only if they have changes.
-    
-### Getting unity run on Linux
 
+### Getting unity run on Linux
+    Since Unity does not support Linux officially (though they provide unofficial Linux installations), 
+    one of our team member had problems to get Unity working on his Linux machine. He switched to Windows.
+    
 ## Testing
 
 Mostly manual, some structures have actual tests.
