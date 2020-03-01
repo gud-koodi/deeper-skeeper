@@ -13,7 +13,16 @@ Unity uses components, UML, scalability, solved challenges like dynamic nav mesh
 ## Technical challenges
 
 ### Networking
-
+    We decided that our game need Online co-op. One of our team members has done online 
+    PvP shooter with Unreal Engine and thought it is a good idea! Unfortunately Unity
+    had dropped their support for networking and were offering just paid Unity server
+    based solutions. We said no thanks Unity and found third party C# plugin for sending
+    TCP/UDP messages over network, DarkRift. And that is what it did, sent messages and
+    received messages. Everything else we had to code ourselves: Server, Client, what to
+    send, when and how to serialize the data etc. In the end networking was the biggest
+    overhead in our project and reason why we did not get more done in gameplay. Still,
+    worth it.
+    
 ### Dynamic navigation mesh links
     Our game has randomly generated levels. AI pathfinding id dependent on navigational
     meshes and moving between those meshes is done with offmesh links. Our problem was that
@@ -53,7 +62,7 @@ Unity uses components, UML, scalability, solved challenges like dynamic nav mesh
 ### Getting unity run on Linux
     Since Unity does not support Linux officially (though they provide unofficial Linux installations), 
     one of our team member had problems to get Unity working on his Linux machine. He switched to Windows.
-    
+
 ## Testing
 
 Mostly manual, some structures have actual tests.
