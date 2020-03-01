@@ -2,9 +2,9 @@
 
 ## Used Technology
 
-Game was made with Unity version `2019.2.11f1` which had available containers for CI building via GitHub actions. (Thanks @GabLeRoux). [DarkRift Networking](https://www.darkriftnetworking.com/darkrift2) was used for sending messages between players over network. The game is built for Linux, Windows & Mac, though we are unable to test out the Mac version.
+Game was made with Unity version `2019.2.11f1` which had available containers for CI building via GitHub actions (Thanks @GabLeRoux). [DarkRift Networking](https://www.darkriftnetworking.com/darkrift2) was used for sending messages between players over network. The game is built for Linux, Windows & Mac, though we have been unable to test out the Mac version.
 
-At the current state, players can connect to the game and advance through a dungeon that consists of 10 similar rooms that are aligned differently and have a varying enemy setup.
+At the current state, players can connect to the game and advance through a dungeon that consists of 10 similar rooms that are aligned differently each time and have a varying enemy setup.
 
 ## Game Architecture
 
@@ -67,16 +67,17 @@ Some of these are inherently necessary, but with above ideas a lot of extra weig
 ## Technical challenges
 
 ### Networking
-We decided that our game need Online co-op. One of our team members has done online 
-PvP shooter with Unreal Engine and thought it is a good idea! Unfortunately Unity
-had dropped their support for networking and were offering just paid Unity server
-based solutions. We said no thanks Unity and found third party C# plugin for sending
-TCP/UDP messages over network, DarkRift. And that is what it did, sent messages and
-received messages. Everything else we had to code ourselves: Server, Client, what to
+We decided to implement online Co-Op for our game. One of our team members had previously done an online 
+PvP shooter with Unreal Engine and thought it would be as straightforward to accomplish here.
+Unfortunately Unity's seemingly similar feature had been deprecated a good while ago,
+and instead they were only offering commercial cloud server solutions.
+Fortunately we managed to find a third party C# plugin called DarkRift,
+that allowed us to send TCP/UDP messages over network.
+However, game-logic-wise we had to implement everything ourselves: Server, Client, what to
 send, when and how to serialize the data etc. In the end networking was the biggest
-overhead in our project and reason why we did not get more done in gameplay. Still,
-worth it.
-    
+overhead in our project and the reason why we didn't get that far with the gameplay.
+Yet, we would argue that the experience was very valuable and worth the effort.
+
 ### Dynamic navigation mesh links
 Our game has randomly generated levels. AI pathfinding id dependent on navigational
 meshes and moving between those meshes is done with offmesh links. Our problem was that
@@ -119,4 +120,12 @@ one of our team member had problems to get Unity working on his Linux machine. H
 
 ## Testing
 
-Mostly manual, some structures have actual tests.
+Due to the nature of server/client relationship in our game,
+it would've been very difficult to come up with proper tests for the game.
+Currently only `NetworkIDPool` and `NetworkObjectList` utilize unit testing to make sure that they work properly.
+Otherwise, manual testing has been the dominant way to test our project by printing debug error messages
+at places where things had a chance to break, or to provide insight when things seemingly broke down.
+
+One more sneaky bug in the project occurred, when a certain reference in Unity Editor had broken for some reason.
+This made the client always connect to *locahost*,
+which allowed it to go unnoticed for a while before connecting to a remote host was attempted.
