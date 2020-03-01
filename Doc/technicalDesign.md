@@ -6,9 +6,11 @@ Game was made with Unity version `2019.2.11f1` which had available containers fo
 
 At the current state, players can connect to the game and advance through a dungeon that consists of 10 similar rooms that are aligned differently and have a varying enemy setup.
 
-## Game Architechture
+## Game Architecture
 
 Unity uses components, UML, scalability, solved challenges like dynamic nav mesh links, shortcomings
+
+
 
 ## Testing
 
