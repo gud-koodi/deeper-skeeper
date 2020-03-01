@@ -1,0 +1,37 @@
+// External dependensies
+[UnityEngine.Monobehaviour{bg:green}]
+[UnityEngine.ScriptableObject{bg:green}]
+[UnityEngine.GameObject{bg:green}]
+
+[DarkRift.UnityClient{bg:orange}]
+[DarkRift.XmlUnityServer{bg:orange}]
+[DarkRift.IDarkRiftSerializable{bg:orange}]
+
+// Unity Component hierarchy
+[UnityEngine.MonoBehaviour]^[DarkRift.UnityClient]
+[UnityEngine.MonoBehaviour]^[Network.ServerController]
+[DarkRift.XmlUnityServer]<-.-1[Network.ServerController]
+[UnityEngine.MonoBehaviour]^[DarkRift.XmlUnityServer]
+[UnityEngine.MonoBehaviour]^[Network.ClientController]
+[DarkRift.UnityClient]<-.-1[Network.ClientController]
+
+// Events
+[UnityEngine.ScriptableObject]^[Network.NetworkEvents]
+[UnityEngine.ScriptableObject]^[Event.BaseEvent]
+[Network.NetworkEvents]<>--*[Event.BaseEvent]
+
+// Server/Client hierarchy
+[Network.ServerController]++--*[Network.ObjectManager<T>]
+[Network.ServerController]++--*[Network.NetworkIDPool]
+[Network.ServerController]<>--1[Network.NetworkEvents]
+[Network.ClientController]++--*[Network.ObjectManager<T>]
+[Network.ClientController]<>--1[Network.NetworkEvents]
+[Network.ObjectManager<T>]++--1[Network.NetworkObjectList<T>]
+
+// NetworkObjectList<T>
+[DarkRift.IDarkRiftSerializable]^-.-[Network.INetworkSerializable|+NetworkID:ushort]
+[Network.NetworkObjectList<T>]<>--*[Network.INetworkSerializable]
+[Network.NetworkObjectList<T>]<>--*[UnityEngine.GameObject]
+
+// Unnecessary, but removing this from here broke the layout
+[UnityEngine.ScriptableObject]
